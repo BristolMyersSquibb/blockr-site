@@ -9,8 +9,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "blockr",
+    "title": "Build data apps in minutes, click by click.",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Blockr is a tool to build shareable, reusable data apps and dashboard in minutes using a graphical user-interface. No coding experience is required.\n\nGet started Try in the cloud"
+  },
+  {
+    "objectID": "index.html#introductory-videos",
+    "href": "index.html#introductory-videos",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Introductory videos",
+    "text": "Introductory videos\nThe simplest way to understand what blockr is, is to watch these two short introductory videos:"
+  },
+  {
+    "objectID": "index.html#whistle-stop-tour",
+    "href": "index.html#whistle-stop-tour",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Whistle-stop tour",
+    "text": "Whistle-stop tour"
   }
 ]
