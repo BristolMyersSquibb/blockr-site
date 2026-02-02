@@ -23,31 +23,30 @@ website:
             href: https://github.com/BristolMyersSquibb/blockr/issues
     left:
       - text: "Tutorials"
-        href: tutorials.qmd
+        href: tutorials/index.qmd
       - text: "How-To"
-        href: howto.qmd
+        href: howto/index.qmd
       - text: "Fundamentals"
-        href: fundamentals.qmd
+        href: fundamentals/index.qmd
       - text: "Reference"
-        href: reference.qmd
+        href: reference/index.qmd
 
   sidebar:
     - title: "Tutorials"
       style: "docked"
       background: "light"
       contents:
-        - tutorials.qmd
-        - tutorial-1.qmd
-        - tutorial-2.qmd
+        - tutorials/index.qmd
+        - tutorials/*.qmd 
 
     - title: "How-To"
       contents:
-        - howto.qmd
+        - howto/*.qmd
 
     - title: "Fundamentals"
       contents:
-        - fundamentals.qmd
+        - fundamentals/*.qmd
 
     - title: "Reference"
       contents:
-        - reference.qmd
+        - reference/*.qmd
