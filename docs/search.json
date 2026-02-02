@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Build data apps in minutes, click by click.",
     "section": "",
-    "text": "Build data apps in minutes, click by click.\nBlockr is a tool to build shareable, reusable data apps and dashboard in minutes using a graphical user-interface. No coding experience is required.\n\nGet started Try in the cloud"
+    "text": "Blockr is a tool to build data apps and dashboard in minutes using a web-based point and click user interface. No coding experience is required.\n\nGet started Try in the cloud"
   },
   {
     "objectID": "index.html#introductory-videos",
@@ -26,5 +26,68 @@
     "title": "Build data apps in minutes, click by click.",
     "section": "Whistle-stop tour",
     "text": "Whistle-stop tour"
+  },
+  {
+    "objectID": "index.html#who-is-it-for",
+    "href": "index.html#who-is-it-for",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Who is it for?",
+    "text": "Who is it for?\nblockr is designed for anyone who works with data:\n\nAnalysts who want to quickly explore data without writing code\nResearchers who need reproducible workflows\nTeams who want to share and collaborate on data pipelines"
+  },
+  {
+    "objectID": "index.html#how-does-blockr-work",
+    "href": "index.html#how-does-blockr-work",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "How does blockr work?",
+    "text": "How does blockr work?\nSome text"
+  },
+  {
+    "objectID": "index.html#what-is-the-relationship-to-r",
+    "href": "index.html#what-is-the-relationship-to-r",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "What is the relationship to R?",
+    "text": "What is the relationship to R?\nblockr is built on top of the R programming language and Shiny web framework. It was developed with extensibility in mind and provides a set of tools to allow developers to create their own custom blocks or extend the core functionality of the framework.\nThis means that blockr can be seen as a visual programming tool for R. Within reason, anything that can be done in R, can be extended to be done in blockr.\nIf you are a devloper interested in expanding blockr, we invite you to begin by viewing the blockr.core package documentation."
+  },
+  {
+    "objectID": "index.html#built-on-r",
+    "href": "index.html#built-on-r",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Built on R",
+    "text": "Built on R\nblockr is built on top of the R programming language and Shiny web framework. It was developed with extensibility in mind and provides a set of tools to allow developers to create their own custom blocks or extend the core functionality of the framework.\nThis means that blockr can be seen as a visual programming tool for R. Within reason, anything that can be done in R, can be extended to be done in blockr.\nIf you are a devloper interested in expanding blockr, we invite you to begin by viewing the blockr.core package documentation."
+  },
+  {
+    "objectID": "index.html#data-analyses",
+    "href": "index.html#data-analyses",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Data analyses",
+    "text": "Data analyses\nData analyses can be broken down into fundamental units we call blocks, such as loading, transforming, or visualising data. Simply add the blocks you want to the canvas, connect them, and watch blockr automatically run the pipelines."
+  },
+  {
+    "objectID": "index.html#dashboards",
+    "href": "index.html#dashboards",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Dashboards",
+    "text": "Dashboards\nDo you want to share your analysis as an interactive dashboard? Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like. Toggle parts of your block on and off to control what your users see."
+  },
+  {
+    "objectID": "index.html#extensible-and-open-source",
+    "href": "index.html#extensible-and-open-source",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Extensible and open-source",
+    "text": "Extensible and open-source\nblockr is built on top of R and was designed with extensibility in mind. It provides a set of tools and API’s to allow developers to create their own custom blocks and extend the framework.\nIf you are a devloper interested in expanding blockr, get started by viewing the blockr.core R package documentation.\nblockr is open-source and is released under a GPL-3 license."
+  },
+  {
+    "objectID": "index.html#reproducibility",
+    "href": "index.html#reproducibility",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Reproducibility",
+    "text": "Reproducibility"
+  },
+  {
+    "objectID": "index.html#reproducible",
+    "href": "index.html#reproducible",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Reproducible",
+    "text": "Reproducible\nEvery blockr application can generate reproducible R code to recreate your analysis outside of blockr. This ensures portability and reproducibility, making it easy to switch tools, collaborate across multidisciplinary teams, and bring scientific rigor to your work."
   }
 ]

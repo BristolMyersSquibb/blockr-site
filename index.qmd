@@ -1,12 +1,11 @@
 ---
 format: html
 ---
-
 <div style="text-align: center;">
 
-# Build data apps in minutes, click by click.
+# Build data apps in minutes, <br>click by click.
 
-Blockr is a tool to build shareable, reusable data apps and dashboard in minutes using a graphical user-interface. No coding experience is required.
+Blockr is a tool to build data apps and dashboard in minutes using a web-based point and click user interface. No coding experience is required.
 
 <div class="mt-4 mb-5">
   <a href="tutorials.qmd" class="btn btn-primary btn-lg" role="button" style="width: 180px;">Get started</a>
@@ -16,3 +15,36 @@ Blockr is a tool to build shareable, reusable data apps and dashboard in minutes
 {{< video https://www.youtube.com/watch?v=_j0dOkGrkew >}}
 
 </div>
+
+## Data analyses
+
+Data analyses can be broken down into fundamental units we call blocks, such as loading, transforming, or visualising data.
+Simply add the blocks you want to the canvas, connect them, and watch blockr automatically run the pipelines.
+
+## Dashboards
+
+Do you want to share your analysis as an interactive dashboard?
+Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like.
+Toggle parts of your block on and off to control what your users see.
+
+## Who is it for?
+blockr is designed for anyone who works with data:
+
+- **Analysts** who want to quickly explore data without writing code
+- **Researchers** who need reproducible workflows
+- **Teams** who want to share and collaborate on data pipelines
+
+## Reproducible
+Every blockr application can generate reproducible R code to recreate your analysis outside of blockr.
+This ensures portability and reproducibility, making it easy to switch tools, collaborate across multidisciplinary teams, and bring scientific rigor to your work.
+
+
+## Extensible and open-source
+
+blockr is built on top of R and was designed with extensibility in mind.
+It provides a set of tools and API's to allow developers to create their own custom blocks and extend the framework.
+
+If you are a devloper interested in expanding blockr, get started by viewing the blockr.core R package [documentation](https://bristolmyerssquibb.github.io/blockr.core/).
+
+blockr is open-source and is released under a GPL-3 [license](https://github.com/BristolMyersSquibb/blockr?tab=GPL-3.0-1-ov-file#readme).
+ 
