@@ -2,6 +2,14 @@ project:
   type: website
   output-dir: docs
 
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
 website:
   title: "blockr"
   navbar:
@@ -17,13 +25,6 @@ website:
           - text: Report a Bug
             href: https://github.com/BristolMyersSquibb/blockr/issues
 
-format:
-  html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
-    toc: true
 
 
 
