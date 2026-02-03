@@ -23,7 +23,7 @@ website:
             href: https://github.com/BristolMyersSquibb/blockr/issues
     left:
       - text: "Tutorials"
-        href: tutorials/getting-started.qmd
+        href: tutorials/01-getting-started.qmd
       - text: "How-To"
         href: howto/find-more-blocks.qmd
       - text: "Fundamentals"
@@ -36,8 +36,9 @@ website:
       style: "docked"
       background: "light"
       contents:
-        - tutorials/getting-started.qmd
-        - tutorials/export-code.qmd
+        - tutorials/01-getting-started.qmd
+        - tutorials/02-build-a-dashboard.qmd
+        - tutorials/03-youtube-series.qmd
     - title: "How-To"
       contents:
         - howto/find-more-blocks.qmd
