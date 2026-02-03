@@ -25,7 +25,7 @@ website:
       - text: "Tutorials"
         href: tutorials/01-getting-started.qmd
       - text: "How-To"
-        href: howto/find-more-blocks.qmd
+        href: howto/index.qmd
       - text: "Fundamentals"
         href: fundamentals/index.qmd
       - text: "Reference"
@@ -41,7 +41,7 @@ website:
         - tutorials/03-youtube-series.qmd
     - title: "How-To"
       contents:
-        - howto/find-more-blocks.qmd
+        - howto/index.qmd
     - title: "Fundamentals"
       contents:
         - fundamentals/index.qmd

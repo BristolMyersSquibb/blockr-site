@@ -1,63 +1,14 @@
 [
   {
-    "objectID": "tutorials/03-youtube-series.html",
-    "href": "tutorials/03-youtube-series.html",
-    "title": "YouTube tutorials",
+    "objectID": "tutorials/02-build-a-dashboard.html",
+    "href": "tutorials/02-build-a-dashboard.html",
+    "title": "Build a dashboard",
     "section": "",
-    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
+    "text": "Build a dashboard",
     "crumbs": [
       "Tutorials",
-      "YouTube tutorials"
+      "Build a dashboard"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "",
-    "text": "Build data apps in minutes, click by click.\nBuild apps using a web-based point and click user interface. No coding experience required."
-  },
-  {
-    "objectID": "index.html#how-does-it-work",
-    "href": "index.html#how-does-it-work",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "How does it work?",
-    "text": "How does it work?\nData analyses can be broken down into fundamental units we call blocks, such as loading, transforming, or visualising data. Simply add the blocks you want to the canvas, connect them, and watch blockr automatically run the pipelines."
-  },
-  {
-    "objectID": "index.html#share-your-work",
-    "href": "index.html#share-your-work",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "Share your work",
-    "text": "Share your work\nDo you want to share your analysis as an interactive dashboard? Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like. Toggle parts of your block on and off to control what your users see."
-  },
-  {
-    "objectID": "index.html#who-is-it-for",
-    "href": "index.html#who-is-it-for",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "Who is it for?",
-    "text": "Who is it for?\nblockr is designed for anyone who works with data:\n\nAnalysts who want to quickly explore data without writing code\nResearchers who need reproducible workflows\nTeams who want to share and collaborate on data pipelines"
-  },
-  {
-    "objectID": "index.html#reproducible",
-    "href": "index.html#reproducible",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "Reproducible",
-    "text": "Reproducible\nEvery blockr application can generate reproducible R code to recreate your analysis outside of blockr. This ensures portability and reproducibility, making it easy to switch tools, collaborate across multidisciplinary teams, and bring scientific rigor to your work."
-  },
-  {
-    "objectID": "index.html#extensible-and-open-source",
-    "href": "index.html#extensible-and-open-source",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "Extensible and open-source",
-    "text": "Extensible and open-source\nblockr is built on top of R and was designed with extensibility in mind. It provides a set of tools and API’s to allow developers to create their own custom blocks and extend the framework.\nblockr is open-source and is released under a GPL-3 license."
-  },
-  {
-    "objectID": "index.html#how-to-read-these-docs",
-    "href": "index.html#how-to-read-these-docs",
-    "title": "\nBuild data apps in minutes, click by click.\n",
-    "section": "How to read these docs",
-    "text": "How to read these docs\nThese documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\nTutorials\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\nHow-To’s\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\nFundamentals\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\nReference\nLookup a block with detailed specifications and parameters.\nTo the reference"
   },
   {
     "objectID": "tutorials/01-getting-started.html",
@@ -104,14 +55,63 @@
     ]
   },
   {
-    "objectID": "tutorials/02-build-a-dashboard.html",
-    "href": "tutorials/02-build-a-dashboard.html",
-    "title": "Build a dashboard",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\nBuild data apps in minutes, click by click.\n",
     "section": "",
-    "text": "Build a dashboard",
+    "text": "Build data apps in minutes, click by click.\nBuild apps using a web-based point and click user interface. No coding experience required."
+  },
+  {
+    "objectID": "index.html#how-does-it-work",
+    "href": "index.html#how-does-it-work",
+    "title": "\nBuild data apps in minutes, click by click.\n",
+    "section": "How does it work?",
+    "text": "How does it work?\nData analyses can be broken down into fundamental units, here called blocks, such as loading, transforming, or visualising data. Simply add the blocks to the canvas, connect them, and watch blockr automatically run the pipelines."
+  },
+  {
+    "objectID": "index.html#share-your-work",
+    "href": "index.html#share-your-work",
+    "title": "\nBuild data apps in minutes, click by click.\n",
+    "section": "Share your work",
+    "text": "Share your work\nWant to share your analyses as an interactive dashboards? Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like. Toggle parts of your block on and off to control what your users see."
+  },
+  {
+    "objectID": "index.html#who-is-it-for",
+    "href": "index.html#who-is-it-for",
+    "title": "\nBuild data apps in minutes, click by click.\n",
+    "section": "Who is it for?",
+    "text": "Who is it for?\nblockr is designed for anyone who works with data:\n\nAnalysts who want to quickly explore data without writing code\nResearchers who need reproducible workflows\nTeams who want to share and collaborate on data pipelines"
+  },
+  {
+    "objectID": "index.html#reproducible",
+    "href": "index.html#reproducible",
+    "title": "\nBuild data apps in minutes, click by click.\n",
+    "section": "Reproducible",
+    "text": "Reproducible\nEvery blockr application can generate reproducible R code to recreate your analysis outside of blockr. This ensures portability and reproducibility, making it easy to switch tools, collaborate across multidisciplinary teams, and bring scientific rigor to your work."
+  },
+  {
+    "objectID": "index.html#extensible-and-open-source",
+    "href": "index.html#extensible-and-open-source",
+    "title": "\nBuild data apps in minutes, click by click.\n",
+    "section": "Extensible and open-source",
+    "text": "Extensible and open-source\nblockr is built on top of R and was designed with extensibility in mind. It provides a set of tools and API’s to allow developers to create their own custom blocks and extend the framework.\nblockr is open-source and is released under a GPL-3 license."
+  },
+  {
+    "objectID": "index.html#how-to-read-these-docs",
+    "href": "index.html#how-to-read-these-docs",
+    "title": "\nBuild data apps in minutes, click by click.\n",
+    "section": "How to read these docs",
+    "text": "How to read these docs\nThese documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\nTutorials\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\nHow-To’s\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\nFundamentals\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\nReference\nLookup a block with detailed specifications and parameters.\nTo the reference"
+  },
+  {
+    "objectID": "tutorials/03-youtube-series.html",
+    "href": "tutorials/03-youtube-series.html",
+    "title": "YouTube tutorials",
+    "section": "",
+    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
     "crumbs": [
       "Tutorials",
-      "Build a dashboard"
+      "YouTube tutorials"
     ]
   }
 ]

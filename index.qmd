@@ -7,7 +7,7 @@ format: html
 Build apps using a web-based point and click user interface. No coding experience required.
 
 <div class="mt-4 mb-5" style="text-align: left;">
-  <a href="tutorials/getting-started.qmd" class="btn btn-primary btn-lg" role="button" style="width: 180px;">Get started</a>
+  <a href="tutorials/01-getting-started.qmd" class="btn btn-primary btn-lg" role="button" style="width: 180px;">Get started</a>
   <a href="https://blockr.cloud" class="btn btn-outline-secondary btn-lg ms-2" target="_blank" role="button" style="width: 180px;">Try in the cloud</a>
 </div>
 
@@ -15,12 +15,12 @@ Build apps using a web-based point and click user interface. No coding experienc
 
 ## How does it work?
 
-Data analyses can be broken down into fundamental units we call blocks, such as loading, transforming, or visualising data.
-Simply add the blocks you want to the canvas, connect them, and watch blockr automatically run the pipelines.
+Data analyses can be broken down into fundamental units, here called blocks, such as loading, transforming, or visualising data.
+Simply add the blocks to the canvas, connect them, and watch blockr automatically run the pipelines.
 
 ## Share your work
 
-Do you want to share your analysis as an interactive dashboard?
+Want to share your analyses as an interactive dashboards?
 Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like.
 Toggle parts of your block on and off to control what your users see.
 
@@ -62,7 +62,7 @@ The documentation is split into four parts:
 
 Learn by doing with step-by-step tutorials that walk you through practical examples.
 
-[To the tutorials](tutorials/getting-started.qmd){.btn .btn-primary .w-100}
+[To the tutorials](tutorials/01-getting-started.qmd){.btn .btn-primary .w-100}
 :::
 :::
 :::
@@ -76,7 +76,7 @@ Learn by doing with step-by-step tutorials that walk you through practical examp
 
 Reach a specific goal with focused guides for common tasks.
 
-[To the how-to's](howto/find-more-blocks.qmd){.btn .btn-primary .w-100}
+[To the how-to's](howto/index.qmd){.btn .btn-primary .w-100}
 :::
 :::
 :::
