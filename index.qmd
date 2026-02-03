@@ -44,7 +44,72 @@ This ensures portability and reproducibility, making it easy to switch tools, co
 blockr is built on top of R and was designed with extensibility in mind.
 It provides a set of tools and API's to allow developers to create their own custom blocks and extend the framework.
 
-If you are a devloper interested in expanding blockr, get started by viewing the blockr.core R package [documentation](https://bristolmyerssquibb.github.io/blockr.core/).
-
 blockr is open-source and is released under a GPL-3 [license](https://github.com/BristolMyersSquibb/blockr?tab=GPL-3.0-1-ov-file#readme).
  
+## How to read these docs
+
+These documents are _user_-facing and not _developer_-facing.
+They will teach you how to _use_ blockr, not how to _develop_ it.
+If you are looking for developer docs, start [here](https://bristolmyerssquibb.github.io/blockr.core/).
+
+The documentation is split into four parts:
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-mortarboard" style="font-size: 3rem;"></i>
+
+### Tutorials
+
+Learn by doing with step-by-step tutorials that walk you through practical examples.
+
+[To the tutorials](tutorials/getting-started.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-signpost-2" style="font-size: 3rem;"></i>
+
+### How-To's
+
+Reach a specific goal with focused guides for common tasks.
+
+[To the how-to's](howto/find-more-blocks.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-book" style="font-size: 3rem;"></i>
+
+### Fundamentals
+
+Broaden your understanding with in-depth explanations of key concepts.
+
+[To the fundamentals](fundamentals/index.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-braces" style="font-size: 3rem;"></i>
+
+### Reference
+
+Lookup a block with detailed specifications and parameters.
+
+[To the reference](reference/index.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+:::
