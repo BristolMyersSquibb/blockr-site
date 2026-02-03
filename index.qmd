@@ -16,12 +16,12 @@ Blockr is a tool to build data apps and dashboard in minutes using a web-based p
 
 </div>
 
-## Data analyses
+## How does it work?
 
 Data analyses can be broken down into fundamental units we call blocks, such as loading, transforming, or visualising data.
 Simply add the blocks you want to the canvas, connect them, and watch blockr automatically run the pipelines.
 
-## Dashboards
+## Share your work
 
 Do you want to share your analysis as an interactive dashboard?
 Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like.

@@ -89,5 +89,19 @@
     "title": "Build data apps in minutes, click by click.",
     "section": "Reproducible",
     "text": "Reproducible\nEvery blockr application can generate reproducible R code to recreate your analysis outside of blockr. This ensures portability and reproducibility, making it easy to switch tools, collaborate across multidisciplinary teams, and bring scientific rigor to your work."
+  },
+  {
+    "objectID": "index.html#how-does-it-work",
+    "href": "index.html#how-does-it-work",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "How does it work?",
+    "text": "How does it work?\nData analyses can be broken down into fundamental units we call blocks, such as loading, transforming, or visualising data. Simply add the blocks you want to the canvas, connect them, and watch blockr automatically run the pipelines."
+  },
+  {
+    "objectID": "index.html#share-your-work",
+    "href": "index.html#share-your-work",
+    "title": "Build data apps in minutes, click by click.",
+    "section": "Share your work",
+    "text": "Share your work\nDo you want to share your analysis as an interactive dashboard? Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like. Toggle parts of your block on and off to control what your users see."
   }
 ]
