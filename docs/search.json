@@ -1,13 +1,13 @@
 [
   {
-    "objectID": "tutorials/getting-started.html",
-    "href": "tutorials/getting-started.html",
-    "title": "Getting started",
+    "objectID": "tutorials/03-youtube-series.html",
+    "href": "tutorials/03-youtube-series.html",
+    "title": "YouTube tutorials",
     "section": "",
-    "text": "This tutorial will get you started with blockr in just a few minutes. By the end, you will have built your first data pipeline.\n\n\n\n\nThe simplest way to try blockr is for free in our live playground at blockr.cloud. Note, you will not be able to save and restore sessions this way.\n\n\n\nRun the following commands to install blockr locally and then spin up an empty app:\ninstall.packages(\"blockr\") # Download blockr. This only needs to be run once.\nblockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.\n\n\n\n\n\n\nNote\n\n\n\nInstalling blockr locally assumes you already have R installed on your system and are comfortable running basic R commands.",
+    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
     "crumbs": [
       "Tutorials",
-      "Getting started"
+      "YouTube tutorials"
     ]
   },
   {
@@ -60,72 +60,6 @@
     "text": "How to read these docs\nThese documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\nTutorials\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\nHow-To’s\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\nFundamentals\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\nReference\nLookup a block with detailed specifications and parameters.\nTo the reference"
   },
   {
-    "objectID": "tutorials/export-code.html",
-    "href": "tutorials/export-code.html",
-    "title": "Export code",
-    "section": "",
-    "text": "Export code",
-    "crumbs": [
-      "Tutorials",
-      "Export code"
-    ]
-  },
-  {
-    "objectID": "tutorials/getting-started.html#load-blockr",
-    "href": "tutorials/getting-started.html#load-blockr",
-    "title": "Getting started",
-    "section": "",
-    "text": "Try blockr for free in our live playground at blockr.cloud.\nIf you would like to install and run blockr locally, first you\ninstall.packages(\"blockr\")",
-    "crumbs": [
-      "Tutorials",
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "tutorials/getting-started.html#start-blockr",
-    "href": "tutorials/getting-started.html#start-blockr",
-    "title": "Getting started",
-    "section": "",
-    "text": "The simplest way to try blockr is for free in our live playground at blockr.cloud. Note, you will not be able to save and restore sessions this way.\n\n\n\nRun the following commands to install blockr locally and then spin up an empty app:\ninstall.packages(\"blockr\") # Download blockr. This only needs to be run once.\nblockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.\n\n\n\n\n\n\nNote\n\n\n\nInstalling blockr locally assumes you already have R installed on your system and are comfortable running basic R commands.",
-    "crumbs": [
-      "Tutorials",
-      "Getting started"
-    ]
-  },
-  {
-    "objectID": "tutorials/youtube-series.html",
-    "href": "tutorials/youtube-series.html",
-    "title": "YouTube tutorials",
-    "section": "",
-    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
-    "crumbs": [
-      "Tutorials",
-      "YouTube tutorials"
-    ]
-  },
-  {
-    "objectID": "tutorials/build-a-dashboard.html",
-    "href": "tutorials/build-a-dashboard.html",
-    "title": "Build a dashboard",
-    "section": "",
-    "text": "Build a dashboard",
-    "crumbs": [
-      "Tutorials",
-      "Build a dashboard"
-    ]
-  },
-  {
-    "objectID": "tutorials/02-build-a-dashboard.html",
-    "href": "tutorials/02-build-a-dashboard.html",
-    "title": "Build a dashboard",
-    "section": "",
-    "text": "Build a dashboard",
-    "crumbs": [
-      "Tutorials",
-      "Build a dashboard"
-    ]
-  },
-  {
     "objectID": "tutorials/01-getting-started.html",
     "href": "tutorials/01-getting-started.html",
     "title": "Getting started",
@@ -148,17 +82,6 @@
     ]
   },
   {
-    "objectID": "tutorials/03-youtube-series.html",
-    "href": "tutorials/03-youtube-series.html",
-    "title": "YouTube tutorials",
-    "section": "",
-    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
-    "crumbs": [
-      "Tutorials",
-      "YouTube tutorials"
-    ]
-  },
-  {
     "objectID": "tutorials/01-getting-started.html#first-steps",
     "href": "tutorials/01-getting-started.html#first-steps",
     "title": "Getting started",
@@ -178,6 +101,17 @@
     "crumbs": [
       "Tutorials",
       "Getting started"
+    ]
+  },
+  {
+    "objectID": "tutorials/02-build-a-dashboard.html",
+    "href": "tutorials/02-build-a-dashboard.html",
+    "title": "Build a dashboard",
+    "section": "",
+    "text": "Build a dashboard",
+    "crumbs": [
+      "Tutorials",
+      "Build a dashboard"
     ]
   }
 ]
