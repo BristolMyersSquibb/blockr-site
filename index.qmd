@@ -1,5 +1,6 @@
 ---
 format: html
+toc: false
 ---
 
 <h1 style="font-size: 3em;">Build data apps in minutes, <br>click by click.</h1>

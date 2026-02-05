@@ -16,7 +16,7 @@ website:
   page-footer:
     left: |
       Proudly supported by
-      [![](/bms-logo.png){fig-alt="Bristol Myers Squibb" width=135px}](https://www.bms.com/)
+      [![](/logos/logo-bms.png){fig-alt="Bristol Myers Squibb" width=135px}](https://www.bms.com/)
     center:
       - text: "Build analyses in minutes, click by click."
     right:
