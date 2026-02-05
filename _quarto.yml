@@ -24,6 +24,9 @@ website:
         href: https://https://github.com/BristolMyersSquibb/blockr
         aria-label: Blockr GitHub
   navbar:
+    title: false
+    logo: /logos/logo-blockr.png
+    logo-alt: "Blockr logo."
     search: true
     tools:
       - icon: github
