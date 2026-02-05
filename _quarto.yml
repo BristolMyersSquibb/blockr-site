@@ -13,6 +13,16 @@ format:
 website:
   title: "blockr"
   page-navigation: true
+  page-footer:
+    left: |
+      Proudly supported by
+      [![](/bms-logo.png){fig-alt="Bristol Myers Squibb" width=135px}](https://www.bms.com/)
+    center:
+      - text: "Build analyses in minutes, click by click."
+    right:
+      - icon: github
+        href: https://https://github.com/BristolMyersSquibb/blockr
+        aria-label: Blockr GitHub
   navbar:
     search: true
     tools:
