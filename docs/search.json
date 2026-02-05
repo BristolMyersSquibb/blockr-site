@@ -113,16 +113,5 @@
       "Tutorials",
       "YouTube tutorials"
     ]
-  },
-  {
-    "objectID": "tutorials/02-build-a-dashboard.html#load-your-workflow",
-    "href": "tutorials/02-build-a-dashboard.html#load-your-workflow",
-    "title": "Build a dashboard",
-    "section": "",
-    "text": "If you haven’t already, complete the Getting Started tutorial to build a simple data workflow.",
-    "crumbs": [
-      "Tutorials",
-      "Build a dashboard"
-    ]
   }
 ]
