@@ -36,7 +36,7 @@ Let's start by adding some data. Right-click the canvas then click "Add block":
 ![](01-img-right-click.png)
 
 This opens the right sidebar with a block selection menu.
-Here, blocks are categorised by type (e.g., Inputs, Outputs, Plots, etc.) for easy discoverability of different blocks.
+Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them.
 You can also use the search bar to find blocks.
 
 For now, let's click "dataset block" to load an example data block, preconfigured with a bunch of different datasets.
@@ -54,7 +54,7 @@ Next, let's filter our penguins data to only return the species "Adelie" and "Ch
 To connect a filter block:
 
 1. Hover the mouse over the dataset block
-2. Clicking the "+" button at the bottom of the block, called a port, to bring up the block menu sidebar once more:
+2. Click the "+" button at the bottom of the block, called a port, to bring up the block menu sidebar once more:
 3. Search for "filter" and click "Filter Rows"
 
 ![](01-img-filter-block.png)
