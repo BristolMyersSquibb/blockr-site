@@ -4,7 +4,7 @@
     "href": "tutorials/02-build-a-dashboard.html",
     "title": "Build a dashboard",
     "section": "",
-    "text": "Build a dashboard",
+    "text": "Build a dashboard\nIn this tutorial you will learn how to transform a blockr workflow into a dashboard you can share with others.\n\n\n\n\n\n\nNote\n\n\n\nThis tutorial will use the data worklow created in the Getting Started tutorial. Make sure to complete that tutorial first before proceeding with this one.",
     "crumbs": [
       "Tutorials",
       "Build a dashboard"
@@ -112,6 +112,17 @@
     "crumbs": [
       "Tutorials",
       "YouTube tutorials"
+    ]
+  },
+  {
+    "objectID": "tutorials/02-build-a-dashboard.html#load-your-workflow",
+    "href": "tutorials/02-build-a-dashboard.html#load-your-workflow",
+    "title": "Build a dashboard",
+    "section": "",
+    "text": "If you haven’t already, complete the Getting Started tutorial to build a simple data workflow.",
+    "crumbs": [
+      "Tutorials",
+      "Build a dashboard"
     ]
   }
 ]
