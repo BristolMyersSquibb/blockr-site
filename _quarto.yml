@@ -12,6 +12,7 @@ format:
 
 website:
   title: "blockr"
+  page-navigation: true
   navbar:
     search: true
     tools:
