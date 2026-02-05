@@ -4,7 +4,40 @@
     "href": "tutorials/02-build-a-dashboard.html",
     "title": "Build a dashboard",
     "section": "",
-    "text": "Build a dashboard\nIn this tutorial you will learn how to transform a blockr workflow into a dashboard you can share with others.\n\n\n\n\n\n\nNote\n\n\n\nThis tutorial will use the data worklow created in the Getting Started tutorial. Make sure to complete that tutorial first before proceeding with this one.",
+    "text": "In this tutorial you will learn how to transform a blockr workflow into a dashboard you can share with others.\n\n\n\n\n\n\nNote\n\n\n\nThis tutorial will use the data workflow created in the Getting Started tutorial. Make sure to complete that tutorial first before proceeding with this one.\n\n\n\n\nYou can drag and drop windows to customize your workspace however you like. You can move them around, organize them into tabs, remove them, and resize them. Let’s see how each of these features work:\n\n\nTo move a window, grab the grey tab at the top and drag it wherever you like.\nLet’s start by dragging the plot block down underneath the dataset and filter blocks. As you drag a window, you’ll see a purple highlight showing where it will go when you drop it.\nLet’s move the plot block below the dataset and filter blocks to see how this works:\n\nOnce moved your app should now look like this:\n\nNext, let’s move the filter block to the left:\n\nYour app should now look like this:\n\n\n\n\nYou can also group windows into tab groups. To do this, simply drag a tab next to another tab to group them together.\nFor instance, let’s move the dataset block from the tab group on the right to the tab group on the left:\n\nYou should now see the dataset block is in the left tab group:\n\n\n\n\nSometimes you may wish to just remove a window all together. To do this, just click on the “x” next to the window name in the tab.\nFor instance, let’s remove the dataset window, as it might not be much use to see in our dashboard:\n\nIf you want to reserve this, you can also click the “+” button to add a window back into your app:\n\nBut for now, let’s leave the dataset block removed.\n\n\n\nAt this point your app should have the graph of blocks on the left, the filter block in the middle, and the plot block on the right. Each window should take up approximately the same width:\n\nTo create more space for our filter and plot blocks, let’s resize their windows: \n\n\n\n\n\nEach block is composed of inputs and outputs:\n\nInputs contain the controls for a block\nOutputs contain the return values (e.g., data or a plot)\n\nIn the contents of each block, you can see the inputs and outputs separated by a faint grey line:\nTo toggle an input or output on or off, each block has an “Input” and “Output” button in the top-right corner of the block:\nSimply press these buttons to toggle the respective component on/off. All inputs and outputs of all blocks will be visible by default, until toggled off. These toggles allow you to choose what your users see by hiding and exposing only certian parts of your workflow.\nFor instance, you may want your user to be able to play around with the input to the filter block in our example workflow, but not the input to the plot block (e.g., you might have an opinion about what is/isn’t an appropriate plot for the input data).\nTo do this in our example workflow, simply toggle the output button for our filter block and the input button for our plot block (hiding them both from view):\n\n\n\nIn this tutorial you learnt how to rearrange, resize, and group windows, as well as toggle block inputs and outputs on and off. You can now transform your blockr workflows into dashboard views, ready for sharing.",
+    "crumbs": [
+      "Tutorials",
+      "Build a dashboard"
+    ]
+  },
+  {
+    "objectID": "tutorials/02-build-a-dashboard.html#rearrange-your-layout",
+    "href": "tutorials/02-build-a-dashboard.html#rearrange-your-layout",
+    "title": "Build a dashboard",
+    "section": "",
+    "text": "You can drag and drop windows to customize your workspace however you like. You can move them around, organize them into tabs, remove them, and resize them. Let’s see how each of these features work:\n\n\nTo move a window, grab the grey tab at the top and drag it wherever you like.\nLet’s start by dragging the plot block down underneath the dataset and filter blocks. As you drag a window, you’ll see a purple highlight showing where it will go when you drop it.\nLet’s move the plot block below the dataset and filter blocks to see how this works:\n\nOnce moved your app should now look like this:\n\nNext, let’s move the filter block to the left:\n\nYour app should now look like this:\n\n\n\n\nYou can also group windows into tab groups. To do this, simply drag a tab next to another tab to group them together.\nFor instance, let’s move the dataset block from the tab group on the right to the tab group on the left:\n\nYou should now see the dataset block is in the left tab group:\n\n\n\n\nSometimes you may wish to just remove a window all together. To do this, just click on the “x” next to the window name in the tab.\nFor instance, let’s remove the dataset window, as it might not be much use to see in our dashboard:\n\nIf you want to reserve this, you can also click the “+” button to add a window back into your app:\n\nBut for now, let’s leave the dataset block removed.\n\n\n\nAt this point your app should have the graph of blocks on the left, the filter block in the middle, and the plot block on the right. Each window should take up approximately the same width:\n\nTo create more space for our filter and plot blocks, let’s resize their windows:",
+    "crumbs": [
+      "Tutorials",
+      "Build a dashboard"
+    ]
+  },
+  {
+    "objectID": "tutorials/02-build-a-dashboard.html#toggle-inputsoutputs-on-and-off",
+    "href": "tutorials/02-build-a-dashboard.html#toggle-inputsoutputs-on-and-off",
+    "title": "Build a dashboard",
+    "section": "",
+    "text": "Each block is composed of inputs and outputs:\n\nInputs contain the controls for a block\nOutputs contain the return values (e.g., data or a plot)\n\nIn the contents of each block, you can see the inputs and outputs separated by a faint grey line:\nTo toggle an input or output on or off, each block has an “Input” and “Output” button in the top-right corner of the block:\nSimply press these buttons to toggle the respective component on/off. All inputs and outputs of all blocks will be visible by default, until toggled off. These toggles allow you to choose what your users see by hiding and exposing only certian parts of your workflow.\nFor instance, you may want your user to be able to play around with the input to the filter block in our example workflow, but not the input to the plot block (e.g., you might have an opinion about what is/isn’t an appropriate plot for the input data).\nTo do this in our example workflow, simply toggle the output button for our filter block and the input button for our plot block (hiding them both from view):",
+    "crumbs": [
+      "Tutorials",
+      "Build a dashboard"
+    ]
+  },
+  {
+    "objectID": "tutorials/02-build-a-dashboard.html#summary",
+    "href": "tutorials/02-build-a-dashboard.html#summary",
+    "title": "Build a dashboard",
+    "section": "",
+    "text": "In this tutorial you learnt how to rearrange, resize, and group windows, as well as toggle block inputs and outputs on and off. You can now transform your blockr workflows into dashboard views, ready for sharing.",
     "crumbs": [
       "Tutorials",
       "Build a dashboard"

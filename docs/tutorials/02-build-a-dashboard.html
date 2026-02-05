@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,14 +34,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="../tutorials/01-getting-started.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7ad4275665823142722440408272c61b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-278cfcba7e0e0e33db68069b13002fc7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,7 +83,8 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../logos/logo-blockr.png" alt="Blockr logo." class="navbar-logo">
+    <img src="../logos/logo-blockr.png" alt="Blockr logo." class="navbar-logo light-content">
+    <img src="../logos/logo-blockr.png" alt="Blockr logo." class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -173,7 +175,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#build-a-dashboard" id="toc-build-a-dashboard" class="nav-link active" data-scroll-target="#build-a-dashboard">Build a dashboard</a></li>
+  <li><a href="#build-a-dashboard" id="toc-build-a-dashboard" class="nav-link active" data-scroll-target="#build-a-dashboard">Build a dashboard</a>
+  <ul class="collapse">
+  <li><a href="#rearrange-your-layout" id="toc-rearrange-your-layout" class="nav-link" data-scroll-target="#rearrange-your-layout">Rearrange your layout</a>
+  <ul class="collapse">
+  <li><a href="#move-windows" id="toc-move-windows" class="nav-link" data-scroll-target="#move-windows">Move windows</a></li>
+  <li><a href="#group-windows" id="toc-group-windows" class="nav-link" data-scroll-target="#group-windows">Group windows</a></li>
+  <li><a href="#remove-windows" id="toc-remove-windows" class="nav-link" data-scroll-target="#remove-windows">Remove windows</a></li>
+  <li><a href="#resize-windows" id="toc-resize-windows" class="nav-link" data-scroll-target="#resize-windows">Resize windows</a></li>
+  </ul></li>
+  <li><a href="#toggle-inputsoutputs-on-and-off" id="toc-toggle-inputsoutputs-on-and-off" class="nav-link" data-scroll-target="#toggle-inputsoutputs-on-and-off">Toggle inputs/outputs on and off</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -196,11 +209,69 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This tutorial will use the data worklow created in the <a href="../tutorials/01-getting-started.html">Getting Started</a> tutorial. Make sure to complete that tutorial first before proceeding with this one.</p>
+<p>This tutorial will use the data workflow created in the <a href="../tutorials/01-getting-started.html">Getting Started</a> tutorial. Make sure to complete that tutorial first before proceeding with this one.</p>
 </div>
 </div>
+<section id="rearrange-your-layout" class="level2">
+<h2 class="anchored" data-anchor-id="rearrange-your-layout">Rearrange your layout</h2>
+<p>You can drag and drop windows to customize your workspace however you like. You can move them around, organize them into tabs, remove them, and resize them. Let’s see how each of these features work:</p>
+<section id="move-windows" class="level3">
+<h3 class="anchored" data-anchor-id="move-windows">Move windows</h3>
+<p>To move a window, grab the grey tab at the top and drag it wherever you like.</p>
+<p>Let’s start by dragging the plot block down underneath the dataset and filter blocks. As you drag a window, you’ll see a purple highlight showing where it will go when you drop it.</p>
+<p>Let’s move the plot block below the dataset and filter blocks to see how this works:</p>
+<p><img src="02-img-1.png" class="img-fluid"></p>
+<p>Once moved your app should now look like this:</p>
+<p><img src="02-img-2.png" class="img-fluid"></p>
+<p>Next, let’s move the filter block to the left:</p>
+<p><img src="02-img-3.png" class="img-fluid"></p>
+<p>Your app should now look like this:</p>
+<p><img src="02-img-4.png" class="img-fluid"></p>
+</section>
+<section id="group-windows" class="level3">
+<h3 class="anchored" data-anchor-id="group-windows">Group windows</h3>
+<p>You can also group windows into tab groups. To do this, simply drag a tab next to another tab to group them together.</p>
+<p>For instance, let’s move the dataset block from the tab group on the right to the tab group on the left:</p>
+<p><img src="02-img-5.png" class="img-fluid"></p>
+<p>You should now see the dataset block is in the left tab group:</p>
+<p><img src="02-img-6.png" class="img-fluid"></p>
+</section>
+<section id="remove-windows" class="level3">
+<h3 class="anchored" data-anchor-id="remove-windows">Remove windows</h3>
+<p>Sometimes you may wish to just remove a window all together. To do this, just click on the “x” next to the window name in the tab.</p>
+<p>For instance, let’s remove the dataset window, as it might not be much use to see in our dashboard:</p>
+<p><img src="02-img-7.png" class="img-fluid"></p>
+<p>If you want to reserve this, you can also click the “+” button to add a window back into your app:</p>
+<p><img src="02-img-8.png" class="img-fluid"></p>
+<p>But for now, let’s leave the dataset block removed.</p>
+</section>
+<section id="resize-windows" class="level3">
+<h3 class="anchored" data-anchor-id="resize-windows">Resize windows</h3>
+<p>At this point your app should have the graph of blocks on the left, the filter block in the middle, and the plot block on the right. Each window should take up approximately the same width:</p>
+<p><img src="02-img-9.png" class="img-fluid"></p>
+<p>To create more space for our filter and plot blocks, let’s resize their windows: <img src="02-img-10.png" class="img-fluid"></p>
+<p><img src="02-img-11.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="toggle-inputsoutputs-on-and-off" class="level2">
+<h2 class="anchored" data-anchor-id="toggle-inputsoutputs-on-and-off">Toggle inputs/outputs on and off</h2>
+<p>Each block is composed of inputs and outputs:</p>
+<ul>
+<li><strong>Inputs</strong> contain the controls for a block</li>
+<li><strong>Outputs</strong> contain the return values (e.g., data or a plot)</li>
+</ul>
+<p>In the contents of each block, you can see the inputs and outputs separated by a faint grey line:</p>
+<p>To toggle an input or output on or off, each block has an “Input” and “Output” button in the top-right corner of the block:</p>
+<p>Simply press these buttons to toggle the respective component on/off. All inputs and outputs of all blocks will be visible by default, until toggled off. These toggles allow you to choose what your users see by hiding and exposing only certian parts of your workflow.</p>
+<p>For instance, you may want your user to be able to play around with the input to the filter block in our example workflow, but not the input to the plot block (e.g., you might have an opinion about what is/isn’t an appropriate plot for the input data).</p>
+<p>To do this in our example workflow, simply toggle the output button for our filter block and the input button for our plot block (hiding them both from view):</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this tutorial you learnt how to rearrange, resize, and group windows, as well as toggle block inputs and outputs on and off. You can now transform your blockr workflows into dashboard views, ready for sharing.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -255,13 +326,14 @@ Note
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
