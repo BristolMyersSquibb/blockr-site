@@ -21,6 +21,7 @@ The [diataxis](https://diataxis.fr/) approach to documentation is used to struct
 
 The relevant sections can be found by the same name in the folder structure:
 
+```
 ./
 ├── _quarto.yml
 ├── docs/
@@ -32,6 +33,7 @@ The relevant sections can be found by the same name in the folder structure:
 ├── reference/       <----
 ├── styles.css
 └── tutorials/       <----
+```
 
 ## How to update these docs
 
