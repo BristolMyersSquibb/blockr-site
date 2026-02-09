@@ -184,7 +184,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#remove-windows" id="toc-remove-windows" class="nav-link" data-scroll-target="#remove-windows">Remove windows</a></li>
   <li><a href="#resize-windows" id="toc-resize-windows" class="nav-link" data-scroll-target="#resize-windows">Resize windows</a></li>
   </ul></li>
-  <li><a href="#toggle-inputsoutputs-on-and-off" id="toc-toggle-inputsoutputs-on-and-off" class="nav-link" data-scroll-target="#toggle-inputsoutputs-on-and-off">Toggle inputs/outputs on and off</a></li>
+  <li><a href="#toggle-inputsoutputs-on-and-off" id="toc-toggle-inputsoutputs-on-and-off" class="nav-link" data-scroll-target="#toggle-inputsoutputs-on-and-off">Toggle inputs/outputs on and off</a>
+  <ul class="collapse">
+  <li><a href="#understanding-block-inputs-and-outputs" id="toc-understanding-block-inputs-and-outputs" class="nav-link" data-scroll-target="#understanding-block-inputs-and-outputs">Understanding Block Inputs and Outputs</a></li>
+  <li><a href="#toggling-visibility" id="toc-toggling-visibility" class="nav-link" data-scroll-target="#toggling-visibility">Toggling Visibility</a></li>
+  <li><a href="#example-creating-a-curated-dashboard-view" id="toc-example-creating-a-curated-dashboard-view" class="nav-link" data-scroll-target="#example-creating-a-curated-dashboard-view">Example: Creating a Curated Dashboard View</a></li>
+  </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
@@ -249,26 +254,54 @@ Note
 <h3 class="anchored" data-anchor-id="resize-windows">Resize windows</h3>
 <p>At this point your app should have the graph of blocks on the left, the filter block in the middle, and the plot block on the right. Each window should take up approximately the same width:</p>
 <p><img src="02-img-9.png" class="img-fluid"></p>
-<p>To create more space for our filter and plot blocks, let’s resize their windows: <img src="02-img-10.png" class="img-fluid"></p>
+<p>To create more space for our filter and plot blocks, let’s resize their windows. To do this, just drag the edge of the respective window to change its size:</p>
+<p><img src="02-img-10.png" class="img-fluid"></p>
 <p><img src="02-img-11.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="toggle-inputsoutputs-on-and-off" class="level2">
 <h2 class="anchored" data-anchor-id="toggle-inputsoutputs-on-and-off">Toggle inputs/outputs on and off</h2>
-<p>Each block is composed of inputs and outputs:</p>
+<p>To finish creating our dashboard, we’ll customize what users can see and interact with by controlling the visibility of different parts of our app.</p>
+<section id="understanding-block-inputs-and-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-block-inputs-and-outputs">Understanding Block Inputs and Outputs</h3>
+<p>Each block has two components:</p>
 <ul>
-<li><strong>Inputs</strong> contain the controls for a block</li>
-<li><strong>Outputs</strong> contain the return values (e.g., data or a plot)</li>
+<li>Inputs – the controls for a block</li>
+<li>Outputs – the return values (such as data or a plot)</li>
 </ul>
-<p>In the contents of each block, you can see the inputs and outputs separated by a faint grey line:</p>
-<p>To toggle an input or output on or off, each block has an “Input” and “Output” button in the top-right corner of the block:</p>
-<p>Simply press these buttons to toggle the respective component on/off. All inputs and outputs of all blocks will be visible by default, until toggled off. These toggles allow you to choose what your users see by hiding and exposing only certian parts of your workflow.</p>
-<p>For instance, you may want your user to be able to play around with the input to the filter block in our example workflow, but not the input to the plot block (e.g., you might have an opinion about what is/isn’t an appropriate plot for the input data).</p>
-<p>To do this in our example workflow, simply toggle the output button for our filter block and the input button for our plot block (hiding them both from view):</p>
+<p>Inside each block, you’ll see inputs and outputs separated by a faint grey line:</p>
+<p><img src="02-img-12.png" class="img-fluid"></p>
+</section>
+<section id="toggling-visibility" class="level3">
+<h3 class="anchored" data-anchor-id="toggling-visibility">Toggling Visibility</h3>
+<p>You can show or hide inputs and outputs using the “Input” and “Output” buttons located in the top-right corner of each block:</p>
+<p><img src="02-img-13.png" class="img-fluid"></p>
+<p>By default, all inputs and outputs are visible. To change this, simply click the input or output buttons to toggle the respective component on or off.</p>
+</section>
+<section id="example-creating-a-curated-dashboard-view" class="level3">
+<h3 class="anchored" data-anchor-id="example-creating-a-curated-dashboard-view">Example: Creating a Curated Dashboard View</h3>
+<p>Let’s toggle the output “off” for our filter block and the input “off” for our ggplot block:</p>
+<p><img src="02-img-14.png" class="img-fluid"></p>
+<p>You should now notice two things:</p>
+<ol type="1">
+<li>The output data table for the filter block and the input controls for the plot block are no longer visible</li>
+<li>The input/output buttons change color to indicate whether their component is shown or hidden</li>
+</ol>
+<p>By hiding the filter outputs and plot inputs, we’ve created a curated dashboard view where we control what users can see and interact with. In this case, users can now adjust the filter values and see the effects on the plot in real time, without being distracted by unnecessary components.</p>
+<p><img src="02-img-15.png" class="img-fluid"></p>
+</section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>In this tutorial you learnt how to rearrange, resize, and group windows, as well as toggle block inputs and outputs on and off. You can now transform your blockr workflows into dashboard views, ready for sharing.</p>
+<p>In this tutorial you learned how to transform your blockr workflow into a polished dashboard by customizing the layout and controlling what users see. You learned how to:</p>
+<ul>
+<li><strong>Move windows</strong> by dragging tabs to rearrange your workspace layout</li>
+<li><strong>Group windows</strong> into tabs by dragging them next to each other</li>
+<li><strong>Remove windows</strong> using the “x” button (and add them back with the “+” button)</li>
+<li><strong>Resize windows</strong> by dragging their edges to emphasize important components</li>
+<li><strong>Toggle inputs and outputs</strong> on and off using the buttons in the top-right corner of each block</li>
+</ul>
+<p>By combining these techniques, you created a curated dashboard view that controls what users can interact with and see. You now have the skills to build custom dashboards tailored to your audience. Whether you’re creating an interactive report for stakeholders or a data exploration tool for colleagues, you can design layouts and control visibility to create exactly the experience your users need.</p>
 
 
 </section>

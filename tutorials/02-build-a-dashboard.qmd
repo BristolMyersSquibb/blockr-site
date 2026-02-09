@@ -72,30 +72,63 @@ Each window should take up approximately the same width:
 
 ![](02-img-9.png)
 
-To create more space for our filter and plot blocks, let's resize their windows:
+To create more space for our filter and plot blocks, let's resize their windows.
+To do this, just drag the edge of the respective window to change its size:
+
 ![](02-img-10.png)
 
 ![](02-img-11.png)
 
 ## Toggle inputs/outputs on and off
 
-Each block is composed of inputs and outputs:
+To finish creating our dashboard, we'll customize what users can see and interact with by controlling the visibility of different parts of our app.
 
-- **Inputs** contain the controls for a block
-- **Outputs** contain the return values (e.g., data or a plot)
+### Understanding Block Inputs and Outputs
+Each block has two components:
 
-In the contents of each block, you can see the inputs and outputs separated by a faint grey line:
+- Inputs – the controls for a block
+- Outputs – the return values (such as data or a plot)
 
-To toggle an input or output on or off, each block has an "Input" and "Output" button in the top-right corner of the block:
+Inside each block, you'll see inputs and outputs separated by a faint grey line:
 
-Simply press these buttons to toggle the respective component on/off.
-All inputs and outputs of all blocks will be visible by default, until toggled off.
-These toggles allow you to choose what your users see by hiding and exposing only certian parts of your workflow.
+![](02-img-12.png)
 
-For instance, you may want your user to be able to play around with the input to the filter block in our example workflow, but not the input to the plot block (e.g., you might have an opinion about what is/isn't an appropriate plot for the input data).
+### Toggling Visibility
 
-To do this in our example workflow, simply toggle the output button for our filter block and the input button for our plot block (hiding them both from view):
+You can show or hide inputs and outputs using the "Input" and "Output" buttons located in the top-right corner of each block:
+
+
+![](02-img-13.png)
+
+By default, all inputs and outputs are visible.
+To change this, simply click the input or output buttons to toggle the respective component on or off.
+
+### Example: Creating a Curated Dashboard View
+
+Let's toggle the output "off" for our filter block and the input "off" for our ggplot block:
+
+![](02-img-14.png)
+
+You should now notice two things:
+
+1. The output data table for the filter block and the input controls for the plot block are no longer visible
+2. The input/output buttons change color to indicate whether their component is shown or hidden
+
+By hiding the filter outputs and plot inputs, we've created a curated dashboard view where we control what users can see and interact with.
+In this case, users can now adjust the filter values and see the effects on the plot in real time, without being distracted by unnecessary components.
+
+![](02-img-15.png)
 
 ## Summary
-In this tutorial you learnt how to rearrange, resize, and group windows, as well as toggle block inputs and outputs on and off.
-You can now transform your blockr workflows into dashboard views, ready for sharing.
+In this tutorial you learned how to transform your blockr workflow into a polished dashboard by customizing the layout and controlling what users see.
+You learned how to:
+
+- **Move windows** by dragging tabs to rearrange your workspace layout
+- **Group windows** into tabs by dragging them next to each other
+- **Remove windows** using the "x" button (and add them back with the "+" button)
+- **Resize windows** by dragging their edges to emphasize important components
+- **Toggle inputs and outputs** on and off using the buttons in the top-right corner of each block
+
+By combining these techniques, you created a curated dashboard view that controls what users can interact with and see.
+You now have the skills to build custom dashboards tailored to your audience.
+Whether you're creating an interactive report for stakeholders or a data exploration tool for colleagues, you can design layouts and control visibility to create exactly the experience your users need.
