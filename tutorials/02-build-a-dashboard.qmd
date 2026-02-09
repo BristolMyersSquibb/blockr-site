@@ -58,7 +58,7 @@ For instance, let's remove the dataset window, as it might not be much use to se
 
 ![](02-img-7.png)
 
-If you want to reserve this, you can also click the "+" button to add a window back into your app:
+If you want to reverse this, you can also click the "+" button to add a window back into your app:
 
 ![](02-img-8.png)
 
