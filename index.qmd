@@ -1,45 +1,7 @@
 ---
-format: html
-toc: false
+page-layout: custom
 ---
 
-<h1 style="font-size: 3em;">Build data apps in minutes, <br>click by click.</h1>
-
-Build apps using a web-based point and click user interface. No coding experience required.
-
-<div class="mt-4 mb-5" style="text-align: left;">
-  <a href="tutorials/00-getting-started.qmd" class="btn btn-primary btn-lg" role="button" style="width: 180px;">Get started</a>
-  <a href="https://blockr.cloud" class="btn btn-outline-secondary btn-lg ms-2" target="_blank" role="button" style="width: 180px;">Try in the cloud</a>
-</div>
-
-{{< video https://www.youtube.com/watch?v=_j0dOkGrkew >}}
-
-## How does it work?
-
-Data analyses can be broken down into fundamental units, here called blocks, such as loading, transforming, or visualising data.
-Simply add the blocks to the canvas, connect them, and watch blockr automatically run the pipelines.
-
-## Share your work
-
-Want to share your analyses as an interactive dashboards?
-Blockr ships with a clever grid-based system, allowing you to drag and drop the contents of your blocks wherever you like.
-Toggle parts of your block on and off to control what your users see.
-
-## Who is it for?
-blockr is designed for anyone who works with data:
-
-- **Analysts** who want to quickly explore data without writing code
-- **Researchers** who need reproducible workflows
-- **Teams** who want to share and collaborate on data pipelines
-
-## Reproducible
-Every blockr application can generate reproducible R code to recreate your analysis outside of blockr.
-This ensures portability and reproducibility, making it easy to switch tools, collaborate across multidisciplinary teams, and bring scientific rigor to your work.
-
-
-## Extensible and open-source
-
-blockr is built on top of R and was designed with extensibility in mind.
-It provides a set of tools and API's to allow developers to create their own custom blocks and extend the framework.
-
-blockr is open-source and is released under a GPL-3 [license](https://github.com/BristolMyersSquibb/blockr?tab=GPL-3.0-1-ov-file#readme).
+```{=html}
+<iframe src="hero.html" style="width:100%;height:100vh;border:none;"></iframe>
+```

@@ -3,7 +3,7 @@
 In this tutorial you will learn how to transform a blockr workflow into a dashboard you can share with others.
 
 ::: {.callout-note}
-This tutorial will use the data workflow created in the [Getting Started](01-getting-started.qmd) tutorial.
+This tutorial will use the data workflow created in the [Build Your First App](01-build-your-first-app.qmd) tutorial.
 Make sure to complete that tutorial first before proceeding with this one.
 :::
 
