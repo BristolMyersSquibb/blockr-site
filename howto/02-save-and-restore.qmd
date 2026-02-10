@@ -1,0 +1,53 @@
+# Save and restore workflows
+
+Learn how to save and restore workflows in blockr.
+Let's start with a simple workflow where we visualise some penguins data using three blocks:
+
+![](02-img-01.png)
+
+## Steps
+
+1. You can rename your workflow by editing the top-left corner text box.
+Alternatively, you can stick with the randomly generated default name.
+
+![](02-img-02.png)
+
+2. Hit the save button to save the current state of your workflow.
+
+![](02-img-03.png)
+
+3. Next, let's make some changes to your workflow.
+Here, let's add a second plot:
+
+![](02-img-04.png)
+
+4. Then, hit save again to save the new state of your workflow.
+
+![](02-img-05.png)
+
+5. Now, to restore a previous version of our workflow the first thing we need to do is open the workflow manager.
+To do this, press the workflow button in the top-left corner:
+
+![](02-img-06.png)
+
+6. From here, press the history tab to open a list of all saved versions of our penguins dashboard.
+Each save point is an item in the list, with a timestamp of when it was saved.
+
+![](02-img-07.png)
+
+7. Let's press the first time stamp (here labelled 1 min ago) to restore out previous version of the workflow:
+
+![](02-img-08.png)
+
+8. Alternatively, press the "View all versions" button to bring up the version history manager which provides you even more control of version restoration and deletion:
+
+![](02-img-09.png)
+
+9. Finally, let's change our workflow completely by using the C02 dataset instead of penguins and save this new workflow:
+
+![](02-img-10.png)
+
+10. Now we can save and restore different workflows using the workflow tab in the workflow manager.
+Like before, these are presented in a timestamped list, and the "View all workflows" button can be pressed to bring up finer-grained controls:
+
+![](02-img-11.png)

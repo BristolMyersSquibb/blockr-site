@@ -31,7 +31,7 @@ Learn by doing with step-by-step tutorials that walk you through practical examp
 
 Reach a specific goal with focused guides for common tasks.
 
-[To the how-to's](../howto/index.qmd){.btn .btn-primary .w-100}
+[To the how-to's](../howto/01-export-code.qmd){.btn .btn-primary .w-100}
 :::
 :::
 :::

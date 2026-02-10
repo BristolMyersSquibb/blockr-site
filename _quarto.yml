@@ -39,7 +39,7 @@ website:
       - text: "Tutorials"
         href: tutorials/00-getting-started.qmd
       - text: "How-To"
-        href: howto/index.qmd
+        href: howto/01-export-code.qmd
       - text: "Fundamentals"
         href: fundamentals/index.qmd
       - text: "Reference"
@@ -56,7 +56,8 @@ website:
         - tutorials/03-youtube-series.qmd
     - title: "How-To"
       contents:
-        - howto/index.qmd
+        - howto/01-export-code.qmd
+        - howto/02-save-and-restore.qmd
     - title: "Fundamentals"
       contents:
         - fundamentals/index.qmd

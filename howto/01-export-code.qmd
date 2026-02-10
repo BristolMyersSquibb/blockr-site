@@ -1,0 +1,18 @@
+# Export code
+
+Learn how to export code from blockr.
+
+## Steps
+
+1. Press the settings button:
+
+![](01-img-01.png)
+
+2. Press the "</> Show Code" button:
+
+![](01-img-02.png)
+
+3. That's it! Idiomatic R code will appear in a pop-up modal.
+Copy and paste it where you like.
+
+![](01-img-03.png)
