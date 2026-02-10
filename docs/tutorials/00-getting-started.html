@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,7 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../tutorials/02-build-a-dashboard.html" rel="next">
+<link href="../tutorials/01-build-your-first-app.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -128,7 +93,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../tutorials/01-getting-started.html" aria-current="page"> 
+    <a class="nav-link active" href="../tutorials/00-getting-started.html" aria-current="page"> 
 <span class="menu-text">Tutorials</span></a>
   </li>  
   <li class="nav-item">
@@ -169,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/01-getting-started.html">Getting started</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/00-getting-started.html">Getting Started</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -183,8 +148,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/01-getting-started.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Getting started</span></a>
+  <a href="../tutorials/00-getting-started.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Getting Started</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/01-build-your-first-app.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Build your first app</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -209,17 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting started</a>
-  <ul class="collapse">
-  <li><a href="#start-blockr" id="toc-start-blockr" class="nav-link" data-scroll-target="#start-blockr">Start blockr</a></li>
-  <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps">First steps</a>
-  <ul class="collapse">
-  <li><a href="#load-some-data" id="toc-load-some-data" class="nav-link" data-scroll-target="#load-some-data">Load some data</a></li>
-  <li><a href="#filter-some-data" id="toc-filter-some-data" class="nav-link" data-scroll-target="#filter-some-data">Filter some data</a></li>
-  <li><a href="#visualise-some-data" id="toc-visualise-some-data" class="nav-link" data-scroll-target="#visualise-some-data">Visualise some data</a></li>
-  </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  </ul></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
   </ul>
 </nav>
     </div>
@@ -229,97 +190,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="getting-started" class="level1">
-<h1>Getting started</h1>
-<p>This tutorial will get you started with blockr in just a few minutes. By the end, you will have built your first data pipeline.</p>
-<section id="start-blockr" class="level2">
-<h2 class="anchored" data-anchor-id="start-blockr">Start blockr</h2>
-<section id="live-playground" class="level4">
-<h4 class="anchored" data-anchor-id="live-playground">Live playground</h4>
-<p>The simplest way to try blockr is for free in our live playground at <a href="https://blockr.cloud/app/empty">blockr.cloud</a>. Note, you will not be able to save and restore sessions this way.</p>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>These documents are <em>user</em>-facing and not <em>developer</em>-facing. They will teach you how to <em>use</em> blockr, not how to <em>develop</em> it. If you are looking for developer docs, start <a href="https://bristolmyerssquibb.github.io/blockr.core/">here</a>.</p>
+<p>The documentation is split into four parts:</p>
+<div class="grid">
+<div class="g-col-12 g-col-md-6">
+<div class="card h-100">
+<div class="card-body text-center">
+<p><i class="bi bi-mortarboard" style="font-size: 3rem;"></i></p>
+<section id="tutorials" class="level3">
+<h3 class="anchored" data-anchor-id="tutorials">Tutorials</h3>
+<p>Learn by doing with step-by-step tutorials that walk you through practical examples.</p>
+<p><a href="../tutorials/01-build-your-first-app.html" class="btn btn-primary w-100">To the tutorials</a></p>
 </section>
-<section id="local-installation" class="level4">
-<h4 class="anchored" data-anchor-id="local-installation">Local installation</h4>
-<p>Run the following commands to install blockr locally and then spin up an empty app:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"blockr"</span>) <span class="co"># Download blockr. This only needs to be run once.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>blockr<span class="sc">::</span><span class="fu">run_app</span>() <span class="co"># Start an empty app. Run this each time you want to boot up blockr.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Installing blockr locally assumes you already have <a href="https://www.r-project.org/">R</a> installed on your system and are comfortable running basic R commands.</p>
 </div>
-</div>
+<div class="g-col-12 g-col-md-6">
+<div class="card h-100">
+<div class="card-body text-center">
+<p><i class="bi bi-signpost-2" style="font-size: 3rem;"></i></p>
+<section id="how-tos" class="level3">
+<h3 class="anchored" data-anchor-id="how-tos">How-To’s</h3>
+<p>Reach a specific goal with focused guides for common tasks.</p>
+<p><a href="../howto/index.html" class="btn btn-primary w-100">To the how-to’s</a></p>
 </section>
-</section>
-<section id="first-steps" class="level2">
-<h2 class="anchored" data-anchor-id="first-steps">First steps</h2>
-<section id="load-some-data" class="level3">
-<h3 class="anchored" data-anchor-id="load-some-data">Load some data</h3>
-<p>Each empty blockr app starts with a blank canvas:</p>
-<p><img src="01-img-blank-canvas.png" class="img-fluid"></p>
-<p>To build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!</p>
-<p>Let’s start by adding some data. Right-click the canvas then click “Add block”:</p>
-<p><img src="01-img-right-click.png" class="img-fluid"></p>
-<p>This opens the right sidebar with a block selection menu. Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them. You can also use the search bar to find blocks.</p>
-<p>For now, let’s click “dataset block” to load an example data block, preconfigured with a bunch of different datasets.</p>
-<p><img src="01-img-dataset-block.png" class="img-fluid"></p>
-<p>Once the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let’s change the dataset to penguins by clicking and searching in the drop-down menu:</p>
-<p><img src="01-img-penguins.png" class="img-fluid"></p>
-</section>
-<section id="filter-some-data" class="level3">
-<h3 class="anchored" data-anchor-id="filter-some-data">Filter some data</h3>
-<p>Next, let’s filter our penguins data to only return the species “Adelie” and “Chinstrap”.</p>
-<p>To connect a filter block:</p>
-<ol type="1">
-<li>Hover the mouse over the dataset block</li>
-<li>Click the “+” button at the bottom of the block, called a port, to bring up the block menu sidebar once more:</li>
-<li>Search for “filter” and click “Filter Rows”</li>
-</ol>
-<p><img src="01-img-filter-block.png" class="img-fluid"></p>
-<p>This will add a new connected filter block to the canvas. From here, we can filter the data to just keep the “Adelie” and “Chinstrap” species of penguins by seleting their values from the “Values” drop-down box:</p>
-<p><img src="01-img-species.png" class="img-fluid"></p>
-</section>
-<section id="visualise-some-data" class="level3">
-<h3 class="anchored" data-anchor-id="visualise-some-data">Visualise some data</h3>
-<p>Finally, let’s finish our first pipeline by visualising some data. To do that, let’s add a visualisation block, but use a different method to do that.</p>
-<p>First, right-click anywhere in the canvas and click “Add block” like we did in the first step of this tutorial:</p>
-<p><img src="01-img-new-block.png" class="img-fluid"></p>
-<p>Then search for “plot” and click “ggplot” to add a plot block to our canvas:</p>
-<p><img src="01-img-ggplot.png" class="img-fluid"></p>
-<p>This will add an <em>unconnected</em> plot block to our canvas. We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:</p>
-<p><img src="01-img-unconnected.png" class="img-fluid"></p>
-<p>To connect the plot block, hover the mouse over the filter block to view the available ports. Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Notice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.</p>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="card h-100">
+<div class="card-body text-center">
+<p><i class="bi bi-book" style="font-size: 3rem;"></i></p>
+<section id="fundamentals" class="level3">
+<h3 class="anchored" data-anchor-id="fundamentals">Fundamentals</h3>
+<p>Broaden your understanding with in-depth explanations of key concepts.</p>
+<p><a href="../fundamentals/index.html" class="btn btn-primary w-100">To the fundamentals</a></p>
+</section>
 </div>
 </div>
-<p><img src="01-img-connect-ports.png" class="img-fluid"></p>
-<p>To finish let’s populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:</p>
-<p><img src="01-img-populate.png" class="img-fluid"></p>
+</div>
+<div class="g-col-12 g-col-md-6">
+<div class="card h-100">
+<div class="card-body text-center">
+<p><i class="bi bi-braces" style="font-size: 3rem;"></i></p>
+<section id="reference" class="level3">
+<h3 class="anchored" data-anchor-id="reference">Reference</h3>
+<p>Lookup a block with detailed specifications and parameters.</p>
+<p><a href="../reference/index.html" class="btn btn-primary w-100">To the reference</a></p>
 </section>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>And that’s it! You’ve learned how to add blocks to the canvas, search for blocks, and connect them using ports. You now have the skills to import, transform, and visualize data in blockr.</p>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -727,8 +653,8 @@ Note
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tutorials/02-build-a-dashboard.html" class="pagination-link" aria-label="Build a dashboard">
-        <span class="nav-page-text">Build a dashboard</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../tutorials/01-build-your-first-app.html" class="pagination-link" aria-label="Build your first app">
+        <span class="nav-page-text">Build your first app</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

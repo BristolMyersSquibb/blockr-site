@@ -1,6 +1,7 @@
-# Getting started
+# Build your first app
 
-This tutorial will get you started with blockr in just a few minutes. By the end, you will have built your first data pipeline.
+This tutorial will get you started with blockr in just a few minutes.
+By the end, you will have built your first data pipeline.
 
 ## Start blockr
 

@@ -1,0 +1,67 @@
+## Getting Started
+
+These documents are _user_-facing and not _developer_-facing.
+They will teach you how to _use_ blockr, not how to _develop_ it.
+If you are looking for developer docs, start [here](https://bristolmyerssquibb.github.io/blockr.core/).
+
+The documentation is split into four parts:
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-mortarboard" style="font-size: 3rem;"></i>
+
+### Tutorials
+
+Learn by doing with step-by-step tutorials that walk you through practical examples.
+
+[To the tutorials](01-build-your-first-app.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-signpost-2" style="font-size: 3rem;"></i>
+
+### How-To's
+
+Reach a specific goal with focused guides for common tasks.
+
+[To the how-to's](../howto/index.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-book" style="font-size: 3rem;"></i>
+
+### Fundamentals
+
+Broaden your understanding with in-depth explanations of key concepts.
+
+[To the fundamentals](../fundamentals/index.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card .h-100}
+::: {.card-body .text-center}
+<i class="bi bi-braces" style="font-size: 3rem;"></i>
+
+### Reference
+
+Lookup a block with detailed specifications and parameters.
+
+[To the reference](../reference/index.qmd){.btn .btn-primary .w-100}
+:::
+:::
+:::
+
+:::
