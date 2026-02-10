@@ -779,6 +779,11 @@ ul.task-list li input[type="checkbox"] {
     vertical-align: middle;
   }
 
+  a.eco-pill {
+  text-decoration: none;
+  color: inherit;
+  }
+
   /* ── CTA ── */
   .cta {
     text-align: center;
@@ -929,16 +934,16 @@ ul.task-list li input[type="checkbox"] {
           in <span class="accent-amber">Minutes</span>
         </h1>
         <p>
-          A visual, block-based framework for R. Build data workflows,
-          connect transformations, and ship interactive dashboards —
-          no code required.
+          A visual, block-based framework for R.
+          Add blocks, connect them, then ship interactive dashboards.
+          No code required.
         </p>
         <div class="hero-actions">
-          <a href="#get-started" class="btn-primary">
-            Install blockr →
+          <a href="tutorials/00-getting-started.html" class="btn-primary">
+            Get started →
           </a>
-          <a href="#how-it-works" class="btn-secondary">
-            See how it works
+          <a href="https://blockr.cloud/" class="btn-secondary">
+            Try online (free)
           </a>
         </div>
       </div>
@@ -950,7 +955,7 @@ ul.task-list li input[type="checkbox"] {
         </svg>
         <div class="block-node block--data">
           <div class="block-label">Data</div>
-          <div class="block-title">iris dataset</div>
+          <div class="block-title">penguins data</div>
         </div>
         <div class="block-node block--filter">
           <div class="block-label">Transform</div>
@@ -972,26 +977,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- Problem -->
 <section class="problem" id="problem">
   <div class="section-label reveal">The problem</div>
-  <h2 class="section-title reveal">Three audiences, one framework</h2>
+  <h2 class="section-title reveal">Any audience, one framework</h2>
   <p class="section-subtitle reveal">
-    Non-coders can't build dashboards. Coders can, but it takes too long.
-    Organizations need both speed and customization.
+    Developers can build dashboards, but not everyone can.
+    Blockr bridges this gap providing organizations both speed and customization.
   </p>
   <div class="problem-grid">
     <div class="problem-card reveal reveal-delay-1">
       <div class="icon">&lt;/&gt;</div>
-      <h3>Non-coders are locked out</h3>
+      <h3>Experts are often locked out</h3>
       <p>
-        Analysts and researchers have data but no way to explore it
-        interactively without learning R or Python first.
+        Analysts and researchers have data but no way to explore and share it
+        interactively without first learning R or Python.
       </p>
     </div>
     <div class="problem-card reveal reveal-delay-2">
       <div class="icon">↻</div>
-      <h3>Coders move too slowly</h3>
+      <h3>Developers move too slowly</h3>
       <p>
-        Building a Shiny dashboard from scratch takes days of boilerplate,
-        layouts, and reactive plumbing.
+        Building a Shiny dashboard from scratch can takes days of boilerplate, layouts, and reactive plumbing.
       </p>
     </div>
     <div class="problem-card reveal reveal-delay-3">
@@ -1092,7 +1096,7 @@ ul.task-list li input[type="checkbox"] {
         idiomatic R. Hand it off, put it in production, or keep
         iterating — your choice.
       </p>
-      <a href="#get-started" class="btn-primary">Try it now →</a>
+      <a href="https://blockr.cloud/" class="btn-primary">Try it now →</a>
     </div>
     <div class="code-block reveal reveal-delay-2">
       <div class="code-header">
@@ -1106,12 +1110,12 @@ ul.task-list li input[type="checkbox"] {
         <span class="kw">library</span>(<span class="str">dplyr</span>)<br>
         <span class="kw">library</span>(<span class="str">ggplot2</span>)<br>
         <br>
-        iris <span class="op">|&gt;</span><br>
-        &nbsp;&nbsp;<span class="fn">filter</span>(Species <span class="op">==</span> <span class="str">"setosa"</span>)
+        penguins <span class="op">|&gt;</span><br>
+        &nbsp;&nbsp;<span class="fn">filter</span>(species <span class="op">==</span> <span class="str">"Adelie"</span>)
         <span class="op">|&gt;</span><br>
-        &nbsp;&nbsp;<span class="fn">select</span>(Sepal.Length, Petal.Length) <span class="op">|&gt;</span><br>
-        &nbsp;&nbsp;<span class="fn">ggplot</span>(<span class="fn">aes</span>(Sepal.Length, Petal.Length)) <span class="op">+</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">geom_point</span>(color <span class="op">=</span> <span class="str">"#2563eb"</span>)
+        &nbsp;&nbsp;<span class="fn">select</span>(bill_len, bill_dep) <span class="op">|&gt;</span><br>
+        &nbsp;&nbsp;<span class="fn">ggplot</span>(<span class="fn">aes</span>(bill_len, bill_dep)) <span class="op">+</span><br>
+        &nbsp;&nbsp;<span class="fn">geom_point</span>(color <span class="op">=</span> <span class="str">"#2563eb"</span>)
       </div>
     </div>
   </div>
@@ -1120,25 +1124,46 @@ ul.task-list li input[type="checkbox"] {
 <!-- Ecosystem -->
 <section class="ecosystem" id="ecosystem">
   <div class="section-label reveal">Ecosystem</div>
-  <h2 class="section-title reveal">15+ extension packages</h2>
+  <h2 class="section-title reveal">Extension packages</h2>
   <p class="section-subtitle reveal" style="margin-left:auto;margin-right:auto;">
     A modular ecosystem of specialized blocks. Use what you need,
     build what you don't find.
   </p>
   <div class="eco-pills reveal">
-    <span class="eco-pill"><span class="dot" style="background:var(--blue)"></span>blockr.core</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--amber)"></span>blockr.dplyr</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--coral)"></span>blockr.ggplot</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--green)"></span>blockr.io</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--blue)"></span>blockr.dag</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--amber)"></span>blockr.dock</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--coral)"></span>blockr.ts</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--green)"></span>blockr.model</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--blue)"></span>blockr.finance</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--amber)"></span>blockr.seasonal</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--coral)"></span>blockr.ai</span>
-    <span class="eco-pill"><span class="dot" style="background:var(--green)"></span>blockr.extra</span>
-  </div>
+  <a href="https://github.com/BristolMyersSquibb/blockr.core" class="eco-pill">
+    <span class="dot" style="background:var(--blue)"></span>blockr.core
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.dplyr" class="eco-pill">
+    <span class="dot" style="background:var(--amber)"></span>blockr.dplyr
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.ggplot" class="eco-pill">
+    <span class="dot" style="background:var(--coral)"></span>blockr.ggplot
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.io" class="eco-pill">
+    <span class="dot" style="background:var(--green)"></span>blockr.io
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.dag" class="eco-pill">
+    <span class="dot" style="background:var(--blue)"></span>blockr.dag
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.dock" class="eco-pill">
+    <span class="dot" style="background:var(--amber)"></span>blockr.dock
+  </a>
+  <a href="https://github.com/cynkra/blockr.ts" class="eco-pill">
+    <span class="dot" style="background:var(--coral)"></span>blockr.ts
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.nlmixr2" class="eco-pill">
+    <span class="dot" style="background:var(--green)"></span>blockr.nlmixr2
+  </a>
+  <a href="https://github.com/cynkra/blockr.finance" class="eco-pill">
+    <span class="dot" style="background:var(--blue)"></span>blockr.finance
+  </a>
+  <a href="https://github.com/cynkra/blockr.seasonal" class="eco-pill">
+    <span class="dot" style="background:var(--amber)"></span>blockr.seasonal
+  </a>
+  <a href="https://github.com/BristolMyersSquibb/blockr.ai" class="eco-pill">
+    <span class="dot" style="background:var(--coral)"></span>blockr.ai
+  </a>
+</div>
 </section>
 
 <!-- CTA -->
@@ -1147,7 +1172,7 @@ ul.task-list li input[type="checkbox"] {
   <div class="cta-content">
     <h2 class="reveal">Start building</h2>
     <p class="reveal">Install blockr and have your first dashboard running in minutes.</p>
-    <a href="#" class="btn-primary reveal" style="font-size:1rem;padding:1rem 2.5rem;">
+    <a href="tutorials/00-getting-started.html" class="btn-primary reveal" style="font-size:1rem;padding:1rem 2.5rem;">
       Get Started →
     </a>
     <div class="install-cmd reveal reveal-delay-2">
