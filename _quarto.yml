@@ -1,11 +1,6 @@
 project:
   type: website
   output-dir: docs
-  render:
-    - "*.qmd"
-    - "!hero.html"
-  resources:
-    - hero.html
 
 format:
   html:
