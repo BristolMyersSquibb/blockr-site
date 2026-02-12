@@ -43,7 +43,7 @@ website:
       - text: "Fundamentals"
         href: fundamentals/index.qmd
       - text: "Blocks"
-        href: blocks/index.qmd
+        href: blocks/01-wrangling.qmd
 
   sidebar:
     - title: "Tutorials"
@@ -63,4 +63,6 @@ website:
         - fundamentals/index.qmd
     - title: "Blocks"
       contents:
-        - blocks/index.qmd
+        - blocks/01-wrangling.qmd
+        - blocks/02-visualisation.qmd
+        - blocks/03-io.qmd
