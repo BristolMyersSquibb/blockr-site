@@ -55,11 +55,11 @@ Broaden your understanding with in-depth explanations of key concepts.
 ::: {.card-body .text-center}
 <i class="bi bi-braces" style="font-size: 3rem;"></i>
 
-### Reference
+### Blocks
 
 Lookup a block with detailed specifications and parameters.
 
-[To the reference](../reference/index.qmd){.btn .btn-primary .w-100}
+[To the blocks](../blocks/index.qmd){.btn .btn-primary .w-100}
 :::
 :::
 :::

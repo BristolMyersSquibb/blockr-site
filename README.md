@@ -17,7 +17,7 @@ The [diataxis](https://diataxis.fr/) approach to documentation is used to struct
 - **Tutorials**: Learn by doing with step-by-step tutorials that walk you through practical examples.
 - **How-To’s**: Reach a specific goal with focused guides for common tasks.
 - **Fundamentals**: Broaden your understanding with in-depth explanations of key concepts.
-- **Reference**: Lookup a block with detailed specifications and parameters.
+- **Blocks**: Lookup a block with detailed specifications and parameters.
 
 The relevant sections can be found by the same name in the folder structure:
 
@@ -30,7 +30,7 @@ The relevant sections can be found by the same name in the folder structure:
 ├── index.qmd
 ├── logos/
 ├── README.md
-├── reference/       <----
+├── blocks/       <----
 ├── styles.css
 └── tutorials/       <----
 ```

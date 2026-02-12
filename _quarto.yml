@@ -18,7 +18,7 @@ website:
       Proudly supported by
       [![](/logos/logo-bms.png){fig-alt="Bristol Myers Squibb" width=135px}](https://www.bms.com/)
     center:
-      - text: "Build analyses in minutes, click by click."
+      - text: "Build apps in minutes, click by click."
     right:
       - icon: github
         href: https://github.com/BristolMyersSquibb/blockr
@@ -42,8 +42,8 @@ website:
         href: howto/01-export-code.qmd
       - text: "Fundamentals"
         href: fundamentals/index.qmd
-      - text: "Reference"
-        href: reference/index.qmd
+      - text: "Blocks"
+        href: blocks/index.qmd
 
   sidebar:
     - title: "Tutorials"
@@ -61,6 +61,6 @@ website:
     - title: "Fundamentals"
       contents:
         - fundamentals/index.qmd
-    - title: "Reference"
+    - title: "Blocks"
       contents:
-        - reference/index.qmd
+        - blocks/index.qmd

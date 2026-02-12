@@ -1,101 +1,24 @@
 [
   {
-    "objectID": "howto/02-save-and-restore.html",
-    "href": "howto/02-save-and-restore.html",
-    "title": "Save and restore workflows",
+    "objectID": "howto/01-export-code.html",
+    "href": "howto/01-export-code.html",
+    "title": "Export code",
     "section": "",
-    "text": "Learn how to save and restore workflows in blockr. Let’s start with a simple workflow where we visualise some penguins data using three blocks:\n\n\n\n\nYou can rename your workflow by editing the top-left corner text box. Alternatively, you can stick with the randomly generated default name.\n\n\n\nHit the save button to save the current state of your workflow.\n\n\n\nNext, let’s make some changes to your workflow. Here, let’s add a second plot:\n\n\n\nThen, hit save again to save the new state of your workflow.\n\n\n\nNow, to restore a previous version of our workflow the first thing we need to do is open the workflow manager. To do this, press the workflow button in the top-left corner:\n\n\n\nFrom here, press the history tab to open a list of all saved versions of our penguins dashboard. Each save point is an item in the list, with a timestamp of when it was saved.\n\n\n\nLet’s press the first time stamp (here labelled 1 min ago) to restore out previous version of the workflow:\n\n\n\nAlternatively, press the “View all versions” button to bring up the version history manager which provides you even more control of version restoration and deletion:\n\n\n\nFinally, let’s change our workflow completely by using the C02 dataset instead of penguins and save this new workflow:\n\n\n\nNow we can save and restore different workflows using the workflow tab in the workflow manager. Like before, these are presented in a timestamped list, and the “View all workflows” button can be pressed to bring up finer-grained controls:",
+    "text": "Learn how to export code from blockr.\n\n\n\nPress the settings button:\n\n\n\nPress the “&lt;/&gt; Show Code” button:\n\n\n\nThat’s it! Idiomatic R code will appear in a pop-up modal. Copy and paste it where you like.",
     "crumbs": [
       "How-To",
-      "Save and restore workflows"
+      "Export code"
     ]
   },
   {
-    "objectID": "howto/02-save-and-restore.html#steps",
-    "href": "howto/02-save-and-restore.html#steps",
-    "title": "Save and restore workflows",
+    "objectID": "howto/01-export-code.html#steps",
+    "href": "howto/01-export-code.html#steps",
+    "title": "Export code",
     "section": "",
-    "text": "You can rename your workflow by editing the top-left corner text box. Alternatively, you can stick with the randomly generated default name.\n\n\n\nHit the save button to save the current state of your workflow.\n\n\n\nNext, let’s make some changes to your workflow. Here, let’s add a second plot:\n\n\n\nThen, hit save again to save the new state of your workflow.\n\n\n\nNow, to restore a previous version of our workflow the first thing we need to do is open the workflow manager. To do this, press the workflow button in the top-left corner:\n\n\n\nFrom here, press the history tab to open a list of all saved versions of our penguins dashboard. Each save point is an item in the list, with a timestamp of when it was saved.\n\n\n\nLet’s press the first time stamp (here labelled 1 min ago) to restore out previous version of the workflow:\n\n\n\nAlternatively, press the “View all versions” button to bring up the version history manager which provides you even more control of version restoration and deletion:\n\n\n\nFinally, let’s change our workflow completely by using the C02 dataset instead of penguins and save this new workflow:\n\n\n\nNow we can save and restore different workflows using the workflow tab in the workflow manager. Like before, these are presented in a timestamped list, and the “View all workflows” button can be pressed to bring up finer-grained controls:",
+    "text": "Press the settings button:\n\n\n\nPress the “&lt;/&gt; Show Code” button:\n\n\n\nThat’s it! Idiomatic R code will appear in a pop-up modal. Copy and paste it where you like.",
     "crumbs": [
       "How-To",
-      "Save and restore workflows"
-    ]
-  },
-  {
-    "objectID": "tutorials/03-youtube-series.html",
-    "href": "tutorials/03-youtube-series.html",
-    "title": "YouTube tutorials",
-    "section": "",
-    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
-    "crumbs": [
-      "Tutorials",
-      "YouTube tutorials"
-    ]
-  },
-  {
-    "objectID": "tutorials/01-build-your-first-app.html",
-    "href": "tutorials/01-build-your-first-app.html",
-    "title": "Build your first app",
-    "section": "",
-    "text": "This tutorial will get you started with blockr in just a few minutes. By the end, you will have built your first data pipeline.\n\n\n\n\nThe simplest way to try blockr is for free in our live playground at blockr.cloud. Note, you will not be able to save and restore sessions this way.\n\n\n\nRun the following commands to install blockr locally and then spin up an empty app:\ninstall.packages(\"blockr\") # Download blockr. This only needs to be run once.\nblockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.\n\n\n\n\n\n\nNote\n\n\n\nInstalling blockr locally assumes you already have R installed on your system and are comfortable running basic R commands.\n\n\n\n\n\n\n\n\nEach empty blockr app starts with a blank canvas:\n\nTo build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!\nLet’s start by adding some data. Right-click the canvas then click “Add block”:\n\nThis opens the right sidebar with a block selection menu. Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them. You can also use the search bar to find blocks.\nFor now, let’s click “dataset block” to load an example data block, preconfigured with a bunch of different datasets.\n\nOnce the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let’s change the dataset to penguins by clicking and searching in the drop-down menu:\n\n\n\n\nNext, let’s filter our penguins data to only return the species “Adelie” and “Chinstrap”.\nTo connect a filter block:\n\nHover the mouse over the dataset block\nClick the “+” button at the bottom of the block, called a port, to bring up the block menu sidebar once more:\nSearch for “filter” and click “Filter Rows”\n\n\nThis will add a new connected filter block to the canvas. From here, we can filter the data to just keep the “Adelie” and “Chinstrap” species of penguins by seleting their values from the “Values” drop-down box:\n\n\n\n\nFinally, let’s finish our first pipeline by visualising some data. To do that, let’s add a visualisation block, but use a different method to do that.\nFirst, right-click anywhere in the canvas and click “Add block” like we did in the first step of this tutorial:\n\nThen search for “plot” and click “ggplot” to add a plot block to our canvas:\n\nThis will add an unconnected plot block to our canvas. We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:\n\nTo connect the plot block, hover the mouse over the filter block to view the available ports. Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.\n\n\n\n\n\n\nNote\n\n\n\nNotice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.\n\n\n\nTo finish let’s populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:\n\n\n\n\n\nAnd that’s it! You’ve learned how to add blocks to the canvas, search for blocks, and connect them using ports. You now have the skills to import, transform, and visualize data in blockr.",
-    "crumbs": [
-      "Tutorials",
-      "Build your first app"
-    ]
-  },
-  {
-    "objectID": "tutorials/01-build-your-first-app.html#start-blockr",
-    "href": "tutorials/01-build-your-first-app.html#start-blockr",
-    "title": "Build your first app",
-    "section": "",
-    "text": "The simplest way to try blockr is for free in our live playground at blockr.cloud. Note, you will not be able to save and restore sessions this way.\n\n\n\nRun the following commands to install blockr locally and then spin up an empty app:\ninstall.packages(\"blockr\") # Download blockr. This only needs to be run once.\nblockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.\n\n\n\n\n\n\nNote\n\n\n\nInstalling blockr locally assumes you already have R installed on your system and are comfortable running basic R commands.",
-    "crumbs": [
-      "Tutorials",
-      "Build your first app"
-    ]
-  },
-  {
-    "objectID": "tutorials/01-build-your-first-app.html#first-steps",
-    "href": "tutorials/01-build-your-first-app.html#first-steps",
-    "title": "Build your first app",
-    "section": "",
-    "text": "Each empty blockr app starts with a blank canvas:\n\nTo build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!\nLet’s start by adding some data. Right-click the canvas then click “Add block”:\n\nThis opens the right sidebar with a block selection menu. Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them. You can also use the search bar to find blocks.\nFor now, let’s click “dataset block” to load an example data block, preconfigured with a bunch of different datasets.\n\nOnce the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let’s change the dataset to penguins by clicking and searching in the drop-down menu:\n\n\n\n\nNext, let’s filter our penguins data to only return the species “Adelie” and “Chinstrap”.\nTo connect a filter block:\n\nHover the mouse over the dataset block\nClick the “+” button at the bottom of the block, called a port, to bring up the block menu sidebar once more:\nSearch for “filter” and click “Filter Rows”\n\n\nThis will add a new connected filter block to the canvas. From here, we can filter the data to just keep the “Adelie” and “Chinstrap” species of penguins by seleting their values from the “Values” drop-down box:\n\n\n\n\nFinally, let’s finish our first pipeline by visualising some data. To do that, let’s add a visualisation block, but use a different method to do that.\nFirst, right-click anywhere in the canvas and click “Add block” like we did in the first step of this tutorial:\n\nThen search for “plot” and click “ggplot” to add a plot block to our canvas:\n\nThis will add an unconnected plot block to our canvas. We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:\n\nTo connect the plot block, hover the mouse over the filter block to view the available ports. Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.\n\n\n\n\n\n\nNote\n\n\n\nNotice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.\n\n\n\nTo finish let’s populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:",
-    "crumbs": [
-      "Tutorials",
-      "Build your first app"
-    ]
-  },
-  {
-    "objectID": "tutorials/01-build-your-first-app.html#summary",
-    "href": "tutorials/01-build-your-first-app.html#summary",
-    "title": "Build your first app",
-    "section": "",
-    "text": "And that’s it! You’ve learned how to add blocks to the canvas, search for blocks, and connect them using ports. You now have the skills to import, transform, and visualize data in blockr.",
-    "crumbs": [
-      "Tutorials",
-      "Build your first app"
-    ]
-  },
-  {
-    "objectID": "tutorials/00-getting-started.html",
-    "href": "tutorials/00-getting-started.html",
-    "title": "blockr",
-    "section": "",
-    "text": "These documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\n\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\n\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\n\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\n\nLookup a block with detailed specifications and parameters.\nTo the reference",
-    "crumbs": [
-      "Tutorials",
-      "Getting Started"
-    ]
-  },
-  {
-    "objectID": "tutorials/00-getting-started.html#getting-started",
-    "href": "tutorials/00-getting-started.html#getting-started",
-    "title": "blockr",
-    "section": "",
-    "text": "These documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\n\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\n\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\n\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\n\nLookup a block with detailed specifications and parameters.\nTo the reference",
-    "crumbs": [
-      "Tutorials",
-      "Getting Started"
+      "Export code"
     ]
   },
   {
@@ -143,25 +66,102 @@
     ]
   },
   {
-    "objectID": "howto/01-export-code.html",
-    "href": "howto/01-export-code.html",
-    "title": "Export code",
+    "objectID": "tutorials/00-getting-started.html",
+    "href": "tutorials/00-getting-started.html",
+    "title": "blockr",
     "section": "",
-    "text": "Learn how to export code from blockr.\n\n\n\nPress the settings button:\n\n\n\nPress the “&lt;/&gt; Show Code” button:\n\n\n\nThat’s it! Idiomatic R code will appear in a pop-up modal. Copy and paste it where you like.",
+    "text": "These documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\n\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\n\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\n\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\n\nLookup a block with detailed specifications and parameters.\nTo the blocks",
     "crumbs": [
-      "How-To",
-      "Export code"
+      "Tutorials",
+      "Getting Started"
     ]
   },
   {
-    "objectID": "howto/01-export-code.html#steps",
-    "href": "howto/01-export-code.html#steps",
-    "title": "Export code",
+    "objectID": "tutorials/00-getting-started.html#getting-started",
+    "href": "tutorials/00-getting-started.html#getting-started",
+    "title": "blockr",
     "section": "",
-    "text": "Press the settings button:\n\n\n\nPress the “&lt;/&gt; Show Code” button:\n\n\n\nThat’s it! Idiomatic R code will appear in a pop-up modal. Copy and paste it where you like.",
+    "text": "These documents are user-facing and not developer-facing. They will teach you how to use blockr, not how to develop it. If you are looking for developer docs, start here.\nThe documentation is split into four parts:\n\n\n\n\n\n\n\nLearn by doing with step-by-step tutorials that walk you through practical examples.\nTo the tutorials\n\n\n\n\n\n\n\n\n\n\nReach a specific goal with focused guides for common tasks.\nTo the how-to’s\n\n\n\n\n\n\n\n\n\n\nBroaden your understanding with in-depth explanations of key concepts.\nTo the fundamentals\n\n\n\n\n\n\n\n\n\n\nLookup a block with detailed specifications and parameters.\nTo the blocks",
+    "crumbs": [
+      "Tutorials",
+      "Getting Started"
+    ]
+  },
+  {
+    "objectID": "tutorials/01-build-your-first-app.html",
+    "href": "tutorials/01-build-your-first-app.html",
+    "title": "Build your first app",
+    "section": "",
+    "text": "This tutorial will get you started with blockr in just a few minutes. By the end, you will have built your first data pipeline.\n\n\n\n\nThe simplest way to try blockr is for free in our live playground at blockr.cloud. Note, you will not be able to save and restore sessions this way.\n\n\n\nRun the following commands to install blockr locally and then spin up an empty app:\ninstall.packages(\"blockr\") # Download blockr. This only needs to be run once.\nblockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.\n\n\n\n\n\n\nNote\n\n\n\nInstalling blockr locally assumes you already have R installed on your system and are comfortable running basic R commands.\n\n\n\n\n\n\n\n\nEach empty blockr app starts with a blank canvas:\n\nTo build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!\nLet’s start by adding some data. Right-click the canvas then click “Add block”:\n\nThis opens the right sidebar with a block selection menu. Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them. You can also use the search bar to find blocks.\nFor now, let’s click “dataset block” to load an example data block, preconfigured with a bunch of different datasets.\n\nOnce the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let’s change the dataset to penguins by clicking and searching in the drop-down menu:\n\n\n\n\nNext, let’s filter our penguins data to only return the species “Adelie” and “Chinstrap”.\nTo connect a filter block:\n\nHover the mouse over the dataset block\nClick the “+” button at the bottom of the block, called a port, to bring up the block menu sidebar once more:\nSearch for “filter” and click “Filter Rows”\n\n\nThis will add a new connected filter block to the canvas. From here, we can filter the data to just keep the “Adelie” and “Chinstrap” species of penguins by seleting their values from the “Values” drop-down box:\n\n\n\n\nFinally, let’s finish our first pipeline by visualising some data. To do that, let’s add a visualisation block, but use a different method to do that.\nFirst, right-click anywhere in the canvas and click “Add block” like we did in the first step of this tutorial:\n\nThen search for “plot” and click “ggplot” to add a plot block to our canvas:\n\nThis will add an unconnected plot block to our canvas. We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:\n\nTo connect the plot block, hover the mouse over the filter block to view the available ports. Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.\n\n\n\n\n\n\nNote\n\n\n\nNotice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.\n\n\n\nTo finish let’s populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:\n\n\n\n\n\nAnd that’s it! You’ve learned how to add blocks to the canvas, search for blocks, and connect them using ports. You now have the skills to import, transform, and visualize data in blockr.",
+    "crumbs": [
+      "Tutorials",
+      "Build your first app"
+    ]
+  },
+  {
+    "objectID": "tutorials/01-build-your-first-app.html#start-blockr",
+    "href": "tutorials/01-build-your-first-app.html#start-blockr",
+    "title": "Build your first app",
+    "section": "",
+    "text": "The simplest way to try blockr is for free in our live playground at blockr.cloud. Note, you will not be able to save and restore sessions this way.\n\n\n\nRun the following commands to install blockr locally and then spin up an empty app:\ninstall.packages(\"blockr\") # Download blockr. This only needs to be run once.\nblockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.\n\n\n\n\n\n\nNote\n\n\n\nInstalling blockr locally assumes you already have R installed on your system and are comfortable running basic R commands.",
+    "crumbs": [
+      "Tutorials",
+      "Build your first app"
+    ]
+  },
+  {
+    "objectID": "tutorials/01-build-your-first-app.html#first-steps",
+    "href": "tutorials/01-build-your-first-app.html#first-steps",
+    "title": "Build your first app",
+    "section": "",
+    "text": "Each empty blockr app starts with a blank canvas:\n\nTo build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!\nLet’s start by adding some data. Right-click the canvas then click “Add block”:\n\nThis opens the right sidebar with a block selection menu. Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them. You can also use the search bar to find blocks.\nFor now, let’s click “dataset block” to load an example data block, preconfigured with a bunch of different datasets.\n\nOnce the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let’s change the dataset to penguins by clicking and searching in the drop-down menu:\n\n\n\n\nNext, let’s filter our penguins data to only return the species “Adelie” and “Chinstrap”.\nTo connect a filter block:\n\nHover the mouse over the dataset block\nClick the “+” button at the bottom of the block, called a port, to bring up the block menu sidebar once more:\nSearch for “filter” and click “Filter Rows”\n\n\nThis will add a new connected filter block to the canvas. From here, we can filter the data to just keep the “Adelie” and “Chinstrap” species of penguins by seleting their values from the “Values” drop-down box:\n\n\n\n\nFinally, let’s finish our first pipeline by visualising some data. To do that, let’s add a visualisation block, but use a different method to do that.\nFirst, right-click anywhere in the canvas and click “Add block” like we did in the first step of this tutorial:\n\nThen search for “plot” and click “ggplot” to add a plot block to our canvas:\n\nThis will add an unconnected plot block to our canvas. We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:\n\nTo connect the plot block, hover the mouse over the filter block to view the available ports. Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.\n\n\n\n\n\n\nNote\n\n\n\nNotice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.\n\n\n\nTo finish let’s populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:",
+    "crumbs": [
+      "Tutorials",
+      "Build your first app"
+    ]
+  },
+  {
+    "objectID": "tutorials/01-build-your-first-app.html#summary",
+    "href": "tutorials/01-build-your-first-app.html#summary",
+    "title": "Build your first app",
+    "section": "",
+    "text": "And that’s it! You’ve learned how to add blocks to the canvas, search for blocks, and connect them using ports. You now have the skills to import, transform, and visualize data in blockr.",
+    "crumbs": [
+      "Tutorials",
+      "Build your first app"
+    ]
+  },
+  {
+    "objectID": "tutorials/03-youtube-series.html",
+    "href": "tutorials/03-youtube-series.html",
+    "title": "YouTube tutorials",
+    "section": "",
+    "text": "YouTube tutorials\nIn addition to these written docs, video tutorials are also available here.",
+    "crumbs": [
+      "Tutorials",
+      "YouTube tutorials"
+    ]
+  },
+  {
+    "objectID": "howto/02-save-and-restore.html",
+    "href": "howto/02-save-and-restore.html",
+    "title": "Save and restore workflows",
+    "section": "",
+    "text": "Learn how to save and restore workflows in blockr. Let’s start with a simple workflow where we visualise some penguins data using three blocks:\n\n\n\n\nYou can rename your workflow by editing the top-left corner text box. Alternatively, you can stick with the randomly generated default name.\n\n\n\nHit the save button to save the current state of your workflow.\n\n\n\nNext, let’s make some changes to your workflow. Here, let’s add a second plot:\n\n\n\nThen, hit save again to save the new state of your workflow.\n\n\n\nNow, to restore a previous version of our workflow the first thing we need to do is open the workflow manager. To do this, press the workflow button in the top-left corner:\n\n\n\nFrom here, press the history tab to open a list of all saved versions of our penguins dashboard. Each save point is an item in the list, with a timestamp of when it was saved.\n\n\n\nLet’s press the first time stamp (here labelled 1 min ago) to restore out previous version of the workflow:\n\n\n\nAlternatively, press the “View all versions” button to bring up the version history manager which provides you even more control of version restoration and deletion:\n\n\n\nFinally, let’s change our workflow completely by using the C02 dataset instead of penguins and save this new workflow:\n\n\n\nNow we can save and restore different workflows using the workflow tab in the workflow manager. Like before, these are presented in a timestamped list, and the “View all workflows” button can be pressed to bring up finer-grained controls:",
     "crumbs": [
       "How-To",
-      "Export code"
+      "Save and restore workflows"
+    ]
+  },
+  {
+    "objectID": "howto/02-save-and-restore.html#steps",
+    "href": "howto/02-save-and-restore.html#steps",
+    "title": "Save and restore workflows",
+    "section": "",
+    "text": "You can rename your workflow by editing the top-left corner text box. Alternatively, you can stick with the randomly generated default name.\n\n\n\nHit the save button to save the current state of your workflow.\n\n\n\nNext, let’s make some changes to your workflow. Here, let’s add a second plot:\n\n\n\nThen, hit save again to save the new state of your workflow.\n\n\n\nNow, to restore a previous version of our workflow the first thing we need to do is open the workflow manager. To do this, press the workflow button in the top-left corner:\n\n\n\nFrom here, press the history tab to open a list of all saved versions of our penguins dashboard. Each save point is an item in the list, with a timestamp of when it was saved.\n\n\n\nLet’s press the first time stamp (here labelled 1 min ago) to restore out previous version of the workflow:\n\n\n\nAlternatively, press the “View all versions” button to bring up the version history manager which provides you even more control of version restoration and deletion:\n\n\n\nFinally, let’s change our workflow completely by using the C02 dataset instead of penguins and save this new workflow:\n\n\n\nNow we can save and restore different workflows using the workflow tab in the workflow manager. Like before, these are presented in a timestamped list, and the “View all workflows” button can be pressed to bring up finer-grained controls:",
+    "crumbs": [
+      "How-To",
+      "Save and restore workflows"
     ]
   }
 ]
