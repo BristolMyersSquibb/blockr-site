@@ -44,6 +44,8 @@ website:
         href: fundamentals/index.qmd
       - text: "Blocks"
         href: blocks/01-wrangling.qmd
+      - text: "Demo"
+        href: https://blockr.cloud
 
   sidebar:
     - title: "Tutorials"
