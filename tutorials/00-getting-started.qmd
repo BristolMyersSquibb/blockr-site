@@ -45,7 +45,7 @@ Reach a specific goal with focused guides for common tasks.
 
 Broaden your understanding with in-depth explanations of key concepts.
 
-[To the fundamentals](../fundamentals/index.qmd){.btn .btn-primary .w-100}
+[To the fundamentals](../fundamentals/01-reactivity.qmd){.btn .btn-primary .w-100}
 :::
 :::
 :::
@@ -59,7 +59,7 @@ Broaden your understanding with in-depth explanations of key concepts.
 
 Lookup a block with detailed specifications and parameters.
 
-[To the blocks](../blocks/index.qmd){.btn .btn-primary .w-100}
+[To the blocks](../blocks/01-wrangling.qmd){.btn .btn-primary .w-100}
 :::
 :::
 :::

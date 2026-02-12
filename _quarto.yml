@@ -41,7 +41,7 @@ website:
       - text: "How-To"
         href: howto/01-export-code.qmd
       - text: "Fundamentals"
-        href: fundamentals/index.qmd
+        href: fundamentals/01-reactivity.qmd
       - text: "Blocks"
         href: blocks/01-wrangling.qmd
       - text: "Demo"
@@ -62,7 +62,7 @@ website:
         - howto/02-save-and-restore.qmd
     - title: "Fundamentals"
       contents:
-        - fundamentals/index.qmd
+        - fundamentals/01-reactivity.qmd
     - title: "Blocks"
       contents:
         - blocks/01-wrangling.qmd
