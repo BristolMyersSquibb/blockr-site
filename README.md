@@ -35,8 +35,31 @@ The relevant sections can be found by the same name in the folder structure:
 └── tutorials/       <----
 ```
 
-## How to update these docs
+## Updating the docs
 
-A GitHub pages site is build from the `docs/` folder in the `main` branch.
-To see your local changes appear on the live site, you need to run `quarto render` first.
-This command updates the docs/ folder with your changes.
+### Issue
+
+Originally, the [blockr](github.com/BristolMyersSquibb/blockr) package repository contained quarto documentation in a `site/` subfolder which was then published to gh pages to serve the user-facing documentation.
+Since then, the user-facing documentation has been rewritten into this repo as a new quarto project, starting from scratch.
+This strategy was decided in order to keep the user-facing documentation separate from the blockr R package developer-facing documentation.
+This allows for both ease of maintenance and clearer spearation of concerns.
+Consequently, there is still a need for the documentation in this repository to build and point to the original gh pages url slug `/blockr` and not `/blockr-site`, to maintain continuity.
+
+### Solution
+
+Any pushes to main in this repo trigger the `.github/workflows/trigger-deploy.yml` workflow.
+This workflow then sends a dispatch event to the blockr repo which tiggers its own [deploy-site](https://github.com/BristolMyersSquibb/blockr/blob/main/.github/workflows/deploy-site.yaml) workflow.
+The deploy-site workflow then checks out this `blockr-site` repo, renders the docs, uploads them as a GitHub Pages artifact, and then finally deploys the site.
+
+### How-to
+
+Simply run `quarto render` to update and build the `docs/` folder (containing the assets for the live site) and the push your changes to `main`.
+Your changes should be reflected in the blockr repo gh pages accessible via [https://bristolmyerssquibb.github.io/blockr/]()
+
+If you want to manually trigger the `deploy-site` workflow in blockr, you can run:
+
+```bash
+gh api repos/BristolMyersSquibb/blockr/dispatches \
+  --method POST \
+  -f event_type=deploy-site
+```
