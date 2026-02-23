@@ -30,7 +30,7 @@ The relevant sections can be found by the same name in the folder structure:
 ├── index.qmd
 ├── logos/
 ├── README.md
-├── blocks/       <----
+├── blocks/          <----
 ├── styles.css
 └── tutorials/       <----
 ```
