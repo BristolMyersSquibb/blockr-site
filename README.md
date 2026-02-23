@@ -53,7 +53,7 @@ The deploy-site workflow then checks out this `blockr-site` repo, renders the do
 
 ### How-to
 
-Simply run `quarto render` to update and build the `docs/` folder (containing the assets for the live site) and the push your changes to `main`.
+Simply run `quarto render` to update and build the `docs/` folder (containing the assets for the live site) and then push your changes to `main`.
 Your changes should be reflected in the blockr repo gh pages accessible via [https://bristolmyerssquibb.github.io/blockr/]()
 
 If you want to manually trigger the `deploy-site` workflow in blockr, you can run:
