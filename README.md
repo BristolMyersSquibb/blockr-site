@@ -51,6 +51,8 @@ Any pushes to main in this repo trigger the `.github/workflows/trigger-deploy.ym
 This workflow then sends a dispatch event to the blockr repo which tiggers its own [deploy-site](https://github.com/BristolMyersSquibb/blockr/blob/main/.github/workflows/deploy-site.yaml) workflow.
 The deploy-site workflow then checks out this `blockr-site` repo, renders the docs, uploads them as a GitHub Pages artifact, and then finally deploys the site.
 
+**Note:** The `trigger-deploy` workflow generates an authentication token using a GitHub App (needed for cross-repo communication).
+
 ### How-to
 
 Simply run `quarto render` to update and build the `docs/` folder (containing the assets for the live site) and then push your changes to `main`.
