@@ -919,7 +919,7 @@ page-layout: custom
     </div>
     <div class="problem-card reveal reveal-delay-2">
       <div class="icon">&circlearrowright;</div>
-      <h3>Cusotmisation</h3>
+      <h3>Customisation</h3>
       <p>
         Build with pre-made blocks or create your own in R.
         blockr grows with your needs, from quick exploration to production pipelines.
