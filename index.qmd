@@ -1001,7 +1001,7 @@ page-layout: custom
   </p>
   <div class="features-grid">
     <div class="feature-card reveal reveal-delay-1">
-      <div class="feature-icon">&xotime;</div>
+      <div class="feature-icon">&#10213;</div>
       <div>
         <h3>DAG workflows</h3>
         <p>Blocks form directed acyclic graphs. Branch, merge, and build
@@ -1009,7 +1009,7 @@ page-layout: custom
       </div>
     </div>
     <div class="feature-card reveal reveal-delay-2">
-      <div class="feature-icon">&dharl;</div>
+      <div class="feature-icon">&#10003;</div>
       <div>
         <h3>Real-time preview</h3>
         <p>See results update instantly as you connect and configure blocks.
