@@ -1,4 +1,4 @@
-const base = '/blockr/'
+const base = '/'
 
 module.exports = {
   base,
