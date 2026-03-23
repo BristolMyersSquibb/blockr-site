@@ -1,3 +1,3 @@
-/.quarto/
-
-**/*.quarto_ipynb
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
