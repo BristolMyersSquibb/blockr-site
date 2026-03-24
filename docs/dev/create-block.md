@@ -2,7 +2,7 @@
 
 <VideoEmbed id="-PdixmAscQI" title="Creating blocks in blockr" />
 
-Write custom blocks in pure R to extend blockr with your own logic. A block is a specialized Shiny module that returns an **expression** (the R code it generates) and a **state** (its current input values).
+Write custom blocks in pure R to extend blockr with your own logic. A block is a specialized [Shiny module](https://mastering-shiny.org/scaling-modules.html) that returns an **expression** (the R code it generates) and a **state** (its current input values).
 
 ## Block anatomy
 
