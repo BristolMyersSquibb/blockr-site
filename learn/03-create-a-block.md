@@ -10,7 +10,7 @@ Prefer to write blocks by hand? See the [Developer docs](/docs/dev/create-block)
 Clone blockr.core as a reference. Your coding agent will learn the right patterns from it:
 
 ```bash
-git clone https://github.com/BristolMyersSquibb/blockr.core
+git clone --depth 1 https://github.com/BristolMyersSquibb/blockr.core
 ```
 
 ## Create your first block

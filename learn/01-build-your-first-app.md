@@ -108,5 +108,4 @@ You now have the skills to import, transform, and visualize data in blockr.
 ## Next steps
 
 - [Build a dashboard](02-build-a-dashboard): arrange your pipeline into a shareable layout
-- [Filtering and selecting](/videos/filtering-and-selecting): video deep-dive into data wrangling
 

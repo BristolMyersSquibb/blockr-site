@@ -131,5 +131,4 @@ In this case, users can now adjust the filter values and see the effects on the 
 
 ## Next steps
 
-- [Export code](/videos/exporting-data): get the R code behind your pipeline
-- [Visualising data](/videos/visualising-data): all chart types and customization options
+- [Create a custom block](03-create-a-block): extend blockr with your own logic
