@@ -2,7 +2,7 @@
 
 <VideoEmbed id="-PdixmAscQI" title="Creating blocks in blockr" />
 
-Write custom blocks in pure R to extend blockr with your own logic. A block is a specialized Shiny module that returns an **expression** (the R code it generates) and a **state** (its current input values). A workflow is a Shiny app composed of connected blocks.
+Write custom blocks in pure R to extend blockr with your own logic. A block is a specialized [Shiny module](https://mastering-shiny.org/scaling-modules.html) that returns an **expression** (the R code it generates) and a **state** (its current input values). A workflow is a Shiny app composed of connected blocks.
 
 Blocks should live in an R package so they can be registered, shared, and tested. The examples below show the package-based approach.
 
