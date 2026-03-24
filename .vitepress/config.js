@@ -17,10 +17,15 @@ module.exports = {
       { text: 'Examples', link: '/examples/' },
       { text: 'Playground', link: 'https://blockr.cloud/app/empty' }
     ],
+    editLink: {
+      pattern: 'https://github.com/BristolMyersSquibb/blockr-site/edit/main/:path',
+      text: 'Edit this page on GitHub'
+    },
     sidebar: {
       '/learn/': [{
         text: 'Learn',
         items: [
+          { text: 'Installation', link: '/learn/00-installation' },
           { text: 'Build your first app', link: '/learn/01-build-your-first-app' },
           { text: 'Build a dashboard', link: '/learn/02-build-a-dashboard' },
           { text: 'Create a custom block', link: '/learn/03-create-a-block' }

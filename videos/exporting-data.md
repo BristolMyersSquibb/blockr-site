@@ -30,15 +30,15 @@ Every blockr pipeline produces idiomatic R code you can copy and use anywhere.
 
 1. Press the settings button:
 
-![](/docs/guides/01-img-01.png)
+![Settings button in the toolbar](/docs/guides/01-img-01.png)
 
 2. Press the "</> Show Code" button:
 
-![](/docs/guides/01-img-02.png)
+![Show Code button in the settings panel](/docs/guides/01-img-02.png)
 
 3. That's it! Idiomatic R code will appear in a pop-up modal. Copy and paste it where you like.
 
-![](/docs/guides/01-img-03.png)
+![Modal showing exported R code](/docs/guides/01-img-03.png)
 
 ## Next steps
 

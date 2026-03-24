@@ -17,12 +17,12 @@ blockr did not invent reactivity! blockr is built on the [Shiny](https://shiny.p
 If you have already completed the [Build a dashboard](../../learn/02-build-a-dashboard) tutorial, you have already seen reactivity in action.
 In that tutorial you learnt how to build a simple dashboard which uses a filter to update a plot on penguins:
 
-![](01-img-01.png)
+![Penguins dashboard with filter updating the plot](01-img-01.png)
 
 Let's zoom into the workflow to better understand what is going on.
 Here, we can see that as one block updates, all downstream blocks update:
 
-![](01-img-02.png)
+![Diagram showing a change in one block updating the downstream block](01-img-02.png)
 
 In this example, this results in only a single block updating.
 
@@ -31,12 +31,12 @@ In other words, it comes after it in the workflow.
 If data flows from A → B → C, then B and C are both downstream of A.
 This means that for complicated workflows, a change higher up the workflow can result in many blocks being updated:
 
-![](01-img-03.png)
+![Complex workflow where a change propagates to many downstream blocks](01-img-03.png)
 
 Note that upstream blocks never get updated.
 In our simple example, this means that our data block does **not** get updated, because it is upstream of our filter block:
 
-![](01-img-04.png)
+![Upstream data block is not affected by changes in the filter block](01-img-04.png)
 
 ## Errors
 
@@ -44,7 +44,7 @@ Sometimes updating a block can causes errors downstream.
 
 For example, again using our simple penguins dashboard, if we update the dataset block to use a dataset other than penguins, it will causes errors downstream:
 
-![](01-img-05.png)
+![Error in downstream blocks after changing the dataset](01-img-05.png)
 
 This happens because the downstream filter and plot blocks user variables from the penguins dataset.
 When this dataset changes, these variables are no longer available and so the downstream blocks error to let us know they are trying to use variables that no longer exist.

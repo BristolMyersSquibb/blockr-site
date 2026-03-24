@@ -12,7 +12,7 @@ Map columns to the x and y axes to show how variables relate to each other. Add 
 
 Scatter plots support additional aesthetics including shape (for categorical distinctions) and alpha (transparency). Use alpha values between 0 and 1 to reduce overplotting in dense regions. The block automatically handles scale creation and legend generation for all mapped aesthetics.
 
-![](02-block-ggplot-scatter.png)
+![Scatter plot example](02-block-ggplot-scatter.png)
 
 ---
 
@@ -24,7 +24,7 @@ Select a categorical variable for the x axis to create bars for each category. T
 
 Bar charts work well for comparing discrete groups, showing distributions of categorical variables, or displaying summary statistics. The block handles count aggregation automatically when no y variable is specified.
 
-![](02-block-ggplot-bar.png)
+![Bar chart example](02-block-ggplot-bar.png)
 
 ---
 
@@ -36,7 +36,7 @@ Map a sequential variable (like time or age) to the x axis and a continuous vari
 
 Line charts support additional aesthetics including linetype for distinguishing groups with different line styles (solid, dashed, dotted) and size for varying line thickness. This visualization is ideal for temporal data, growth curves, and tracking changes over ordered sequences.
 
-![](02-block-ggplot-line.png)
+![Line chart example](02-block-ggplot-line.png)
 
 ---
 
@@ -48,7 +48,7 @@ Select a categorical variable for x and a continuous variable for y. The box sho
 
 Box plots provide a compact summary of distribution shape, central tendency, and variability. They're particularly effective when comparing multiple groups side-by-side, as the aligned boxes make differences in median, spread, and skewness immediately visible.
 
-![](02-block-ggplot-boxplot.png)
+![Box plot example](02-block-ggplot-boxplot.png)
 
 ---
 
@@ -60,7 +60,7 @@ Like box plots, violin plots require a categorical x variable and continuous y v
 
 Violin plots are superior to box plots when you need to see whether distributions are unimodal or multimodal, identify subtle differences in distribution shape, or understand the full data density rather than just quartiles. They're especially valuable with larger datasets where distribution details matter.
 
-![](02-block-ggplot-violin.png)
+![Violin plot example](02-block-ggplot-violin.png)
 
 ---
 
@@ -72,7 +72,7 @@ Map a continuous variable to x to create a density curve. The fill aesthetic cre
 
 Density plots work well for comparing distributions when you want smooth, continuous representations rather than binned histograms. They're particularly effective with the alpha aesthetic set to 0.5-0.7, which makes overlapping distributions easy to distinguish. Use them to compare distribution shapes, identify modes, or assess whether groups follow similar patterns.
 
-![](02-block-ggplot-density.png)
+![Density plot example](02-block-ggplot-density.png)
 
 ---
 
@@ -84,7 +84,7 @@ Like line charts, area charts map sequential data to x and continuous values to 
 
 Area charts work best when the filled space has meaning, such as cumulative quantities, market shares, or resource allocation over time. The alpha aesthetic (0.6-0.8) is particularly important when comparing overlapping areas, as it allows all curves to remain visible while still emphasizing volume.
 
-![](02-block-ggplot-area.png)
+![Area chart example](02-block-ggplot-area.png)
 
 ---
 
@@ -96,7 +96,7 @@ Select a continuous variable for x. The block automatically creates bins and cou
 
 Histograms are fundamental for exploratory data analysis: assessing whether data follows a normal distribution, identifying skewness or multimodality, detecting outliers, and understanding data range. Experiment with bin counts to find the right level of detail for your data's density and range.
 
-![](02-block-ggplot-histogram.png)
+![Histogram example](02-block-ggplot-histogram.png)
 
 ---
 
@@ -108,7 +108,7 @@ Map a categorical variable to x and a numeric value to y. Each category becomes 
 
 While controversial among data visualization experts who prefer bar charts for precise comparisons, pie charts remain intuitive for showing simple proportions, especially when one category dominates or when emphasizing that parts constitute a whole. Keep categories limited and consider using a donut chart variant for a modern aesthetic.
 
-![](02-block-ggplot-pie.png)
+![Pie chart example](02-block-ggplot-pie.png)
 
 ---
 
@@ -120,7 +120,7 @@ Configure exactly like pie charts, but set donut_hole to a value between 0.3 and
 
 The empty center draws attention and can be used strategically to display total values, titles, or key metrics. The ring shape also makes it slightly easier to compare arc lengths than full pie slices, as the curves are more linear. Use donut charts when aesthetics matter or when you want to emphasize the ring pattern over the center point.
 
-![](02-block-ggplot-donut.png)
+![Donut chart example](02-block-ggplot-donut.png)
 
 ---
 
@@ -132,7 +132,7 @@ Select a facet variable to create a separate panel for each unique value. The nc
 
 Facet wrap works well with 3-15 groups where you want to see each group's pattern separately while maintaining visual comparison. It automatically handles scales: by default all facets share the same x and y scales for easy comparison, though you can set scales to "free" for independent axes. Use this for comparing patterns across time periods, regions, or categories.
 
-![](02-block-facet.png)
+![Facet wrap layout example](02-block-facet.png)
 
 ---
 
@@ -144,7 +144,7 @@ Select variables for facet_rows and facet_cols to create a rows × columns layou
 
 Facet grid is powerful for experimental designs with multiple factors, comparing subgroups across time periods, or any situation where data is naturally organized by two categorical variables. The grid structure reveals interaction effects and makes systematic comparisons straightforward. Keep factor levels reasonable (typically 2-5 levels per dimension) to maintain readability.
 
-![](02-block-facet-grid.png)
+![Facet grid layout example](02-block-facet-grid.png)
 
 ---
 
@@ -156,7 +156,7 @@ Select from over 20 built-in themes including classic ggplot2 themes (theme_mini
 
 Themes control non-data elements: backgrounds, grid lines, axis styling, legend appearance, and text formatting. Apply a theme block after visualization blocks to style the entire plot consistently. Common choices include theme_minimal for clean presentations, theme_classic for publication-ready plots, and theme_dark for emphasis or presentations on dark backgrounds.
 
-![](02-block-theme.png)
+![Theme block with theme selector](02-block-theme.png)
 
 ---
 
@@ -168,7 +168,7 @@ Select a layout style (horizontal, vertical, or grid) and specify the number of 
 
 Grid composition is essential for complex figures that tell a complete story through multiple related views. Each input can be a complete visualization pipeline, allowing you to combine different chart types, subsets, or transformations. This is particularly powerful for academic papers, reports, or dashboards where you need to present multiple coordinated views.
 
-![](02-block-grid.png)
+![Grid block composing multiple plots](02-block-grid.png)
 
 ---
 
