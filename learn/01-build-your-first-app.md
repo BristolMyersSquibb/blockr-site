@@ -3,10 +3,6 @@
 This tutorial will get you started with blockr in just a few minutes.
 By the end, you will have built your first data pipeline.
 
-::: tip Try it yourself
-[Open an empty workflow on blockr.cloud](https://blockr.cloud/app/empty) and follow along.
-:::
-
 ## Start blockr
 
 #### Live playground
@@ -32,13 +28,13 @@ Installing blockr locally assumes you already have [R](https://www.r-project.org
 
 Each empty blockr app starts with a blank canvas:
 
-![](01-img-blank-canvas.png)
+![Empty blockr canvas](01-img-blank-canvas.png)
 
 To build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!
 
 Let's start by adding some data. Right-click the canvas then click "Add block":
 
-![](01-img-right-click.png)
+![Right-click context menu showing Add block option](01-img-right-click.png)
 
 This opens the right sidebar with a block selection menu.
 Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them.
@@ -46,11 +42,11 @@ You can also use the search bar to find blocks.
 
 For now, let's click "dataset block" to load an example data block, preconfigured with a bunch of different datasets.
 
-![](01-img-dataset-block.png)
+![Block menu sidebar with dataset block selected](01-img-dataset-block.png)
 
 Once the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let's change the dataset to penguins by clicking and searching in the drop-down menu:
 
-![](01-img-penguins.png)
+![Dataset block with penguins selected in the dropdown](01-img-penguins.png)
 
 ## Filter data
 
@@ -64,12 +60,12 @@ To connect a filter block:
 2. Click the "+" button at the bottom of the block, called a port, to bring up the block menu sidebar once more:
 3. Search for "filter" and click "Filter Rows"
 
-![](01-img-filter-block.png)
+![Adding a filter block via the port button](01-img-filter-block.png)
 
 This will add a new connected filter block to the canvas.
 From here, we can filter the data to just keep the "Adelie" and "Chinstrap" species of penguins by seleting their values from the "Values" drop-down box:
 
-![](01-img-species.png)
+![Filter block with Adelie and Chinstrap selected](01-img-species.png)
 
 ## Visualise data
 
@@ -80,16 +76,16 @@ To do that, let's add a visualisation block, but use a different method to do th
 
 First, right-click anywhere in the canvas and click "Add block" like we did in the first step of this tutorial:
 
-![](01-img-new-block.png)
+![Right-click menu to add a new block](01-img-new-block.png)
 
 Then search for "plot" and click "ggplot" to add a plot block to our canvas:
 
-![](01-img-ggplot.png)
+![Selecting ggplot block from the block menu](01-img-ggplot.png)
 
 This will add an _unconnected_ plot block to our canvas.
 We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:
 
-![](01-img-unconnected.png)
+![Unconnected plot block on the canvas](01-img-unconnected.png)
 
 To connect the plot block, hover the mouse over the filter block to view the available ports.
 Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.
@@ -98,11 +94,11 @@ Then, click and drag from the port on the bottom of the filter block to the port
 Notice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.
 :::
 
-![](01-img-connect-ports.png)
+![Dragging a connection from the filter port to the plot port](01-img-connect-ports.png)
 
 To finish let's populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:
 
-![](01-img-populate.png)
+![Scatter plot of bill length vs bill depth colored by species](01-img-populate.png)
 
 ## Summary
 
@@ -112,5 +108,4 @@ You now have the skills to import, transform, and visualize data in blockr.
 ## Next steps
 
 - [Build a dashboard](02-build-a-dashboard): arrange your pipeline into a shareable layout
-- [Filtering and selecting](/videos/filtering-and-selecting): video deep-dive into data wrangling
 

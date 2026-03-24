@@ -14,7 +14,7 @@ Use the column selector to pick the columns you want. You can select multiple co
 
 The block includes a "distinct" option. When enabled, duplicate rows are removed from the result, keeping only unique combinations of the selected columns.
 
-![](01-select-block.png)
+![Select block interface showing column picker](01-select-block.png)
 
 ---
 
@@ -28,7 +28,7 @@ Add multiple conditions using the "+ Add Condition" button. Each condition can b
 
 For more elaborate filter conditions using comparisons or calculations, use the filter expression block instead.
 
-![](01-filter-block.png)
+![Filter block interface with value dropdowns](01-filter-block.png)
 
 ---
 
@@ -38,7 +38,7 @@ The filter expression block keeps only rows that meet specific conditions using 
 
 Supported operators include `>`, `<`, `==`, `!=`, `>=`, `<=` for comparisons, and `%in%` for checking membership in a set of values. Combine multiple conditions using `&` (AND) to require all conditions to be true, or `|` (OR) to require at least one condition to be true. The expression editor provides syntax highlighting and validates your expressions. Examples: `mpg > 20`, `cyl == 4 | cyl == 6`, `hp > 100 & wt < 3`.
 
-![](01-filter-expr-block.png)
+![Filter expression block with R expression editor](01-filter-expr-block.png)
 
 ---
 
@@ -50,7 +50,7 @@ When sorting by multiple columns, the order matters. The first column is the pri
 
 Add columns using the "+" button and remove them using the "×" button. Toggle between ascending and descending order for each column independently.
 
-![](01-arrange-block.png)
+![Arrange block with sort column and direction controls](01-arrange-block.png)
 
 ---
 
@@ -62,7 +62,7 @@ For head and tail types, specify the number of rows using n (count) or prop (pro
 
 The custom type accepts a rows expression like "1:5" or "c(1, 3, 5, 10)". All slice types support grouping via the by parameter, which performs the slice operation within each group separately.
 
-![](01-slice-block.png)
+![Slice block interface with type selector](01-slice-block.png)
 
 ---
 
@@ -74,7 +74,7 @@ Use mathematical operators (`+`, `-`, `*`, `/`, `^`) and functions (`sqrt()`, `l
 
 Expression order matters: later expressions can reference columns created by earlier expressions in the same mutate block. The by parameter allows grouping, making column references operate within each group. Add expressions with the "+ Add Expression" button and remove them with the "×" button.
 
-![](01-mutate-expr-block.png)
+![Mutate expression block with column name and expression fields](01-mutate-expr-block.png)
 
 ---
 
@@ -86,7 +86,7 @@ Select the existing column from a dropdown to ensure valid column names. Type th
 
 The block validates that you don't rename the same column twice and ensures column names don't conflict with existing names.
 
-![](01-rename-block.png)
+![Rename block showing new name to old name mapping](01-rename-block.png)
 
 ---
 
@@ -100,7 +100,7 @@ Use the "Columns to group by" selector to group data before summarizing. When gr
 
 For more complex aggregations using custom R expressions, use the summarize expression block instead.
 
-![](01-summarize-block.png)
+![Summarize block with function dropdown and column selector](01-summarize-block.png)
 
 ---
 
@@ -112,7 +112,7 @@ Enter expressions like `mean(mpg)`, `sum(hp)`, `dplyr::n()`, or more complex cal
 
 Use the "Columns to group by" selector to group data before summarizing. The "Show advanced options" section provides additional settings like the unpack option for handling functions that return data frames.
 
-![](01-summarize-expr-block.png)
+![Summarize expression block with R expression editor](01-summarize-expr-block.png)
 
 ---
 
@@ -124,7 +124,7 @@ Join types: left_join keeps all rows from the left dataset and matching rows fro
 
 The "Custom Column Mappings" interface supports both same-name joins (when columns have identical names) and different-name joins (when the matching columns have different names in each dataset). Add multiple join keys to match on multiple columns simultaneously. Enable "Use natural join" to automatically join on all common columns.
 
-![](01-join-block.png)
+![Join block with join type selector and column mappings](01-join-block.png)
 
 ---
 
@@ -136,7 +136,7 @@ Columns are matched by name. If datasets have different columns, the result incl
 
 The "Show advanced options" section provides the id_name option which adds an identifier column that tracks which source dataset each row came from. This is useful when combining data from multiple sources and you need to maintain provenance.
 
-![](01-bind-rows-block.png)
+![Bind rows block interface](01-bind-rows-block.png)
 
 ---
 
@@ -148,7 +148,7 @@ All input datasets must have exactly the same number of rows. The rows are combi
 
 If datasets have columns with the same name, they are automatically renamed with numeric suffixes (e.g., "Sepal.Length...1", "Sepal.Length...6") to avoid conflicts.
 
-![](01-bind-cols-block.png)
+![Bind columns block interface](01-bind-cols-block.png)
 
 ---
 
@@ -166,7 +166,7 @@ Select which columns to pivot. These columns are transformed into two new column
 
 The "Show advanced options" section provides names_prefix (removes common prefixes from column names) and values_drop_na (removes rows where the value is NA). This is useful for reshaping time series data, survey responses, or preparing data for visualization.
 
-![](01-pivot-longer-block.png)
+![Pivot longer block with column selector and naming options](01-pivot-longer-block.png)
 
 ---
 
@@ -178,7 +178,7 @@ Select which column contains values for new column names (names_from) and which 
 
 The "Show advanced options" section provides names_prefix (adds a prefix to new column names) and values_fill (provides a value for missing combinations). This is useful for creating crosstabs, pivot tables, or comparing values across categories.
 
-![](01-pivot-wider-block.png)
+![Pivot wider block with names_from and values_from selectors](01-pivot-wider-block.png)
 
 ---
 
@@ -190,7 +190,7 @@ Select the column to separate and specify the names for the new columns (comma-s
 
 The "Show advanced options" section provides remove (whether to remove the input column), convert (whether to convert new columns to appropriate types), and extra/fill options for handling rows with too many or too few pieces.
 
-![](01-separate-block.png)
+![Separate block with column selector and separator input](01-separate-block.png)
 
 ---
 
@@ -202,7 +202,7 @@ Select the columns to unite and specify the name for the new combined column. En
 
 The "Show advanced options" section provides the remove option (whether to remove the input columns after uniting) and na.rm (whether to remove NA values before uniting).
 
-![](01-unite-block.png)
+![Unite block with column selector and separator input](01-unite-block.png)
 
 ---
 

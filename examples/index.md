@@ -93,7 +93,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <img src="/examples/ai-ctrl.png" alt="AI Control + Pipeline Discovery" />
 <div class="example-body">
 <p class="example-title">AI Control + Pipeline Discovery</p>
-<p>AI-powered data filtering and automatic pipeline construction from natural language.</p>
+<p>AI-powered data filtering and pipeline construction. Click the sparkles button (✨) in a block to describe what you want in plain English.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
