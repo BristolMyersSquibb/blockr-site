@@ -1,3 +1,24 @@
+<script setup>
+const blockSteps = [
+  {
+    label: 'Skeleton',
+    code: 'new_my_block <- function(column = character(), threshold = 0) {\n  new_block(\n    ui = ...,\n    expr_server = ...,\n    state = list(column = column, threshold = threshold),\n    class = c("my_block", "transform_block")\n  )\n}'
+  },
+  {
+    label: 'Add UI function',
+    code: 'my_block_ui <- function(id) {\n  ns <- shiny::NS(id)\n  shiny::tagList(\n    shiny::selectInput(ns("column"), "Column", choices = NULL),\n    shiny::numericInput(ns("threshold"), "Threshold", value = 0)\n  )\n}\n\nnew_my_block <- function(column = character(), threshold = 0) {\n  new_block(\n    ui = my_block_ui,\n    expr_server = ...,\n    state = list(column = column, threshold = threshold),\n    class = c("my_block", "transform_block")\n  )\n}'
+  },
+  {
+    label: 'Add server function',
+    code: 'my_block_ui <- function(id) {\n  ns <- shiny::NS(id)\n  shiny::tagList(\n    shiny::selectInput(ns("column"), "Column", choices = NULL),\n    shiny::numericInput(ns("threshold"), "Threshold", value = 0)\n  )\n}\n\nmy_block_server <- function(id, data) {\n  shiny::moduleServer(id, function(input, output, session) {\n    shiny::observe({\n      shiny::updateSelectInput(session, "column",\n        choices = names(data()))\n    })\n\n    list(\n      expr = shiny::reactive({\n        rlang::expr(\n          dplyr::filter(data, !!rlang::sym(input$column) > !!input$threshold)\n        )\n      }),\n      state = shiny::reactive(list(\n        column = input$column,\n        threshold = input$threshold\n      ))\n    )\n  })\n}\n\nnew_my_block <- function(column = character(), threshold = 0) {\n  new_block(\n    ui = my_block_ui,\n    expr_server = my_block_server,\n    state = list(column = column, threshold = threshold),\n    class = c("my_block", "transform_block")\n  )\n}'
+  },
+  {
+    label: 'Add registration',
+    code: 'my_block_ui <- function(id) {\n  ns <- shiny::NS(id)\n  shiny::tagList(\n    shiny::selectInput(ns("column"), "Column", choices = NULL),\n    shiny::numericInput(ns("threshold"), "Threshold", value = 0)\n  )\n}\n\nmy_block_server <- function(id, data) {\n  shiny::moduleServer(id, function(input, output, session) {\n    shiny::observe({\n      shiny::updateSelectInput(session, "column",\n        choices = names(data()))\n    })\n\n    list(\n      expr = shiny::reactive({\n        rlang::expr(\n          dplyr::filter(data, !!rlang::sym(input$column) > !!input$threshold)\n        )\n      }),\n      state = shiny::reactive(list(\n        column = input$column,\n        threshold = input$threshold\n      ))\n    )\n  })\n}\n\nnew_my_block <- function(column = character(), threshold = 0) {\n  new_block(\n    ui = my_block_ui,\n    expr_server = my_block_server,\n    state = list(column = column, threshold = threshold),\n    class = c("my_block", "transform_block")\n  )\n}\n\n.onLoad <- function(libname, pkgname) {\n  blockr.core::register_block(\n    constructor = new_my_block,\n    name = "My custom filter",\n    description = "Filter rows by a numeric threshold",\n    category = "transform",\n    package = pkgname\n  )\n}'
+  }
+]
+</script>
+
 # Create a block
 
 <VideoEmbed id="-PdixmAscQI" title="Creating blocks in blockr" />
@@ -8,7 +29,11 @@ Blocks should live in an R package so they can be registered, shared, and tested
 
 ## Block anatomy
 
-Every block has three parts:
+Every block has three parts: a **UI function**, a **server function**, and a **constructor**. Step through the animation below to see how they come together:
+
+<CodeStepper :steps="blockSteps" />
+
+The sections below break down each part in detail.
 
 ```
 Block
