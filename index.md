@@ -145,25 +145,25 @@ features:
   <h2>Try an example</h2>
   <p>Open a demo workflow on blockr.cloud, no install needed</p>
   <div class="examples-row">
-    <a class="example-preview" href="https://blockr.cloud/app/insurance" target="_blank">
-      <img src="/examples/insurance.png" alt="Insurance Portfolio" />
+    <a class="example-preview" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
+      <img src="/examples/clinical-explorer.jpg" alt="Clinical Explorer" />
       <div class="ep-body">
-        <p class="ep-title">Insurance Portfolio</p>
-        <p class="ep-desc">Star schema data with dm-based crossfilter for insurance portfolio analysis.</p>
+        <p class="ep-title">Clinical Explorer</p>
+        <p class="ep-desc">AI-enabled exploration of an ADaM trial: demographics, AE, lab, vitals, patient profile.</p>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/adam" target="_blank">
-      <img src="/examples/adam.png" alt="ADaM Crossfilter" />
+    <a class="example-preview" href="https://blockr.cloud/app/portfolio" target="_blank">
+      <img src="/examples/portfolio.jpg" alt="Portfolio Advisor" />
       <div class="ep-body">
-        <p class="ep-title">ADaM Crossfilter</p>
-        <p class="ep-desc">Explore CDISC ADaM clinical trial data with dynamic crossfiltering.</p>
+        <p class="ep-title">Portfolio Advisor</p>
+        <p class="ep-desc">Portfolio optimization with investor profiling and dashboard.</p>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/tidymodels" target="_blank">
-      <img src="/examples/tidymodels.png" alt="Tidymodels ML" />
+    <a class="example-preview" href="https://blockr.cloud/app/explorer" target="_blank">
+      <img src="/examples/explorer.jpg" alt="Share Explorer" />
       <div class="ep-body">
-        <p class="ep-title">Tidymodels ML</p>
-        <p class="ep-desc">Machine learning workflows with tidymodels.</p>
+        <p class="ep-title">Share Explorer</p>
+        <p class="ep-desc">Interactive stock ticker explorer with candlestick charts.</p>
       </div>
     </a>
   </div>

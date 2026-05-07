@@ -5,85 +5,38 @@ No deep Shiny knowledge needed. Describe what you want and the agent will write 
 
 Prefer to write blocks by hand? See the [Developer docs](/docs/dev/create-block) for the full technical reference.
 
-## Setup
-
-Clone blockr.core as a reference. Your coding agent will learn the right patterns from it:
-
-```bash
-git clone --depth 1 https://github.com/BristolMyersSquibb/blockr.core
-```
-
 ## Create your first block
 
-Navigate to your workspace and ask your coding agent to create a block package.
-Point it at blockr.core so it picks up the right patterns:
+Point your coding agent at the `blockr-block` skill in [blockr.docs](https://github.com/cynkra/blockr.docs) and describe the block:
 
-> Create a new blockr package called blockr.catfacts with a data block
-> that fetches cat facts from `https://catfact.ninja/facts`.
-> Include a parameter for the number of facts to retrieve.
-> Use blockr.core as reference for block patterns.
+> Read https://github.com/cynkra/blockr.docs/blob/main/agents/skills/blockr-block/SKILL.md
+> and any docs it references, then follow it to create a new package
+> `blockr.catfacts` with a block that fetches cat facts from
+> `https://catfact.ninja/facts`. The user should be able to choose how
+> many facts to retrieve.
 
-The agent will:
+The skill picks the pattern (R-driven by default for a first block), names the constructor, writes tests, and registers the block. To install it properly so it auto-triggers in future sessions, see the [blockr.docs skills README](https://github.com/cynkra/blockr.docs/blob/main/agents/skills/README.md).
 
-- Read the blockr.core source code
-- Create a proper R package (DESCRIPTION, NAMESPACE, R/, tests/)
+The skill will:
+
+- Scaffold a proper R package (DESCRIPTION, NAMESPACE, R/, tests/)
 - Write a working block with UI, server logic, and tests
-- Follow the block conventions automatically
+- Verify the block in a real Shiny session
+
+::: tip Why R-driven first?
+JS-driven blocks give nicer UX (multi-row builders, autocomplete, drag handles) but require custom JavaScript. Save them for later — once your block works in R, you can polish the UI with JS.
+:::
 
 ## Test it
 
-```r
-devtools::load_all("blockr.catfacts")
-blockr.core::serve(new_cat_facts_block())
-```
-
-You should see a data table with cat facts and a control to change how many facts to fetch.
-
-## How blocks work
-
-Every block has three parts: a **constructor** (sets defaults), a **server** (reactive logic), and a **UI** (inputs).
+The skill prints the verification command when it's done. It looks like:
 
 ```r
-new_my_block <- function(n = 6L, ...) {
-  new_transform_block(
-    function(id, data) {
-      moduleServer(id, function(input, output, session) {
-        r_n <- reactiveVal(n)
-        observeEvent(input$n, r_n(input$n))
-
-        list(
-          expr = reactive(
-            bbquote(utils::head(.(data), n = .(n)), list(n = r_n()))
-          ),
-          state = list(n = r_n)
-        )
-      })
-    },
-    function(id) {
-      numericInput(NS(id, "n"), "Number of rows", value = n, min = 1L)
-    },
-    class = "my_block",
-    ...
-  )
-}
+pkgload::load_all("blockr.catfacts")
+shiny::runApp(blockr.core::serve(new_cat_facts_block()))
 ```
 
-When reviewing what the agent generates, check these rules:
-
-| Rule | What to look for |
-|------|-----------------|
-| **Reactive values** | Every parameter has a `reactiveVal`, synced via `observeEvent` |
-| **Expressions** | Built with `bbquote()`, using `.(data)` for input data |
-| **State list** | Every constructor parameter appears in the `state` list |
-| **UI init** | Inputs initialize with constructor values, not empty |
-
-## Block types
-
-| If you want to... | Use |
-|---|---|
-| Load external data (files, APIs, databases) | `new_data_block(...)` |
-| Transform incoming data (filter, mutate, join) | `new_transform_block(...)` |
-| Create a visualization | `new_plot_block(...)` |
+You should see a data table with cat facts and a control to change how many to fetch.
 
 ## Try more
 
@@ -94,7 +47,16 @@ Once your first block works, try asking your agent to:
 - Add error handling for API failures
 - Write tests with `testServer()`
 
-Each time, point the agent at blockr.core for reference. It will pick up the patterns.
+Each time, point the agent at the [`blockr-block` skill](https://github.com/cynkra/blockr.docs/blob/main/agents/skills/blockr-block/SKILL.md). It picks up the right patterns automatically.
+
+::: tip Doing this often?
+If you'll be writing blocks regularly, install the skill locally so it auto-triggers on prompts like "add a filter block":
+
+```bash
+git clone --depth 1 https://github.com/cynkra/blockr.docs
+cp -r blockr.docs/agents/skills/blockr-block ~/.claude/skills/
+```
+:::
 
 ## Next steps
 

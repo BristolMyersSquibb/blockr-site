@@ -3,24 +3,7 @@
 This tutorial will get you started with blockr in just a few minutes.
 By the end, you will have built your first data pipeline.
 
-## Start blockr
-
-#### Live playground
-The simplest way to try blockr is in our live playground at [blockr.cloud](https://blockr.cloud/app/empty).
-Note, you will not be able to save and restore sessions this way.
-
-#### Local installation
-
-Run the following commands to install blockr locally and then spin up an empty app:
-
-```r
-install.packages("blockr") # Download blockr. This only needs to be run once.
-blockr::run_app() # Start an empty app. Run this each time you want to boot up blockr.
-```
-
-::: info
-Installing blockr locally assumes you already have [R](https://www.r-project.org/) installed on your system and are comfortable running basic R commands.
-:::
+Make sure blockr is running — see [Installation](00-installation) if you haven't set it up yet.
 
 ## Load data
 
@@ -104,8 +87,3 @@ To finish let's populate some of the inputs in the plot block to create a scatte
 
 And that's it! You've learned how to add blocks to the canvas, search for blocks, and connect them using ports.
 You now have the skills to import, transform, and visualize data in blockr.
-
-## Next steps
-
-- [Build a dashboard](02-build-a-dashboard): arrange your pipeline into a shareable layout
-

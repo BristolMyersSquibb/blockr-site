@@ -1,6 +1,6 @@
 # Installation
 
-Most users access blockr through [blockr.cloud](https://blockr.cloud) and don't need to install anything. If you want to run blockr locally, follow the steps below.
+Most users access blockr through a server-side installation (e.g. [blockr.cloud](https://blockr.cloud)) and don't need to install anything. If you want to run blockr locally, follow the steps below.
 
 ## Prerequisites
 
@@ -19,7 +19,3 @@ blockr::run_app()
 ```
 
 This opens an empty blockr canvas in your browser. From here you can add blocks, connect them, and build workflows just like on blockr.cloud.
-
-## Next steps
-
-- [Build your first app](01-build-your-first-app): a step-by-step tutorial to get started

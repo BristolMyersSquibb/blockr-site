@@ -15,6 +15,7 @@ module.exports = {
       { text: 'Docs', link: '/docs/concepts/01-reactivity' },
       { text: 'Videos', link: '/videos/getting-started' },
       { text: 'Examples', link: '/examples/' },
+      { text: 'Packages', link: '/packages/' },
       { text: 'Playground', link: 'https://blockr.cloud/app/empty' }
     ],
     editLink: {
@@ -35,6 +36,7 @@ module.exports = {
         {
           text: 'Concepts',
           items: [
+            { text: 'User, Builder, Developer', link: '/docs/concepts/02-roles' },
             { text: 'Reactivity', link: '/docs/concepts/01-reactivity' }
           ]
         },

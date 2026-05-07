@@ -20,25 +20,15 @@ The block includes a "distinct" option. When enabled, duplicate rows are removed
 
 ## Filter Block
 
-The filter block filters rows by selecting values from dropdown lists. This provides a point-and-click interface that does not require writing expressions. Use this block when you want to visually select which values to include or exclude, especially for categorical columns.
+The filter block filters rows using one or more conditions. A single block now covers all filtering needs — there's no separate "expression" variant. Add as many conditions as you like, each of one of three types:
 
-For each filter condition, select a column from the dropdown. The interface displays all unique values in that column. Select one or more values to filter by. Choose between "include" mode (keep only rows with selected values) or "exclude" mode (remove rows with selected values).
+- **Values** — pick a column and select values from a dropdown of all unique values in it. Choose `include` mode (keep matching rows) or `exclude` mode (remove them). Best for categorical columns.
+- **Numeric** — pick a column, an operator (`>`, `>=`, `<`, `<=`, `is`, `is not`), and a value. Best for numeric comparisons.
+- **Expression** — write a free R expression (e.g. `mpg > 20 & cyl == 4`, `hp > 100 & wt < 3`, `Species %in% c("setosa", "versicolor")`). Best for calculations or anything that doesn't fit the first two types.
 
-Add multiple conditions using the "+ Add Condition" button. Each condition can be combined with the previous one using AND (all conditions must be true) or OR (at least one condition must be true) logic. The "Preserve selection order" option maintains the order of selected values in the output.
-
-For more elaborate filter conditions using comparisons or calculations, use the filter expression block instead.
+Combine all conditions with a single AND/OR operator at the block level. Add conditions with the "+ Add Condition" button and remove them with the "×" button.
 
 ![Filter block interface with value dropdowns](01-filter-block.png)
-
----
-
-## Filter Expression Block
-
-The filter expression block keeps only rows that meet specific conditions using R expressions. Use this block for more elaborate filtering that cannot be achieved with simple value selection, such as numeric comparisons, calculations, or complex logical conditions.
-
-Supported operators include `>`, `<`, `==`, `!=`, `>=`, `<=` for comparisons, and `%in%` for checking membership in a set of values. Combine multiple conditions using `&` (AND) to require all conditions to be true, or `|` (OR) to require at least one condition to be true. The expression editor provides syntax highlighting and validates your expressions. Examples: `mpg > 20`, `cyl == 4 | cyl == 6`, `hp > 100 & wt < 3`.
-
-![Filter expression block with R expression editor](01-filter-expr-block.png)
 
 ---
 
@@ -66,15 +56,15 @@ The custom type accepts a rows expression like "1:5" or "c(1, 3, 5, 10)". All sl
 
 ---
 
-## Mutate Expression Block
+## Mutate Block
 
-The mutate expression block creates new columns or modifies existing ones using R expressions. Add multiple expressions, each creating or updating a column. Each expression consists of a column name and an R expression that calculates its value.
+The mutate block creates new columns or modifies existing ones using R expressions. Each mutation is a `name = expression` pair: type the new column name and an R expression that computes its value.
 
-Use mathematical operators (`+`, `-`, `*`, `/`, `^`) and functions (`sqrt()`, `log()`, `round()`, etc.) in your expressions. Reference existing columns by name. You can also use conditional logic with `ifelse()` or `dplyr::case_when()`.
+Use mathematical operators (`+`, `-`, `*`, `/`, `^`) and functions (`sqrt()`, `log()`, `round()`, …). Reference existing columns by name. Conditional logic via `ifelse()` or `dplyr::case_when()` is supported.
 
-Expression order matters: later expressions can reference columns created by earlier expressions in the same mutate block. The by parameter allows grouping, making column references operate within each group. Add expressions with the "+ Add Expression" button and remove them with the "×" button.
+Expression order matters: later mutations can reference columns created by earlier ones in the same block. The `by` parameter performs the mutate per group. Add mutations with the "+ Add Expression" button and remove them with the "×" button.
 
-![Mutate expression block with column name and expression fields](01-mutate-expr-block.png)
+![Mutate block with column name and expression fields](01-mutate-block.png)
 
 ---
 
@@ -92,27 +82,14 @@ The block validates that you don't rename the same column twice and ensures colu
 
 ## Summarize Block
 
-The summarize block calculates summary statistics using a point-and-click interface. Each summary consists of three parts: a name for the new column, an aggregation function selected from a dropdown, and the column to aggregate.
+The summarize block calculates summary statistics. A single block now covers both common aggregations and free R expressions — no separate "expression" variant. Each summary has a `name` and one of two types:
 
-Available aggregation functions include mean, sum, minimum, maximum, count, count distinct, median, standard deviation, and more. Select the function from the dropdown and the column to apply it to.
+- **Simple** — pick an aggregation function from the dropdown (mean, sum, min, max, count, count distinct, median, standard deviation, and more) and the column to apply it to. Custom functions can be registered globally via `options(blockr.dplyr.summary_functions = …)`.
+- **Expression** — write a free R expression for cases the simple form can't express: `mean(mpg, na.rm = TRUE)`, `sum(hp) / dplyr::n()`, `weighted.mean(price, weight)`, etc.
 
-Use the "Columns to group by" selector to group data before summarizing. When grouping is enabled, statistics are calculated separately for each group. Add multiple summaries using the "+ Add Summary" button.
-
-For more complex aggregations using custom R expressions, use the summarize expression block instead.
+Use the "Columns to group by" selector to compute summaries within each group. Add summaries with the "+ Add Summary" button.
 
 ![Summarize block with function dropdown and column selector](01-summarize-block.png)
-
----
-
-## Summarize Expression Block
-
-The summarize expression block calculates summary statistics using R expressions. Use this block for more elaborate aggregations that require custom expressions, such as weighted means, ratios, or functions with specific parameters.
-
-Enter expressions like `mean(mpg)`, `sum(hp)`, `dplyr::n()`, or more complex calculations like `mean(mpg, na.rm = TRUE)` or `sum(hp) / dplyr::n()`. The expression editor provides syntax highlighting and autocomplete (Ctrl+Space).
-
-Use the "Columns to group by" selector to group data before summarizing. The "Show advanced options" section provides additional settings like the unpack option for handling functions that return data frames.
-
-![Summarize expression block with R expression editor](01-summarize-expr-block.png)
 
 ---
 

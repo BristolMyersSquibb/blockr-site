@@ -11,7 +11,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 
 <div class="examples-grid">
 <a class="example-card" href="https://blockr.cloud/app/empty" target="_blank">
-<img src="/examples/empty.png" alt="Empty Workflow" />
+<img src="/examples/empty.jpg" alt="Empty Workflow" />
 <div class="example-body">
 <p class="example-title">Empty Workflow</p>
 <p>Start from a clean canvas. Add blocks, connect them, and build your own pipeline from scratch.</p>
@@ -20,80 +20,72 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </a>
 </div>
 
-## Data & Analytics
+## Pharma
 
 <div class="examples-grid">
-<a class="example-card" href="https://blockr.cloud/app/fredr" target="_blank">
-<img src="/examples/fredr.png" alt="FRED Economic Data" />
+<a class="example-card" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
+<img src="/examples/clinical-explorer.jpg" alt="Clinical Explorer" />
 <div class="example-body">
-<p class="example-title">FRED Economic Data</p>
-<p>Fetch and visualize economic indicators from the Federal Reserve using the FRED API.</p>
+<p class="example-title">Clinical Explorer</p>
+<p>AI-enabled exploration of an ADaM trial: demographics, adverse events, lab values, vitals, and patient profile.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
-<a class="example-card" href="https://blockr.cloud/app/lm" target="_blank">
-<img src="/examples/lm.png" alt="Linear Modeling" />
+<a class="example-card" href="https://blockr.cloud/app/admiral" target="_blank">
+<img src="/examples/admiral.jpg" alt="Admiral SDTM to ADSL" />
 <div class="example-body">
-<p class="example-title">Linear Modeling</p>
-<p>Statistical modeling with linear regression, diagnostic plots, and model summaries.</p>
+<p class="example-title">Admiral SDTM → ADSL</p>
+<p>SDTM DM to ADSL derivation pipeline using admiral blocks (blockr.admiral).</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+</div>
+
+## Finance and Insurance
+
+<div class="examples-grid">
+<a class="example-card" href="https://blockr.cloud/app/insurance-poc" target="_blank">
+<img src="/examples/insurance-poc.jpg" alt="Insurance POC (Motor)" />
+<div class="example-body">
+<p class="example-title">Insurance POC (Motor)</p>
+<p>Motor-insurance dashboard across Setup, Portfolio, Profitability, Claims, and Reserving over bundled motor portfolio and losses data.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+<a class="example-card" href="https://blockr.cloud/app/portfolio" target="_blank">
+<img src="/examples/portfolio.jpg" alt="Portfolio Advisor" />
+<div class="example-body">
+<p class="example-title">Portfolio Advisor</p>
+<p>Portfolio optimization with investor profiling and dashboard (blockr.portfolio).</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+<a class="example-card" href="https://blockr.cloud/app/explorer" target="_blank">
+<img src="/examples/explorer.jpg" alt="Share Explorer" />
+<div class="example-body">
+<p class="example-title">Share Explorer</p>
+<p>Interactive stock ticker explorer with candlestick charts (blockr.portfolio).</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+</div>
+
+## Statistics
+
+<div class="examples-grid">
 <a class="example-card" href="https://blockr.cloud/app/tidymodels" target="_blank">
-<img src="/examples/tidymodels.png" alt="Tidymodels ML" />
+<img src="/examples/tidymodels.jpg" alt="Tidymodels ML" />
 <div class="example-body">
 <p class="example-title">Tidymodels ML</p>
 <p>Machine learning workflows powered by tidymodels: preprocessing, model fitting, and evaluation.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
-</div>
-
-## Dashboards
-
-<div class="examples-grid">
-<a class="example-card" href="https://blockr.cloud/app/unibas" target="_blank">
-<img src="/examples/unibas.png" alt="AI Papers Dashboard" />
+<a class="example-card" href="https://blockr.cloud/app/stats-101" target="_blank">
+<img src="/examples/stats-101.jpg" alt="Stats 101 (Penguins)" />
 <div class="example-body">
-<p class="example-title">AI Papers Dashboard</p>
-<p>A BI-style dashboard exploring AI research adoption trends across universities.</p>
-<span class="example-link">Open in Playground →</span>
-</div>
-</a>
-<a class="example-card" href="https://blockr.cloud/app/insurance" target="_blank">
-<img src="/examples/insurance.png" alt="Insurance Portfolio" />
-<div class="example-body">
-<p class="example-title">Insurance Portfolio</p>
-<p>Enterprise-grade star schema data with dm-based crossfilter for insurance portfolio analysis.</p>
-<span class="example-link">Open in Playground →</span>
-</div>
-</a>
-<a class="example-card" href="https://blockr.cloud/app/adam" target="_blank">
-<img src="/examples/adam.png" alt="ADaM Crossfilter" />
-<div class="example-body">
-<p class="example-title">ADaM Crossfilter</p>
-<p>Explore CDISC Pilot 01 ADaM clinical trial data with dynamic crossfiltering across endpoints.</p>
-<span class="example-link">Open in Playground →</span>
-</div>
-</a>
-</div>
-
-## Visualization & AI
-
-<div class="examples-grid">
-<a class="example-card" href="https://blockr.cloud/app/echart-gallery" target="_blank">
-<img src="/examples/echart-gallery.png" alt="ECharts Gallery" />
-<div class="example-body">
-<p class="example-title">ECharts Gallery</p>
-<p>All ECharts visualization types: bar, line, scatter, heatmap, and more.</p>
-<span class="example-link">Open in Playground →</span>
-</div>
-</a>
-<a class="example-card" href="https://blockr.cloud/app/ai-ctrl" target="_blank">
-<img src="/examples/ai-ctrl.png" alt="AI Control + Pipeline Discovery" />
-<div class="example-body">
-<p class="example-title">AI Control + Pipeline Discovery</p>
-<p>AI-powered data filtering and pipeline construction. Click the sparkles button (✨) in a block to describe what you want in plain English.</p>
+<p class="example-title">Stats 101 (Penguins)</p>
+<p>Teaching-grade statistical workflow on palmerpenguins: descriptives, correlation, lm, t-test, normality.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>

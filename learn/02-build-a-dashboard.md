@@ -128,7 +128,3 @@ In this case, users can now adjust the filter values and see the effects on the 
 - **Remove windows** using the "x" button (and add them back with the "+" button)
 - **Resize windows** by dragging their edges to emphasize important components
 - **Toggle inputs and outputs** on and off using the buttons in the top-right corner of each block
-
-## Next steps
-
-- [Create a custom block](03-create-a-block): extend blockr with your own logic
