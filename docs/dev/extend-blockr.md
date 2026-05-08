@@ -51,28 +51,39 @@ block_ui.my_block <- function(block, id) {
 
 ## Block registry
 
-The registry is the "supermarket" for blocks. It tracks all available blocks with metadata (name, description, category, package). When you load a blockr extension package, its blocks are automatically registered via `.onLoad()` and appear in the block menu.
+The registry is the "supermarket" for blocks. It tracks all available blocks with metadata (name, description, category, package). When you load a blockr extension package, its blocks are registered via `.onLoad()` and appear in the block menu, and in the AI/MCP discovery surface, which reads the same registry.
 
 ```r
 # Query available blocks
-available_blocks()
+list_blocks()
 
-# Register a new block
+# Register a new block (in R/zzz.R or at runtime)
 register_block(
-  constructor = new_my_block,
+  ctor = "new_my_block",
   name = "My block",
   description = "Does something useful",
   category = "transform"
 )
 
-# Unregister a block
-unregister_block("my_block")
+# Register many at once (vectorised)
+register_blocks(
+  ctor = c("new_filter_block", "new_select_block"),
+  name = c("Filter rows", "Select columns"),
+  description = c("Filter by predicate", "Pick a subset of columns"),
+  category = c("transform", "transform")
+)
+
+# Unregister
+unregister_blocks("my_block")
 ```
 
-This makes collaboration easy: one team builds a package of domain-specific blocks, registers them, and they appear in every user's block menu.
+`category` must come from `blockr.core::suggested_categories()` (`input`, `transform`, `structured`, `plot`, `table`, `model`, `output`, `utility`, `uncategorized`). Anything else warns. Data-fetching blocks register as `input`, not `data`.
+
+This makes collaboration easy: one team builds a package of domain-specific blocks, registers them, and they appear in every user's block menu. They also become available to the AI assistant for configuration.
 
 ## Further reading
 
+- [blockr.docs](https://github.com/cynkra/blockr.docs): canonical block patterns and skills
 - [Full extend-blockr vignette](https://bristolmyerssquibb.github.io/blockr.core/articles/extend-blockr.html): complete plugin examples
 - [Block registry vignette](https://bristolmyerssquibb.github.io/blockr.core/articles/blocks-registry.html): registry internals
 - [blockr.core API reference](https://bristolmyerssquibb.github.io/blockr.core/): full function documentation
