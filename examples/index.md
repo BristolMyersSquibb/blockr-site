@@ -44,11 +44,11 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 ## Finance and Insurance
 
 <div class="examples-grid">
-<a class="example-card" href="https://blockr.cloud/app/insurance-poc" target="_blank">
-<img src="/examples/insurance-poc.jpg" alt="Insurance POC (Motor)" />
+<a class="example-card" href="https://blockr.cloud/app/uwr" target="_blank">
+<img src="/examples/uwr.jpg" alt="Life UWR Workbench" />
 <div class="example-body">
-<p class="example-title">Insurance POC (Motor)</p>
-<p>Motor-insurance dashboard across Setup, Portfolio, Profitability, Claims, and Reserving over bundled motor portfolio and losses data.</p>
+<p class="example-title">Life UWR Workbench</p>
+<p>Life-insurance underwriting workbench spanning Inputs, Claims, Underwrite, Analysis, and Actuarial views over an employees census, claims history, and bundled actuarial tables.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>

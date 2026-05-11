@@ -159,11 +159,11 @@ features:
         <p class="ep-desc">Portfolio optimization with investor profiling and dashboard.</p>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/explorer" target="_blank">
-      <img src="/examples/explorer.jpg" alt="Share Explorer" />
+    <a class="example-preview" href="https://blockr.cloud/app/admiral" target="_blank">
+      <img src="/examples/admiral.jpg" alt="Admiral SDTM → ADSL" />
       <div class="ep-body">
-        <p class="ep-title">Share Explorer</p>
-        <p class="ep-desc">Interactive stock ticker explorer with candlestick charts.</p>
+        <p class="ep-title">Admiral SDTM → ADSL</p>
+        <p class="ep-desc">SDTM DM to ADSL derivation pipeline using admiral blocks.</p>
       </div>
     </a>
   </div>
