@@ -13,6 +13,7 @@ module.exports = {
     logo: { light: '/logos/logo-e4-light.svg', dark: '/logos/logo-e4-dark.svg' },
     siteTitle: 'blockr',
     nav: [
+      { text: 'Install', link: '/install' },
       { text: 'Learn', link: '/learn/01-build-your-first-app' },
       { text: 'Docs', link: '/docs/concepts/01-reactivity' },
       { text: 'Videos', link: '/videos/getting-started' },
@@ -28,7 +29,6 @@ module.exports = {
       '/learn/': [{
         text: 'Learn',
         items: [
-          { text: 'Installation', link: '/learn/00-installation' },
           { text: 'Build your first app', link: '/learn/01-build-your-first-app' },
           { text: 'Build a dashboard', link: '/learn/02-build-a-dashboard' },
           { text: 'Create a custom block', link: '/learn/03-create-a-block' }

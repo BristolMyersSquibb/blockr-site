@@ -3,7 +3,7 @@
 This tutorial will get you started with blockr in just a few minutes.
 By the end, you will have built your first data pipeline.
 
-Make sure blockr is running — see [Installation](00-installation) if you haven't set it up yet.
+Make sure blockr is running. See [Installation](/install) if you haven't set it up yet.
 
 ## Load data
 
