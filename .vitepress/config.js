@@ -77,7 +77,7 @@ module.exports = {
     ],
     footer: {
       message: `Developed by <a href="https://cynkra.com" target="_blank"><img src="${base}logos/logo-cynkra.png" alt="cynkra" style="height:36px;vertical-align:middle"></a> and <a href="https://www.bms.com" target="_blank"><img src="${base}logos/logo-bms.png" alt="BMS" style="height:24px;vertical-align:middle"></a>`,
-      copyright: ''
+      copyright: `Free and open source, released under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPL-3.0</a>. <a href="https://github.com/BristolMyersSquibb/blockr" target="_blank">Source on GitHub</a>.`
     },
   }
 }

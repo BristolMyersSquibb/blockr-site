@@ -5,6 +5,8 @@ description: Install the blockr meta-package and optional extras.
 
 # Install blockr
 
+blockr is free and open source, released under [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html).
+
 You need [R](https://www.r-project.org/) 4.1 or later. Most users access blockr through a hosted server (e.g. [blockr.cloud](https://blockr.cloud)) and don't need to install anything locally.
 
 ## blockr <Badge type="tip" text="recommended" />

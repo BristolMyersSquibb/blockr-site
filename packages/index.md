@@ -12,6 +12,10 @@ app (engine, layout, sessions, code export) and **block packages** that
 provide the actual building blocks users drag onto a board. Each layer spans
 three maturity tiers — stable on CRAN, in development, and experimental.
 
+All packages are free and open source, released under
+[GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html).
+Source for each package lives on GitHub (linked from the cards below).
+
 ::: tip Just want to get started?
 `install.packages("blockr")` pulls the whole stable stack in one step — the
 **blockr** meta‑package re‑exports the six CRAN packages below.
