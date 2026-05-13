@@ -41,7 +41,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </a>
 </div>
 
-## Finance and Insurance
+## Insurance
 
 <div class="examples-grid">
 <a class="example-card" href="https://blockr.cloud/app/uwr" target="_blank">
@@ -52,6 +52,27 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+<a class="example-card" href="https://blockr.cloud/app/actuarial" target="_blank">
+<img src="/examples/actuarial.jpg" alt="Actuarial Workbench" />
+<div class="example-body">
+<p class="example-title">Actuarial Workbench</p>
+<p>Property-insurance actuarial workbench with portfolio inputs, country / base-rate / experience pricing grids, premium components and run-vs-run comparison over the bundled property portfolio.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+<a class="example-card" href="https://blockr.cloud/app/reinsurance" target="_blank">
+<img src="/examples/reinsurance.jpg" alt="Reinsurance Dashboard" />
+<div class="example-body">
+<p class="example-title">Reinsurance Dashboard</p>
+<p>Reinsurance portfolio analytics with scenario / peril / region crossfilter, premium and exposure KPIs, and cedant / peril drill-downs over a synthetic exposure and event-loss cube.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+</div>
+
+## Finance
+
+<div class="examples-grid">
 <a class="example-card" href="https://blockr.cloud/app/portfolio" target="_blank">
 <img src="/examples/portfolio.jpg" alt="Portfolio Advisor" />
 <div class="example-body">
