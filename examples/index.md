@@ -112,6 +112,29 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </a>
 </div>
 
+## Run an example locally
+
+The demos above run on [blockr.cloud](https://blockr.cloud). To run one in your own R session, follow the setup below.
+
+### Clinical Explorer
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.bi")                # drilldown chart/table, KPIs, summary tables
+pak::pak("BristolMyersSquibb/blockr.dm")    # multi-table / ADaM data-model handling
+pak::pak("BristolMyersSquibb/blockr.session") # save, restore, share board state
+pak::pak("BristolMyersSquibb/blockr.pharma")  # patient profile, swim-lane plot
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/clinical-explorer.R", package = "blockr.pharma"))
+```
+
+This loads the ADaM tables from [pharmaverseadam](https://pharmaverse.github.io/pharmaverseadam/) and the same blocks as the live demo: cross-filter, drilldown chart and table, patient profile, swim-lane plot. Open [`inst/examples/clinical-explorer.R`](https://github.com/BristolMyersSquibb/blockr.pharma/blob/main/inst/examples/clinical-explorer.R) on GitHub to see exactly what the script does.
+
 <style>
 .examples-grid {
   display: grid;
