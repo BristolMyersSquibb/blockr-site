@@ -54,6 +54,9 @@ const blocks = [
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
   align-items: center;
 }
 @media (min-width: 900px) {

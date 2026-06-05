@@ -89,8 +89,8 @@ const captions = [
 
 <style scoped>
 .extend { margin: var(--lp-gap) auto; }
-.ex-head { text-align: center; margin-bottom: 40px; }
-.ex-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+.ex-head { text-align: center; max-width: 680px; margin: 0 auto 40px; }
+.ex-grid { display: grid; grid-template-columns: 1fr; gap: 40px; width: 100%; max-width: 960px; margin-inline: auto; align-items: center; }
 @media (min-width: 920px) { .ex-grid { grid-template-columns: 0.8fr 1.2fr; gap: 48px; } }
 
 .ex-points { list-style: none; padding: 0; margin: 0 0 22px; }

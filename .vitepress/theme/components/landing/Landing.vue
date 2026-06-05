@@ -5,6 +5,7 @@ import HowItWorks from './HowItWorks.vue'
 import Compose from './Compose.vue'
 import Audiences from './Audiences.vue'
 import CodeReveal from './CodeReveal.vue'
+import SaveRestore from './SaveRestore.vue'
 import Extend from './Extend.vue'
 import Showcase from './Showcase.vue'
 import VideoSection from './VideoSection.vue'
@@ -18,6 +19,7 @@ import CtaSection from './CtaSection.vue'
     <HowItWorks />
     <Compose />
     <CodeReveal />
+    <SaveRestore />
     <Extend />
     <Showcase />
     <VideoSection />

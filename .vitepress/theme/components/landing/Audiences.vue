@@ -5,7 +5,6 @@
 const roles = [
   {
     key: 'user',
-    badge: 'Use',
     role: 'User',
     img: '/illustrations/undraw_data_report.svg',
     tagline: 'Open a board, filter, explore. No R needed.',
@@ -18,7 +17,6 @@ const roles = [
   },
   {
     key: 'builder',
-    badge: 'Build',
     role: 'Builder',
     img: '/illustrations/undraw_automation.svg',
     tagline: 'Pick blocks, draw links, save and share. Still no R needed.',
@@ -31,7 +29,6 @@ const roles = [
   },
   {
     key: 'developer',
-    badge: 'Extend',
     role: 'Developer',
     img: '/illustrations/undraw_web_development.svg',
     tagline: 'Write custom blocks for your own data and tasks.',
@@ -65,7 +62,6 @@ const roles = [
         <div class="way-art">
           <img :src="r.img" :alt="r.role" loading="lazy" />
         </div>
-        <span class="way-badge">{{ r.badge }}</span>
         <h3 class="way-role">{{ r.role }}</h3>
         <p class="way-tag">{{ r.tagline }}</p>
         <a class="way-link" :href="r.cta.link">
@@ -115,14 +111,6 @@ const roles = [
   max-height: 150px;
   max-width: 78%;
   width: auto;
-}
-.way-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vp-c-brand-1);
-  margin-bottom: 6px;
 }
 .way-role {
   font-size: 1.5rem;
