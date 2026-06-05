@@ -92,13 +92,9 @@ const roles = [
   border: 1px solid var(--vp-c-divider);
   border-radius: 14px;
   background: var(--vp-c-bg-soft);
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease;
 }
-.way:hover {
-  border-color: var(--vp-c-brand-1);
-  transform: translateY(-4px);
-  box-shadow: var(--lp-shadow);
-}
+.way:hover { border-color: var(--vp-c-brand-1); }
 .way-art {
   width: 100%;
   height: 132px;

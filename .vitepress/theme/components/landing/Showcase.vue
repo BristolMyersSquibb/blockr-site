@@ -73,13 +73,9 @@ const examples = [
   background: var(--vp-c-bg-soft);
   text-decoration: none !important;
   color: inherit !important;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease;
 }
-.ex-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--vp-c-brand-1);
-  box-shadow: var(--lp-shadow);
-}
+.ex-card:hover { border-color: var(--vp-c-brand-1); }
 .ex-shot {
   aspect-ratio: 16 / 10;
   overflow: hidden;
