@@ -1,0 +1,103 @@
+/* Shared, unscoped styles + design tokens for the landing page.
+   Scoped to `.landing` so nothing here leaks into docs pages. */
+
+.landing {
+  --lp-max: 1152px;
+  --lp-gap: clamp(64px, 10vw, 140px);
+  --lp-accent: var(--vp-c-brand-1);
+  --lp-radius: 16px;
+  --lp-shadow: 0 18px 48px -12px rgba(0, 0, 0, 0.22);
+  overflow-x: clip;
+}
+
+/* Full width content, breaking out of the VitePress page container. */
+.landing :is(section) {
+  position: relative;
+}
+
+.lp-container {
+  max-width: var(--lp-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lp-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lp-accent);
+  margin-bottom: 12px;
+}
+
+.lp-h2 {
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  line-height: 1.12;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.lp-lead {
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  max-width: 46ch;
+}
+
+/* Reveal-on-scroll. The directive adds `.reveal` then `.is-visible`. */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Buttons reused across sections (mirror VitePress brand buttons). */
+.lp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 22px;
+  padding: 11px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+  border: 1px solid transparent;
+}
+.lp-btn:hover {
+  transform: translateY(-2px);
+}
+.lp-btn--brand {
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-white);
+}
+.lp-btn--brand:hover {
+  background: var(--vp-c-brand-2);
+}
+.lp-btn--alt {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-divider);
+}
+.lp-btn--alt:hover {
+  border-color: var(--vp-c-brand-1);
+}
