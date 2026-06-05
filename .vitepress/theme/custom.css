@@ -35,8 +35,16 @@
   padding: 0 !important;
 }
 /* The page layout adds a top offset; the hero supplies its own spacing,
-   so collapse any extra so the hero glow reaches the navbar. */
+   so collapse any extra so the hero meets the navbar cleanly. */
 .Layout:has(.landing) .VPContent.is-home,
 .VPContent:has(.landing) {
   padding-top: var(--vp-nav-height) !important;
+}
+
+/* Landing page: no separator line between the navbar and the hero. */
+.Layout:has(.landing) .VPNavBar {
+  border-bottom-color: transparent !important;
+}
+.Layout:has(.landing) .VPNavBar .divider {
+  display: none !important;
 }

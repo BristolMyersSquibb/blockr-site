@@ -11,7 +11,9 @@ const steps = [
   { n: '02', title: 'Add data', body: 'Pick a dataset block.' },
   { n: '03', title: 'Connect', body: 'Drag output port to input port.' },
   { n: '04', title: 'Transform', body: 'Filter, mutate, join.' },
-  { n: '05', title: 'See results', body: 'A plot, instantly live.' }
+  { n: '05', title: 'See results', body: 'A plot, instantly live.' },
+  { n: '06', title: 'Arrange', body: 'Drag windows where you want them.' },
+  { n: '07', title: 'Save & share', body: 'Save the board, share a link.' }
 ]
 
 const sectionEl = ref(null)
@@ -155,6 +157,74 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
                     </div>
                   </div>
                 </div>
+
+                <!-- 06 arrange: drag windows into place -->
+                <div class="fr" :class="{ show: active === 5 }">
+                  <div class="dock three">
+                    <div class="panel a-left">
+                      <div class="ptab"><span class="tab on"><span class="dot fl"></span>Filter <i>×</i></span><span class="full">⤢</span></div>
+                      <div class="detail">
+                        <div class="dl">Column</div><div class="ddl">species ▾</div>
+                        <div class="dl">Values</div><div class="chips"><span>Adelie ×</span><span>Gentoo ×</span></div>
+                      </div>
+                    </div>
+                    <div class="panel a-mid">
+                      <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="full">⤢</span></div>
+                      <div class="canvas"></div>
+                    </div>
+                    <div class="panel a-right">
+                      <div class="ptab"><span class="tab on"><span class="dot gg"></span>Ggplot <i>×</i></span><span class="full">⤢</span></div>
+                      <div class="bars"><span style="height:42%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:88%"></span><span style="height:62%"></span></div>
+                    </div>
+                    <div class="drop r" aria-hidden="true"></div>
+                  </div>
+                  <svg class="cur" style="left:80%;top:46%" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+
+                <!-- 07 save & share: persist the built board, copy a link -->
+                <div class="fr" :class="{ show: active === 6 }">
+                  <div class="dock two">
+                    <div class="panel">
+                      <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="full">⤢</span></div>
+                      <div class="canvas col">
+                        <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Dataset</em><span class="pt out"></span></div>
+                        <svg class="edge" viewBox="0 0 16 30" preserveAspectRatio="none"><path d="M8 0 V24 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <div class="gn"><span class="pt in"></span><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em><span class="pt out"></span></div>
+                        <svg class="edge" viewBox="0 0 16 30" preserveAspectRatio="none"><path d="M8 0 V24 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <div class="gn"><span class="pt in"></span><div class="gtile" style="--t:#fbf0db;--c:#e69f00"><span class="gicon" v-html="ggIcon"></span></div><em>Ggplot</em></div>
+                      </div>
+                    </div>
+                    <div class="panel">
+                      <div class="ptab"><span class="tab on"><span class="dot gg"></span>Ggplot <i>×</i></span><span class="full">⤢</span></div>
+                      <div class="bars"><span style="height:44%"></span><span style="height:72%"></span><span style="height:58%"></span><span style="height:88%"></span><span style="height:64%"></span></div>
+                    </div>
+                  </div>
+                  <!-- save/restore dropdown, anchored under the navbar's left corner -->
+                  <div class="swf">
+                    <div class="swf-tabs">
+                      <button class="swf-tab active" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m12 4 7 4-7 4-7-4 7-4Z"/><path d="m5 12 7 4 7-4"/></svg>
+                        Workflows
+                      </button>
+                      <button class="swf-tab" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>
+                        History
+                      </button>
+                      <span class="swf-ink"></span>
+                    </div>
+                    <div class="swf-pane">
+                      <span class="swf-lab">Recent</span>
+                      <div class="swf-row">
+                        <span class="swf-text"><strong>Build_a_dashboard</strong><small>Just now</small></span>
+                        <span class="swf-dot"></span>
+                      </div>
+                      <div class="swf-sep"></div>
+                      <span class="swf-more">View all workflows
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -165,7 +235,7 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 </template>
 
 <style scoped>
-.how { position: relative; height: 320vh; margin: var(--lp-gap) 0; }
+.how { position: relative; height: 448vh; margin: var(--lp-gap) 0; }
 .how-sticky { position: sticky; top: 0; min-height: 100vh; display: flex; align-items: center; }
 .how-sticky .lp-container { max-width: 1152px; width: 100%; }
 .how-head { text-align: center; max-width: 680px; margin: 0 auto 32px; }
@@ -279,11 +349,42 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .bars { flex: 1; display: flex; align-items: flex-end; gap: 9px; padding: 18px; }
 .bars span { flex: 1; border-radius: 4px 4px 0 0; background: #e69f00; opacity: .85; }
 
+/* 06 arrange: drag windows into a three-up layout */
+.dock.three .a-left { flex: 1; } .dock.three .a-mid { flex: .85; } .dock.three .a-right { flex: 1.1; }
+.fr.show .dock.three .a-left { animation: fromR .6s ease; }
+.fr.show .dock.three .a-right { animation: fromL .6s ease; }
+.drop { position: absolute; top: 10px; bottom: 10px; border: 2px solid var(--purple); background: color-mix(in srgb, var(--purple) 13%, transparent); border-radius: 9px; opacity: 0; }
+.drop.r { right: 10px; width: 30%; }
+.fr.show .drop.r { animation: dz 2s ease infinite; }
+@keyframes fromR { from { transform: translateX(40%); opacity: .3; } }
+@keyframes fromL { from { transform: translateX(-40%); opacity: .3; } }
+@keyframes dz { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+
+/* 07 save & share: workflows/history dropdown under the navbar's left corner */
+.swf { position: absolute; top: 4px; left: 10px; width: 300px; max-width: 62%; background: #fff; border: 1px solid var(--line); border-radius: 0 0 12px 12px; box-shadow: 0 22px 46px -16px rgba(0,0,0,.42); overflow: hidden; z-index: 6; }
+.fr.show .swf { animation: pop .4s cubic-bezier(.16,1,.3,1); transform-origin: top left; }
+.swf-tabs { position: relative; display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+.swf-tab { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 12px 0; background: none; border: 0; font-weight: 600; font-size: 13px; color: var(--mut); }
+.swf-tab.active { color: var(--vp-c-brand-1); }
+.swf-tab svg { width: 15px; height: 15px; }
+.swf-ink { position: absolute; bottom: -1px; left: 0; width: 50%; height: 2px; background: var(--vp-c-brand-1); }
+.swf-pane { padding: 14px 16px 16px; }
+.swf-lab { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--mut); margin-bottom: 10px; }
+.swf-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+.swf-text { display: flex; flex-direction: column; gap: 1px; }
+.swf-text strong { font-size: 14px; color: var(--ink); }
+.swf-text small { font-size: 11.5px; color: var(--mut); }
+.swf-dot { margin-left: auto; width: 8px; height: 8px; border-radius: 50%; background: #009e73; }
+.swf-sep { height: 1px; background: var(--line); margin: 12px 0; }
+.swf-more { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 13px; color: var(--vp-c-brand-1); }
+.swf-more svg { width: 14px; height: 14px; }
+
 @media (prefers-reduced-motion: reduce) {
   .how { height: auto; }
   .how-sticky { position: static; min-height: 0; display: block; }
   .fr { transition: none; }
-  .fr.show .pop, .fr.show .wire path, .fr.show .cur, .fr.show .bars span, .fr.show .pt.hot { animation: none; }
+  .fr.show .pop, .fr.show .wire path, .fr.show .cur, .fr.show .bars span, .fr.show .pt.hot,
+  .fr.show .dock.three .a-left, .fr.show .dock.three .a-right, .fr.show .drop.r, .fr.show .swf { animation: none; }
   .fr.show .wire path { stroke-dashoffset: 0; }
 }
 </style>

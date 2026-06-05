@@ -32,7 +32,6 @@ onBeforeUnmount(() => window.removeEventListener('pointermove', onPointer))
 
 <template>
   <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
     <div class="lp-container hero-grid">
       <div class="hero-copy">
         <span class="lp-eyebrow">Visual, no-code framework for R</span>
@@ -111,11 +110,6 @@ onBeforeUnmount(() => window.removeEventListener('pointermove', onPointer))
 
 <style scoped>
 .hero { position: relative; padding: clamp(72px, 11vw, 132px) 0 clamp(48px, 8vw, 96px); overflow: hidden; }
-.hero-glow {
-  position: absolute; inset: -20% -10% auto -10%; height: 70%;
-  background: radial-gradient(60% 60% at 70% 30%, color-mix(in srgb, var(--vp-c-brand-1) 18%, transparent), transparent 70%);
-  filter: blur(20px); pointer-events: none; z-index: 0;
-}
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 0.92fr 1.08fr; gap: 48px; } }
 .hero-title { font-size: clamp(2.3rem, 5.6vw, 4rem); line-height: 1.06; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 20px; }

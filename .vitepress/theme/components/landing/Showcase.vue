@@ -1,132 +1,113 @@
 <script setup>
-// Real apps people have built. Two marquee rows drift in opposite
-// directions; pause on hover. Pure CSS animation (cheap, GPU-friendly).
-const apps = [
-  { img: '/examples/clinical-explorer.jpg', name: 'Clinical Explorer', tag: 'Trial data', link: 'https://blockr.cloud/app/clinical-explorer' },
-  { img: '/examples/admiral.jpg', name: 'Admiral SDTM → ADSL', tag: 'CDISC pipeline', link: 'https://blockr.cloud/app/admiral' },
-  { img: '/examples/portfolio.jpg', name: 'Portfolio Advisor', tag: 'Finance', link: 'https://blockr.cloud/app/portfolio' },
-  { img: '/examples/reinsurance.jpg', name: 'Reinsurance', tag: 'Actuarial', link: 'https://blockr.cloud/app/reinsurance' },
-  { img: '/examples/actuarial.jpg', name: 'Actuarial', tag: 'Insurance', link: 'https://blockr.cloud/app/actuarial' },
-  { img: '/examples/tidymodels.jpg', name: 'Tidymodels', tag: 'ML', link: 'https://blockr.cloud/app/tidymodels' },
-  { img: '/examples/uwr.jpg', name: 'Underwriting', tag: 'Risk', link: 'https://blockr.cloud/app/uwr' },
-  { img: '/examples/stats-101.jpg', name: 'Stats 101', tag: 'Teaching', link: 'https://blockr.cloud/app/stats-101' }
+// Example dashboards, mirroring the original blockr.site "Try an example"
+// section: a static three-up grid of cards (screenshot + title + description),
+// each linking to a live demo on blockr.cloud.
+const examples = [
+  {
+    img: '/examples/clinical-explorer.jpg',
+    name: 'Clinical Explorer',
+    desc: 'AI-enabled exploration of an ADaM trial: demographics, AE, lab, vitals, patient profile.',
+    link: 'https://blockr.cloud/app/clinical-explorer'
+  },
+  {
+    img: '/examples/portfolio.jpg',
+    name: 'Portfolio Advisor',
+    desc: 'Portfolio optimization with investor profiling and dashboard.',
+    link: 'https://blockr.cloud/app/portfolio'
+  },
+  {
+    img: '/examples/admiral.jpg',
+    name: 'Admiral SDTM → ADSL',
+    desc: 'SDTM DM to ADSL derivation pipeline using admiral blocks.',
+    link: 'https://blockr.cloud/app/admiral'
+  }
 ]
-const half = Math.ceil(apps.length / 2)
-const rowA = apps.slice(0, half)
-const rowB = apps.slice(half)
 </script>
 
 <template>
-  <section class="show">
-    <div class="lp-container show-head" v-reveal>
+  <section class="show lp-container">
+    <div class="show-head" v-reveal>
       <span class="lp-eyebrow">Built with blockr</span>
-      <h2 class="lp-h2">From clinical trials to actuarial models</h2>
+      <h2 class="lp-h2">Try an example</h2>
       <p class="lp-lead" style="margin-inline:auto;text-align:center">
-        Real dashboards, dragged together. Open any one live.
+        Open a demo workflow on blockr.cloud, no install needed.
       </p>
     </div>
 
-    <div class="marquee">
-      <div class="marquee-track left">
-        <a v-for="(a, i) in [...rowA, ...rowA]" :key="'a' + i" class="card" :href="a.link" target="_blank">
-          <img :src="a.img" :alt="a.name" loading="lazy" />
-          <div class="card-meta">
-            <span class="card-name">{{ a.name }}</span>
-            <span class="card-tag">{{ a.tag }}</span>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="marquee">
-      <div class="marquee-track right">
-        <a v-for="(a, i) in [...rowB, ...rowB]" :key="'b' + i" class="card" :href="a.link" target="_blank">
-          <img :src="a.img" :alt="a.name" loading="lazy" />
-          <div class="card-meta">
-            <span class="card-name">{{ a.name }}</span>
-            <span class="card-tag">{{ a.tag }}</span>
-          </div>
-        </a>
-      </div>
+    <div class="show-grid">
+      <a
+        v-for="(e, i) in examples"
+        :key="e.name"
+        class="ex-card"
+        :href="e.link"
+        target="_blank"
+        v-reveal="{ delay: i * 100 }"
+      >
+        <div class="ex-shot"><img :src="e.img" :alt="e.name" loading="lazy" /></div>
+        <div class="ex-body">
+          <h3 class="ex-name">{{ e.name }}</h3>
+          <p class="ex-desc">{{ e.desc }}</p>
+        </div>
+      </a>
     </div>
 
-    <div class="lp-container show-cta">
-      <a class="lp-btn lp-btn--alt" href="/examples/">See all examples</a>
+    <div class="show-cta">
+      <a class="lp-btn lp-btn--alt" href="/examples/">All examples →</a>
     </div>
   </section>
 </template>
 
 <style scoped>
-.show { margin: var(--lp-gap) 0; }
-.show-head { text-align: center; margin-bottom: 36px; }
-.marquee {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  padding: 10px 0;
-}
-.marquee-track {
+.show { margin: var(--lp-gap) auto; }
+.show-head { text-align: center; max-width: 680px; margin: 0 auto 40px; }
+
+.show-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 760px) { .show-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.ex-card {
   display: flex;
-  gap: 18px;
-  width: max-content;
-}
-.marquee-track.left { animation: scroll-l 46s linear infinite; }
-.marquee-track.right { animation: scroll-r 52s linear infinite; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
-@keyframes scroll-l {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes scroll-r {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-.card {
-  flex: none;
-  width: 320px;
-  border-radius: 12px;
-  overflow: hidden;
+  flex-direction: column;
   border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  overflow: hidden;
   background: var(--vp-c-bg-soft);
   text-decoration: none !important;
   color: inherit !important;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.card:hover {
+.ex-card:hover {
   transform: translateY(-4px);
   border-color: var(--vp-c-brand-1);
   box-shadow: var(--lp-shadow);
 }
-.card img {
+.ex-shot {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+.ex-shot img {
   width: 100%;
-  height: 178px;
+  height: 100%;
   object-fit: cover;
   object-position: top left;
   display: block;
-  border-bottom: 1px solid var(--vp-c-divider);
 }
-.card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 11px 14px;
+.ex-body { padding: 16px 18px 20px; }
+.ex-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  border: 0;
+  padding: 0;
 }
-.card-name { font-weight: 600; font-size: 0.92rem; }
-.card-tag {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--vp-c-text-3);
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 20px;
-  padding: 3px 9px;
+.ex-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+  margin: 0;
 }
+
 .show-cta { text-align: center; margin-top: 34px; }
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track.left, .marquee-track.right { animation: none; }
-  .marquee {
-    overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-}
 </style>
