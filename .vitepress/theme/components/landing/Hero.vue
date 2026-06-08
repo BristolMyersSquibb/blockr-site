@@ -15,7 +15,7 @@ const hovering = ref(false)
 const reduced = typeof window !== 'undefined' && window.matchMedia &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 // Longer dwell where there's more to read (browser, result, pages, save).
-const dwell = [2600, 4200, 3400, 7300, 3800, 3600, 7000, 3600]
+const dwell = [4000, 3800, 5000, 7300, 3600]
 let timer = null
 function tick() {
   timer = setTimeout(() => {

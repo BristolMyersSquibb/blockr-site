@@ -17,54 +17,19 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
       <div class="appbar">
         <span class="ab-logo"></span>
         <span class="ab-title">Build a dashboard</span>
-        <span class="ab-saved" :class="{ saving: active === 7 }">
-          <span class="s-un">unsaved</span>
-          <span class="s-ok">saved</span>
-        </span>
-        <button class="ab-save" :class="{ pressed: active === 7 }" type="button">
+        <button class="ab-save" :class="{ pressed: active === 4 }" type="button">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-5h8v5"/></svg>
           Save
         </button>
         <span class="ab-spacer"></span>
-        <span class="ab-page" :class="{ pressed: active === 6, renaming: active === 6 }"><span class="pgl1">Page 1</span><span class="pgl2">Page 2</span> <i>▾</i></span>
-        <span class="ab-avatar">D</span>
       </div>
       <div class="frames">
-        <!-- 01 blank -->
+        <!-- 01 add data: right-click -> Add block -> sidebar opens -> click Data block -->
         <div class="fr" :class="{ show: active === 0 }">
-          <div class="dock"><div class="panel">
-            <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
-            <div class="canvas">
-              <div class="emptyhint">
-                <div class="eh-ic">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 3l14 7-6 2-2 6-6-15z" stroke-linejoin="round"/></svg>
-                  <span>+</span>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="12" r="2.2"/><path d="M8 6h3a4 4 0 0 1 4 4M8 18h3a4 4 0 0 0 4-4"/></svg>
-                </div>
-                <div class="eh-t">Start building your workflow</div>
-                <div class="eh-k"><b>Right-click</b> to add blocks</div>
-                <div class="eh-k"><b>Shift + Drag</b> to connect</div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- 02 add data: right-click -> Add block -> sidebar opens -> click Data block -->
-        <div class="fr" :class="{ show: active === 1 }">
           <div class="dock">
             <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow</span></div>
               <div class="canvas">
-                <div class="emptyhint a2hint">
-                  <div class="eh-ic">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 3l14 7-6 2-2 6-6-15z" stroke-linejoin="round"/></svg>
-                    <span>+</span>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="12" r="2.2"/><path d="M8 6h3a4 4 0 0 1 4 4M8 18h3a4 4 0 0 0 4-4"/></svg>
-                  </div>
-                  <div class="eh-t">Start building your workflow</div>
-                  <div class="eh-k"><b>Right-click</b> to add blocks</div>
-                  <div class="eh-k"><b>Shift + Drag</b> to connect</div>
-                </div>
                 <div class="gn a2node"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em><span class="pt out"></span></div>
               </div>
             </div>
@@ -80,34 +45,29 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
               </div>
             </div>
           </div>
-          <div class="ctxmenu a2ctx" aria-hidden="true">
-            <div class="cx-item a2add">Add block</div>
-            <div class="cx-item">Create stack</div>
-            <div class="cx-item">Paste</div>
-          </div>
           <svg class="a2cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
         </div>
 
-        <!-- 03 connect: drag output port -> input port (top to bottom) -->
-        <div class="fr" :class="{ show: active === 2 }">
+        <!-- 02 connect: drag output port -> input port (top to bottom) -->
+        <div class="fr" :class="{ show: active === 1 }">
           <div class="dock"><div class="panel">
-            <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+            <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow</span></div>
             <div class="canvas col connect">
               <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em><span class="pt out hot"></span></div>
               <div class="wirebox">
-                <svg class="wire" viewBox="0 0 24 64"><path d="M12 3 V52 m0 0-5-6m5 6 5-6" stroke="#7b61ff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="cur" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                <svg class="wire" viewBox="0 0 24 64"><path d="M12 3 V58" stroke="#7b61ff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="ahead" d="M7 53l5 5 5-5" stroke="#7b61ff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="cur grab" viewBox="0 0 24 24" fill="#fff" stroke="#1b1b1f" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.5V8.4a1.25 1.25 0 0 1 2.5 0v3.4"/><path d="M11.5 11.2V6.9a1.25 1.25 0 0 1 2.5 0v4.5"/><path d="M14 11.4V7.7a1.25 1.25 0 0 1 2.5 0V12"/><path d="M16.5 12v-2a1.25 1.25 0 0 1 2.5 0v5c0 3-1.9 5-5 5-1.8 0-3-.6-4.1-1.8L8 16c-.6-.8.4-1.9 1.3-1.4l1.2.7"/></svg>
               </div>
               <div class="gn"><span class="pt in hot"></span><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em></div>
             </div>
           </div></div>
         </div>
 
-        <!-- 04 transform (filter) -->
-        <div class="fr" :class="{ show: active === 3 }">
+        <!-- 03 transform (filter) -->
+        <div class="fr" :class="{ show: active === 2 }">
           <div class="dock two">
             <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow</span></div>
               <div class="canvas col">
                 <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em></div>
                 <svg class="edge" viewBox="0 0 16 34" preserveAspectRatio="none"><path d="M8 0 V28 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -115,26 +75,16 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
               </div>
             </div>
             <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot fl"></span>Filter</span><span class="add">+</span><span class="full">⤢</span></div>
+              <div class="ptab"><span class="tab on"><span class="dot fl"></span>Filter</span></div>
               <div class="detail f4detail">
-                <div class="dl">Column</div>
-                <div class="ddl f4col"><span class="f4colcat">category</span><span class="f4colval">value</span> <i>▾</i></div>
-                <div class="f4ctrl">
-                  <div class="f4cat">
-                    <div class="dl">Values</div>
-                    <div class="chips f4chips">
-                      <span>A ×</span><span class="f4cnew">B ×</span><span class="f4add">+</span>
-                    </div>
-                  </div>
-                  <div class="f4val">
-                    <div class="dl">Condition</div>
-                    <div class="f4thresh"><span class="f4op">value &gt;</span><span class="f4num">12</span></div>
-                  </div>
+                <div class="dl">Values</div>
+                <div class="chips f4chips">
+                  <span>A ×</span><span class="f4cnew">B ×</span><span class="f4add">+</span>
                 </div>
                 <div class="f4table">
                   <div class="f4tr f4thead"><span>#</span><span>category</span><span>value</span></div>
                   <div class="f4tr"><span>1</span><span>A</span><span>21</span></div>
-                  <div class="f4tr f4r2"><span>2</span><span>A</span><span>9</span></div>
+                  <div class="f4tr"><span>2</span><span>A</span><span>9</span></div>
                   <div class="f4tr f4r3"><span>3</span><span>B</span><span>18</span></div>
                   <div class="f4tr f4r4"><span>4</span><span>B</span><span>7</span></div>
                 </div>
@@ -144,68 +94,26 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
           <svg class="f4cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
         </div>
 
-        <!-- 05 visualise: drag the Filter->Plot connection; right panel opens the Plot tab -->
-        <div class="fr" :class="{ show: active === 4 }">
-          <div class="dock two">
-            <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
-              <div class="canvas col">
-                <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em></div>
-                <svg class="edge" viewBox="0 0 16 22" preserveAspectRatio="none"><path d="M8 0 V16 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div class="gn"><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em><span class="pt out hot v5port"></span></div>
-                <div class="wirebox v5wire">
-                  <svg class="wire" viewBox="0 0 24 64"><path d="M12 3 V52 m0 0-5-6m5 6 5-6" stroke="#7b61ff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <svg class="v5cur" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                </div>
-                <div class="gn"><span class="pt in hot v5pin"></span><div class="gtile" style="--t:#fbf0db;--c:#e69f00"><span class="gicon" v-html="ggIcon"></span></div><em>Plot</em></div>
-              </div>
-            </div>
-            <div class="panel">
-              <div class="ptab multi">
-                <span class="tab on v5ftab"><span class="dot fl"></span>Filter</span>
-                <span class="tab v5ptab"><span class="dot gg"></span>Plot</span>
-                <span class="add">+</span>
-                <span class="full">⤢</span>
-              </div>
-              <div class="v5body">
-                <div class="detail v5filter">
-                  <div class="dl">Column</div><div class="ddl">category ▾</div>
-                  <div class="dl">Values</div><div class="chips"><span>A ×</span><span>B ×</span></div>
-                  <div class="f4table">
-                    <div class="f4tr f4thead"><span>#</span><span>category</span><span>value</span></div>
-                    <div class="f4tr"><span>1</span><span>A</span><span>21</span></div>
-                    <div class="f4tr"><span>2</span><span>A</span><span>9</span></div>
-                    <div class="f4tr"><span>3</span><span>B</span><span>18</span></div>
-                    <div class="f4tr"><span>4</span><span>B</span><span>7</span></div>
-                  </div>
-                </div>
-                <div class="v5plotpane">
-                  <div class="plotctl"><span class="pc"><i>X</i>category ▾</span><span class="pc"><i>Y</i>value ▾</span></div>
-                  <div class="bars"><span style="height:44%"></span><span style="height:72%"></span><span style="height:58%"></span><span style="height:88%"></span><span style="height:64%"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 06 arrange: drag a tab out; on release the Filter docks as its own 1/3 panel -->
-        <div class="fr" :class="{ show: active === 5 }">
+        <!-- 04 visualise & arrange: plot connects, then the Filter docks as its own panel -->
+        <div class="fr" :class="{ show: active === 3 }">
           <div class="dock arr3">
             <div class="panel pw">
-              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow</span></div>
               <div class="canvas col">
                 <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em></div>
                 <svg class="edge" viewBox="0 0 16 22" preserveAspectRatio="none"><path d="M8 0 V16 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div class="gn"><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em></div>
-                <svg class="edge" viewBox="0 0 16 22" preserveAspectRatio="none"><path d="M8 0 V16 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div class="gn"><div class="gtile" style="--t:#fbf0db;--c:#e69f00"><span class="gicon" v-html="ggIcon"></span></div><em>Plot</em></div>
+                <div class="gn"><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em><span class="pt out hot"></span></div>
+                <div class="wirebox m5wire">
+                  <svg class="wire" viewBox="0 0 24 64"><path d="M12 3 V58" stroke="#7b61ff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path class="ahead" d="M7 53l5 5 5-5" stroke="#7b61ff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg class="m5cur" viewBox="0 0 24 24" fill="#fff" stroke="#1b1b1f" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.5V8.4a1.25 1.25 0 0 1 2.5 0v3.4"/><path d="M11.5 11.2V6.9a1.25 1.25 0 0 1 2.5 0v4.5"/><path d="M14 11.4V7.7a1.25 1.25 0 0 1 2.5 0V12"/><path d="M16.5 12v-2a1.25 1.25 0 0 1 2.5 0v5c0 3-1.9 5-5 5-1.8 0-3-.6-4.1-1.8L8 16c-.6-.8.4-1.9 1.3-1.4l1.2.7"/></svg>
+                </div>
+                <div class="gn"><span class="pt in hot"></span><div class="gtile" style="--t:#fbf0db;--c:#e69f00"><span class="gicon" v-html="ggIcon"></span></div><em>Plot</em></div>
               </div>
             </div>
             <div class="panel pf">
               <div class="pcontent">
-                <div class="ptab"><span class="tab on"><span class="dot fl"></span>Filter <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+                <div class="ptab"><span class="tab on"><span class="dot fl"></span>Filter</span></div>
                 <div class="detail">
-                  <div class="dl">Column</div><div class="ddl">category ▾</div>
                   <div class="dl">Values</div><div class="chips"><span>A ×</span><span>B ×</span></div>
                   <div class="f4table">
                     <div class="f4tr f4thead"><span>#</span><span>category</span><span>value</span></div>
@@ -219,14 +127,13 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
             </div>
             <div class="panel pp">
               <div class="ptab multi">
-                <span class="tab on dragging"><span class="dot fl"></span>Filter <i>×</i></span>
+                <span class="tab on dragging"><span class="dot fl"></span>Filter</span>
                 <span class="tab plottab"><span class="dot gg"></span>Plot</span>
-                <span class="add">+</span>
-                <span class="full">⤢</span>
+                
+                
               </div>
               <div class="ppbody">
                 <div class="detail ppfilter">
-                  <div class="dl">Column</div><div class="ddl">category ▾</div>
                   <div class="dl">Values</div><div class="chips"><span>A ×</span><span>B ×</span></div>
                   <div class="f4table">
                     <div class="f4tr f4thead"><span>#</span><span>category</span><span>value</span></div>
@@ -250,85 +157,34 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
           </svg>
         </div>
 
-        <!-- 07 pages: open the page menu to build multi-page dashboards -->
-        <div class="fr" :class="{ show: active === 6 }">
-          <div class="dock two">
+        <!-- 05 save & share: persist the built board, copy a link -->
+        <div class="fr" :class="{ show: active === 4 }">
+          <div class="dock">
             <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow</span></div>
               <div class="canvas col">
                 <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em></div>
-                <svg class="edge" viewBox="0 0 16 30" preserveAspectRatio="none"><path d="M8 0 V24 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="edge" viewBox="0 0 16 22" preserveAspectRatio="none"><path d="M8 0 V16 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <div class="gn"><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em></div>
-                <svg class="edge" viewBox="0 0 16 30" preserveAspectRatio="none"><path d="M8 0 V24 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="edge" viewBox="0 0 16 22" preserveAspectRatio="none"><path d="M8 0 V16 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <div class="gn"><div class="gtile" style="--t:#fbf0db;--c:#e69f00"><span class="gicon" v-html="ggIcon"></span></div><em>Plot</em></div>
               </div>
             </div>
             <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot gg"></span>Plot <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
-              <div class="bars"><span style="height:44%"></span><span style="height:72%"></span><span style="height:58%"></span><span style="height:88%"></span><span style="height:64%"></span></div>
-            </div>
-          </div>
-          <div class="pgdrop pgmenu">
-            <div class="pg-row active">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="7" y="4" width="11" height="14" rx="2"/><path d="M4 8v9a3 3 0 0 0 3 3h7"/></svg>
-              Page 1
-            </div>
-            <div class="pg-sep"></div>
-            <div class="pg-row new pg-pick">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              New page
-            </div>
-          </div>
-          <div class="pgdrop pgmenu2">
-            <div class="pg-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="7" y="4" width="11" height="14" rx="2"/><path d="M4 8v9a3 3 0 0 0 3 3h7"/></svg>
-              Page 1
-            </div>
-            <div class="pg-row active">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="7" y="4" width="11" height="14" rx="2"/><path d="M4 8v9a3 3 0 0 0 3 3h7"/></svg>
-              Page 2
-            </div>
-            <div class="pg-sep"></div>
-            <div class="pg-row new">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              New page
-            </div>
-          </div>
-          <div class="pgmodal" aria-hidden="true">
-            <div class="pgm-card">
-              <div class="pgm-head">NEW VIEW</div>
-              <div class="pgm-body">
-                <div class="pgm-lab">View name</div>
-                <div class="pgm-field">Page 2</div>
-                <div class="pgm-lab">Extensions to show</div>
-                <div class="pgm-field muted">Select extensions…</div>
-                <div class="pgm-actions"><span class="pgm-btn">Create view</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="v7empty" aria-hidden="true">
-            <div class="v7e-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg></div>
-            <div class="v7e-t">Start by adding a panel</div>
-            <span class="v7e-btn">Add panel</span>
-          </div>
-          <svg class="s7cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        </div>
-
-        <!-- 08 save & share: persist the built board, copy a link -->
-        <div class="fr" :class="{ show: active === 7 }">
-          <div class="dock two">
-            <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot wf"></span>Workflow <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
-              <div class="canvas col">
-                <div class="gn"><div class="gtile" style="--t:#e6f0f7;--c:#0072b2"><span class="gicon" v-html="dbIcon"></span></div><em>Data</em></div>
-                <svg class="edge" viewBox="0 0 16 30" preserveAspectRatio="none"><path d="M8 0 V24 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div class="gn"><div class="gtile" style="--t:#e3f3ee;--c:#009e73"><span class="gicon" v-html="flIcon"></span></div><em>Filter</em></div>
-                <svg class="edge" viewBox="0 0 16 30" preserveAspectRatio="none"><path d="M8 0 V24 m0 0-4-4m4 4 4-4" stroke="#c5c7cd" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <div class="gn"><div class="gtile" style="--t:#fbf0db;--c:#e69f00"><span class="gicon" v-html="ggIcon"></span></div><em>Plot</em></div>
+              <div class="ptab"><span class="tab on"><span class="dot fl"></span>Filter</span></div>
+              <div class="detail">
+                <div class="dl">Values</div><div class="chips"><span>A ×</span><span>B ×</span></div>
+                <div class="f4table">
+                  <div class="f4tr f4thead"><span>#</span><span>category</span><span>value</span></div>
+                  <div class="f4tr"><span>1</span><span>A</span><span>21</span></div>
+                  <div class="f4tr"><span>2</span><span>A</span><span>9</span></div>
+                  <div class="f4tr"><span>3</span><span>B</span><span>18</span></div>
+                  <div class="f4tr"><span>4</span><span>B</span><span>7</span></div>
+                </div>
               </div>
             </div>
             <div class="panel">
-              <div class="ptab"><span class="tab on"><span class="dot gg"></span>Plot <i>×</i></span><span class="add">+</span><span class="full">⤢</span></div>
+              <div class="ptab"><span class="tab on"><span class="dot gg"></span>Plot</span></div>
               <div class="bars"><span style="height:44%"></span><span style="height:72%"></span><span style="height:58%"></span><span style="height:88%"></span><span style="height:64%"></span></div>
             </div>
           </div>
@@ -389,9 +245,9 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 @keyframes s8move {
   0% { left: 50%; top: 52%; opacity: 0; }
   8% { left: 50%; top: 52%; opacity: 1; }
-  46% { left: 280px; top: -26px; }
-  53% { left: 280px; top: -26px; }
-  100% { left: 280px; top: -26px; opacity: 1; }
+  46% { left: 208px; top: -26px; }
+  53% { left: 208px; top: -26px; }
+  100% { left: 208px; top: -26px; opacity: 1; }
 }
 .ab-spacer { flex: 1; }
 .ab-page { font-weight: 600; border: 1px solid var(--line); border-radius: 7px; padding: 3px 10px; }
@@ -406,8 +262,6 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .ptab { display: flex; align-items: center; gap: 6px; padding: 7px 9px; border-bottom: 1px solid var(--line); }
 .tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 8px; font-weight: 600; color: var(--ink); background: #fff; border: 1px solid var(--line); }
 .tab i { font-style: normal; color: var(--mut); margin-left: 2px; }
-.add, .full { color: var(--mut); padding: 0 5px; }
-.full { margin-left: auto; }
 .dot { width: 8px; height: 8px; border-radius: 50%; }
 .dot.wf { background: #6b7280; } .dot.fl { background: #009e73; } .dot.gg { background: #e69f00; }
 
@@ -438,20 +292,24 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .edge { width: 16px; height: 32px; flex: none; }
 .wirebox { position: relative; width: 28px; height: 74px; flex: none; }
 .wire { position: absolute; inset: 0; width: 100%; height: 100%; }
-.connect .cur { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 18px; height: 18px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); opacity: 0; }
+.connect .cur { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 21px; height: 21px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); opacity: 0; }
 
 /* entrance micro-animations */
 .fr.show .pop { animation: pop .5s cubic-bezier(.16,1,.3,1); }
 /* connect: the wire draws in step with the cursor dragging from port to port */
-.fr.show .connect .wire path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawWire 1.9s ease forwards .4s; }
+.fr.show .connect .wire path { stroke-dasharray: 55; stroke-dashoffset: 55; animation: drawWire 2.4s ease forwards .4s; }
 .fr.show .connect .pt.out.hot { animation: pulse 1.6s ease-in-out infinite; }
-.fr.show .connect .pt.in.hot { animation: pulse 1.6s ease-in-out infinite 1s; }
-.fr.show .connect .cur { animation: dragWire 1.9s ease forwards .4s; }
+.fr.show .connect .pt.in.hot { animation: pulse 1.6s ease-in-out infinite 1.2s; }
+.fr.show .connect .cur { animation: dragWire 2.4s ease forwards .4s; }
 .fr.show .bars span { animation: rise .5s ease backwards; }
 .fr.show .bars span:nth-child(2){animation-delay:.05s} .fr.show .bars span:nth-child(3){animation-delay:.1s} .fr.show .bars span:nth-child(4){animation-delay:.15s} .fr.show .bars span:nth-child(5){animation-delay:.2s}
 @keyframes pop { from { opacity: 0; transform: scale(.6); } }
 @keyframes drawWire { to { stroke-dashoffset: 0; } }
 @keyframes dragWire { 0% { top: -2px; opacity: 0; } 12% { opacity: 1; } 100% { top: 58px; opacity: 1; } }
+/* arrowhead pops in once the wire reaches the port (kept off the dashed reveal so sync holds) */
+.connect .wire .ahead { opacity: 0; }
+.fr.show .connect .wire .ahead { animation: aheadIn .45s ease forwards 2.55s; }
+@keyframes aheadIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes pulse { 0%,100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--purple) 10%, transparent); } 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--purple) 28%, transparent); } }
 @keyframes rise { from { height: 0 !important; opacity: .3; } }
 
@@ -471,38 +329,24 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .ap-tag { flex: none; align-self: flex-start; color: var(--mut); background: var(--soft); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; font-size: 9px; }
 
 /* 02 add data: right-click menu -> sidebar opens -> click Data block */
+/* 02 add data: sidebar open, cursor clicks the Data block, it lands on the canvas */
 .a2panel { flex: 0 0 0; overflow: hidden; }
 .a2panel .ap-inner { display: flex; flex-direction: column; min-width: 236px; height: 100%; }
-.fr.show .a2panel { animation: a2open 3.8s cubic-bezier(.16,1,.3,1) forwards; }
-@keyframes a2open { 0%,40% { flex-basis: 0; } 56%,100% { flex-basis: 44%; } }
-.fr.show .a2hint { animation: a2hide 3.8s ease forwards; }
-@keyframes a2hide { 0%,40% { opacity: 1; } 52%,100% { opacity: 0; } }
-/* hint and the new node share one grid cell so they overlap (not stack) */
-.canvas .a2hint, .canvas .a2node { grid-row: 1; grid-column: 1; }
+.fr.show .a2panel { animation: a2open 3.4s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes a2open { 0% { flex-basis: 0; } 14%,100% { flex-basis: 44%; } }
 .a2node { opacity: 0; }
-.fr.show .a2node { animation: a2drop 3.8s ease forwards; }
-@keyframes a2drop { 0%,74% { opacity: 0; transform: scale(.6); } 82%,100% { opacity: 1; transform: scale(1); } }
-.a2ctx { position: absolute; left: 45%; top: 39%; min-width: 142px; background: #fff; border: 1px solid var(--line); border-radius: 9px; box-shadow: 0 16px 36px -12px rgba(0,0,0,.4); overflow: hidden; opacity: 0; transform-origin: top left; z-index: 8; }
-.a2ctx .cx-item { padding: 10px 16px; font-weight: 500; color: var(--ink); }
-.a2ctx .cx-item:not(:last-child) { border-bottom: 1px solid var(--line); }
-.fr.show .a2ctx { animation: a2ctx 3.8s ease forwards; }
-@keyframes a2ctx { 0%,9% { opacity: 0; transform: scale(.9); } 13%,40% { opacity: 1; transform: scale(1); } 46%,100% { opacity: 0; transform: scale(.97); } }
-.fr.show .a2add { animation: a2hl 3.8s ease forwards; }
-@keyframes a2hl { 0%,26% { background: transparent; } 32%,44% { background: var(--soft); } 46%,100% { background: transparent; } }
-.fr.show .a2pick { animation: a2click 3.8s ease forwards; }
-@keyframes a2click { 0%,66% { transform: scale(1); } 71% { transform: scale(.97); } 76%,100% { transform: scale(1); } }
-/* arrow tip sits at ~(3.75,2.25)px from the svg corner; shift so the tip is the anchor */
-.a2cur { position: absolute; left: 45%; top: 41%; width: 18px; height: 18px; z-index: 9; transform: translate(-3.75px, -2.25px); filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); opacity: 0; }
-.fr.show .a2cur { animation: a2move 3.8s ease forwards; }
+.fr.show .a2node { animation: a2drop 3.4s ease forwards; }
+@keyframes a2drop { 0%,50% { opacity: 0; transform: scale(.6); } 60%,100% { opacity: 1; transform: scale(1); } }
+.fr.show .a2pick { animation: a2click 3.4s ease forwards; }
+@keyframes a2click { 0%,38% { transform: scale(1); } 44% { transform: scale(.97); } 50%,100% { transform: scale(1); } }
+.a2cur { position: absolute; left: 60%; top: 30%; width: 18px; height: 18px; z-index: 9; transform: translate(-3.75px, -2.25px); filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); opacity: 0; }
+.fr.show .a2cur { animation: a2move 3.4s ease forwards; }
 @keyframes a2move {
-  0% { left: 45%; top: 41%; opacity: 0; }
-  5% { left: 45%; top: 41%; opacity: 1; }
-  18% { left: 45%; top: 41%; }
-  30% { left: calc(45% + 71px); top: 46%; }
-  40% { left: calc(45% + 71px); top: 46%; }
-  62% { left: 77%; top: 47%; }
-  72% { left: 77%; top: 47%; }
-  100% { left: 77%; top: 47%; opacity: 1; }
+  0% { left: 60%; top: 30%; opacity: 0; }
+  8% { left: 60%; top: 30%; opacity: 1; }
+  34% { left: 78%; top: 40%; }
+  44% { left: 78%; top: 40%; }
+  100% { left: 78%; top: 40%; opacity: 1; }
 }
 
 .dock.two .panel:first-child { flex: .9; }
@@ -518,32 +362,14 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 
 /* 04 transform: live table. add B -> remove B -> switch column to value -> threshold */
 .f4detail { position: relative; }
-.f4col { position: relative; }
-.f4colval { display: none; }
-.fr.show .f4colcat { animation: f4colOut 7.2s ease forwards; }
-.f4colval { display: inline; position: absolute; left: 12px; opacity: 0; }
-.fr.show .f4colval { animation: f4colIn 7.2s ease forwards; }
-@keyframes f4colOut { 0%,52% { opacity: 1; } 58%,100% { opacity: 0; } }
-@keyframes f4colIn { 0%,52% { opacity: 0; } 58%,100% { opacity: 1; } }
-/* control area: categorical chips crossfade to a numeric threshold */
-.f4ctrl { position: relative; min-height: 58px; }
-.f4cat, .f4val { position: absolute; inset: 0; }
-.f4val { opacity: 0; }
-.fr.show .f4cat { animation: f4catOut 7.2s ease forwards; }
-.fr.show .f4val { animation: f4valIn 7.2s ease forwards; }
-@keyframes f4catOut { 0%,54% { opacity: 1; } 60%,100% { opacity: 0; } }
-@keyframes f4valIn { 0%,56% { opacity: 0; } 62%,100% { opacity: 1; } }
-.f4thresh { display: flex; align-items: center; gap: 8px; }
-.f4op { font-weight: 600; color: var(--mut); }
-.f4num { background: var(--soft); border: 1px solid var(--line); border-radius: 7px; padding: 6px 14px; font-weight: 700; color: var(--ink); }
 .f4chips .f4add { background: var(--soft); border: 1px solid var(--line); color: var(--mut); font-weight: 700; border-radius: 7px; padding: 4px 9px; }
 /* B chip: appears (add), then disappears (remove) */
 .f4cnew { overflow: hidden; white-space: nowrap; max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; }
-.fr.show .f4cnew { animation: f4chip 7.2s ease forwards; }
+.fr.show .f4cnew { animation: f4chip 4.8s ease forwards; }
 @keyframes f4chip {
-  0%,14% { max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; }
-  20%,32% { max-width: 60px; opacity: 1; padding-left: 9px; padding-right: 9px; }
-  40%,100% { max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; }
+  0%,16% { max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; }
+  26%,46% { max-width: 60px; opacity: 1; padding-left: 9px; padding-right: 9px; }
+  56%,100% { max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; }
 }
 .f4table { margin-top: 12px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 11px; }
 .f4tr { display: grid; grid-template-columns: 26px 1fr 46px; align-items: center; padding: 5px 10px; border-top: 1px solid var(--line); color: var(--ink); }
@@ -551,36 +377,25 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .f4tr span:nth-child(2) { color: var(--vp-c-brand-1); font-weight: 700; }
 .f4thead { background: var(--soft); color: var(--mut); font-weight: 700; font-size: 9.5px; text-transform: uppercase; letter-spacing: .04em; }
 .f4thead span:nth-child(2) { color: var(--mut); font-weight: 700; }
-/* rows toggle visibility per phase (collapsed = hidden) */
-.f4r2, .f4r3, .f4r4 { overflow: hidden; }
-.f4r3, .f4r4 { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
-.fr.show .f4r2 { animation: f4r2 7.2s ease forwards; }
-.fr.show .f4r3 { animation: f4r3 7.2s ease forwards; }
-.fr.show .f4r4 { animation: f4r4 7.2s ease forwards; }
-@keyframes f4r2 { 0%,62% { max-height: 30px; opacity: 1; padding-top: 5px; padding-bottom: 5px; } 70%,100% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; } }
-@keyframes f4r3 {
-  0%,16% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
-  24%,32% { max-height: 30px; opacity: 1; padding-top: 5px; padding-bottom: 5px; border-top-width: 1px; }
-  42%,62% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
-  70%,100% { max-height: 30px; opacity: 1; padding-top: 5px; padding-bottom: 5px; border-top-width: 1px; }
-}
-@keyframes f4r4 {
-  0%,16% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
-  24%,32% { max-height: 30px; opacity: 1; padding-top: 5px; padding-bottom: 5px; border-top-width: 1px; }
-  40%,100% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
+/* B rows appear when B is added, disappear when removed */
+.f4r3, .f4r4 { overflow: hidden; max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
+.fr.show .f4r3 { animation: f4row 4.8s ease forwards; }
+.fr.show .f4r4 { animation: f4row 4.8s ease forwards .1s; }
+@keyframes f4row {
+  0%,20% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
+  30%,46% { max-height: 30px; opacity: 1; padding-top: 5px; padding-bottom: 5px; border-top-width: 1px; }
+  56%,100% { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; border-top-width: 0; }
 }
 .f4cur { position: absolute; width: 18px; height: 18px; z-index: 9; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); opacity: 0; transform: translate(-3.75px, -2.25px); }
-.fr.show .f4cur { animation: f4move 7.2s ease forwards; }
+.fr.show .f4cur { animation: f4move 4.8s ease forwards; }
 @keyframes f4move {
-  0% { left: 56%; top: 42%; opacity: 0; }
-  6% { left: 56%; top: 44%; opacity: 1; }
-  14% { left: 64.6%; top: 47.4%; }
-  20% { left: 64.6%; top: 47.4%; }
-  30% { left: 61%; top: 47.4%; }
-  36% { left: 61%; top: 47.4%; }
-  48% { left: 73.4%; top: 30.8%; }
-  54% { left: 73.4%; top: 30.8%; }
-  100% { left: 73.4%; top: 30.8%; opacity: 1; }
+  0% { left: 56%; top: 30%; opacity: 0; }
+  8% { left: 56%; top: 32%; opacity: 1; }
+  18% { left: 64.6%; top: 29.8%; }
+  26% { left: 64.6%; top: 29.8%; }
+  44% { left: 61%; top: 29.8%; }
+  52% { left: 61%; top: 29.8%; }
+  100% { left: 61%; top: 29.8%; opacity: 1; }
 }
 .plotctl { display: flex; gap: 8px; padding: 11px 14px 0; }
 .pc { display: inline-flex; align-items: center; gap: 6px; background: var(--soft); border: 1px solid var(--line); border-radius: 7px; padding: 5px 10px; font-weight: 600; font-size: 11px; color: var(--ink); }
@@ -614,47 +429,70 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 }
 .bars span { flex: 1; border-radius: 4px 4px 0 0; background: #e69f00; opacity: .85; }
 
-/* 06 arrange: drag Filter out; on release it docks as its own third panel */
+/* 04 visualise & arrange — one 6s, 3-phase sequence:
+   (1) connect Filter->Plot in the DAG, (2) Plot nests as a tab on the Filter panel,
+   (3) drag the Filter tab out; it docks as its own panel with a guide. */
 .dock.arr3 .panel { flex: 0 1 0; min-width: 0; }
 .arr3 .pw { flex-grow: 3; } .arr3 .pf { flex-grow: 0; overflow: hidden; } .arr3 .pp { flex-grow: 3; }
-.fr.show .arr3 .pw { animation: arrW 2.8s cubic-bezier(.16,1,.3,1) forwards; }
-.fr.show .arr3 .pf { animation: arrF 2.8s cubic-bezier(.16,1,.3,1) forwards; }
-.fr.show .arr3 .pp { animation: arrP 2.8s cubic-bezier(.16,1,.3,1) forwards; }
-@keyframes arrW { 0%,52% { flex-grow: 3; } 64%,100% { flex-grow: 2; } }
-@keyframes arrF { 0%,52% { flex-grow: 0; } 64%,100% { flex-grow: 2; } }
-@keyframes arrP { 0%,52% { flex-grow: 3; } 64%,100% { flex-grow: 2; } }
-/* the new Filter panel reveals its content as it opens */
+.fr.show .arr3 .pw { animation: arrW 7s cubic-bezier(.16,1,.3,1) forwards; }
+.fr.show .arr3 .pf { animation: arrF 7s cubic-bezier(.16,1,.3,1) forwards; }
+.fr.show .arr3 .pp { animation: arrP 7s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes arrW { 0%,82% { flex-grow: 3; } 92%,100% { flex-grow: 2; } }
+@keyframes arrF { 0%,82% { flex-grow: 0; } 92%,100% { flex-grow: 2; } }
+@keyframes arrP { 0%,82% { flex-grow: 3; } 92%,100% { flex-grow: 2; } }
+/* the docked Filter panel reveals its content once it opens (phase 3) */
 .pf .pcontent { display: flex; flex-direction: column; height: 100%; opacity: 0; }
-.fr.show .pf .pcontent { animation: arrLate 2.8s ease forwards; }
-@keyframes arrLate { 0%,56% { opacity: 0; } 74%,100% { opacity: 1; } }
-/* the source panel: Filter tab leaves, Plot tab takes over, content swaps to chart */
+.fr.show .pf .pcontent { animation: arrLate 7s ease forwards; }
+@keyframes arrLate { 0%,84% { opacity: 0; } 94%,100% { opacity: 1; } }
+/* right panel: Filter detail -> Plot chart (phase 2), then Filter tab leaves (phase 3) */
 .pp .ppbody { position: relative; flex: 1; min-height: 0; }
 .pp .ppfilter, .pp .ppplot { position: absolute; inset: 0; }
 .pp .ppplot { opacity: 0; }
-.fr.show .pp .ppfilter { animation: arrOut 2.8s ease forwards; }
-.fr.show .pp .ppplot { animation: arrLate 2.8s ease forwards; }
-.pp .tab.dragging { overflow: hidden; white-space: nowrap; opacity: .45; }
-.fr.show .pp .tab.dragging { animation: arrTabOut 2.8s ease forwards; }
-.pp .plottab { background: transparent; border-color: transparent; color: var(--mut); }
-.fr.show .pp .plottab { animation: arrTabOn 2.8s ease forwards; }
-@keyframes arrOut { 0%,50% { opacity: 1; } 60%,100% { opacity: 0; } }
-@keyframes arrTabOut { 0%,50% { opacity: .45; max-width: 140px; } 58% { opacity: 0; } 64%,100% { opacity: 0; max-width: 0; padding: 0; margin: 0; border-width: 0; } }
-@keyframes arrTabOn { 0%,55% { background: transparent; border-color: transparent; color: var(--mut); } 64%,100% { background: #fff; border-color: var(--line); color: var(--ink); } }
-/* drop guide: previews the one-third footprint the panel will occupy */
-.vguide { position: absolute; top: 12px; bottom: 12px; left: 34.5%; width: 31%; border: 2px dashed var(--purple); background: color-mix(in srgb, var(--purple) 12%, transparent); border-radius: 10px; opacity: 0; pointer-events: none; z-index: 5; }
-.fr.show .vguide { animation: arrGuide 2.8s ease forwards; }
-@keyframes arrGuide { 0%,12% { opacity: 0; } 24%,50% { opacity: 1; } 60%,100% { opacity: 0; } }
-/* the picked-up tab, trailing the grabbing-hand cursor */
-.ghost { position: absolute; left: 58%; top: 15%; z-index: 7; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 8px; font-weight: 600; font-size: 13px; color: var(--ink); background: #fff; border: 1px solid var(--purple); box-shadow: 0 12px 24px -7px rgba(0,0,0,.4); transform: translate(-4px, 12px) rotate(-3deg); opacity: 0; }
-.grabcur { position: absolute; left: 58%; top: 15%; width: 21px; height: 21px; z-index: 8; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
-.fr.show .grabcur, .fr.show .ghost { animation: arrHand 2.8s ease forwards; }
-@keyframes arrHand {
-  0% { opacity: 0; left: 58%; top: 15%; }
-  8% { opacity: 1; left: 58%; top: 15%; }
-  50% { opacity: 1; left: 50%; top: 50%; }
-  56% { opacity: 0; left: 50%; top: 50%; }
-  100% { opacity: 0; left: 50%; top: 50%; }
+.fr.show .pp .ppfilter { animation: ppOut 7s ease forwards; }
+.fr.show .pp .ppplot { animation: ppIn 7s ease forwards; }
+@keyframes ppOut { 0%,28% { opacity: 1; } 40%,100% { opacity: 0; } }
+@keyframes ppIn { 0%,36% { opacity: 0; } 46%,100% { opacity: 1; } }
+.pp .tab.dragging { overflow: hidden; white-space: nowrap; }
+.fr.show .pp .tab.dragging { animation: ppFilterTab 7s ease forwards; }
+@keyframes ppFilterTab {
+  0%,28% { background: #fff; border-color: var(--line); color: var(--ink); max-width: 140px; opacity: 1; padding-left: 11px; padding-right: 11px; }
+  40%,72% { background: transparent; border-color: transparent; color: var(--mut); max-width: 140px; opacity: 1; padding-left: 11px; padding-right: 11px; }
+  84% { opacity: 0; max-width: 140px; }
+  92%,100% { opacity: 0; max-width: 0; padding-left: 0; padding-right: 0; border-width: 0; }
 }
+/* Plot tab nests onto the Filter panel in phase 2 */
+.pp .plottab { overflow: hidden; white-space: nowrap; max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; background: transparent; border-color: transparent; color: var(--mut); }
+.fr.show .pp .plottab { animation: ppPlotIn 7s ease forwards; }
+@keyframes ppPlotIn {
+  0%,26% { max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; background: transparent; border-color: transparent; color: var(--mut); }
+  42%,100% { max-width: 120px; opacity: 1; padding-left: 11px; padding-right: 11px; background: #fff; border-color: var(--line); color: var(--ink); }
+}
+/* drop guide (phase 3): previews the one-third footprint */
+.vguide { position: absolute; top: 12px; bottom: 12px; left: 34.5%; width: 31%; border: 2px dashed var(--purple); background: color-mix(in srgb, var(--purple) 12%, transparent); border-radius: 10px; opacity: 0; pointer-events: none; z-index: 5; }
+.fr.show .vguide { animation: arrGuide 7s ease forwards; }
+@keyframes arrGuide { 0%,58% { opacity: 0; } 66%,86% { opacity: 1; } 94%,100% { opacity: 0; } }
+/* the picked-up Filter tab + grabbing-hand cursor (phase 3): grab the header, dwell, then drag slowly */
+.ghost { position: absolute; left: 54%; top: 9%; z-index: 7; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 8px; font-weight: 600; font-size: 13px; color: var(--ink); background: #fff; border: 1px solid var(--purple); box-shadow: 0 12px 24px -7px rgba(0,0,0,.4); transform: translate(-4px, 13px) rotate(-3deg); opacity: 0; }
+.grabcur { position: absolute; left: 54%; top: 9%; width: 21px; height: 21px; z-index: 8; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+.fr.show .grabcur, .fr.show .ghost { animation: arrHand 7s ease forwards; }
+@keyframes arrHand {
+  0%,46% { opacity: 0; left: 54%; top: 9%; }
+  52% { opacity: 1; left: 54%; top: 9%; }
+  62% { opacity: 1; left: 54%; top: 9%; }
+  87% { opacity: 1; left: 49%; top: 50%; }
+  93% { opacity: 0; left: 49%; top: 50%; }
+  100% { opacity: 0; left: 49%; top: 50%; }
+}
+/* phase 1: the Filter->Plot connection draws in purple, cursor dragging it */
+.m5wire { position: relative; width: 26px; height: 38px; flex: none; }
+.m5wire .wire { position: absolute; inset: 0; width: 100%; height: 100%; }
+.m5wire .wire path { stroke-dasharray: 55; stroke-dashoffset: 55; }
+.fr.show .m5wire .wire path { animation: drawWire 1.5s ease forwards .3s; }
+.m5wire .m5cur { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 19px; height: 19px; opacity: 0; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+.fr.show .m5wire .m5cur { animation: m5drag 1.8s ease forwards .2s; }
+@keyframes m5drag { 0% { top: -2px; opacity: 0; } 12% { opacity: 1; } 80% { top: 28px; opacity: 1; } 100% { top: 28px; opacity: 0; } }
+.m5wire .wire .ahead { opacity: 0; }
+.fr.show .m5wire .wire .ahead { animation: aheadIn .45s ease forwards 1.7s; }
 
 /* 07 pages: page menu dropdown anchored under the page selector */
 .pgdrop { position: absolute; top: 4px; right: 46px; width: 210px; max-width: 52%; background: #fff; border: 1px solid var(--line); border-radius: 0 0 12px 12px; box-shadow: 0 22px 46px -16px rgba(0,0,0,.42); overflow: hidden; z-index: 6; padding: 7px; opacity: 0; }
@@ -751,16 +589,11 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
   .fr.show .s8cur, .ab-saved.saving, .ab-saved.saving .s-un, .ab-saved.saving .s-ok, .ab-save.pressed,
   .fr.show .pgmenu, .fr.show .pgmenu2, .fr.show .pg-pick, .fr.show .pgmodal, .fr.show .pgm-card, .fr.show .pgm-btn, .fr.show .v7empty, .fr.show .s7cur, .ab-page.pressed, .ab-page.renaming .pgl1, .ab-page.renaming .pgl2,
   .fr.show .v5wire .wire path, .fr.show .v5wire .v5cur, .fr.show .v5port, .fr.show .v5pin, .fr.show .v5filter, .fr.show .v5plotpane, .fr.show .v5ftab, .fr.show .v5ptab,
-  .fr.show .f4cnew, .fr.show .f4colcat, .fr.show .f4colval, .fr.show .f4cat, .fr.show .f4val, .fr.show .f4r2, .fr.show .f4r3, .fr.show .f4r4, .fr.show .f4cur { animation: none; }
+  .fr.show .f4cnew, .fr.show .f4r3, .fr.show .f4r4, .fr.show .f4cur { animation: none; }
   .fr.show .connect .wire path { stroke-dashoffset: 0; }
-  /* 04 at rest: switched to value > threshold */
-  .f4colcat { display: none; }
-  .f4colval { display: inline; position: static; opacity: 1; }
-  .f4cat { opacity: 0; } .f4val { opacity: 1; }
+  /* 04 at rest: A only (B removed) */
   .f4cnew { max-width: 0; opacity: 0; }
-  .f4r2 { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
-  .f4r3 { max-height: 30px; opacity: 1; padding-top: 5px; padding-bottom: 5px; border-top-width: 1px; }
-  .f4r4 { max-height: 0; opacity: 0; }
+  .f4r3, .f4r4 { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
   .f4cur { opacity: 0; }
   .connect .cur { opacity: 0; }
   /* 05 at rest: Filter->Plot connected, Plot tab open */
