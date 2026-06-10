@@ -434,16 +434,17 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
    (3) drag the Filter tab out; it docks as its own panel with a guide. */
 .dock.arr3 .panel { flex: 0 1 0; min-width: 0; }
 .arr3 .pw { flex-grow: 3; } .arr3 .pf { flex-grow: 0; overflow: hidden; } .arr3 .pp { flex-grow: 3; }
-.fr.show .arr3 .pw { animation: arrW 7s cubic-bezier(.16,1,.3,1) forwards; }
-.fr.show .arr3 .pf { animation: arrF 7s cubic-bezier(.16,1,.3,1) forwards; }
-.fr.show .arr3 .pp { animation: arrP 7s cubic-bezier(.16,1,.3,1) forwards; }
-@keyframes arrW { 0%,82% { flex-grow: 3; } 92%,100% { flex-grow: 2; } }
-@keyframes arrF { 0%,82% { flex-grow: 0; } 92%,100% { flex-grow: 2; } }
-@keyframes arrP { 0%,82% { flex-grow: 3; } 92%,100% { flex-grow: 2; } }
+.fr.show .arr3 .pw { animation: arrW 7s cubic-bezier(.4,0,.2,1) forwards; }
+.fr.show .arr3 .pf { animation: arrF 7s cubic-bezier(.4,0,.2,1) forwards; }
+.fr.show .arr3 .pp { animation: arrP 7s cubic-bezier(.4,0,.2,1) forwards; }
+/* panels open only after the cursor has released at the gap (>82%), gliding open */
+@keyframes arrW { 0%,82% { flex-grow: 3; } 96%,100% { flex-grow: 2; } }
+@keyframes arrF { 0%,82% { flex-grow: 0; } 96%,100% { flex-grow: 2; } }
+@keyframes arrP { 0%,82% { flex-grow: 3; } 96%,100% { flex-grow: 2; } }
 /* the docked Filter panel reveals its content once it opens (phase 3) */
 .pf .pcontent { display: flex; flex-direction: column; height: 100%; opacity: 0; }
 .fr.show .pf .pcontent { animation: arrLate 7s ease forwards; }
-@keyframes arrLate { 0%,84% { opacity: 0; } 94%,100% { opacity: 1; } }
+@keyframes arrLate { 0%,88% { opacity: 0; } 97%,100% { opacity: 1; } }
 /* right panel: Filter detail -> Plot chart (phase 2), then Filter tab leaves (phase 3) */
 .pp .ppbody { position: relative; flex: 1; min-height: 0; }
 .pp .ppfilter, .pp .ppplot { position: absolute; inset: 0; }
@@ -456,9 +457,9 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .fr.show .pp .tab.dragging { animation: ppFilterTab 7s ease forwards; }
 @keyframes ppFilterTab {
   0%,28% { background: #fff; border-color: var(--line); color: var(--ink); max-width: 140px; opacity: 1; padding-left: 11px; padding-right: 11px; }
-  40%,72% { background: transparent; border-color: transparent; color: var(--mut); max-width: 140px; opacity: 1; padding-left: 11px; padding-right: 11px; }
+  40%,80% { background: transparent; border-color: transparent; color: var(--mut); max-width: 140px; opacity: 1; padding-left: 11px; padding-right: 11px; }
   84% { opacity: 0; max-width: 140px; }
-  92%,100% { opacity: 0; max-width: 0; padding-left: 0; padding-right: 0; border-width: 0; }
+  90%,100% { opacity: 0; max-width: 0; padding-left: 0; padding-right: 0; border-width: 0; }
 }
 /* Plot tab nests onto the Filter panel in phase 2 */
 .pp .plottab { overflow: hidden; white-space: nowrap; max-width: 0; opacity: 0; padding-left: 0; padding-right: 0; background: transparent; border-color: transparent; color: var(--mut); }
@@ -470,17 +471,30 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 /* drop guide (phase 3): previews the one-third footprint */
 .vguide { position: absolute; top: 12px; bottom: 12px; left: 34.5%; width: 31%; border: 2px dashed var(--purple); background: color-mix(in srgb, var(--purple) 12%, transparent); border-radius: 10px; opacity: 0; pointer-events: none; z-index: 5; }
 .fr.show .vguide { animation: arrGuide 7s ease forwards; }
-@keyframes arrGuide { 0%,58% { opacity: 0; } 66%,86% { opacity: 1; } 94%,100% { opacity: 0; } }
+@keyframes arrGuide { 0%,70% { opacity: 0; } 75%,84% { opacity: 1; } 90%,100% { opacity: 0; } }
 /* the picked-up Filter tab + grabbing-hand cursor (phase 3): grab the header, dwell, then drag slowly */
 .ghost { position: absolute; left: 54%; top: 9%; z-index: 7; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 8px; font-weight: 600; font-size: 13px; color: var(--ink); background: #fff; border: 1px solid var(--purple); box-shadow: 0 12px 24px -7px rgba(0,0,0,.4); transform: translate(-4px, 13px) rotate(-3deg); opacity: 0; }
-.grabcur { position: absolute; left: 54%; top: 9%; width: 21px; height: 21px; z-index: 8; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
-.fr.show .grabcur, .fr.show .ghost { animation: arrHand 7s ease forwards; }
+.grabcur { position: absolute; left: 68%; top: 38%; width: 21px; height: 21px; z-index: 8; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); opacity: 0; }
+/* hand: travel onto the Filter tab, dwell (grab), then drag out to the gap */
+.fr.show .grabcur { animation: arrHand 7s ease forwards; }
+/* dragged Filter pill: only appears once the hand has grabbed the tab */
+.fr.show .ghost { animation: arrGhost 7s ease forwards; }
 @keyframes arrHand {
-  0%,46% { opacity: 0; left: 54%; top: 9%; }
-  52% { opacity: 1; left: 54%; top: 9%; }
-  62% { opacity: 1; left: 54%; top: 9%; }
-  87% { opacity: 1; left: 49%; top: 50%; }
-  93% { opacity: 0; left: 49%; top: 50%; }
+  0%,48% { opacity: 0; left: 68%; top: 38%; }
+  52% { opacity: 1; left: 68%; top: 38%; }
+  66% { opacity: 1; left: 54%; top: 9%; }
+  70% { opacity: 1; left: 54%; top: 9%; }
+  79% { opacity: 1; left: 49%; top: 50%; }
+  83% { opacity: 1; left: 49%; top: 50%; }
+  89% { opacity: 0; left: 49%; top: 50%; }
+  100% { opacity: 0; left: 49%; top: 50%; }
+}
+@keyframes arrGhost {
+  0%,66% { opacity: 0; left: 54%; top: 9%; }
+  70% { opacity: 1; left: 54%; top: 9%; }
+  79% { opacity: 1; left: 49%; top: 50%; }
+  83% { opacity: 1; left: 49%; top: 50%; }
+  89% { opacity: 0; left: 49%; top: 50%; }
   100% { opacity: 0; left: 49%; top: 50%; }
 }
 /* phase 1: the Filter->Plot connection draws in purple, cursor dragging it */
