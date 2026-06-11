@@ -23,7 +23,9 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
         </button>
         <span class="ab-spacer"></span>
       </div>
-      <div class="frames">
+      <div class="bodyrow">
+        <div class="bs-aside" v-if="$slots.aside"><slot name="aside" /></div>
+        <div class="frames">
         <!-- 01 add data: right-click -> Add block -> sidebar opens -> click Data block -->
         <div class="fr" :class="{ show: active === 0 }">
           <div class="dock">
@@ -215,6 +217,7 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
           <svg class="s8cur" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6-6-15z" fill="#fff" stroke="#1b1b1f" stroke-width="1.5" stroke-linejoin="round"/></svg>
         </div>
       </div>
+      </div>
     </div>
   </div>
 </template>
@@ -254,7 +257,12 @@ const importIcon = `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" 
 .ab-page i { font-style: normal; color: var(--mut); }
 .ab-avatar { width: 22px; height: 22px; border-radius: 50%; background: #6b5bd6; color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 700; }
 
-.frames { position: relative; aspect-ratio: 16 / 10; background: #fbfbfc; }
+/* optional assistant column (filled via the `aside` slot); empty by default so
+   the standalone hero is unchanged */
+.bodyrow { display: flex; align-items: stretch; }
+.bs-aside { flex: 0 0 300px; position: relative; }
+.frames { flex: 1; min-width: 0; position: relative; aspect-ratio: 16 / 10; background: #fbfbfc; }
+@media (max-width: 760px) { .bodyrow { flex-direction: column; } .bs-aside { flex: none; height: 240px; } }
 .fr { position: absolute; inset: 0; opacity: 0; transition: opacity .75s cubic-bezier(.4, 0, .2, 1); }
 .fr.show { opacity: 1; }
 .dock { display: flex; gap: 10px; padding: 10px; height: 100%; }
