@@ -121,7 +121,7 @@ The demos above run on [blockr.cloud](https://blockr.cloud). To run one in your 
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
 ```r
-pak::pak("cynkra/blockr.bi")                # drilldown chart/table, KPIs, summary tables
+pak::pak("BristolMyersSquibb/blockr.viz")                # drilldown chart/table, KPIs, summary tables
 pak::pak("BristolMyersSquibb/blockr.dm")    # multi-table / ADaM data-model handling
 pak::pak("BristolMyersSquibb/blockr.session") # save, restore, share board state
 pak::pak("BristolMyersSquibb/blockr.pharma")  # patient profile, swim-lane plot

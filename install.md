@@ -44,12 +44,12 @@ Save, restore, and share board state across users.
 pak::pak("BristolMyersSquibb/blockr.session")
 ```
 
-### Dashboard blocks: [blockr.bi](https://github.com/cynkra/blockr.bi)
+### Dashboard blocks: [blockr.viz](https://github.com/BristolMyersSquibb/blockr.viz)
 
 Drilldown, crossfilter, tiles, and KPI cards. New, but you'll want these for complex dashboards.
 
 ```r
-pak::pak("cynkra/blockr.bi")
+pak::pak("BristolMyersSquibb/blockr.viz")
 ```
 
 ## More
