@@ -60,11 +60,11 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
-<a class="example-card" href="https://blockr.cloud/app/reinsurance" target="_blank">
-<img src="/examples/reinsurance.jpg" alt="Reinsurance Dashboard" />
+<a class="example-card" href="https://blockr.cloud/app/treaty-pricer" target="_blank">
+<img src="/examples/treaty-pricer.jpg" alt="Treaty Pricer" />
 <div class="example-body">
-<p class="example-title">Reinsurance Dashboard</p>
-<p>Reinsurance portfolio analytics with scenario / peril / region crossfilter, premium and exposure KPIs, and cedant / peril drill-downs over a synthetic exposure and event-loss cube.</p>
+<p class="example-title">Treaty Pricer</p>
+<p>Layered excess-of-loss treaty pricer: an editable treaty tower drives a piecewise-Pareto severity fit, loss simulation, and a per-layer premium build-up. Edit a layer and the KPIs, quote chart, and build-up waterfall all recompute.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
