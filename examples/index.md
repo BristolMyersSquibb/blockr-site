@@ -135,6 +135,31 @@ source(system.file("examples/clinical-explorer.R", package = "blockr.pharma"))
 
 This loads the ADaM tables from [pharmaverseadam](https://pharmaverse.github.io/pharmaverseadam/) and the same blocks as the live demo: cross-filter, drilldown chart and table, patient profile, swim-lane plot. Open [`inst/examples/clinical-explorer.R`](https://github.com/BristolMyersSquibb/blockr.pharma/blob/main/inst/examples/clinical-explorer.R) on GitHub to see exactly what the script does.
 
+### Treaty Pricer
+
+A simulation-based pricer for a layered excess-of-loss reinsurance treaty. One editable treaty tower drives a piecewise-Pareto severity fit, loss simulation, layer structuring, and a premium build-up. Edit a layer and the KPIs, the per-layer quote chart, and the build-up waterfall all recompute.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("BristolMyersSquibb/blockr.viz")     # tiles, KPIs, charts, tables, drilldown
+pak::pak("BristolMyersSquibb/blockr.dm")      # relational / multi-table data model
+pak::pak("BristolMyersSquibb/blockr.session") # save, restore, share board state
+pak::pak("BristolMyersSquibb/blockr.code")    # show / export the generated R code
+pak::pak("cynkra/blockr.input")               # editable data grids (the treaty tower)
+pak::pak("cynkra/blockr.extra")               # function blocks (Pareto fit, per-claim layering)
+pak::pak("cynkra/blockr.insurance")           # the treaty tower data + this example
+install.packages("Pareto")                    # piecewise-Pareto severity fit + loss simulation
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/treaty-pricer.R", package = "blockr.insurance"))
+```
+
+This loads the treaty tower bundled in blockr.insurance and the same blocks as the live demo: the editable tower, Pareto fit and loss simulation, the per-layer quote chart and premium build-up waterfall, the layer-detail drilldown, and a challenger-vs-base comparison. Open [`inst/examples/treaty-pricer.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/treaty-pricer.R) on GitHub to see exactly what the script does.
+
 <style>
 .examples-grid {
   display: grid;

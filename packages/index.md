@@ -117,7 +117,7 @@ The blocks users drag onto a board: data wrangling, visualisation, I/O, and vert
 <a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.viz" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.viz</p>
-<p>Business intelligence blocks — KPI cards, value boxes, and dashboard widgets for executive views.</p>
+<p>Visualization blocks — interactive charts, summary and drilldown tables, KPI tiles, and cross-filtering.</p>
 </div>
 </a>
 
