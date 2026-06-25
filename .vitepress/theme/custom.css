@@ -21,3 +21,30 @@
     max-width: 1152px !important;
   }
 }
+
+/* Full-bleed landing page (index.md uses `layout: page`).
+   Strip the page container's width cap and padding so landing sections
+   can span the full viewport. Scoped to pages that contain `.landing`. */
+.VPPage:has(.landing) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.VPPage:has(.landing) .vp-doc,
+.VPPage:has(.landing) > .vp-doc > div {
+  max-width: none !important;
+  padding: 0 !important;
+}
+/* The page layout adds a top offset; the hero supplies its own spacing,
+   so collapse any extra so the hero meets the navbar cleanly. */
+.Layout:has(.landing) .VPContent.is-home,
+.VPContent:has(.landing) {
+  padding-top: var(--vp-nav-height) !important;
+}
+
+/* Landing page: no separator line between the navbar and the hero. */
+.Layout:has(.landing) .VPNavBar {
+  border-bottom-color: transparent !important;
+}
+.Layout:has(.landing) .VPNavBar .divider {
+  display: none !important;
+}
