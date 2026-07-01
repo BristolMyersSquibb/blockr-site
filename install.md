@@ -19,17 +19,17 @@ pak::pak("BristolMyersSquibb/blockr@dev")
 blockr::run_app()
 ```
 
-[blockr](https://bristolmyerssquibb.github.io/blockr/) is a meta-package. This one install pulls in the whole ecosystem in a single line: the core engine — [blockr.core](https://bristolmyerssquibb.github.io/blockr.core/), [blockr.dock](https://bristolmyerssquibb.github.io/blockr.dock/), [blockr.dag](https://bristolmyerssquibb.github.io/blockr.dag/), [blockr.dplyr](https://bristolmyerssquibb.github.io/blockr.dplyr/), [blockr.ggplot](https://bristolmyerssquibb.github.io/blockr.ggplot/), [blockr.io](https://bristolmyerssquibb.github.io/blockr.io/) — plus the packages most often used alongside it: [blockr.ui](https://github.com/BristolMyersSquibb/blockr.ui), [blockr.viz](https://github.com/BristolMyersSquibb/blockr.viz), [blockr.dm](https://github.com/BristolMyersSquibb/blockr.dm), [blockr.ai](https://github.com/BristolMyersSquibb/blockr.ai), [blockr.assistant](https://github.com/BristolMyersSquibb/blockr.assistant), [blockr.session](https://bristolmyerssquibb.github.io/blockr.session/), and [blockr.extra](https://github.com/cynkra/blockr.extra).
+[blockr](https://bristolmyerssquibb.github.io/blockr/) is a meta-package. This install pulls in the whole ecosystem: the core engine ([blockr.core](https://bristolmyerssquibb.github.io/blockr.core/), [blockr.dock](https://bristolmyerssquibb.github.io/blockr.dock/), [blockr.dag](https://bristolmyerssquibb.github.io/blockr.dag/), [blockr.dplyr](https://bristolmyerssquibb.github.io/blockr.dplyr/), [blockr.ggplot](https://bristolmyerssquibb.github.io/blockr.ggplot/), [blockr.io](https://bristolmyerssquibb.github.io/blockr.io/)), plus the packages most often used with it ([blockr.ui](https://github.com/BristolMyersSquibb/blockr.ui), [blockr.viz](https://github.com/BristolMyersSquibb/blockr.viz), [blockr.dm](https://github.com/BristolMyersSquibb/blockr.dm), [blockr.ai](https://github.com/BristolMyersSquibb/blockr.ai), [blockr.assistant](https://github.com/BristolMyersSquibb/blockr.assistant), [blockr.session](https://bristolmyerssquibb.github.io/blockr.session/), and [blockr.extra](https://github.com/cynkra/blockr.extra)).
 
-It tracks the latest development versions, so you get the newest features and fixes (and the occasional rough edge).
+These are the latest development versions, with the newest features and fixes but less stability than CRAN.
 
 ::: tip AI features
-The bundle includes the AI packages ([blockr.ai](https://github.com/BristolMyersSquibb/blockr.ai), [blockr.assistant](https://github.com/BristolMyersSquibb/blockr.assistant)), but AI features have to be activated separately before they work. Setup is documented separately.
+The bundle includes the AI packages ([blockr.ai](https://github.com/BristolMyersSquibb/blockr.ai), [blockr.assistant](https://github.com/BristolMyersSquibb/blockr.assistant)), but they need a model provider and API key before they respond. See [Activate AI features](#activate-ai-features) below.
 :::
 
 ## Smaller installs
 
-For a leaner, more stable footprint, install just the core bundle from the default branch:
+For a smaller, more stable set, install just the core bundle from the default branch:
 
 ```r
 # install.packages("pak")
@@ -43,6 +43,12 @@ Or the released version from CRAN:
 ```r
 install.packages("blockr")
 ```
+
+## Activate AI features
+
+The bundle ships the AI packages, but the AI chat panel and assistant need a configured model before they work. blockr.ai talks to LLMs through [ellmer](https://ellmer.tidyverse.org/). Follow ellmer's [setup guide](https://ellmer.tidyverse.org/articles/ellmer.html) to choose a provider and supply its API key.
+
+See the [blockr.ai documentation](https://github.com/BristolMyersSquibb/blockr.ai) for more.
 
 ## More
 
