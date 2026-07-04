@@ -114,9 +114,9 @@ While controversial among data visualization experts who prefer bar charts for p
 
 ## Donut Chart
 
-Donut charts are pie charts with a center hole, offering a modern aesthetic and space for annotations. Use the "pie" chart type with the donut_hole parameter to create this variant.
+Donut charts are pie charts with a center hole, offering a modern aesthetic and space for annotations. Create one by selecting the "Pie" chart type and turning on the donut option in the gear (advanced) settings.
 
-Configure exactly like pie charts, but set donut_hole to a value between 0.3 and 0.7 to control the inner radius. The hole creates negative space that can reduce visual clutter and provides room for central labels or summary statistics. Donut charts are often considered more visually appealing than standard pie charts while conveying the same information.
+Configure it exactly like a pie chart, then toggle the donut checkbox to open up the center. The hole creates negative space that can reduce visual clutter and provides room for central labels or summary statistics. Donut charts are often considered more visually appealing than standard pie charts while conveying the same information.
 
 The empty center draws attention and can be used strategically to display total values, titles, or key metrics. The ring shape also makes it slightly easier to compare arc lengths than full pie slices, as the curves are more linear. Use donut charts when aesthetics matter or when you want to emphasize the ring pattern over the center point.
 
@@ -164,7 +164,7 @@ Themes control non-data elements: backgrounds, grid lines, axis styling, legend 
 
 The grid block composes multiple plots into a single figure using patchwork. Use this to create publication-ready figures combining related visualizations.
 
-Select a layout style (horizontal, vertical, or grid) and specify the number of plots. The block automatically arranges connected plots according to your layout choice. Horizontal layouts place plots side-by-side for comparing across categories. Vertical layouts stack plots for showing different aspects of the same data. Grid layouts create matrices for comprehensive multi-panel figures.
+Connect two or more plots to the block and it arranges them automatically. Leave Columns and Rows on "Auto" to let the block pick a balanced layout, or set either one to fix the number of columns or rows (one column stacks plots vertically, one row places them side-by-side). Add a title, subtitle, or caption for the combined figure, turn on auto-tagging to label panels (A, B, C or 1, 2, 3), and use the legends control to collect shared legends into a single one.
 
 Grid composition is essential for complex figures that tell a complete story through multiple related views. Each input can be a complete visualization pipeline, allowing you to combine different chart types, subsets, or transformations. This is particularly powerful for academic papers, reports, or dashboards where you need to present multiple coordinated views.
 
