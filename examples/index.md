@@ -102,6 +102,20 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+<a class="example-card" href="https://blockr.cloud/app/duckdb-lazy" target="_blank">
+<div class="example-body">
+<p class="example-title">DuckDB Lazy (100M rows)</p>
+<p>A 100,000,000-row parquet opened as a lazy DuckDB table and transformed through a chain of blockr.dplyr blocks. Every verb pushes to SQL and the preview pages through 100M rows without ever materializing the full table; only the filtered ~1000-row result is collected into R.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+<a class="example-card" href="https://blockr.cloud/app/duckdb-remote-dm" target="_blank">
+<div class="example-body">
+<p class="example-title">DuckDB Remote dm (5M-row star schema)</p>
+<p>A 5,000,000-row DuckDB star schema (one fact table, three dimensions) bound into a dm and explored with the Key-lines preview - the fact table pages in the database and is never collected. A second in-memory example dm renders through the same preview.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
 </div>
 
 ## Run an example locally
@@ -266,7 +280,48 @@ source(system.file("examples/full-stack/app.R", package = "blockr.assistant"))
 
 This mounts one block or plugin from each package (data, chart, summary table, function block, patient profile, DAG, code export, per-block AI, and the board-level assistant). Ask the Assistant pane "What is on the board?" or "Add a scatter plot of mpg vs wt". Needs an LLM key (e.g. OPENAI_API_KEY). Open [`inst/examples/full-stack/app.R`](https://github.com/BristolMyersSquibb/blockr.assistant/blob/feat/agentic-loop/inst/examples/full-stack/app.R) on GitHub to see exactly what the script does.
 
+### DuckDB Lazy (100M rows)
+
+A 100,000,000-row parquet opened as a lazy DuckDB table and transformed through a chain of blockr.dplyr blocks. Every verb pushes to SQL and the preview pages through 100M rows without ever materializing the full table; only the filtered ~1000-row result is collected into R.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+install.packages("duckdb")   # embedded OLAP engine, reads parquet
+install.packages("DBI")      # database connection layer
+install.packages("dbplyr")   # translates dplyr verbs to SQL
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/duckdb-lazy.R", package = "blockr.dplyr"))
+```
+
+The 100M-row parquet is generated once into a local cache on first run (override with `n_rows <- 5e6` before sourcing for a lighter run). On blockr.cloud it is pre-generated on the host and mounted read-only at /data instead. Open [`inst/examples/duckdb-lazy.R`](https://github.com/BristolMyersSquibb/blockr.dplyr/blob/main/inst/examples/duckdb-lazy.R) on GitHub to see exactly what the script does.
+
+### DuckDB Remote dm (5M-row star schema)
+
+A 5,000,000-row DuckDB star schema (one fact table, three dimensions) bound into a dm and explored with the Key-lines preview - the fact table pages in the database and is never collected. A second in-memory example dm renders through the same preview.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+install.packages("duckdb")   # embedded OLAP engine, reads parquet
+install.packages("DBI")      # database connection layer
+install.packages("dbplyr")   # translates dplyr verbs to SQL
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/duckdb-remote-dm.R", package = "blockr.dm"))
+```
+
+The star-schema parquet self-generates into a local cache on first run (override with `n_orders <- 5e5L`); no external data or host mount needed. Open [`inst/examples/duckdb-remote-dm.R`](https://github.com/BristolMyersSquibb/blockr.dm/blob/main/inst/examples/duckdb-remote-dm.R) on GitHub to see exactly what the script does.
+
 <!-- END generated -->
+
 
 
 
