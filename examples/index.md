@@ -98,7 +98,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <a class="example-card" href="https://blockr.cloud/app/full-stack" target="_blank">
 <div class="example-body">
 <p class="example-title">Full-Stack Assistant</p>
-<p>The whole board-facing blockr stack in one deployable app: a two-branch board (mtcars analytics + a single-patient clinical profile) that exercises one block or plugin from every major package, with the board-level LLM assistant mounted alongside.</p>
+<p>An empty blockr board with the board-level LLM assistant activated: nothing is on the canvas. You build the entire workflow by talking to the assistant, which can add any block from the full blockr stack. The assistant sits on the left, the Workflow (DAG) panel on the right.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
@@ -261,7 +261,7 @@ Open [`inst/examples/app.R`](https://github.com/cynkra/blockr.catbreeds/blob/mai
 
 ### Full-Stack Assistant
 
-The whole board-facing blockr stack in one deployable app: a two-branch board (mtcars analytics + a single-patient clinical profile) that exercises one block or plugin from every major package, with the board-level LLM assistant mounted alongside.
+An empty blockr board with the board-level LLM assistant activated: nothing is on the canvas. You build the entire workflow by talking to the assistant, which can add any block from the full blockr stack. The assistant sits on the left, the Workflow (DAG) panel on the right.
 
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
@@ -269,7 +269,6 @@ First install blockr as described on the [Install](/install) page. Then add the 
 pak::pak("BristolMyersSquibb/blockr.assistant@feat/agentic-loop")   # blockr.assistant — needs this branch (not yet on main)
 pak::pak("BristolMyersSquibb/blockr.pharma")                        # patient-profile clinical block
 pak::pak("BristolMyersSquibb/blockr.code")                          # idiomatic code-export plugin
-install.packages("pharmaverseadam")                                 # adsl, adae, advs
 ```
 
 Launch the demo:
@@ -278,7 +277,7 @@ Launch the demo:
 source(system.file("examples/full-stack/app.R", package = "blockr.assistant"))
 ```
 
-This mounts one block or plugin from each package (data, chart, summary table, function block, patient profile, DAG, code export, per-block AI, and the board-level assistant). Ask the Assistant pane "What is on the board?" or "Add a scatter plot of mpg vs wt". Needs an LLM key (e.g. OPENAI_API_KEY). Open [`inst/examples/full-stack/app.R`](https://github.com/BristolMyersSquibb/blockr.assistant/blob/feat/agentic-loop/inst/examples/full-stack/app.R) on GitHub to see exactly what the script does.
+This opens on an empty board — the assistant chat pane on the left, the Workflow (DAG) panel on the right. Ask the Assistant pane "Add the mtcars dataset", then "Add a scatter plot of mpg vs wt". Needs an LLM key (e.g. OPENAI_API_KEY). Open [`inst/examples/full-stack/app.R`](https://github.com/BristolMyersSquibb/blockr.assistant/blob/feat/agentic-loop/inst/examples/full-stack/app.R) on GitHub to see exactly what the script does.
 
 ### DuckDB Lazy (100M rows)
 
@@ -321,6 +320,7 @@ source(system.file("examples/duckdb-remote-dm.R", package = "blockr.dm"))
 The star-schema parquet self-generates into a local cache on first run (override with `n_orders <- 5e5L`); no external data or host mount needed. Open [`inst/examples/duckdb-remote-dm.R`](https://github.com/BristolMyersSquibb/blockr.dm/blob/main/inst/examples/duckdb-remote-dm.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
