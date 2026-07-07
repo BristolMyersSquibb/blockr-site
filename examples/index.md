@@ -72,6 +72,27 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </a>
 </div>
 
+## Finance
+
+<div class="examples-grid">
+<a class="example-card" href="https://blockr.cloud/app/portfolio" target="_blank">
+<img src="/examples/portfolio.jpg" alt="Portfolio Advisor" />
+<div class="example-body">
+<p class="example-title">Portfolio Advisor</p>
+<p>A portfolio advisor: pick an investor risk profile and an optimizer strategy on the left, and a diversified allocation dashboard recomputes on the right. A second Workflow tab shows the live block graph.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+<a class="example-card" href="https://blockr.cloud/app/explorer" target="_blank">
+<img src="/examples/explorer.jpg" alt="Share Explorer" />
+<div class="example-body">
+<p class="example-title">Share Explorer</p>
+<p>An interactive share explorer: choose tickers and a date range on the left and the price / return charts recompute on the right. A second Workflow tab shows the live block graph.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
+</div>
+
 ## Statistics
 
 <div class="examples-grid">
@@ -319,7 +340,44 @@ source(system.file("examples/duckdb-remote-dm.R", package = "blockr.dm"))
 
 The star-schema parquet self-generates into a local cache on first run (override with `n_orders <- 5e5L`); no external data or host mount needed. Open [`inst/examples/duckdb-remote-dm.R`](https://github.com/BristolMyersSquibb/blockr.dm/blob/main/inst/examples/duckdb-remote-dm.R) on GitHub to see exactly what the script does.
 
+### Portfolio Advisor
+
+A portfolio advisor: pick an investor risk profile and an optimizer strategy on the left, and a diversified allocation dashboard recomputes on the right. A second Workflow tab shows the live block graph.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.portfolio")
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/app-portfolio.R", package = "blockr.portfolio"))
+```
+
+This loads the bundled asset universe and the same blocks as the live demo: the investor profile, the mean-variance optimizer, and the allocation dashboard. Edit the risk profile or strategy and the dashboard recomputes. Open [`inst/examples/app-portfolio.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-portfolio.R) on GitHub to see exactly what the script does.
+
+### Share Explorer
+
+An interactive share explorer: choose tickers and a date range on the left and the price / return charts recompute on the right. A second Workflow tab shows the live block graph.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.portfolio")
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
+```
+
+Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
+
 <!-- END generated -->
+
 
 
 
