@@ -46,7 +46,7 @@ Each link books a 30-minute Session 1. Pick whoever is free.
 <ul class="intro-book">
   <li style="--c:#0072B2">Christoph: <a href="https://calendar.app.google/oZFETckwS67BLd4a7">book a session</a></li>
   <li style="--c:#009E73">David: <a href="https://calendar.app.google/NHP6Kgi6R7ZR2WyUA">book a session</a></li>
-  <li style="--c:#E69F00">Olajoke: book a session <!-- TODO: Olajoke's Google appointment link --></li>
+  <li style="--c:#E69F00">Olajoke: <a href="https://scheduler.zoom.us/olajoke-oladipo/blockr-introduction-session-with-olajoke">book a session</a></li>
   <li style="--c:#D55E00">Nicolas: book a session <!-- TODO: Nicolas's Google appointment link --></li>
 </ul>
 
