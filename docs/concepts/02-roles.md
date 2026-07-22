@@ -11,7 +11,7 @@ What the user can do:
 
 - Filter and cross-filter across linked tables.
 - Drill down through visualizations.
-- Ask the AI assistant to configure the exposed controls, or to explain the data and output of any block.
+- Ask the [AI assistant](03-ai-assistant) to configure the exposed controls, or to explain the data and output of any block.
 - Save and share the resulting view as a URL.
 
 What the user does not see: the workflow editor, the block library, or the configuration panels.
@@ -31,7 +31,7 @@ The workflow is a graph of blocks dragged onto a board and connected together.
 
 What the builder does:
 
-- Adds and connects data, transformation, and visualization blocks.
+- Adds and connects data, transformation, and visualization blocks, by hand or by describing them to the [AI assistant](03-ai-assistant).
 - Configures each block: which column to filter on, how to facet a chart, which page a block lives on.
 - Creates pages and arranges layouts.
 - Hides intermediate blocks so users see only the final view.
@@ -45,7 +45,7 @@ See [Build a dashboard](../../learn/02-build-a-dashboard) for a walkthrough.
 When no existing block does what you need, you write one.
 There are two paths.
 
-**Function block.**
+**[Function block](../../learn/04-custom-code).**
 Wrap any R function as a block from the UI.
 If you have already written the analysis in R, this brings it into the app with no wrapper code.
 
