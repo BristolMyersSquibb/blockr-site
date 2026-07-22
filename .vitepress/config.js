@@ -41,7 +41,8 @@ module.exports = {
           items: [
             { text: 'User, Builder, Developer', link: '/docs/concepts/02-roles' },
             { text: 'Reactivity', link: '/docs/concepts/01-reactivity' },
-            { text: 'The AI assistant', link: '/docs/concepts/03-ai-assistant' }
+            { text: 'The AI assistant', link: '/docs/concepts/03-ai-assistant' },
+            { text: 'Saving and sharing', link: '/docs/concepts/04-saving-sharing' }
           ]
         },
         {
