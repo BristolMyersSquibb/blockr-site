@@ -6,40 +6,22 @@ This means that when you update one part of your workflow, you don't need to man
 It's the same idea that powers the interactivity you're used to seeing in spreadsheets: if cell A1 contains a price and cell B1 calculates tax with =A1 * 0.2, changing A1 instantly updates B1.
 blockr works the same way, but for entire data transformation steps instead of individual cells.
 
-## Example
+## Downstream, not upstream
 
-If you have already completed the [Build a dashboard](../../learn/02-build-a-dashboard) tutorial, you have already seen reactivity in action.
-In that tutorial you learnt how to build a simple dashboard which uses a filter to update a plot on penguins:
+A downstream block is any block that depends, directly or indirectly, on the output of a given block.
+If data flows from A → B → C, then B and C are both downstream of A: a change in A recomputes B and C, while a change in B leaves A untouched.
 
-![Penguins dashboard with filter updating the plot](01-img-01.png)
+In the pipeline from [Build your first app](../../learn/01-build-your-first-app), changing the filter recomputes the plot, but never the dataset block above it:
 
-Let's zoom into the workflow to better understand what is going on.
-Here, we can see that as one block updates, all downstream blocks update:
+![The pipeline: dataset, filter, plot. A filter change recomputes the plot only.](01-img-pipeline.png)
 
-![Diagram showing a change in one block updating the downstream block](01-img-02.png)
+The same rule is what makes dashboards live.
+In [Build a dashboard](../../learn/02-build-a-dashboard), clicking a bar in the chart filters everything downstream of it, so the table recomputes on every click:
 
-In this example, this results in only a single block updating.
-
-A downstream block is any block that depends on (directly or indirectly) the output of a given block.
-In other words, it comes after it in the workflow.
-If data flows from A → B → C, then B and C are both downstream of A.
-This means that for complicated workflows, a change higher up the workflow can result in many blocks being updated:
-
-![Complex workflow where a change propagates to many downstream blocks](01-img-03.png)
-
-Note that upstream blocks never get updated.
-In our simple example, this means that our data block does **not** get updated, because it is upstream of our filter block:
-
-![Upstream data block is not affected by changes in the filter block](01-img-04.png)
+![Clicking the Adelie bar recomputes the table downstream of the chart](01-img-dashboard.png)
 
 ## Errors
 
-Sometimes updating a block can causes errors downstream.
-
-For example, again using our simple penguins dashboard, if we update the dataset block to use a dataset other than penguins, it will causes errors downstream:
-
-![Error in downstream blocks after changing the dataset](01-img-05.png)
-
-This happens because the downstream filter and plot blocks user variables from the penguins dataset.
-When this dataset changes, these variables are no longer available and so the downstream blocks error to let us know they are trying to use variables that no longer exist.
-In this instance to fix these errors, we just need to update the variables used in the downstream blocks to those found in the new dataset.
+A change can invalidate a downstream block: swap the dataset, and a filter that referenced a column of the old data has nothing to work on.
+The affected block reports the missing column and lists the columns that exist, and everything downstream of it waits.
+Fix the reference and the chain recomputes from there.
