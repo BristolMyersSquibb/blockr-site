@@ -136,8 +136,8 @@ features:
 
 <div class="video-section">
   <h2>See it in action</h2>
-  <p>From empty canvas to a live app in under a minute</p>
-  <video controls muted style="width: 100%; border: 1px solid var(--vp-c-divider); border-radius: 8px;" src="/videos/tutorial-01.webm" poster="/videos/tutorial-01-poster.png"></video>
+  <p>A 90-second tour of blockr</p>
+  <VideoEmbed id="_j0dOkGrkew" title="blockr quick tour" />
   <p style="margin-top:16px"><a href="/learn/01-build-your-first-app">Build it yourself →</a></p>
 </div>
 
