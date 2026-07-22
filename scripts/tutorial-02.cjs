@@ -1,6 +1,6 @@
-/* Tutorial 02 pipeline: starts from the tutorial-01 end-state board and
- * turns it into a dashboard: split panels, close chrome, resize, toggle
- * Controls/Preview. Records video + screenshots.
+/* Tutorial 02 pipeline (v2): interactive dashboard with blockr.viz.
+ * Starts from a workflow with a Chart + Table block, arranges the layout,
+ * then shows drilldown: click a bar, the table follows.
  *
  * Usage: node tutorial-02.cjs <app-url> <out-dir>
  */
@@ -52,6 +52,27 @@ async function shot(page, name) {
   console.log('shot:', name);
 }
 
+// Pixel of a bar's midpoint, by category name, via the ECharts instance.
+async function barPoint(page, category) {
+  return page.evaluate((cat) => {
+    const div = Array.from(document.querySelectorAll('div'))
+      .find((el) => el.getAttribute && el.getAttribute('_echarts_instance_') && el.offsetParent);
+    if (!div || !window.echarts) return null;
+    const inst = echarts.getInstanceByDom(div);
+    if (!inst) return null;
+    const opt = inst.getOption();
+    const cats = (opt.yAxis && opt.yAxis[0] && opt.yAxis[0].data) ||
+                 (opt.xAxis && opt.xAxis[0] && opt.xAxis[0].data) || [];
+    const idx = cats.indexOf(cat);
+    if (idx < 0) return null;
+    const raw = opt.series[0].data[idx];
+    const val = (raw && raw.value !== undefined) ? raw.value : raw;
+    const p = inst.convertToPixel({ seriesIndex: 0 }, [val / 2, idx]);
+    const r = div.getBoundingClientRect();
+    return { x: r.x + p[0], y: r.y + p[1] };
+  }, category);
+}
+
 (async () => {
   const browser = await chromium.launch({
     executablePath: '/usr/bin/chromium',
@@ -63,18 +84,19 @@ async function shot(page, name) {
   const caption = async (t) => { await page.evaluate((x) => window.__caption(x), t); await sleep(900); };
   await page.goto(URL);
   await page.waitForSelector('.g6', { timeout: 60000 });
-  await sleep(8000);
+  await sleep(9000);
   await page.evaluate(OVERLAY_JS);
 
-  // Beat A: starting point
-  await caption('The workflow from the last tutorial');
+  // Beat A: starting point — the workflow with Chart + Table blocks
+  await caption('The workflow, now ending in a Chart and a Table block');
+  await page.locator('[id*="dock-tab"][id*="chart"]').first().click();
+  await sleep(3000);
   await shot(page, '01-start.png');
-  await sleep(800);
 
-  // Beat B: give the plot its own panel (drag tab to the right edge)
-  await caption('Drag the Ggplot tab to the right edge');
-  const plotTab = await page.locator('[id*="dock-tab"][id*="plot"]').first().boundingBox();
-  await page.mouse.move(plotTab.x + plotTab.width / 2, plotTab.y + plotTab.height / 2, { steps: 10 });
+  // Beat B: table gets its own panel on the right
+  await caption('Drag the table tab to the right edge');
+  const tblTab = await page.locator('[id*="dock-tab"][id*="table"]').first().boundingBox();
+  await page.mouse.move(tblTab.x + tblTab.width / 2, tblTab.y + tblTab.height / 2, { steps: 10 });
   await page.mouse.down();
   await sleep(300);
   await page.mouse.move(1130, 420, { steps: 30 });
@@ -82,73 +104,47 @@ async function shot(page, name) {
   await shot(page, '02-drag-split.png');
   await page.mouse.up();
   await sleep(2500);
-  await shot(page, '03-split.png');
 
   // Beat C: close what dashboard users don't need
   await caption('Close the panels your users don’t need');
-  const wfTab = page.locator('.dv-default-tab', { hasText: 'Workflow' }).first();
-  await wfTab.hover();
-  await sleep(300);
-  await wfTab.locator('.dv-default-tab-action').click();
-  await sleep(1800);
-  const dsTab = page.locator('.dv-default-tab', { hasText: 'Dataset' }).first();
-  await dsTab.hover();
-  await sleep(300);
-  await dsTab.locator('.dv-default-tab-action').click();
-  await sleep(1800);
-  await shot(page, '04-closed.png');
-
-  // Beat D: resize (drag the sash between the two panels)
-  await caption('Resize panels by dragging the divider');
-  const sash = await page.evaluate(() => {
-    const sashes = Array.from(document.querySelectorAll('.dv-sash'))
-      .map((el) => { const r = el.getBoundingClientRect(); return { x: r.x + r.width / 2, y: r.y + r.height / 2, w: r.width, h: r.height }; })
-      .filter((s) => s.h > 100); // vertical sashes only
-    sashes.sort((a, b) => a.x - b.x);
-    return sashes[sashes.length - 1] || null;
-  });
-  if (sash) {
-    await page.mouse.move(sash.x, 400, { steps: 10 });
-    await page.mouse.down();
-    await sleep(200);
-    await page.mouse.move(sash.x - 160, 400, { steps: 20 });
+  for (const name of ['Workflow', 'Dataset', 'Filter']) {
+    const tab = page.locator('.dv-default-tab', { hasText: name }).first();
+    await tab.hover();
     await sleep(300);
-    await page.mouse.up();
+    await tab.locator('.dv-default-tab-action').click();
     await sleep(1500);
   }
+  await sleep(500);
 
-  // Beat E: toggles — hide the filter's preview, then the plot's controls
-  await caption('Hide the filter’s preview: the eye toggle');
-  const filterPanel = page.locator('[id*="block_panel-filter"]');
-  await filterPanel.locator('.blockr-section-toggle .btn').nth(1).click();
+  // Beat D: hide the chart's preview table — chart only
+  await caption('Hide the chart’s preview: the eye toggle');
+  const chartPanel = page.locator('[id*="block_panel-chart"]');
+  await chartPanel.locator('.blockr-section-toggle .btn').nth(1).click();
   await sleep(1800);
-  await caption('Hide the plot’s controls: the sliders toggle');
-  const plotPanel = page.locator('[id*="block_panel-plot"]');
-  await plotPanel.locator('.blockr-section-toggle .btn').nth(0).click();
-  await sleep(1800);
-  await shot(page, '05-toggles.png');
+  await shot(page, '03-dashboard.png');
 
-  // Beat F: use it — change the filter, watch the plot
-  await caption('It stays live: drop a species and the plot follows');
-  try {
-    const chip = filterPanel
-      .locator('.blockr-select__tag', { hasText: 'Chinstrap' })
-      .locator('.blockr-select__tag-remove')
-      .first();
-    const chipBox = await chip.boundingBox();
-    await page.mouse.move(chipBox.x + chipBox.width / 2, chipBox.y + chipBox.height / 2, { steps: 12 });
-    await sleep(300);
-    await chip.click();
-    await sleep(600);
-    await page.keyboard.press('Escape'); // close the dropdown if it opened
-    await page.mouse.move(576, 500, { steps: 8 });
-    await sleep(2500);
-  } catch (e) {
-    console.log('chip removal skipped:', e.message.slice(0, 80));
+  // Beat E: drill — click a bar, the table follows
+  await caption('Click a bar: the table shows those penguins');
+  let pt = await barPoint(page, 'Adelie');
+  if (pt) {
+    await page.mouse.move(pt.x, pt.y, { steps: 14 });
+    await sleep(400);
+    await page.mouse.click(pt.x, pt.y);
+    await sleep(3000);
   }
-  await caption('A dashboard: controls and chart, nothing else');
-  await shot(page, '06-final.png');
-  await sleep(1600);
+  await shot(page, '04-drill-adelie.png');
+  await caption('Another bar: the table follows again');
+  pt = await barPoint(page, 'Chinstrap');
+  if (pt) {
+    await page.mouse.move(pt.x, pt.y, { steps: 14 });
+    await sleep(400);
+    await page.mouse.click(pt.x, pt.y);
+    await sleep(3000);
+  }
+  await shot(page, '05-drill-chinstrap.png');
+
+  await caption('An interactive dashboard, no code written');
+  await sleep(1800);
   await caption(null);
 
   await context.close();

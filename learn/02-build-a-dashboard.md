@@ -1,8 +1,8 @@
 # Build a dashboard
 
-In this tutorial you turn the workflow from the previous tutorial into a dashboard: end users see the filter controls and the plot, nothing else.
+In this tutorial you turn the workflow from the previous tutorial into an interactive dashboard: a chart your users can click, and a table that follows the click.
 
-![The finished dashboard: filter controls on the left, plot on the right](02-img-result.png)
+![The dashboard: clicking the Adelie bar filters the table to Adelie penguins](02-img-result.png)
 
 ::: info
 This builds on the workflow from [Build your first app](01-build-your-first-app). Complete that tutorial first.
@@ -14,16 +14,16 @@ Watch the flow, then follow the steps below:
 
 ## Do it yourself
 
-1. Drag the Ggplot tab to the right edge of the window. A colored outline shows where the panel will land; release to give the plot its own panel:
+1. Swap the plot for interactive blocks: remove the ggplot block, then add a "Chart" block after the filter and a "Table" block after the chart (add and connect as in the first tutorial). Group the chart by "species" and set its drill column to "species"; the gear in the chart's corner opens its settings.
+2. Drag the table tab to the right edge of the window. A colored outline shows where the panel will land; release to give the table its own panel:
 
-   ![Dragging the Ggplot tab, drop target outlined on the right](02-img-drag.png)
+   ![Dragging the table tab, drop target outlined on the right](02-img-drag.png)
 
    The same drag can group panels: drop a tab next to another tab and they share a tab group.
 
-2. Close what your users don't need: click the "x" on the Workflow tab and on the Dataset tab. The "+" next to any tab bar brings panels back.
-3. Resize the panels by dragging the divider between them.
-4. Trim each block to its dashboard role, with the two toggles in the block header: the sliders icon shows or hides the controls, the eye icon shows or hides the preview. Hide the filter's preview and the plot's controls.
-5. The dashboard stays live: remove a species from the filter and the plot updates.
+3. Close what your users don't need: the "x" on the Workflow, Dataset and Filter tabs. The "+" next to any tab bar brings panels back.
+4. Hide the chart's preview table with the eye toggle in its header. Every block panel has the two toggles: sliders for the controls, eye for the preview.
+5. Click a bar. The chart filters everything downstream, so the table now shows exactly those penguins; the label under the chart says which filter is active. Click another bar, or "Reset", and the table follows.
 
 The layout and the toggles are part of the board, so they are saved and restored with it: what you arrange is what people using your board get.
 
