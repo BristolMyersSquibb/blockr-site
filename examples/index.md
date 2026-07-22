@@ -110,6 +110,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 
 <div class="examples-grid">
 <a class="example-card" href="https://blockr.cloud/app/catbreeds" target="_blank">
+<img src="/examples/catbreeds.jpg" alt="Cat Breeds" />
 <div class="example-body">
 <p class="example-title">Cat Breeds</p>
 <p>A full cat-breeds analysis end to end: trait radar, headline KPIs, correlations, a temperament word cloud and a chart-filter to drilldown pair, with AI wired both per-block and board-level (the useR! 2026 demo).</p>
@@ -117,6 +118,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </div>
 </a>
 <a class="example-card" href="https://blockr.cloud/app/full-stack" target="_blank">
+<img src="/examples/full-stack.jpg" alt="Full-Stack Assistant" />
 <div class="example-body">
 <p class="example-title">Full-Stack Assistant</p>
 <p>An empty blockr board with the board-level LLM assistant activated: nothing is on the canvas. You build the entire workflow by talking to the assistant, which can add any block from the full blockr stack. The assistant sits on the left, the Workflow (DAG) panel on the right.</p>
@@ -124,6 +126,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </div>
 </a>
 <a class="example-card" href="https://blockr.cloud/app/duckdb-lazy" target="_blank">
+<img src="/examples/duckdb-lazy.jpg" alt="DuckDB Lazy (100M rows)" />
 <div class="example-body">
 <p class="example-title">DuckDB Lazy (100M rows)</p>
 <p>A 100,000,000-row parquet opened as a lazy DuckDB table and transformed through a chain of blockr.dplyr blocks. Every verb pushes to SQL and the preview pages through 100M rows without ever materializing the full table; only the filtered ~1000-row result is collected into R.</p>
@@ -131,6 +134,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 </div>
 </a>
 <a class="example-card" href="https://blockr.cloud/app/duckdb-remote-dm" target="_blank">
+<img src="/examples/duckdb-remote-dm.jpg" alt="DuckDB Remote dm (5M-row star schema)" />
 <div class="example-body">
 <p class="example-title">DuckDB Remote dm (5M-row star schema)</p>
 <p>A 5,000,000-row DuckDB star schema (one fact table, three dimensions) bound into a dm and explored with the Key-lines preview - the fact table pages in the database and is never collected. A second in-memory example dm renders through the same preview.</p>
@@ -280,26 +284,6 @@ source(system.file("examples/app.R", package = "blockr.catbreeds"))
 
 Open [`inst/examples/app.R`](https://github.com/cynkra/blockr.catbreeds/blob/main/inst/examples/app.R) on GitHub to see exactly what the script does.
 
-### Full-Stack Assistant
-
-An empty blockr board with the board-level LLM assistant activated: nothing is on the canvas. You build the entire workflow by talking to the assistant, which can add any block from the full blockr stack. The assistant sits on the left, the Workflow (DAG) panel on the right.
-
-First install blockr as described on the [Install](/install) page. Then add the extra packages:
-
-```r
-pak::pak("BristolMyersSquibb/blockr.assistant@feat/agentic-loop")   # blockr.assistant — needs this branch (not yet on main)
-pak::pak("BristolMyersSquibb/blockr.pharma")                        # patient-profile clinical block
-pak::pak("BristolMyersSquibb/blockr.code")                          # idiomatic code-export plugin
-```
-
-Launch the demo:
-
-```r
-source(system.file("examples/full-stack/app.R", package = "blockr.assistant"))
-```
-
-This opens on an empty board — the assistant chat pane on the left, the Workflow (DAG) panel on the right. Ask the Assistant pane "Add the mtcars dataset", then "Add a scatter plot of mpg vs wt". Needs an LLM key (e.g. OPENAI_API_KEY). Open [`inst/examples/full-stack/app.R`](https://github.com/BristolMyersSquibb/blockr.assistant/blob/feat/agentic-loop/inst/examples/full-stack/app.R) on GitHub to see exactly what the script does.
-
 ### DuckDB Lazy (100M rows)
 
 A 100,000,000-row parquet opened as a lazy DuckDB table and transformed through a chain of blockr.dplyr blocks. Every verb pushes to SQL and the preview pages through 100M rows without ever materializing the full table; only the filtered ~1000-row result is collected into R.
@@ -377,6 +361,7 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
