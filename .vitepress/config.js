@@ -57,20 +57,7 @@ module.exports = {
             { text: 'Testing blocks', link: '/docs/dev/testing-blocks' }
           ]
         }
-      ],
-      '/videos/': [{
-        text: 'Videos',
-        items: [
-          { text: 'Getting Started', link: '/videos/getting-started' },
-          { text: 'Filtering and Selecting', link: '/videos/filtering-and-selecting' },
-          { text: 'Transforming Data', link: '/videos/transforming-data' },
-          { text: 'Joining Data', link: '/videos/joining-data' },
-          { text: 'Visualising Data', link: '/videos/visualising-data' },
-          { text: 'Exporting Data', link: '/videos/exporting-data' },
-          { text: 'Creating Custom Blocks', link: '/videos/creating-blocks' },
-          { text: 'Testing Blocks', link: '/videos/testing-blocks' }
-        ]
-      }]
+      ]
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/BristolMyersSquibb/blockr' }

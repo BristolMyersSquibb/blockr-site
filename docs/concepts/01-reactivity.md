@@ -1,7 +1,5 @@
 # Reactivity
 
-<VideoEmbed id="_j0dOkGrkew" title="What is blockr?" />
-
 ## Overview
 blockr uses a concept called reactivity to ensure that any changes you make to a block in your workflow are automatically reflected in all downstream blocks.
 This means that when you update one part of your workflow, you don't need to manually trigger updates elsewhere, everything downstream adjusts automatically.
