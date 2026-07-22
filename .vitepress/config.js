@@ -30,7 +30,8 @@ module.exports = {
         items: [
           { text: 'Build your first app', link: '/learn/01-build-your-first-app' },
           { text: 'Build a dashboard', link: '/learn/02-build-a-dashboard' },
-          { text: 'Create a custom block', link: '/learn/03-create-a-block' }
+          { text: 'Work with many tables', link: '/learn/03-many-tables' },
+          { text: 'Create a custom block', link: '/learn/05-create-a-block' }
         ]
       }],
       '/docs/': [
@@ -44,9 +45,13 @@ module.exports = {
         {
           text: 'Block Reference',
           items: [
-            { text: 'Wrangling', link: '/docs/blocks/01-wrangling' },
-            { text: 'Visualisation', link: '/docs/blocks/02-visualisation' },
-            { text: 'I/O', link: '/docs/blocks/03-io' }
+            { text: 'blockr.dplyr', link: '/docs/blocks/blockr.dplyr' },
+            { text: 'blockr.ggplot', link: '/docs/blocks/blockr.ggplot' },
+            { text: 'blockr.viz', link: '/docs/blocks/blockr.viz' },
+            { text: 'blockr.dm', link: '/docs/blocks/blockr.dm' },
+            { text: 'blockr.io', link: '/docs/blocks/blockr.io' },
+            { text: 'blockr.extra', link: '/docs/blocks/blockr.extra' },
+            { text: 'blockr.core', link: '/docs/blocks/blockr.core' }
           ]
         },
         {

@@ -29,4 +29,4 @@ The layout and the toggles are part of the board, so they are saved and restored
 
 ## Next
 
-Need a block that doesn't exist yet? [Create a custom block](03-create-a-block).
+Need a block that doesn't exist yet? [Create a custom block](05-create-a-block).

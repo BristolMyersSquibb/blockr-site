@@ -53,7 +53,7 @@ If you have already written the analysis in R, this brings it into the app with 
 Write a `new_block()` definition (around 50 lines) with its own UI and server logic.
 A custom block accepts data from upstream blocks, feeds visualization blocks downstream, supports the AI assistant, and serializes with the workflow.
 
-See [Create a custom block](../../learn/03-create-a-block) and [Create a block](../dev/create-block) for the developer-side details.
+See [Create a custom block](../../learn/05-create-a-block) and [Create a block](../dev/create-block) for the developer-side details.
 
 ::: info
 Every blockr workflow compiles to reproducible R code.

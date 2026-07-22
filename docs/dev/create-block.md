@@ -26,7 +26,7 @@ Write custom blocks in pure R to extend blockr with your own logic. A block is a
 Blocks should live in an R package so they can be registered, shared, and tested.
 
 ::: tip Just getting started?
-The fastest way to your first block is to start from a starter package and change it, by hand or with a coding agent. See [Create a custom block](/learn/03-create-a-block). Come back here when you want the technical reference.
+The fastest way to your first block is to start from a starter package and change it, by hand or with a coding agent. See [Create a custom block](/learn/05-create-a-block). Come back here when you want the technical reference.
 :::
 
 ::: info Source of truth
