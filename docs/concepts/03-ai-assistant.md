@@ -14,4 +14,4 @@ Everything the assistant builds is made of regular blocks: you can inspect, chan
 
 ## Requirements
 
-The assistant needs an LLM configured in the deployment (see `blockr.ai`'s model options). Without one, the extension is simply absent from the board. The [Full-Stack Assistant example](https://blockr.cloud/app/full-stack) on blockr.cloud runs it against an empty board; the [Cat Breeds example](https://blockr.cloud/app/catbreeds) has it wired per-block and board-level.
+The assistant needs an LLM configured in the deployment; [Activate AI features](/install#activate-ai-features) shows the setup. Without one, the extension is simply absent from the board. The [Full-Stack Assistant example](https://blockr.cloud/app/full-stack) on blockr.cloud runs it against an empty board; the [Cat Breeds example](https://blockr.cloud/app/catbreeds) has it wired per-block and board-level.
