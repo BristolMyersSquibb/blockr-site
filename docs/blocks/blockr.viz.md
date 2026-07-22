@@ -2,10 +2,8 @@
 
 Interactive, dashboard-grade output: charts with built-in aggregation and drilldown, tables, tiles and summary tables. Clicking a chart filters what is downstream of it. The right choice when people explore your board rather than read it.
 
-::: info Generated page
-Everything below the intro comes from the block registry
-(`scripts/gen-block-reference.R`). Do not edit by hand.
-:::
+<!-- GENERATED PAGE: everything below the intro comes from the block
+registry via scripts/gen-block-reference.R. Do not edit by hand. -->
 
 ## Summary Table
 

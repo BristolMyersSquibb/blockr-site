@@ -2,10 +2,8 @@
 
 Data wrangling, one block per verb: filter, select, mutate, summarize, join, pivot and friends. If you would reach for dplyr in R, you reach for these blocks in blockr.
 
-::: info Generated page
-Everything below the intro comes from the block registry
-(`scripts/gen-block-reference.R`). Do not edit by hand.
-:::
+<!-- GENERATED PAGE: everything below the intro comes from the block
+registry via scripts/gen-block-reference.R. Do not edit by hand. -->
 
 ## Arrange Rows
 

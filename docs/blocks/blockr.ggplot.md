@@ -2,10 +2,8 @@
 
 Static plots the way R users know them: a chart type, aesthetic mappings, facets. The right choice for a figure; for charts your dashboard users click, see blockr.viz.
 
-::: info Generated page
-Everything below the intro comes from the block registry
-(`scripts/gen-block-reference.R`). Do not edit by hand.
-:::
+<!-- GENERATED PAGE: everything below the intro comes from the block
+registry via scripts/gen-block-reference.R. Do not edit by hand. -->
 
 ## Facet
 

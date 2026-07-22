@@ -2,10 +2,8 @@
 
 Utilities that don't fit a theme: the function block for custom R code inside a workflow, search, compare, labeling and more.
 
-::: info Generated page
-Everything below the intro comes from the block registry
-(`scripts/gen-block-reference.R`). Do not edit by hand.
-:::
+<!-- GENERATED PAGE: everything below the intro comes from the block
+registry via scripts/gen-block-reference.R. Do not edit by hand. -->
 
 ## Async Function block
 
@@ -18,19 +16,6 @@ Transform data with a custom R function asynchronously. Requires mirai daemons. 
 `new_broom_summary_block()` &middot; transform
 
 Model summary using broom (tidy/glance/augment). Works with any broom-compatible model.
-
-## Cohort filter sender
-
-`new_ctrl_filter_block()` &middot; transform
-
-Push the drilled-to condition of an upstream table, chart or tile into a value filter block elsewhere on the board (no data link). Click a level to narrow the cohort, re-click to clear. Passes its input through unchanged.
-
-| Argument | Description |
-|---|---|
-| `target` | Block id of the value filter block to send the drilled cohort to. Empty means not configured: the block passes data through and sends nothing. |
-| `table` | Name of the table in the target filter's `dm` that the conditions apply to. |
-| `columns` | Source columns a click may claim. Leave empty when the upstream is a table or summary block; set it to the chart's drill column(s) when the upstream is a chart or tile. |
-| `label` | Name of the target as shown on the receipt. Defaults to the target block id. |
 
 ## Compare
 

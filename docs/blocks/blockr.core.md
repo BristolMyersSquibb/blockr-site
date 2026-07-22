@@ -2,10 +2,8 @@
 
 The framework itself ships a small set of essential blocks: datasets, file upload, simple transforms. Real analyses mostly use the packages below; these are the fallbacks that are always there.
 
-::: info Generated page
-Everything below the intro comes from the block registry
-(`scripts/gen-block-reference.R`). Do not edit by hand.
-:::
+<!-- GENERATED PAGE: everything below the intro comes from the block
+registry via scripts/gen-block-reference.R. Do not edit by hand. -->
 
 ## data upload block
 

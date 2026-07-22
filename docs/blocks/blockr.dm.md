@@ -2,10 +2,8 @@
 
 Relational data: bring in a whole data model (many linked tables) as one source, pull tables out of it, filter across the relationships. For data that lives in a database rather than a single frame.
 
-::: info Generated page
-Everything below the intro comes from the block registry
-(`scripts/gen-block-reference.R`). Do not edit by hand.
-:::
+<!-- GENERATED PAGE: everything below the intro comes from the block
+registry via scripts/gen-block-reference.R. Do not edit by hand. -->
 
 ## Add keys
 
@@ -63,7 +61,7 @@ Load a pre-built dm from example datasets
 
 | Argument | Description |
 |---|---|
-| `dataset` | Character. ID of the dm example dataset to load. One of: "bi_star_schema" (retail star schema), "safetydata_adam" / "pharmaverseadam" / "bms_adam" (CDISC ADaM clinical dm with adsl, adae, ...), "nycflights13", "insura... |
+| `dataset` | Character. ID of the dm example dataset to load. One of: "bi_star_schema" (retail star schema), "safetydata_adam" / "pharmaverseadam" / "bms_adam" (CDISC ADaM clinical dm with adsl, adae, ...), "pharmaversesdtm" (raw ... |
 
 ## dm Temporal join
 

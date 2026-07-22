@@ -66,10 +66,8 @@ for (pkg in pkgs) {
     "",
     intros[[pkg]] %||% "",
     "",
-    "::: info Generated page",
-    "Everything below the intro comes from the block registry",
-    "(`scripts/gen-block-reference.R`). Do not edit by hand.",
-    ":::",
+    "<!-- GENERATED PAGE: everything below the intro comes from the block",
+    "registry via scripts/gen-block-reference.R. Do not edit by hand. -->",
     ""
   )
 
