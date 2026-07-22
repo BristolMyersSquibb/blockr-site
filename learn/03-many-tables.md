@@ -22,4 +22,4 @@ For your own relational data, the other dm blocks read models from files or a da
 
 ## Next
 
-Need a block that doesn't exist yet? [Create a custom block](05-create-a-block).
+When no block does the transformation you need: [Custom code](04-custom-code).

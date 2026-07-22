@@ -2,13 +2,16 @@
 import { ShikiMagicMove } from 'shiki-magic-move/vue'
 import 'shiki-magic-move/dist/style.css'
 import { createHighlighter } from 'shiki'
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useData } from 'vitepress'
 
 const props = defineProps({
   steps: { type: Array, required: true },
-  lang: { type: String, default: 'r' },
-  theme: { type: String, default: 'github-light' }
+  lang: { type: String, default: 'r' }
 })
+
+const { isDark } = useData()
+const theme = computed(() => (isDark.value ? 'github-dark' : 'github-light'))
 
 const currentStep = ref(0)
 const highlighter = ref(null)
@@ -16,7 +19,7 @@ const ready = ref(false)
 
 onMounted(async () => {
   highlighter.value = await createHighlighter({
-    themes: [props.theme],
+    themes: ['github-light', 'github-dark'],
     langs: [props.lang]
   })
   ready.value = true

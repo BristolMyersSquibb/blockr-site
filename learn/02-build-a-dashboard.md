@@ -29,4 +29,4 @@ The layout and the toggles are part of the board and are saved and restored with
 
 ## Next
 
-Need a block that doesn't exist yet? [Create a custom block](05-create-a-block).
+When the data is more than one table: [Work with many tables](03-many-tables).
