@@ -8,10 +8,6 @@ This means that when you update one part of your workflow, you don't need to man
 It's the same idea that powers the interactivity you're used to seeing in spreadsheets: if cell A1 contains a price and cell B1 calculates tax with =A1 * 0.2, changing A1 instantly updates B1.
 blockr works the same way, but for entire data transformation steps instead of individual cells.
 
-::: info
-blockr did not invent reactivity! blockr is built on the [Shiny](https://shiny.posit.co/) framework in R, which itself borrowed the ideas of reactivity from [Meteor](https://www.meteor.com/)
-:::
-
 ## Example
 
 If you have already completed the [Build a dashboard](../../learn/02-build-a-dashboard) tutorial, you have already seen reactivity in action.

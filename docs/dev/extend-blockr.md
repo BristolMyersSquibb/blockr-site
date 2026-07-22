@@ -32,22 +32,25 @@ new_my_plugin <- function() {
 }
 ```
 
-## Custom block UI
+## Custom block output
 
-Override how any block renders its UI using S3 methods. This lets package authors customize the appearance of their blocks without modifying blockr.core:
+How a block displays its result is an S3 method pair on the block class: `block_ui(id, x, ...)` supplies the output area, `block_output(x, result, session)` renders into it. Override both to change how a block class shows its result. The block's input controls are not affected; those come from the `ui` function passed to the constructor.
 
 ```r
-# Custom UI for your block class
-block_ui.my_block <- function(block, id) {
-  ns <- shiny::NS(id)
-  bslib::card(
-    bslib::card_header("My Custom Block"),
-    bslib::card_body(
-      shiny::selectInput(ns("column"), "Column", choices = NULL)
-    )
+#' @export
+block_ui.my_block <- function(id, x, ...) {
+  shiny::tagList(
+    shiny::plotOutput(shiny::NS(id, "result"))
   )
 }
+
+#' @export
+block_output.my_block <- function(x, result, session) {
+  shiny::renderPlot(print(result))
+}
 ```
+
+This is the same mechanism blockr.core uses itself: `plot_block` pairs `plotOutput()` with `renderPlot()`, `transform_block` renders a table (see `blockr.core/R/plot-block.R`).
 
 ## Block registry
 

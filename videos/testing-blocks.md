@@ -1,5 +1,9 @@
 # Testing Blocks
 
+::: info
+This video was recorded with an older blockr version. Some details have changed since. For current test patterns see [Testing blocks](/docs/dev/testing-blocks).
+:::
+
 <VideoEmbed id="F00HINMGglE" title="Testing blocks in blockr" />
 
 ## Overview

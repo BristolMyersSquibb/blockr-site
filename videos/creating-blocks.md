@@ -1,5 +1,9 @@
 # Creating Custom Blocks
 
+::: info
+This video was recorded with an older blockr version. The block API and the UI have changed since. For current instructions see [Create a custom block](/learn/03-create-a-block) and [Block anatomy](/docs/dev/create-block).
+:::
+
 <VideoEmbed id="-PdixmAscQI" title="Creating blocks in blockr" />
 
 ## Overview

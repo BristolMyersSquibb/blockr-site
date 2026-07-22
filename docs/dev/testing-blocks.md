@@ -1,7 +1,5 @@
 # Testing blocks
 
-<VideoEmbed id="F00HINMGglE" title="Testing blocks in blockr" />
-
 Custom blocks should be tested like any other R code. Because blocks are Shiny modules with reactive state, testing uses `shiny::testServer()` to drive the block without spinning up a browser session. It runs in around 0.2s per test and needs no `shinytest2`.
 
 ::: info Source of truth
