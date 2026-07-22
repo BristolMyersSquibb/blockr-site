@@ -27,6 +27,3 @@ Watch the flow, then follow the steps below:
 
 The layout and the toggles are part of the board and are saved and restored with it.
 
-## Next
-
-When the data is more than one table: [Work with many tables](03-many-tables).

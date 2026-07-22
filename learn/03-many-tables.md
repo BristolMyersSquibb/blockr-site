@@ -20,6 +20,3 @@ Watch the flow, then follow the steps below:
 
 For your own relational data, the other dm blocks read models from files or a database connection; the [blockr.dm reference](/docs/blocks/blockr.dm) lists them. And the same blocks run on lazy database tables: the [DuckDB demo](https://blockr.cloud/app/duckdb-lazy) pages through 100 million rows without ever materializing them.
 
-## Next
-
-When no block does the transformation you need: [Custom code](04-custom-code).

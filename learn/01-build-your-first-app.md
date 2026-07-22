@@ -34,6 +34,3 @@ That is the app from the top of the page. Change the filter values and the plot 
 
 The other dplyr verbs (join, summarize, pivot, ...) are blocks too. The [blockr.dplyr reference](/docs/blocks/blockr.dplyr) lists them.
 
-## Next
-
-Turn this workflow into a dashboard for others to use: [Build a dashboard](02-build-a-dashboard).

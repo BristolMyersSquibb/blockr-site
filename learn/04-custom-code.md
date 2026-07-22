@@ -27,6 +27,4 @@ Watch the flow, then follow the steps below:
 
 If the AI assistant is enabled in your deployment, it can write the function from a description; you review and run it.
 
-## Next
-
 If the same function recurs across boards, make it a block of its own: [Create a custom block](05-create-a-block).

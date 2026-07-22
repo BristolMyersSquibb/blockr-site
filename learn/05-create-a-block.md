@@ -93,7 +93,7 @@ pak::pak("you/blockr.timeline")
 
 After installing and loading, the block appears in their block picker as well.
 
-## Next steps
+## Further reading
 
 - [Block anatomy](/docs/dev/create-block): detailed technical reference
 - [Extend blockr](/docs/dev/extend-blockr): plugins and the block registry
