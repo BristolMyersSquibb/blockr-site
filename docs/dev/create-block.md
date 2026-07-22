@@ -1,23 +1,3 @@
-<script setup>
-const blockSteps = [
-  {
-    label: 'Skeleton',
-    code: 'new_myplot_block <- function(x = character(), y = character(), ...) {\n  blockr.core::new_plot_block(\n    server = function(id, data) {\n      shiny::moduleServer(id, function(input, output, session) {\n        # ...\n      })\n    },\n    ui = function(id) {\n      # ...\n    },\n    class = "myplot_block",\n    expr_type = "bquoted",\n    allow_empty_state = TRUE,\n    ...\n  )\n}'
-  },
-  {
-    label: 'Add UI',
-    code: 'new_myplot_block <- function(x = character(), y = character(), ...) {\n  blockr.core::new_plot_block(\n    server = function(id, data) {\n      shiny::moduleServer(id, function(input, output, session) {\n        # ...\n      })\n    },\n    ui = function(id) {\n      shiny::tagList(\n        shiny::selectInput(shiny::NS(id, "xcol"), "X axis (groups)",\n                           choices = x, selected = x),\n        shiny::selectInput(shiny::NS(id, "ycol"), "Y axis (values)",\n                           choices = y, selected = y)\n      )\n    },\n    class = "myplot_block",\n    expr_type = "bquoted",\n    allow_empty_state = TRUE,\n    ...\n  )\n}'
-  },
-  {
-    label: 'Add server',
-    code: 'new_myplot_block <- function(x = character(), y = character(), ...) {\n  blockr.core::new_plot_block(\n    server = function(id, data) {\n      shiny::moduleServer(id, function(input, output, session) {\n        x_col <- shiny::reactiveVal(x)\n        y_col <- shiny::reactiveVal(y)\n\n        shiny::observeEvent(input$xcol, x_col(input$xcol))\n        shiny::observeEvent(input$ycol, y_col(input$ycol))\n\n        shiny::observeEvent(colnames(data()), {\n          cols <- colnames(data())\n          shiny::updateSelectInput(\n            session, "xcol", choices = c("Pick a column" = "", cols),\n            selected = if (isTRUE(x_col() %in% cols)) x_col() else ""\n          )\n          shiny::updateSelectInput(\n            session, "ycol", choices = c("Pick a column" = "", cols),\n            selected = if (isTRUE(y_col() %in% cols)) y_col() else ""\n          )\n        })\n\n        list(\n          expr = shiny::reactive(make_myplot_expr(x_col(), y_col())),\n          state = list(x = x_col, y = y_col)\n        )\n      })\n    },\n    ui = function(id) {\n      shiny::tagList(\n        shiny::selectInput(shiny::NS(id, "xcol"), "X axis (groups)",\n                           choices = x, selected = x),\n        shiny::selectInput(shiny::NS(id, "ycol"), "Y axis (values)",\n                           choices = y, selected = y)\n      )\n    },\n    class = "myplot_block",\n    expr_type = "bquoted",\n    allow_empty_state = TRUE,\n    ...\n  )\n}'
-  },
-  {
-    label: 'Register',
-    code: '# R/zzz.R\n.onLoad <- function(libname, pkgname) {\n  blockr.core::register_blocks(\n    ctor = "new_myplot_block",\n    name = "My plot",\n    description = "Boxplot with jittered points by group",\n    category = "plot",\n    package = pkgname\n  )\n}'
-  }
-]
-</script>
 
 # Create a block
 
@@ -37,9 +17,52 @@ The example on this page is the `myplot` block from the [rblock starter package]
 
 Every block is built from a constructor that wires together a server function and a UI function, then forwards them to a typed parent constructor (`new_data_block`, `new_transform_block`, `new_join_block`, `new_plot_block`, or `new_variadic_block`).
 
-Step through the animation to see how the pieces come together:
+The complete constructor, from the starter package:
 
-<CodeStepper :steps="blockSteps" />
+```r
+new_myplot_block <- function(x = character(), y = character(), ...) {
+  blockr.core::new_plot_block(
+    server = function(id, data) {
+      shiny::moduleServer(id, function(input, output, session) {
+        x_col <- shiny::reactiveVal(x)
+        y_col <- shiny::reactiveVal(y)
+
+        shiny::observeEvent(input$xcol, x_col(input$xcol))
+        shiny::observeEvent(input$ycol, y_col(input$ycol))
+
+        shiny::observeEvent(colnames(data()), {
+          cols <- colnames(data())
+          shiny::updateSelectInput(
+            session, "xcol", choices = c("Pick a column" = "", cols),
+            selected = if (isTRUE(x_col() %in% cols)) x_col() else ""
+          )
+          shiny::updateSelectInput(
+            session, "ycol", choices = c("Pick a column" = "", cols),
+            selected = if (isTRUE(y_col() %in% cols)) y_col() else ""
+          )
+        })
+
+        list(
+          expr = shiny::reactive(make_myplot_expr(x_col(), y_col())),
+          state = list(x = x_col, y = y_col)
+        )
+      })
+    },
+    ui = function(id) {
+      shiny::tagList(
+        shiny::selectInput(shiny::NS(id, "xcol"), "X axis (groups)",
+                           choices = x, selected = x),
+        shiny::selectInput(shiny::NS(id, "ycol"), "Y axis (values)",
+                           choices = y, selected = y)
+      )
+    },
+    class = "myplot_block",
+    expr_type = "bquoted",
+    allow_empty_state = TRUE,
+    ...
+  )
+}
+```
 
 ### Constructor
 
@@ -108,7 +131,7 @@ Rules that bite:
 
 ### Server function
 
-Wraps a `shiny::moduleServer()` and returns `list(expr = ..., state = ...)`. See the "Add server" step above for the full code. The pattern: one `reactiveVal` per constructor argument, observers that copy inputs into them, and an observer that refreshes column choices when upstream data changes.
+Wraps a `shiny::moduleServer()` and returns `list(expr = ..., state = ...)`. The pattern: one `reactiveVal` per constructor argument, observers that copy inputs into them, and an observer that refreshes column choices when upstream data changes.
 
 Rules that bite:
 
