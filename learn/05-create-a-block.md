@@ -1,6 +1,6 @@
 # Create a custom block
 
-This tutorial shows how to write your own block, either with a coding agent (Claude Code, Cursor, Positron with Copilot) or by hand in R. blockr handles state, reactivity and saving. Your code turns the input data into a plot or a new dataset. Both paths start from a starter package: a small working block, tests included, that you change into the block you want.
+When the same [function block](04-custom-code) keeps reappearing across your boards, it has earned promotion to a real block: registered, configurable, in the picker for everyone. This tutorial shows how to write your own block, either with a coding agent (Claude Code, Cursor, Positron with Copilot) or by hand in R. blockr handles state, reactivity and saving. Your code turns the input data into a plot or a new dataset. Both paths start from a starter package: a small working block, tests included, that you change into the block you want.
 
 ## With a coding agent
 
