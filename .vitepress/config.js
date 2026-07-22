@@ -31,7 +31,7 @@ module.exports = {
           { text: 'Build your first app', link: '/learn/01-build-your-first-app' },
           { text: 'Build a dashboard', link: '/learn/02-build-a-dashboard' },
           { text: 'Work with many tables', link: '/learn/03-many-tables' },
-          { text: 'Custom code, no custom block', link: '/learn/04-custom-code' },
+          { text: 'Custom code', link: '/learn/04-custom-code' },
           { text: 'Create a custom block', link: '/learn/05-create-a-block' }
         ]
       }],

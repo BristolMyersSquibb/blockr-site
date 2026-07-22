@@ -1,6 +1,6 @@
-# Custom code, without a custom block
+# Custom code
 
-Sometimes no block does the one step you need. Before building anything, drop a function block into the workflow: a few lines of plain R, living inside the board.
+The function block runs an R function as a workflow step: it receives the data from the upstream block, and what it returns flows downstream. Use it when no block does the transformation you need.
 
 ![Mean bill ratio per species, computed by a function block](04-img-result.png)
 
@@ -20,17 +20,13 @@ Watch the flow, then follow the steps below:
    }
    ```
 
-   The function receives the upstream data; whatever it returns flows downstream.
-
    ![The function block editor with the three-line function](04-img-code.png)
 
 3. Click "Run". The preview gains a "bill_ratio" column.
-4. Add a "Chart" block after the function block: group by "species", value "bill_ratio", function "mean". The derived column works like any other.
+4. Add a "Chart" block after the function block: group by "species", value "bill_ratio", function "mean".
 
-Where your deployment has the AI assistant enabled, you don't even have to write the R: describe the step and the assistant writes the function; you review and run it.
-
-When the same function keeps reappearing across your boards, that is the sign it wants to be a real block, with its own controls and a place in the picker.
+If the AI assistant is enabled in your deployment, it can write the function from a description; you review and run it.
 
 ## Next
 
-Turn a recurring function into a block of its own: [Create a custom block](05-create-a-block).
+If the same function recurs across boards, make it a block of its own: [Create a custom block](05-create-a-block).
