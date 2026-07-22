@@ -25,7 +25,7 @@ Watch the flow, then follow the steps below:
 4. Hide the chart's preview table with the eye toggle in its header. Every block panel has the two toggles: sliders for the controls, eye for the preview.
 5. Click a bar. The chart filters everything downstream, so the table now shows exactly those penguins; the label under the chart says which filter is active. Click another bar, or "Reset", and the table follows.
 
-The layout and the toggles are part of the board, so they are saved and restored with it: what you arrange is what people using your board get.
+The layout and the toggles are part of the board and are saved and restored with it.
 
 ## Next
 

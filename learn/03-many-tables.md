@@ -1,6 +1,6 @@
 # Work with many tables
 
-One data frame is rarely the whole story. This tutorial loads a data model, four linked tables with keys, flattens it into one analysis table, and charts it.
+Data often comes as several linked tables. This tutorial loads a data model, four tables with key relationships, flattens it into one analysis table, and charts it.
 
 ![Revenue by category, computed straight from the data model](03-img-result.png)
 

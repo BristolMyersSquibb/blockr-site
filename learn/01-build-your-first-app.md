@@ -32,7 +32,7 @@ A drag from a port does both connection jobs: release on another block's port to
 
 That is the app from the top of the page. Change the filter values and the plot updates: every block downstream of a change recomputes automatically ([reactivity](/docs/concepts/01-reactivity)).
 
-Filter Rows is one of a family: join, summarize, pivot and the other dplyr verbs are all blocks from the same package. The [blockr.dplyr reference](/docs/blocks/blockr.dplyr) lists them all.
+The other dplyr verbs (join, summarize, pivot, ...) are blocks too. The [blockr.dplyr reference](/docs/blocks/blockr.dplyr) lists them.
 
 ## Next
 
