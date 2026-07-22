@@ -1,89 +1,37 @@
 # Build your first app
 
-This tutorial will get you started with blockr in just a few minutes.
-By the end, you will have built your first data pipeline.
+In this tutorial you build a small app on the penguins dataset: a filter feeding a scatter plot.
+
+![The finished app: filter and scatter plot on penguins](01-img-result.png)
 
 Make sure blockr is running. See [Installation](/install) if you haven't set it up yet.
 
-## Load data
+Watch the whole flow, then follow the steps below:
 
-<VideoEmbed id="LsIjUv3dy38" title="Importing data in blockr" />
+<video controls muted style="width: 100%; border: 1px solid var(--vp-c-divider); border-radius: 8px;" src="/videos/tutorial-01.webm" poster="/videos/tutorial-01-poster.png"></video>
 
-Each empty blockr app starts with a blank canvas:
+## Do it yourself
 
-![Empty blockr canvas](01-img-blank-canvas.png)
+1. Right-click the canvas and choose "Add block".
+2. Search for "dataset" and click "dataset block":
 
-To build a workflow, simply add some blocks to your canvas, connect them, and then watch blockr automatically run the workflows!
+   ![Block picker with dataset in the search bar](01-img-picker.png)
 
-Let's start by adding some data. Right-click the canvas then click "Add block":
+3. In the block panel on the right, pick "penguins" from the Dataset dropdown.
+4. Drag from the output port at the bottom of the dataset block to an empty spot on the canvas. The picker opens again, and the block you pick arrives already connected: choose "Filter Rows".
+5. In the filter panel, set the column to "species" and pick the values "Adelie" and "Chinstrap". The table under the controls updates: 220 of the 344 penguins remain.
+6. Add a "ggplot" block with right-click and "Add block". This one starts unconnected.
+7. Connect it: drag from the filter block's output port onto the plot block's input port. The target port shows the name of the input it accepts:
 
-![Right-click context menu showing Add block option](01-img-right-click.png)
+   ![Dragging a connection from the filter output port to the plot input port](01-img-connect.png)
 
-This opens the right sidebar with a block selection menu.
-Here, blocks are sorted into categories like Inputs, Outputs, and Plots, so you can easily browse and discover them.
-You can also use the search bar to find blocks.
+8. Map X-axis to "bill_len" and Y-axis to "bill_dep", then click "Add mapping" and set "Color by" to "species".
+9. Click the sliders icon in the block header to hide the controls; the block now shows just the plot.
 
-For now, let's click "dataset block" to load an example data block, preconfigured with a bunch of different datasets.
+A drag from a port does both connection jobs: release on another block's port to link two blocks, release on empty canvas to add a new, already connected one.
 
-![Block menu sidebar with dataset block selected](01-img-dataset-block.png)
+That is the app from the top of the page. Change the filter values and the plot updates: every block downstream of a change recomputes automatically ([reactivity](/docs/concepts/01-reactivity)).
 
-Once the block is added to the canvas, the contents of the block will be loaded to the right-hand panel. Let's change the dataset to penguins by clicking and searching in the drop-down menu:
+## Next
 
-![Dataset block with penguins selected in the dropdown](01-img-penguins.png)
-
-## Filter data
-
-<VideoEmbed id="HMewxznTWFg" title="Filtering data in blockr" />
-
-Next, let's filter our penguins data to only return the species "Adelie" and "Chinstrap".
-
-To connect a filter block:
-
-1. Hover the mouse over the dataset block
-2. Click the "+" button at the bottom of the block, called a port, to bring up the block menu sidebar once more:
-3. Search for "filter" and click "Filter Rows"
-
-![Adding a filter block via the port button](01-img-filter-block.png)
-
-This will add a new connected filter block to the canvas.
-From here, we can filter the data to just keep the "Adelie" and "Chinstrap" species of penguins by seleting their values from the "Values" drop-down box:
-
-![Filter block with Adelie and Chinstrap selected](01-img-species.png)
-
-## Visualise data
-
-<VideoEmbed id="G5YrGtfZvhw" title="Visualising data in blockr" />
-
-Finally, let's finish our first pipeline by visualising some data.
-To do that, let's add a visualisation block, but use a different method to do that.
-
-First, right-click anywhere in the canvas and click "Add block" like we did in the first step of this tutorial:
-
-![Right-click menu to add a new block](01-img-new-block.png)
-
-Then search for "plot" and click "ggplot" to add a plot block to our canvas:
-
-![Selecting ggplot block from the block menu](01-img-ggplot.png)
-
-This will add an _unconnected_ plot block to our canvas.
-We know that the block is unconnected because there are no connecting arrows from our other blocks to our plot block:
-
-![Unconnected plot block on the canvas](01-img-unconnected.png)
-
-To connect the plot block, hover the mouse over the filter block to view the available ports.
-Then, click and drag from the port on the bottom of the filter block to the port on the top of the plot block.
-
-::: info
-Notice how the dotted line around the port on the plot block becomes solid to indicate that a connection can be made.
-:::
-
-![Dragging a connection from the filter port to the plot port](01-img-connect-ports.png)
-
-To finish let's populate some of the inputs in the plot block to create a scatter plot of penguin bill length versus bill depth across the different species:
-
-![Scatter plot of bill length vs bill depth colored by species](01-img-populate.png)
-
-## Summary
-
-And that's it! You've learned how to add blocks to the canvas, search for blocks, and connect them using ports.
-You now have the skills to import, transform, and visualize data in blockr.
+Turn this workflow into a dashboard for others to use: [Build a dashboard](02-build-a-dashboard).
