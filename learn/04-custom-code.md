@@ -10,7 +10,7 @@ Watch the flow, then follow the steps below:
 
 ## Do it yourself
 
-1. Build a short chain: a dataset block with "penguins", a "Function block" after it, a "Chart" block after that. Set the chart to group by "species", value "bill_ratio", function "mean". The chart reports that "bill_ratio" does not exist, and lists the columns that do. Not yet.
+1. Add a "Function block" after a dataset block with "penguins". Its preview shows the data passing through, unchanged.
 2. In the function block's panel, click the edit icon and write:
 
    ```r
@@ -24,7 +24,8 @@ Watch the flow, then follow the steps below:
 
    ![The function block editor with the three-line function](04-img-code.png)
 
-3. Click "Run". The chart finds its column.
+3. Click "Run". The preview gains a "bill_ratio" column.
+4. Add a "Chart" block after the function block: group by "species", value "bill_ratio", function "mean". The derived column works like any other.
 
 Where your deployment has the AI assistant enabled, you don't even have to write the R: describe the step and the assistant writes the function; you review and run it.
 

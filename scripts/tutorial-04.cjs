@@ -64,17 +64,13 @@ async function shot(page, name) {
   await sleep(10000);
   await page.evaluate(OVERLAY_JS);
 
-  // Beat A: the chart wants a column that does not exist
-  await caption('The chart wants bill_ratio — penguins has no such column');
-  await page.locator('[id*="dock-tab"][id*="chart"]').first().click();
-  await sleep(3000);
-  await shot(page, '01-missing.png');
-  await sleep(800);
-
-  // Beat B: open the function block editor
-  await caption('No block computes it? Write it: the function block');
+  // Beat A: the function block, plain R inside the workflow
+  await caption('Penguins has no bill-ratio column, and no block computes one');
   await page.locator('[id*="dock-tab"][id*="fn"]').first().click();
   await sleep(3000);
+  await shot(page, '01-fn-panel.png');
+  await sleep(800);
+  await caption('The function block: plain R, inside the workflow');
   await page.locator('[title="Edit function"]').first().click();
   await sleep(2500);
 
@@ -91,13 +87,13 @@ async function shot(page, name) {
   await shot(page, '02-code.png');
 
   // Beat D: run it
-  await caption('Run it: the block emits the new column');
+  await caption('Run: the block adds the column');
   await page.locator('[id*="block_panel-fn"] button', { hasText: 'Run' }).first().click();
   await sleep(4000);
   await shot(page, '03-run.png');
 
   // Beat E: the chart springs to life
-  await caption('Downstream, the chart finds its column');
+  await caption('Downstream, it works like any column');
   await page.locator('[id*="dock-tab"][id*="chart"]').first().click();
   await sleep(4000);
   await shot(page, '04-chart.png');
