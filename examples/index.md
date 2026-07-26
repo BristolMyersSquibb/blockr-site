@@ -100,7 +100,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <img src="/examples/stats-101.jpg" alt="Stats 101 (Penguins)" />
 <div class="example-body">
 <p class="example-title">Stats 101 (Penguins)</p>
-<p>A model-centric statistics tour on palmerpenguins: a model card (coefficient forest + adj-R2), residual diagnostics, and a survival side (Kaplan-Meier curve + Cox hazard-ratio forest).</p>
+<p>Reproducible modelling end to end on palmerpenguins. A dashboard where the model formula is the control surface - edit it and the coefficient card and the predicted-vs-actual chart re-estimate at once - and a Report view where the same board is a narrated document you can download as html, pptx or pdf, code and figures included. Wires the outline, the board-level AI assistant, project save/load and the workflow DAG around one linear model.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
@@ -248,13 +248,14 @@ This loads the treaty tower bundled in blockr.insurance and the same blocks as t
 
 ### Stats 101 (Penguins)
 
-A model-centric statistics tour on palmerpenguins: a model card (coefficient forest + adj-R2), residual diagnostics, and a survival side (Kaplan-Meier curve + Cox hazard-ratio forest).
+Reproducible modelling end to end on palmerpenguins. A dashboard where the model formula is the control surface - edit it and the coefficient card and the predicted-vs-actual chart re-estimate at once - and a Report view where the same board is a narrated document you can download as html, pptx or pdf, code and figures included. Wires the outline, the board-level AI assistant, project save/load and the workflow DAG around one linear model.
 
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
 ```r
-pak::pak("cynkra/blockr.stats")      # model / broom / survival / correlate blocks (this example)
-install.packages("palmerpenguins")   # penguins dataset for the regression side
+pak::pak("cynkra/blockr.stats")      # model + model-summary + broom blocks (this example)
+pak::pak("cynkra/blockr.outline")    # the narrated report
+install.packages("palmerpenguins")
 ```
 
 Launch the demo:
@@ -361,6 +362,8 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
+
 
 
 
