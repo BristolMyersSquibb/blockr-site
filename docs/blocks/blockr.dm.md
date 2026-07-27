@@ -114,16 +114,6 @@ Flatten dm into a single data frame by joining
 | `join_type` | Join type to use throughout. One of "left" (default), "inner", "full", "right". |
 | `recursive` | Logical. TRUE (default) follows multi-hop relationships through the FK graph. FALSE joins only direct neighbors of `start_table`. |
 
-## Nested view
-
-`new_dm_nested_view_block()` &middot; structured
-
-Display dm as nested table with expandable rows
-
-| Argument | Description |
-|---|---|
-| `root_table` | Character vector. Root table(s) to render at the top level. Child tables are shown as expandable rows via FK relationships. |
-
 ## Pull table
 
 `new_dm_pull_block()` &middot; structured
