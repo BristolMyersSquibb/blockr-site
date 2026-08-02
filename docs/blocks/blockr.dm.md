@@ -27,7 +27,7 @@ Set CDISC keys (USUBJID PK/FK) and optionally deduplicate subject columns
 | Argument | Description |
 |---|---|
 | `set_keys` | Logical. TRUE (default) sets USUBJID as primary key on ADSL and foreign key on all other tables. Required for any cascading dm filter to work. |
-| `dedup_cols` | Logical. TRUE (default) removes duplicated subject-level columns (AGE, SEX, ARM, etc.) from non-ADSL tables so they live only on ADSL. Avoids column-name collisions in downstream joins. |
+| `dedup_cols` | Logical. TRUE removes duplicated subject-level columns (AGE, SEX, ARM, etc.) from non-ADSL tables so they live only on ADSL, which avoids column-name collisions in downstream joins. FALSE (the default) leaves every table as it was read. |
 
 ## Create dm
 
