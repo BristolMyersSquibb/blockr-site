@@ -141,6 +141,14 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+<a class="example-card" href="https://blockr.cloud/app/data-collection" target="_blank">
+<img src="/examples/data-collection.jpg" alt="Data Collection Process" />
+<div class="example-body">
+<p class="example-title">Data Collection Process</p>
+<p>A quarterly data collection from eight reporting units, run as a process rather than a dashboard. The definition is one wide table; the state is an append-only event log; a headless worker runs the tasks that are scripts. The three front tasks repeat per unit inside a BPMN multi-instance sub-process, the QA check answers true/false on stdout so the branch and its rework loop live in the table, and "Simulate delivery" writes an inbox message the way an upload platform would - the worker turns it into an event.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
 </div>
 
 ## Run an example locally
@@ -325,6 +333,25 @@ source(system.file("examples/duckdb-remote-dm.R", package = "blockr.dm"))
 
 The star-schema parquet self-generates into a local cache on first run (override with `n_orders <- 5e5L`); no external data or host mount needed. Open [`inst/examples/duckdb-remote-dm.R`](https://github.com/BristolMyersSquibb/blockr.dm/blob/main/inst/examples/duckdb-remote-dm.R) on GitHub to see exactly what the script does.
 
+### Data Collection Process
+
+A quarterly data collection from eight reporting units, run as a process rather than a dashboard. The definition is one wide table; the state is an append-only event log; a headless worker runs the tasks that are scripts. The three front tasks repeat per unit inside a BPMN multi-instance sub-process, the QA check answers true/false on stdout so the branch and its rework loop live in the table, and "Simulate delivery" writes an inbox message the way an upload platform would - the worker turns it into an event.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.outline")   # the minidag rail the process editor is built on
+pak::pak("cynkra/blockr.process")
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/data-collection.R", package = "blockr.process"))
+```
+
+The board starts with NO instance: opening one is the first move. The store is per container at /tmp/blockr-process-demo, so a second browser window watches the same event log - tick a task in one and it appears in the other. The app starts its own worker as a hosting convenience; the design rule is that the worker lives outside the app (see vignette("running-scripts")), and BLOCKR_PROCESS_WORKER=0 turns it off so you can run one in a terminal and watch it work. Open [`inst/examples/data-collection.R`](https://github.com/cynkra/blockr.process/blob/main/inst/examples/data-collection.R) on GitHub to see exactly what the script does.
+
 ### Portfolio Advisor
 
 A portfolio advisor: pick an investor risk profile and an optimizer strategy on the left, and a diversified allocation dashboard recomputes on the right. A second Workflow tab shows the live block graph.
@@ -362,6 +389,7 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
