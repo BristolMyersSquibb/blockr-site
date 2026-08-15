@@ -30,6 +30,10 @@ new_myplot_block <- function(x = character(), y = character(), ...) {
         shiny::observeEvent(input$xcol, x_col(input$xcol))
         shiny::observeEvent(input$ycol, y_col(input$ycol))
 
+        # Refresh column choices when upstream data changes, keeping the
+        # current selection if it still exists. isTRUE() covers the
+        # zero-length startup default; a vanished column resets to ""
+        # (unset), which pauses evaluation again.
         shiny::observeEvent(colnames(data()), {
           cols <- colnames(data())
           shiny::updateSelectInput(
@@ -58,7 +62,8 @@ new_myplot_block <- function(x = character(), y = character(), ...) {
     },
     class = "myplot_block",
     expr_type = "bquoted",
-    allow_empty_state = TRUE,
+    # x and y are required state (allow_empty_state defaults to FALSE):
+    # the framework holds evaluation until both columns are chosen.
     ...
   )
 }
@@ -83,26 +88,7 @@ Pick the parent based on the block's role:
 The code a block generates is best factored into a pure function, kept in its own file (`R/expr-builders.R` in the starter). It takes the user's choices and returns a quoted expression, so it can be unit-tested without Shiny:
 
 ```r
-is_set <- function(v) {
-  is.character(v) && length(v) == 1L && nzchar(v)
-}
-
-make_myplot_expr <- function(x = character(), y = character()) {
-  if (!is_set(x) || !is_set(y)) {
-    # Unconfigured: render a friendly placeholder instead of erroring.
-    return(
-      bbquote(
-        ggplot2::ggplot() +
-          ggplot2::annotate(
-            "text",
-            x = 0, y = 0, label = "Pick x and y columns to draw the plot",
-            color = "grey45", size = 5
-          ) +
-          ggplot2::theme_void()
-      )
-    )
-  }
-
+make_myplot_expr <- function(x, y) {
   bbquote(
     ggplot2::ggplot(
       .(data),
@@ -127,7 +113,74 @@ Rules that bite:
 
 - **Build language objects, never strings.** `as.name()` handles any column name, including ones with spaces. `paste()` plus parsing breaks on the first odd name.
 - **Qualify every function** (`ggplot2::`): the expression is evaluated outside your package's namespace.
-- **An unconfigured block must not error.** Return a placeholder (plot blocks) or a `.(data)` pass-through (transform blocks) until required inputs are set.
+- **Let the framework gate the unconfigured state.** Required state (anything not listed in `allow_empty_state`) holds evaluation: the builder is never called with empty inputs, the block shows a "set this block's inputs" note, and code export waits for it. Don't guard for empty values in the builder, and don't `stop()` there either — a throw while *building* the expression escapes the framework's error handling, unlike a failure while *evaluating* it, which is caught and displayed cleanly.
+
+### Quoting with `bbquote()`
+
+`blockr.core::bbquote()` is what builds that quoted call. It takes the same arguments as base R's `bquote()` (`expr`, `where`, `splice`), uses the same `.(x)` and `..(x)` markers, and returns the same kind of language object. The single difference: base `bquote()` stops when a marked name cannot be found, while `bbquote()` leaves it in the expression as a literal `.(x)`.
+
+```r
+n <- 10L
+
+bquote(utils::head(.(data), n = .(n)), list(n = n))
+#> Error in eval(e[[2L]], where) : object 'data' not found
+
+bbquote(utils::head(.(data), n = .(n)), list(n = n))
+#> utils::head(.(data), n = 10L)
+```
+
+The full rationale lives in [`?blockr.core::bbquote`](https://bristolmyerssquibb.github.io/blockr.core/reference/bbquote.html).
+
+#### Why blocks need it
+
+A block expression is filled in twice, in two different places.
+
+1. In the block server, `bbquote()` substitutes the user's choices: `n`, the selected columns, the axis labels. The data marker `.(data)` has to survive this step, because a block does not know which upstream it will be wired to.
+2. In the framework, `.(data)` is replaced by the block that is actually linked. During a session that substitution happens in the evaluator; on code export it happens while assembling the script.
+
+That second step is what `expr_type = "bquoted"` on the parent constructor switches on. Without it the framework never resolves the markers and `.(data)` reaches evaluation unresolved.
+
+The payoff is the exported code. A `"bquoted"` block substitutes the upstream block id straight into the call:
+
+```r
+local(utils::head(csv_block, n = 10L))
+```
+
+The default `expr_type = "quoted"` keeps a bare `data` in the expression and has to bind it around the call:
+
+```r
+with(list(data = csv_block), utils::head(data, n = 10L))
+```
+
+Both evaluate to the same result. The first one is what a person would have typed, which is the point of the code export.
+
+#### How to use it
+
+- Mark every hole with `.()`, and supply the values in `where`, a named list (or an environment) whose names match the markers.
+- Pass language objects, not strings. A column name goes in as `as.name(x)` so it prints as `mpg`; a value meant to stay a string (an axis label, a file path) goes in as-is.
+- Leave the data markers out of `where`. Write `.(data)` in a transform or plot block, `.(x)` and `.(y)` in a join block. The names must match the server function's arguments.
+- For a variadic block, build one marker per input and splice them in:
+
+```r
+bbquote(
+  rbind(..(dat)),
+  list(dat = lapply(arg_names(), function(nm) call(".", as.name(nm)))),
+  splice = TRUE
+)
+#> rbind(.(a), .(b))
+```
+
+- If `R CMD check` reports "no visible global function definition for `.`", import the markers with `@importFrom blockr.core . ..`. Both are exported for that purpose and throw if actually called.
+- In unit tests the framework is not there to run step 2, so resolve `.(data)` yourself. See [Testing blocks](/docs/dev/testing-blocks).
+
+#### Alternatives
+
+| Approach | Verdict |
+|---|---|
+| `bbquote()` | Recommended. Handles both steps of the substitution with one notation. |
+| base `bquote()` | Works only if you re-quote the data markers by hand: `bquote(utils::head(.(data), n = .(n)), list(n = n, data = quote(.(data))))`. Every marker you forget is an error at build time, and the list has to be kept in sync with the expression. |
+| rlang `expr()` with `!!` / `!!!` | Works: rlang only acts on `!!`, so `rlang::expr(utils::head(.(data), n = !!n))` leaves `.(data)` untouched. It costs an rlang dependency and puts two quoting notations in one expression. |
+| `expr_type = "quoted"` with a bare `data` | No unquoting of the data at all, `quote()` or `bquote()` is enough. Still supported and used by older blocks, at the price of the `with()` wrapper in exported code. |
 
 ### Server function
 
@@ -135,7 +188,7 @@ Wraps a `shiny::moduleServer()` and returns `list(expr = ..., state = ...)`. The
 
 Rules that bite:
 
-- **`expr` is a quoted call**, not a string. Use `blockr.core::bbquote()` with `.(x)` splices and pair it with `expr_type = "bquoted"` on the parent constructor. Splice the upstream data via `.(data)`.
+- **`expr` is a quoted call**, not a string. Use `blockr.core::bbquote()` with `.(x)` markers and pair it with `expr_type = "bquoted"` on the parent constructor, as described in [Quoting with `bbquote()`](#quoting-with-bbquote).
 - **`state` is a list of reactives**, one per constructor parameter. Names must match constructor argument names exactly. Serialization breaks silently otherwise.
 - **The expression must evaluate outside a reactive context.** If `expr` only works because a reactive happens to be in scope, the export pipeline will fail.
 - **Don't expose data inputs as constructor arguments.** `data` / `x` / `y` / `...args` are wired by the framework via the server signature.
@@ -182,6 +235,7 @@ JS-driven blocks built on the blockr.dplyr factory have this enabled already, in
 
 - [rblock starter package](https://github.com/cynkra/blockr.docs/tree/main/scaffolds/rblock): this page's example as a complete package with tests and demo board
 - [blockr.docs patterns](https://github.com/cynkra/blockr.docs/tree/main/patterns): canonical R-driven and JS-driven references
+- [`bbquote()` reference](https://bristolmyerssquibb.github.io/blockr.core/reference/bbquote.html): the two-step quoting rationale, from blockr.core itself
 - [Full create-block vignette](https://bristolmyerssquibb.github.io/blockr.core/articles/create-block.html): detailed walkthrough with advanced examples
 - [Block registry vignette](https://bristolmyerssquibb.github.io/blockr.core/articles/blocks-registry.html): registry system details
 - [Extend blockr vignette](https://bristolmyerssquibb.github.io/blockr.core/articles/extend-blockr.html): plugins and custom UI
