@@ -20,6 +20,14 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+<a class="example-card" href="https://blockr.cloud/app/first-workflow" target="_blank">
+<img src="/examples/first-workflow.jpg" alt="Your First Workflow" />
+<div class="example-body">
+<p class="example-title">Your First Workflow</p>
+<p>The sixty-second board. Start blank, add a dataset, filter it, plot it, and watch the outline on the left fill in as you go. Then open the Report view and read the Quarto document the three blocks wrote: about ten lines of ordinary R that runs without blockr.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
 </div>
 
 ## Pharma
@@ -104,6 +112,14 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+<a class="example-card" href="https://blockr.cloud/app/aedes-ivm" target="_blank">
+<img src="/examples/aedes-ivm.jpg" alt="Does mosquito control work?" />
+<div class="example-body">
+<p class="example-title">Does mosquito control work?</p>
+<p>A real open-access study, refitted in the board. Egg counts from six towns across the Swiss-Italian border, and two models of them side by side: a Poisson glm authored by dragging one term in, and the negative binomial mixed model the statisticians actually published, written as plain R in a code block. Both return the paper's own numbers. The Report view builds a Quarto document whose chunks are canonical R - no blockr call in it - and downloads it.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
 </div>
 
 ## Showcase
@@ -154,6 +170,25 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 ## Run an example locally
 
 The demos above run on [blockr.cloud](https://blockr.cloud). To run one in your own R session, follow the setup below.
+
+### Your First Workflow
+
+The sixty-second board. Start blank, add a dataset, filter it, plot it, and watch the outline on the left fill in as you go. Then open the Report view and read the Quarto document the three blocks wrote: about ten lines of ordinary R that runs without blockr.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.outline")    # the outline rail and the report builder
+install.packages("palmerpenguins")   # the install line on the website. `library(palmerpenguins)` here would put
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/first-workflow.R", package = "blockr.outline"))
+```
+
+Nothing is preloaded and no data package is needed. Start either way: the dataset block reads from `datasets`, so iris and mtcars are one picker away, or paste a csv URL into Import Data and work on your own. Connect two blocks by dragging between the dots on the outline's left rail. Open [`inst/examples/first-workflow.R`](https://github.com/cynkra/blockr.outline/blob/main/inst/examples/first-workflow.R) on GitHub to see exactly what the script does.
 
 ### Clinical Explorer
 
@@ -274,6 +309,28 @@ source(system.file("examples/stats-101.R", package = "blockr.stats"))
 
 Open [`inst/examples/stats-101.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/stats-101.R) on GitHub to see exactly what the script does.
 
+### Does mosquito control work?
+
+A real open-access study, refitted in the board. Egg counts from six towns across the Swiss-Italian border, and two models of them side by side: a Poisson glm authored by dragging one term in, and the negative binomial mixed model the statisticians actually published, written as plain R in a code block. Both return the paper's own numbers. The Report view builds a Quarto document whose chunks are canonical R - no blockr call in it - and downloads it.
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.stats")     # dataset + model + model-summary + broom blocks
+pak::pak("cynkra/blockr.outline")   # the report builder, the deck builder, the minidag
+install.packages("glmmTMB")         # the published arm's fit
+install.packages("broom.mixed")     # its tidy() method
+install.packages("ggplot2")         # the season figure
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/aedes-ivm.R", package = "blockr.stats"))
+```
+
+Open [`inst/examples/aedes-ivm.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/aedes-ivm.R) on GitHub to see exactly what the script does.
+
 ### Cat Breeds
 
 A full cat-breeds analysis end to end: trait radar, headline KPIs, correlations, a temperament word cloud and a chart-filter to drilldown pair, with AI wired both per-block and board-level (the useR! 2026 demo).
@@ -340,7 +397,7 @@ A quarterly data collection from eight reporting units, run as a process rather 
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
 ```r
-pak::pak("cynkra/blockr.outline")   # the minidag rail the process editor is built on
+pak::pak("cynkra/blockr.outline")   # the outline rail the process editor is built on
 pak::pak("cynkra/blockr.process")
 ```
 
@@ -389,6 +446,8 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
+
 
 
 
