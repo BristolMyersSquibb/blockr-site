@@ -321,6 +321,8 @@ pak::pak("cynkra/blockr.outline")   # the report builder, the deck builder, the 
 install.packages("glmmTMB")         # the published arm's fit
 install.packages("broom.mixed")     # its tidy() method
 install.packages("ggplot2")         # the season figure
+install.packages("gtsummary")       # every table on the board
+install.packages("broom.helpers")   # gtsummary's tidier bridge, a Suggests since gtsummary 2.x
 ```
 
 Launch the demo:
@@ -329,7 +331,7 @@ Launch the demo:
 source(system.file("examples/aedes-ivm.R", package = "blockr.stats"))
 ```
 
-Open [`inst/examples/aedes-ivm.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/aedes-ivm.R) on GitHub to see exactly what the script does.
+Nothing is preloaded. The read block fetches Additional file 2 from the publisher on startup, so the board needs a working internet connection, and every number on it is computed from that file. The published arm fits a negative binomial mixed model at startup, which takes a few seconds before the Model view settles. Render the report from the Report view: what downloads is a Quarto document whose chunks are ordinary R, with no blockr call in it, so it renders in any session that has the packages above. Open [`inst/examples/aedes-ivm.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/aedes-ivm.R) on GitHub to see exactly what the script does.
 
 ### Cat Breeds
 
@@ -446,6 +448,7 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
