@@ -104,19 +104,11 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 ## Statistics
 
 <div class="examples-grid">
-<a class="example-card" href="https://blockr.cloud/app/stats-101" target="_blank">
-<img src="/examples/stats-101.jpg" alt="Stats 101 (Penguins)" />
-<div class="example-body">
-<p class="example-title">Stats 101 (Penguins)</p>
-<p>Reproducible modelling end to end on palmerpenguins. A dashboard where the model formula is the control surface - edit it and the coefficient card and the predicted-vs-actual chart re-estimate at once - and a Report view where the same board is a narrated document you can download as html, pptx or pdf, code and figures included. Wires the outline, the board-level AI assistant, project save/load and the workflow DAG around one linear model.</p>
-<span class="example-link">Open in Playground →</span>
-</div>
-</a>
 <a class="example-card" href="https://blockr.cloud/app/aedes-ivm" target="_blank">
 <img src="/examples/aedes-ivm.jpg" alt="Does mosquito control work?" />
 <div class="example-body">
 <p class="example-title">Does mosquito control work?</p>
-<p>A real open-access study, refitted in the board. Egg counts from six towns across the Swiss-Italian border, and two models of them side by side: a Poisson glm authored by dragging one term in, and the negative binomial mixed model the statisticians actually published, written as plain R in a code block. Both return the paper's own numbers. The Report view builds a Quarto document whose chunks are canonical R - no blockr call in it - and downloads it.</p>
+<p>Refits a published mosquito-control study. The Poisson glm is built in the board by dragging a term in. The paper's negative binomial mixed model is written as plain R. Both reproduce the numbers in the paper. Joint work with Matteo Tanadini, a co-author of the study.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
@@ -289,29 +281,9 @@ source(system.file("examples/treaty-pricer.R", package = "blockr.insurance"))
 
 This loads the treaty tower bundled in blockr.insurance and the same blocks as the live demo: the editable tower, Pareto fit and loss simulation, the per-layer quote chart and premium build-up waterfall, the layer-detail drilldown, and a challenger-vs-base comparison. Open [`inst/examples/treaty-pricer.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/treaty-pricer.R) on GitHub to see exactly what the script does.
 
-### Stats 101 (Penguins)
-
-Reproducible modelling end to end on palmerpenguins. A dashboard where the model formula is the control surface - edit it and the coefficient card and the predicted-vs-actual chart re-estimate at once - and a Report view where the same board is a narrated document you can download as html, pptx or pdf, code and figures included. Wires the outline, the board-level AI assistant, project save/load and the workflow DAG around one linear model.
-
-First install blockr as described on the [Install](/install) page. Then add the extra packages:
-
-```r
-pak::pak("cynkra/blockr.stats")      # model + model-summary + broom blocks (this example)
-pak::pak("cynkra/blockr.outline")    # the narrated report
-install.packages("palmerpenguins")
-```
-
-Launch the demo:
-
-```r
-source(system.file("examples/stats-101.R", package = "blockr.stats"))
-```
-
-Open [`inst/examples/stats-101.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/stats-101.R) on GitHub to see exactly what the script does.
-
 ### Does mosquito control work?
 
-A real open-access study, refitted in the board. Egg counts from six towns across the Swiss-Italian border, and two models of them side by side: a Poisson glm authored by dragging one term in, and the negative binomial mixed model the statisticians actually published, written as plain R in a code block. Both return the paper's own numbers. The Report view builds a Quarto document whose chunks are canonical R - no blockr call in it - and downloads it.
+Refits a published mosquito-control study. The Poisson glm is built in the board by dragging a term in. The paper's negative binomial mixed model is written as plain R. Both reproduce the numbers in the paper. Joint work with [Matteo Tanadini](https://www.zurich-data-scientists.ch), a co-author of [the study](https://doi.org/10.1186/s13071-021-04903-2).
 
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
@@ -448,6 +420,10 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
+
+
+
 
 
 
