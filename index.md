@@ -159,11 +159,11 @@ features:
         <p class="ep-desc">Portfolio optimization with investor profiling and dashboard.</p>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/admiral" target="_blank">
-      <img src="/examples/admiral.jpg" alt="Admiral SDTM → ADSL" />
+    <a class="example-preview" href="https://blockr.cloud/app/aedes-ivm" target="_blank">
+      <img src="/examples/aedes-ivm.jpg" alt="Does mosquito control work?" />
       <div class="ep-body">
-        <p class="ep-title">Admiral SDTM → ADSL</p>
-        <p class="ep-desc">SDTM DM to ADSL derivation pipeline using admiral blocks.</p>
+        <p class="ep-title">Does mosquito control work?</p>
+        <p class="ep-desc">Refits a published mosquito-control study. The Quarto report comes out of the same board.</p>
       </div>
     </a>
   </div>
