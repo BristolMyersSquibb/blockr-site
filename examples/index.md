@@ -37,7 +37,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <img src="/examples/clinical-explorer.jpg" alt="Clinical Explorer" />
 <div class="example-body">
 <p class="example-title">Clinical Explorer</p>
-<p>AI-enabled exploration of an ADaM trial: demographics, adverse events, lab values, vitals, and patient profile.</p>
+<p>AI-enabled exploration of an ADaM trial. One cross-filter drives five views: population and disposition, an adverse-event heatmap with a frequency chart and a swim-lane, and lab and vital-sign trajectories. The patient profile, the outline and the assistant ride a rail beside them.</p>
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
@@ -184,13 +184,14 @@ Nothing is preloaded and no data package is needed. Start either way: the datase
 
 ### Clinical Explorer
 
-AI-enabled exploration of an ADaM trial: demographics, adverse events, lab values, vitals, and patient profile.
+AI-enabled exploration of an ADaM trial. One cross-filter drives five views: population and disposition, an adverse-event heatmap with a frequency chart and a swim-lane, and lab and vital-sign trajectories. The patient profile, the outline and the assistant ride a rail beside them.
 
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
 ```r
-pak::pak("BristolMyersSquibb/blockr.pharma")   # patient profile, swim-lane plot, the ADaM dm data block
-install.packages("safetyData")                 # ADaM example tables adsl/adae/adlbc/advs
+pak::pak("BristolMyersSquibb/blockr.pharma")   # patient profile, AE heatmap, the study roles option
+pak::pak("cynkra/blockr.outline")              # the outline rail
+install.packages("safetyData")
 ```
 
 Launch the demo:
@@ -199,7 +200,7 @@ Launch the demo:
 source(system.file("examples/clinical-explorer.R", package = "blockr.pharma"))
 ```
 
-This loads the ADaM tables from safetyData and the same blocks as the live demo: cross-filter, drilldown chart and table, patient profile and swim-lane plot. Open [`inst/examples/clinical-explorer.R`](https://github.com/BristolMyersSquibb/blockr.pharma/blob/main/inst/examples/clinical-explorer.R) on GitHub to see exactly what the script does.
+This loads the ADaM tables from safetyData and the same blocks as the live demo: the cross-filter, the AE heatmap and swim-lane, the summary tables, the lab and vital-sign trajectories, and the patient profile. Open [`inst/examples/clinical-explorer.R`](https://github.com/BristolMyersSquibb/blockr.pharma/blob/main/inst/examples/clinical-explorer.R) on GitHub to see exactly what the script does.
 
 ### Admiral SDTM → ADSL
 
@@ -420,6 +421,7 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
