@@ -331,7 +331,7 @@ Launch the demo:
 source(system.file("examples/ch-gdp-season.R", package = "blockr.seasonal"))
 ```
 
-Nothing is preloaded. The read block fetches the series from the dataseries.org API on startup, so the board needs a working internet connection, and every number on it is computed from that file. X-13 fits at startup, which takes a second or two before the Adjustment view settles. Render the report from the Report view: what downloads is a Quarto document whose chunks are ordinary R with no blockr call in it. Open [`inst/examples/ch-gdp-season.R`](https://github.com/cynkra/blockr.seasonal/blob/main/inst/examples/ch-gdp-season.R) on GitHub to see exactly what the script does.
+Nothing is preloaded. The read block fetches the series from the dataseries.org API on startup, so the board needs a working internet connection, and every number on it is computed from that file. X-13 fits at startup, which takes a second or two before the Adjustment view settles. Render the report from the Report view: what downloads is a Quarto document that fetches its own data and renders outside the board. Two of its chunks call blockr.seasonal and blockr.ts, so those two have to be installed; no board, no board file and no other blockr package. Open [`inst/examples/ch-gdp-season.R`](https://github.com/cynkra/blockr.seasonal/blob/main/inst/examples/ch-gdp-season.R) on GitHub to see exactly what the script does.
 
 ### Cat Breeds
 
@@ -448,6 +448,7 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
