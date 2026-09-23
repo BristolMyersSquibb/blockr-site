@@ -112,6 +112,13 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 <span class="example-link">Open in Playground →</span>
 </div>
 </a>
+<a class="example-card" href="https://blockr.cloud/app/ch-gdp-season" target="_blank">
+<div class="example-body">
+<p class="example-title">Is the economy growing, or is it just the season?</p>
+<p>Swiss quarterly GDP is published twice: as it happened, and seasonally adjusted. This board makes the second one. It runs X-13ARIMA-SEATS on SECO's unadjusted series with no settings and puts the result beside SECO's own published adjustment: over 186 quarters they agree to a median of 0.12 percent. Data from dataseries.org.</p>
+<span class="example-link">Open in Playground →</span>
+</div>
+</a>
 </div>
 
 ## Showcase
@@ -306,6 +313,26 @@ source(system.file("examples/aedes-ivm.R", package = "blockr.stats"))
 
 Nothing is preloaded. The read block fetches Additional file 2 from the publisher on startup, so the board needs a working internet connection, and every number on it is computed from that file. The published arm fits a negative binomial mixed model at startup, which takes a few seconds before the Model view settles. Render the report from the Report view: what downloads is a Quarto document whose chunks are ordinary R, with no blockr call in it, so it renders in any session that has the packages above. Open [`inst/examples/aedes-ivm.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/aedes-ivm.R) on GitHub to see exactly what the script does.
 
+### Is the economy growing, or is it just the season?
+
+Swiss quarterly GDP is published twice: as it happened, and seasonally adjusted. This board makes the second one. It runs X-13ARIMA-SEATS on SECO's unadjusted series with no settings and puts the result beside SECO's own published adjustment: over 186 quarters they agree to a median of 0.12 percent. Data from [dataseries.org](https://dataseries.org).
+
+First install blockr as described on the [Install](/install) page. Then add the extra packages:
+
+```r
+pak::pak("cynkra/blockr.ts")         # pick, transform, combine
+pak::pak("cynkra/blockr.seasonal")   # the X-13 block and the series extractor
+pak::pak("cynkra/blockr.outline")    # the outline and the report builder
+```
+
+Launch the demo:
+
+```r
+source(system.file("examples/ch-gdp-season.R", package = "blockr.seasonal"))
+```
+
+Nothing is preloaded. The read block fetches the series from the dataseries.org API on startup, so the board needs a working internet connection, and every number on it is computed from that file. X-13 fits at startup, which takes a second or two before the Adjustment view settles. Render the report from the Report view: what downloads is a Quarto document whose chunks are ordinary R with no blockr call in it. Open [`inst/examples/ch-gdp-season.R`](https://github.com/cynkra/blockr.seasonal/blob/main/inst/examples/ch-gdp-season.R) on GitHub to see exactly what the script does.
+
 ### Cat Breeds
 
 A full cat-breeds analysis end to end: trait radar, headline KPIs, correlations, a temperament word cloud and a chart-filter to drilldown pair, with AI wired both per-block and board-level (the useR! 2026 demo).
@@ -421,6 +448,7 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 
 
 
