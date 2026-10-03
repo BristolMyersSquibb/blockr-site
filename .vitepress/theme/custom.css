@@ -21,3 +21,24 @@
     max-width: 1152px !important;
   }
 }
+
+/* The new mark is solid, so at 18px it weighs about what the old line icon
+   did at 24px. */
+:root {
+  --vp-nav-logo-height: 18px;
+}
+
+/* The brand colour is the logo green. #089E76 is too light for text on
+   white (3.4:1), so links and buttons use a darker step (5.3:1). */
+:root {
+  --vp-c-brand-1: #067A5A;
+  --vp-c-brand-2: #078A67;
+  --vp-c-brand-3: #067A5A;
+  --vp-c-brand-soft: rgba(8, 158, 118, 0.14);
+}
+.dark {
+  --vp-c-brand-1: #2DC79A;
+  --vp-c-brand-2: #089E76;
+  --vp-c-brand-3: #067A5A;
+  --vp-c-brand-soft: rgba(8, 158, 118, 0.16);
+}

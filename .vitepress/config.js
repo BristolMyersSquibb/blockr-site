@@ -5,12 +5,12 @@ module.exports = {
   title: 'blockr',
   description: 'A visual, no-code framework for R',
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}logos/logo-e4-light.svg` }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}logos/logo-mark.svg` }],
     ['script', { async: '', src: 'https://plausible.io/js/pa-nxk7_b0p2i9NaXsd3QXlJ.js' }],
     ['script', {}, `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`]
   ],
   themeConfig: {
-    logo: { light: '/logos/logo-e4-light.svg', dark: '/logos/logo-e4-dark.svg' },
+    logo: { src: '/logos/logo-mark.svg', alt: 'blockr' },
     siteTitle: 'blockr',
     nav: [
       { text: 'Examples', link: '/examples/' },
