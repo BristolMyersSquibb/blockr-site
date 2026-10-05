@@ -115,7 +115,7 @@ features:
     <source src="/videos/landing-build.webm" type="video/webm" />
     <source src="/videos/landing-build.mp4" type="video/mp4" />
   </video>
-  <p class="video-links" style="margin-top:16px"><a href="https://www.youtube.com/watch?v=_j0dOkGrkew" target="_blank">Watch the 90-second tour →</a><a href="/learn/01-build-your-first-app">Build it yourself →</a></p>
+  <p class="video-links" style="margin-top:16px"><a href="/learn/01-build-your-first-app">Build it yourself →</a></p>
 </div>
 
 <div class="examples-section">
