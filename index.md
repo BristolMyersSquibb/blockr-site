@@ -93,45 +93,6 @@ features:
   text-align: center;
   margin-bottom: 24px;
 }
-.examples-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
-}
-.example-preview {
-  display: block;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--vp-c-bg-soft);
-  text-decoration: none !important;
-  color: inherit !important;
-  transition: border-color 0.25s;
-}
-.example-preview:hover {
-  border-color: var(--vp-c-brand-1);
-}
-.example-preview img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  object-position: top left;
-  display: block;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-.example-preview .ep-body {
-  padding: 12px 14px;
-}
-.example-preview .ep-title {
-  font-weight: 600;
-  font-size: 0.95em;
-  margin: 0 0 4px;
-}
-.example-preview .ep-desc {
-  color: var(--vp-c-text-2);
-  font-size: 0.85em;
-  margin: 0;
-}
 </style>
 
 <div class="video-section">
@@ -144,26 +105,29 @@ features:
 <div class="examples-section">
   <h2>Try an example</h2>
   <p>Open a demo workflow on blockr.cloud, no install needed</p>
-  <div class="examples-row">
-    <a class="example-preview" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
+  <div class="examples-grid examples-row">
+    <a class="example-card" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
       <img src="/examples/clinical-explorer.jpg" alt="Clinical Explorer" />
-      <div class="ep-body">
-        <p class="ep-title">Clinical Explorer</p>
-        <p class="ep-desc">AI-enabled exploration of an ADaM trial: demographics, AE, lab, vitals, patient profile.</p>
+      <div class="example-body">
+        <p class="example-title">Clinical Explorer</p>
+        <p class="example-desc">AI-enabled exploration of an ADaM trial: demographics, AE, lab, vitals, patient profile.</p>
+        <span class="example-link">Open in Playground →</span>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/treaty-pricer" target="_blank">
+    <a class="example-card" href="https://blockr.cloud/app/treaty-pricer" target="_blank">
       <img src="/examples/treaty-pricer.jpg" alt="Treaty Pricer" />
-      <div class="ep-body">
-        <p class="ep-title">Treaty Pricer</p>
-        <p class="ep-desc">Reinsurance pricing: an editable treaty tower drives a Pareto loss simulation and a per-layer premium build-up.</p>
+      <div class="example-body">
+        <p class="example-title">Treaty Pricer</p>
+        <p class="example-desc">Reinsurance pricing: an editable treaty tower drives the loss simulation and premium.</p>
+        <span class="example-link">Open in Playground →</span>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/aedes-ivm" target="_blank">
+    <a class="example-card" href="https://blockr.cloud/app/aedes-ivm" target="_blank">
       <img src="/examples/aedes-ivm.jpg" alt="Does mosquito control work?" />
-      <div class="ep-body">
-        <p class="ep-title">Does mosquito control work?</p>
-        <p class="ep-desc">Refits a published mosquito-control study. The Quarto report comes out of the same board.</p>
+      <div class="example-body">
+        <p class="example-title">Does mosquito control work?</p>
+        <p class="example-desc">Refits a published mosquito-control study. The Quarto report comes out of the same board.</p>
+        <span class="example-link">Open in Playground →</span>
       </div>
     </a>
   </div>
