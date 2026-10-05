@@ -92,7 +92,7 @@ This is the cheapest test tier; lean on it whenever logic can be lifted out of t
 
 ## Why not `shinytest2`?
 
-Don't reach for `shinytest2` for R-driven blocks. Everything `shinytest2` would do (set inputs, click buttons, read outputs) `testServer()` already does in milliseconds. The exception is JS-driven blocks (custom input bindings can't be driven by `session$setInputs()`); see [blockr.docs js-driven-blocks.md](https://github.com/cynkra/blockr.docs/blob/main/patterns/js-driven-blocks.md#testing-js-driven).
+Don't reach for `shinytest2` for R-driven blocks. Everything `shinytest2` would do (set inputs, click buttons, read outputs) `testServer()` already does in milliseconds. The exception is JS-driven blocks (custom input bindings can't be driven by `session$setInputs()`); see [blockr.docs js-driven-blocks.md](https://github.com/cynkra/blockr.docs/blob/main/patterns/js-driven-blocks.md#testing).
 
 ## Further reading
 

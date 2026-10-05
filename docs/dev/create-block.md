@@ -15,7 +15,7 @@ The example on this page is the `myplot` block from the [rblock starter package]
 
 ## Block anatomy
 
-Every block is built from a constructor that wires together a server function and a UI function, then forwards them to a typed parent constructor (`new_data_block`, `new_transform_block`, `new_join_block`, `new_plot_block`, or `new_variadic_block`).
+Every block is built from a constructor that wires together a server function and a UI function, then forwards them to a typed parent constructor such as `new_data_block`, `new_transform_block` or `new_plot_block`. The parent sets the block's role and how its result is displayed. The server function's arguments set how many data inputs the block takes.
 
 The complete constructor, from the starter package:
 
@@ -77,11 +77,18 @@ Pick the parent based on the block's role:
 
 | Block does... | Parent | Server signature |
 |---|---|---|
-| Loads from API / file / database | `new_data_block()` | `function(id)` |
+| Loads from API / package / database | `new_data_block()` | `function(id)` |
+| Selects a file (upload, file browser) | `new_file_block()` | `function(id)` |
+| Reads the file from a file block | `new_parser_block()` | `function(id, file)` |
 | Reshapes one upstream input | `new_transform_block()` | `function(id, data)` |
-| Joins two inputs | `new_join_block()` | `function(id, x, y)` |
-| Takes N inputs | `new_variadic_block()` | `function(id, ...args)` |
+| Joins two inputs | `new_transform_block()` | `function(id, x, y)` |
+| Takes any number of inputs | `new_transform_block()` | `function(id, ...args)` |
 | Renders a plot | `new_plot_block()` | `function(id, data)` |
+| Renders markdown text | `new_text_block()` | `function(id, ...args)` |
+
+There is no separate parent for joins or variadic blocks. A join is a transform block whose server takes `x` and `y` (core's `new_merge_block()`, in `R/transform-merge.R`). A variadic block takes `...args` (core's `new_rbind_block()`, in `R/transform-rbind.R`, and the text block `new_glue_block()`). It needs at least one connected input; `allow_empty_state = list(data = list(...args = 0))` lifts that. A parser block's file argument has to be called `file` for the default validator to work.
+
+`new_fixed_block()` is also exported, but it is a finished transform block: it applies a fixed quoted expression to `data` and has no UI. Core uses it in tests and examples.
 
 ### Expression builder
 
@@ -113,7 +120,7 @@ Rules that bite:
 
 - **Build language objects, never strings.** `as.name()` handles any column name, including ones with spaces. `paste()` plus parsing breaks on the first odd name.
 - **Qualify every function** (`ggplot2::`): the expression is evaluated outside your package's namespace.
-- **Let the framework gate the unconfigured state.** Required state (anything not listed in `allow_empty_state`) holds evaluation: the builder is never called with empty inputs, the block shows a "set this block's inputs" note, and code export waits for it. Don't guard for empty values in the builder, and don't `stop()` there either — a throw while *building* the expression escapes the framework's error handling, unlike a failure while *evaluating* it, which is caught and displayed cleanly.
+- **Let the framework gate the unconfigured state.** Required state (anything not listed in `allow_empty_state`) holds evaluation: the builder is never called with empty inputs, the block shows the note "This block is waiting for its inputs to be set.", and code export waits for it. Don't guard for empty values in the builder, and don't `stop()` there either. A throw while *building* the expression escapes the framework's error handling and brings down the Shiny session. A failure while *evaluating* it is caught and shown on the block.
 
 ### Quoting with `bbquote()`
 
@@ -159,16 +166,33 @@ Both evaluate to the same result. The first one is what a person would have type
 - Mark every hole with `.()`, and supply the values in `where`, a named list (or an environment) whose names match the markers.
 - Pass language objects, not strings. A column name goes in as `as.name(x)` so it prints as `mpg`; a value meant to stay a string (an axis label, a file path) goes in as-is.
 - Leave the data markers out of `where`. Write `.(data)` in a transform or plot block, `.(x)` and `.(y)` in a join block. The names must match the server function's arguments.
-- For a variadic block, build one marker per input and splice them in:
+- For a variadic block, build one marker per input and splice them in. `names(...args)` lists the inputs. An input linked without a name has the name `""` and is referenced as `.arg1`, `.arg2`, ... in link order:
 
 ```r
-bbquote(
-  rbind(..(dat)),
-  list(dat = lapply(arg_names(), function(nm) call(".", as.name(nm)))),
-  splice = TRUE
-)
-#> rbind(.(a), .(b))
+server = function(id, ...args) {
+  shiny::moduleServer(id, function(input, output, session) {
+    arg_names <- shiny::reactive({
+      nms <- names(...args)
+      if (is.null(nms)) nms <- character(length(...args))
+      unnamed <- !nzchar(nms)
+      nms[unnamed] <- paste0(".arg", seq_len(sum(unnamed)))
+      nms
+    })
+    list(
+      expr = shiny::reactive(
+        bbquote(
+          rbind(..(dat)),
+          list(dat = lapply(arg_names(), function(nm) call(".", as.name(nm)))),
+          splice = TRUE
+        )
+      ),
+      state = list()
+    )
+  })
+}
 ```
+
+With two unnamed inputs the expression is `rbind(.(.arg1), .(.arg2))`, with inputs named `x` and `y` it is `rbind(.(x), .(y))`. Core's own `new_rbind_block()` does the same with internal helpers.
 
 - If `R CMD check` reports "no visible global function definition for `.`", import the markers with `@importFrom blockr.core . ..`. Both are exported for that purpose and throw if actually called.
 - In unit tests the framework is not there to run step 2, so resolve `.(data)` yourself. See [Testing blocks](/docs/dev/testing-blocks).
@@ -199,7 +223,7 @@ A standard Shiny module UI taking `id` and returning `shiny.tag` objects. Initia
 
 ## Registering your block
 
-Register on package load so the block has metadata (without it, every constructor call emits a "No block metadata available" warning, and the block doesn't show up in board / AI / MCP discovery):
+Register on package load so the block has metadata. Without it, every constructor call warns "No registry entry for block myplot_block; using default metadata.", and the block doesn't show up in board / AI / MCP discovery:
 
 ```r
 # R/zzz.R
@@ -209,12 +233,65 @@ Register on package load so the block has metadata (without it, every constructo
     name = "My plot",
     description = "Boxplot with jittered points by group",
     category = "plot",
+    arguments = blockr.core::new_arg_specs(
+      x = blockr.core::new_arg_spec(
+        "Grouping column, shown on the x axis.",
+        example = "cyl",
+        type = blockr.core::arg_string()
+      ),
+      y = blockr.core::new_arg_spec(
+        "Numeric column, shown on the y axis.",
+        example = "mpg",
+        type = blockr.core::arg_string()
+      )
+    ),
     package = pkgname
   )
 }
 ```
 
 `category` must be one of `blockr.core::suggested_categories()`: `input`, `transform`, `structured`, `plot`, `table`, `model`, `output`, `utility`, `uncategorized`. Data-fetching blocks are `input`, not `data`. `register_blocks()` is vectorised; one call can register several blocks.
+
+### Argument specs
+
+`arguments` describes the constructor arguments, one `new_arg_spec()` per argument with a description, an example value and a type. The descriptions fill the argument table in the [block reference](/docs/blocks/blockr.core). The AI assistant reads all three to set the block up. Types are built with `arg_string()`, `arg_number()`, `arg_integer()`, `arg_boolean()`, `arg_enum()`, `arg_array()` and `arg_object()`. Registration fails if a spec names an argument the constructor does not have, or if an example does not match its type.
+
+`new_arg_specs()` and `new_arg_spec()` replaced `new_block_args()` and `new_block_arg()` in July 2026. The old names still work and warn once.
+
+### Registering with roxygen tags
+
+Instead of writing the `register_blocks()` call by hand, you can declare the metadata as roxygen tags on the constructor. Add the roclet to `DESCRIPTION`:
+
+```
+Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd",
+    "blockr.core::block_registration_roclet"))
+```
+
+Tag the constructor:
+
+```r
+#' @block My plot
+#' @blockDescr Boxplot with jittered points by group
+#' @blockCategory plot
+#' @blockArg x Grouping column, shown on the x axis.
+#'   [example] "cyl"
+#'   [type] arg_string()
+#' @blockArg y Numeric column, shown on the y axis.
+#'   [example] "mpg"
+#'   [type] arg_string()
+#' @export
+new_myplot_block <- function(x = character(), y = character(), ...) {
+```
+
+`devtools::document()` then writes `inst/registry/blocks.yml`, and `.onLoad` registers everything in it:
+
+```r
+.onLoad <- function(libname, pkgname) {
+  blockr.core::register_package_blocks(package = pkgname)
+}
+```
+
+Pass `package = pkgname`. Without it, `register_package_blocks()` looks up blockr.core's own registry file and your blocks stay unregistered. `@block`, `@blockDescr` and `@blockCategory` are required. Optional tags (`@blockIcon`, `@blockGuidance`, `@blockKeywords`, `@blockExamples` and others) are listed in `?blockr.core::block_registration_roclet`.
 
 ## External control (experimental)
 

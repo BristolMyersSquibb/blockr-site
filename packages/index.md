@@ -1,6 +1,6 @@
 ---
 title: The blockr universe
-description: Packages that make up the blockr ecosystem — infrastructure and block packages, from stable to experimental.
+description: Packages that make up the blockr ecosystem, infrastructure and block packages, from stable to experimental.
 sidebar: false
 aside: false
 ---
@@ -9,21 +9,22 @@ aside: false
 
 blockr is split into two layers: **infrastructure** packages that frame the
 app (engine, layout, sessions, code export) and **block packages** that
-provide the actual building blocks users drag onto a board. Each layer spans
-three maturity tiers — stable on CRAN, in development, and experimental.
+provide the blocks users add to a board. Each layer spans three maturity
+tiers: stable on CRAN, in development, and experimental.
 
 All packages are free and open source, released under
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html).
 Source for each package lives on GitHub (linked from the cards below).
 
 ::: tip Just want to get started?
-`install.packages("blockr")` pulls the whole stable stack in one step — the
-**blockr** meta‑package re‑exports the six CRAN packages below.
+`install.packages("blockr")` pulls the whole stable stack in one step. The
+**blockr** meta-package re-exports the six CRAN packages blockr.core,
+blockr.dock, blockr.dag, blockr.dplyr, blockr.ggplot and blockr.io.
 :::
 
 ## Infrastructure
 
-The framework itself: engine, layout managers, session and code tooling.
+The framework itself: engine, layout, sessions, assistants and code tooling.
 
 ### Stable <Badge type="tip" text="on CRAN" />
 
@@ -39,14 +40,21 @@ The framework itself: engine, layout managers, session and code tooling.
 <a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.dock/" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.dock</p>
-<p>Docking layout manager — drag, dock and tab blocks like an IDE.</p>
+<p>Docking layout: views with tabbed and split panels, arranged like an IDE.</p>
 </div>
 </a>
 
 <a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.dag/" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.dag</p>
-<p>Directed acyclic graph view of a board — visualise and navigate the dependency structure of your blocks.</p>
+<p>Workflow view: the board as a graph of blocks, to add, connect and navigate them.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.session/" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.session</p>
+<p>Save, restore and share boards, with version history.</p>
 </div>
 </a>
 
@@ -56,17 +64,24 @@ The framework itself: engine, layout managers, session and code tooling.
 
 <div class="packages-grid">
 
-<a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.ai" target="_blank">
+<a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.ui/" target="_blank">
 <div class="package-body">
-<p class="package-title">blockr.ai</p>
-<p>AI assistant — configures exposed controls and explains data and outputs in plain English.</p>
+<p class="package-title">blockr.ui</p>
+<p>The design system: inputs, tables and styling shared by all blockr packages.</p>
 </div>
 </a>
 
-<a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.session/" target="_blank">
+<a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.ai" target="_blank">
 <div class="package-body">
-<p class="package-title">blockr.session</p>
-<p>Session management — save, restore and share board state across users.</p>
+<p class="package-title">blockr.ai</p>
+<p>AI helpers that set a block's controls and explain data and outputs in plain English.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.assistant" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.assistant</p>
+<p>A board-level LLM assistant that adds, connects and configures blocks from a chat.</p>
 </div>
 </a>
 
@@ -77,11 +92,18 @@ The framework itself: engine, layout managers, session and code tooling.
 </div>
 </a>
 
+<a class="package-card" href="https://github.com/cynkra/blockr.outline" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.outline</p>
+<p>The outline rail, the report builder and the code views of a board.</p>
+</div>
+</a>
+
 </div>
 
 ## Block packages
 
-The blocks users drag onto a board: data wrangling, visualisation, I/O, and verticals.
+The blocks users add to a board: data wrangling, visualisation, I/O, and verticals.
 
 ### Stable <Badge type="tip" text="on CRAN" />
 
@@ -90,21 +112,21 @@ The blocks users drag onto a board: data wrangling, visualisation, I/O, and vert
 <a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.dplyr/" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.dplyr</p>
-<p>Interactive <code>dplyr</code> and <code>tidyr</code> blocks — select, filter, mutate, summarise, pivot, joins, binds.</p>
+<p>Interactive <code>dplyr</code> and <code>tidyr</code> blocks: select, filter, mutate, summarise, pivot, joins, binds.</p>
 </div>
 </a>
 
 <a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.ggplot/" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.ggplot</p>
-<p>Interactive <code>ggplot2</code> blocks — scatter, bar, line, histogram, boxplot, facet, themes.</p>
+<p>Interactive <code>ggplot2</code> blocks: scatter, bar, line, histogram, boxplot, facet, themes.</p>
 </div>
 </a>
 
 <a class="package-card" href="https://bristolmyerssquibb.github.io/blockr.io/" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.io</p>
-<p>Read and write blocks — CSV, Excel, Parquet, Feather, SPSS, Stata, SAS, JSON, plus URL and upload modes.</p>
+<p>Read and write blocks: CSV, Excel, Parquet, Feather, SPSS, Stata, SAS, JSON, from a path, a URL or an upload.</p>
 </div>
 </a>
 
@@ -117,14 +139,21 @@ The blocks users drag onto a board: data wrangling, visualisation, I/O, and vert
 <a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.viz" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.viz</p>
-<p>Visualization blocks — interactive charts, summary and drilldown tables, KPI tiles, and cross-filtering.</p>
+<p>Visualisation blocks: interactive charts, summary and drilldown tables, KPI tiles, cross-filtering.</p>
 </div>
 </a>
 
 <a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.dm" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.dm</p>
-<p>Relational data management blocks — visually inspect and join multi‑table datasets backed by <code>dm</code>.</p>
+<p>Relational data blocks: inspect, filter and join multi-table datasets backed by <code>dm</code>.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/cynkra/blockr.input" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.input</p>
+<p>Data entry blocks: editable grids, tables and forms inside a board.</p>
 </div>
 </a>
 
@@ -134,31 +163,73 @@ The blocks users drag onto a board: data wrangling, visualisation, I/O, and vert
 
 <div class="packages-grid">
 
+<a class="package-card" href="https://github.com/cynkra/blockr.extra" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.extra</p>
+<p>Experimental blocks, among them a code block for custom R functions.</p>
+</div>
+</a>
+
 <a class="package-card" href="https://github.com/cynkra/blockr.stats" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.stats</p>
-<p>Statistical test blocks — t‑tests, ANOVA, regression diagnostics.</p>
+<p>Statistical blocks: models (lm, glm, mixed), model summaries, tests, correlations, survival.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.pharma" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.pharma</p>
+<p>Clinical trial blocks: population filters, adverse-event heatmaps, patient profiles.</p>
 </div>
 </a>
 
 <a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.admiral" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.admiral</p>
-<p>ADaM derivation blocks — clinical data prep on top of admiral.</p>
+<p>ADaM derivation blocks: clinical data preparation on top of admiral.</p>
 </div>
 </a>
 
 <a class="package-card" href="https://github.com/cynkra/blockr.insurance" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.insurance</p>
-<p>Insurance datasets and example workflows for the insurance vertical.</p>
+<p>Insurance datasets and example workflows: underwriting, pricing, reinsurance.</p>
 </div>
 </a>
 
-<a class="package-card" href="https://github.com/cynkra/blockr.task" target="_blank">
+<a class="package-card" href="https://github.com/cynkra/blockr.portfolio" target="_blank">
 <div class="package-body">
-<p class="package-title">blockr.task</p>
-<p>Task pipeline — long‑running, cancellable jobs inside a board.</p>
+<p class="package-title">blockr.portfolio</p>
+<p>Portfolio blocks: investor profiles, optimisation, allocation, share prices.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/cynkra/blockr.ts" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.ts</p>
+<p>Time series blocks: transform one series, combine several, pick a few out of many, forecast.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/cynkra/blockr.seasonal" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.seasonal</p>
+<p>Seasonal adjustment with X-13ARIMA-SEATS.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/cynkra/blockr.leaflet" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.leaflet</p>
+<p>Map blocks built on <code>leaflet</code>: markers and routes.</p>
+</div>
+</a>
+
+<a class="package-card" href="https://cynkra.github.io/blockr.process/" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.process</p>
+<p>Process orchestration: a process definition, an append-only event log and a worker that runs the scripts.</p>
 </div>
 </a>
 

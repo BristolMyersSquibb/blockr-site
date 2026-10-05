@@ -16,7 +16,7 @@ module.exports = {
       { text: 'Examples', link: '/examples/' },
       { text: 'Install', link: '/install' },
       { text: 'Learn', link: '/learn/01-build-your-first-app' },
-      { text: 'Docs', link: '/docs/concepts/01-reactivity' },
+      { text: 'Docs', link: '/docs/concepts/02-roles' },
       { text: 'Packages', link: '/packages/' },
       { text: 'Playground', link: 'https://blockr.cloud/app/empty' }
     ],

@@ -10,7 +10,7 @@ Watch the flow, then follow the steps below:
 
 ## Do it yourself
 
-1. Add a "DM Example" block and pick "BI Star Schema". Its preview draws the model: categories, products, customers and orders, with the key relationships as lines:
+1. Add an "Example data model" block and pick "BI Star Schema". Its preview draws the model: categories, products, customers and orders, with the key relationships as lines:
 
    ![The data model preview: four tables and their keys](03-img-model.png)
 

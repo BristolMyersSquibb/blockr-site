@@ -181,8 +181,7 @@ The sixty-second board. Start blank, add a dataset, filter it, plot it, and watc
 First install blockr as described on the [Install](/install) page. Then add the extra packages:
 
 ```r
-pak::pak("cynkra/blockr.outline")    # the outline rail and the report builder
-install.packages("palmerpenguins")   # the install line on the website. `library(palmerpenguins)` here would put
+pak::pak("cynkra/blockr.outline")   # the outline rail and the report builder
 ```
 
 Launch the demo:
@@ -304,7 +303,6 @@ pak::pak("cynkra/blockr.stats")     # dataset + model + model-summary + broom bl
 pak::pak("cynkra/blockr.outline")   # the report builder, the deck builder, the minidag
 install.packages("glmmTMB")         # the published arm's fit
 install.packages("broom.mixed")     # its tidy() method
-install.packages("ggplot2")         # the season figure
 install.packages("gtsummary")       # every table on the board
 install.packages("broom.helpers")   # gtsummary's tidier bridge, a Suggests since gtsummary 2.x
 ```
@@ -452,5 +450,3 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
-
-

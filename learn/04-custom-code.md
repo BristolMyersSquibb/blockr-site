@@ -11,7 +11,7 @@ Watch the flow, then follow the steps below:
 ## Do it yourself
 
 1. Add a "Function block" after a dataset block with "penguins". Its preview shows the data passing through, unchanged.
-2. In the function block's panel, click the edit icon and write:
+2. In the function block's panel, click the gear icon ("Edit function") and write:
 
    ```r
    function(data) {

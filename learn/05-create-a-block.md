@@ -26,7 +26,7 @@ pkgload::load_all("blockr.timeline")
 blockr::run_app()
 ```
 
-Loading the package registers the block. `run_app()` starts the app you know from [Build your first app](/learn/01-build-your-first-app); right-click the canvas and you will find your block in the picker under Plots. Connect a data block and configure it. There is also a ready-made board in the package, left over from the agent's verification step: `shiny::runApp("blockr.timeline")`.
+Loading the package registers the block. `run_app()` starts the app you know from [Build your first app](/learn/01-build-your-first-app); right-click the canvas and you will find your block in the picker under PLOT. Connect a data block and configure it. There is also a ready-made board in the package, left over from the agent's verification step: `shiny::runApp("blockr.timeline")`.
 
 ::: tip R-driven or JS-driven?
 The prompt above asks for the JS-driven pattern: the controls are written in JavaScript, like those of blockr's built-in blocks. That is more code, but the agent writes it and the tests cover it, including a browser test. Write "Use the R-driven pattern" instead if you want plain Shiny inputs and less machinery.

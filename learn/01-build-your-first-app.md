@@ -26,7 +26,7 @@ Watch the whole flow, then follow the steps below:
    ![Dragging a connection from the filter output port to the plot input port](01-img-connect.png)
 
 8. Map X-axis to "bill_len" and Y-axis to "bill_dep", then click "Add mapping" and set "Color by" to "species".
-9. Click the sliders icon in the block header to hide the controls; the block now shows just the plot.
+9. Open the "…" menu in the block header and choose "Controls" to hide the controls; the block now shows just the plot.
 
 A drag from a port does both connection jobs: release on another block's port to link two blocks, release on empty canvas to add a new, already connected one.
 
