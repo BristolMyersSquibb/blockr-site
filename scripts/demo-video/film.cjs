@@ -96,7 +96,7 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
     await loc.pressSequentially(text, { delay: 85 });
     await S.wait(250);
   };
-  S.drag = async (x0, y0, x1, y1, { steps = 28 } = {}) => {
+  S.drag = async (x0, y0, x1, y1, { steps = 28, beforeUp = null } = {}) => {
     await S.moveTo(x0, y0);
     await S.wait(150);
     await p.mouse.down();
@@ -109,6 +109,7 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
       await S.wait(22);
     }
     await S.wait(250);
+    if (beforeUp) await beforeUp();
     await p.mouse.up();
     S.events.push({ t: t0(), type: 'up', x: x1, y: y1 });
     S.cx = x1; S.cy = y1;
@@ -135,6 +136,8 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
       if (c.classList.contains('on')) { c.classList.remove('on'); setTimeout(show, 350); } else show();
     }, [text, numbered ? capN : 0]);
   };
+  // a still for the docs page: the frame as it is, fake cursor included
+  S.shot = async (file) => { await p.screenshot({ path: file }); console.log('shot:', file); };
   S.fade = (on) => p.evaluate((on) => { document.getElementById('__fade').style.opacity = on ? 1 : 0; }, on);
   S.zoom = (z, x, y, { abs = false } = {}) => { S.events.push({ t: t0(), type: 'zoom', z, x, y, abs }); };
 
