@@ -7,7 +7,10 @@ import { useData } from 'vitepress'
 
 const { frontmatter, isDark } = useData()
 const demo = computed(() => frontmatter.value.demo)
-const clip = computed(() => demo.value && ((isDark.value && demo.value.dark) || demo.value))
+// The server renders the light clip. Switching only after mount makes the
+// dark clip replace it; during hydration Vue would keep the server's <source>.
+const mounted = ref(false)
+const clip = computed(() => demo.value && ((mounted.value && isDark.value && demo.value.dark) || demo.value))
 const video = ref(null)
 const active = ref(0)
 let raf = 0
@@ -25,7 +28,10 @@ function seek(c) {
   video.value.currentTime = c.t + 0.05
   video.value.play()
 }
-onMounted(() => { raf = requestAnimationFrame(sync) })
+onMounted(() => {
+  mounted.value = true
+  raf = requestAnimationFrame(sync)
+})
 onBeforeUnmount(() => cancelAnimationFrame(raf))
 </script>
 
