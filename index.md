@@ -152,11 +152,11 @@ features:
         <p class="ep-desc">AI-enabled exploration of an ADaM trial: demographics, AE, lab, vitals, patient profile.</p>
       </div>
     </a>
-    <a class="example-preview" href="https://blockr.cloud/app/portfolio" target="_blank">
-      <img src="/examples/portfolio.jpg" alt="Portfolio Advisor" />
+    <a class="example-preview" href="https://blockr.cloud/app/treaty-pricer" target="_blank">
+      <img src="/examples/treaty-pricer.jpg" alt="Treaty Pricer" />
       <div class="ep-body">
-        <p class="ep-title">Portfolio Advisor</p>
-        <p class="ep-desc">Portfolio optimization with investor profiling and dashboard.</p>
+        <p class="ep-title">Treaty Pricer</p>
+        <p class="ep-desc">Reinsurance pricing: an editable treaty tower drives a Pareto loss simulation and a per-layer premium build-up.</p>
       </div>
     </a>
     <a class="example-preview" href="https://blockr.cloud/app/aedes-ivm" target="_blank">
