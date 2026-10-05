@@ -59,15 +59,15 @@ features:
 
 Each block adds a step of R code to the board. The Report tab gives you the whole script: run it without blockr, review it, or hand it to someone who codes.
 
-<ClipWithCode :from="2.8" :to="7.9">
+<ClipWithCode :windows="{ chin: [2.76, 18.37], island: [8.35, 14.29] }">
 <div>
-<video class="clip-light" autoplay muted loop playsinline poster="/videos/hero-filter-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
-  <source src="/videos/hero-filter.webm" type="video/webm" />
-  <source src="/videos/hero-filter.mp4" type="video/mp4" />
+<video class="clip-light" autoplay muted loop playsinline poster="/videos/hero-filter2-poster.jpg" aria-label="Adding Chinstrap to the filter, then colouring the chart by island and back">
+  <source src="/videos/hero-filter2.webm" type="video/webm" />
+  <source src="/videos/hero-filter2.mp4" type="video/mp4" />
 </video>
-<video class="clip-dark" autoplay muted loop playsinline poster="/videos/hero-filter-dark-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
-  <source src="/videos/hero-filter-dark.webm" type="video/webm" />
-  <source src="/videos/hero-filter-dark.mp4" type="video/mp4" />
+<video class="clip-dark" autoplay muted loop playsinline poster="/videos/hero-filter2-dark-poster.jpg" aria-label="Adding Chinstrap to the filter, then colouring the chart by island and back">
+  <source src="/videos/hero-filter2-dark.webm" type="video/webm" />
+  <source src="/videos/hero-filter2-dark.mp4" type="video/mp4" />
 </video>
 </div>
 
@@ -78,9 +78,9 @@ filtered <- dplyr::filter(
   penguins,
   species %in% c(
     "Adelie",
-    "Gentoo" # [!code --]
-    "Gentoo", # [!code ++]
-    "Chinstrap" # [!code ++]
+    "Gentoo" # @!chin
+    "Gentoo", # @chin
+    "Chinstrap" # @chin
   )
 )
 
@@ -89,7 +89,8 @@ ggplot2::ggplot(
   ggplot2::aes(
     x = bill_len,
     y = bill_dep,
-    colour = species
+    colour = species # @!island
+    colour = island # @island
   )
 ) +
   ggplot2::geom_point()
