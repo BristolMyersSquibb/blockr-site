@@ -3,19 +3,26 @@ layout: home
 
 hero:
   name: blockr
-  text: A visual, no-code framework for R
-  tagline: Drag analysis steps into interactive dashboards
-  image:
-    light: /hero-workflow.png
-    dark: /hero-workflow-dark.png
-    alt: A blockr DAG workflow
+  text: Data analysis in R, by pointing and clicking
+  tagline: Add blocks, connect them, and get an interactive dashboard and the R code behind it.
   actions:
     - theme: brand
-      text: Get Started
-      link: /learn/01-build-your-first-app
-    - theme: alt
-      text: Try Online
+      text: Try it in the browser
       link: https://blockr.cloud/app/empty
+    - theme: alt
+      text: Get started
+      link: /learn/01-build-your-first-app
+
+demo:
+  src: /videos/hero-build
+  poster: /videos/hero-build-poster.jpg
+  alt: "Building a blockr board: add a dataset, filter it, plot it, arrange the panels, change the filter"
+  chapters:
+    - { t: 0, title: "Add data", text: "Pick a dataset" }
+    - { t: 5.0, title: "Filter", text: "Append a block from the one above" }
+    - { t: 11.4, title: "Plot", text: "Choose the columns" }
+    - { t: 22.0, title: "Arrange", text: "Drag panels into place" }
+    - { t: 24.5, title: "Change it", text: "Edit the filter, the chart follows" }
 
 features:
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#0072B24D"/><line x1="30" y1="32" x2="30" y2="24" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="16" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="32" x2="18" y2="28" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/></svg>'
@@ -43,85 +50,65 @@ features:
   width: 48px;
   height: 48px;
 }
-.VPHero .main .text {
-  line-height: 1.3;
+.code-split {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 24px;
+  align-items: center;
+  margin: 24px 0 16px;
 }
-.VPHero .main .tagline {
-  margin-bottom: 32px;
-}
-.VPHero .main .actions {
-  margin-top: 16px;
-}
-.VPHero {
-  padding-top: 120px !important;
-  padding-bottom: 76px !important;
-}
-@media (min-width: 960px) {
-  .VPHero .image-container {
-    margin: 0 0 0 auto !important;
-    transform: translate(0, -32px) !important;
-  }
-}
-.video-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 48px 24px;
-  text-align: center;
-}
-.demo-loop {
+.code-split video {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  background: var(--vp-c-bg-soft);
 }
-.video-links a {
-  margin: 0 12px;
+.code-split div[class*='language-'] {
+  margin: 0 !important;
 }
-.video-section h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.video-section > p {
-  color: var(--vp-c-text-2);
-  margin-bottom: 24px;
-}
-.examples-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 48px 24px 80px;
-}
-.examples-section h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  text-align: center;
-}
-.examples-section > p {
-  color: var(--vp-c-text-2);
-  text-align: center;
-  margin-bottom: 24px;
+@media (max-width: 767px) {
+  .code-split { grid-template-columns: 1fr; }
 }
 </style>
 
-<div class="video-section">
-  <h2>See it in action</h2>
-  <p>Build a board in under a minute</p>
-  <video class="demo-loop" autoplay muted loop playsinline poster="/videos/landing-build-poster.jpg"
-         aria-label="Building a blockr board: add a dataset, filter it, plot it, change the filter, get the R code">
-    <source src="/videos/landing-build.webm" type="video/webm" />
-    <source src="/videos/landing-build.mp4" type="video/mp4" />
-  </video>
-  <p class="video-links" style="margin-top:16px"><a href="/learn/01-build-your-first-app">Build it yourself →</a></p>
+## Every click writes R
+
+Each block adds a step of R code to the board. The Report tab gives you the whole script: run it without blockr, review it, or hand it to someone who codes.
+
+<div class="code-split">
+<video autoplay muted loop playsinline poster="/videos/hero-filter-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
+  <source src="/videos/hero-filter.webm" type="video/webm" />
+  <source src="/videos/hero-filter.mp4" type="video/mp4" />
+</video>
+
+```r{3-6}
+penguins <- datasets::penguins
+
+filtered <- dplyr::filter(
+  penguins,
+  species %in% c("Adelie", "Gentoo", "Chinstrap")
+)
+
+ggplot2::ggplot(
+  filtered,
+  ggplot2::aes(
+    x = bill_len,
+    y = bill_dep,
+    colour = species
+  )
+) +
+  ggplot2::geom_point()
+```
+
 </div>
 
-<div class="examples-section">
-  <h2>Try an example</h2>
-  <p>Open a demo workflow on blockr.cloud, no install needed</p>
-  <div class="examples-grid examples-row">
+[Custom code in a board](/learn/04-custom-code) · [Create a block](/learn/05-create-a-block)
+
+## Try an example
+
+Open a demo board on blockr.cloud, no install needed.
+
+<div class="examples-grid examples-row">
     <a class="example-card" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
       <img src="/examples/clinical-explorer.jpg" alt="Clinical Explorer" />
       <div class="example-body">
@@ -147,5 +134,15 @@ features:
       </div>
     </a>
   </div>
-  <p style="text-align:center;margin-top:16px"><a href="/examples/">All examples →</a></p>
-</div>
+
+[All examples](/examples/)
+
+## Install
+
+```r
+# install.packages("pak")
+pak::pak("BristolMyersSquibb/blockr@dev")
+blockr::run_app()
+```
+
+R 4.1 or later. Details, smaller installs and the AI features: [Install](/install).
