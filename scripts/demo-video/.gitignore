@@ -1,0 +1,7 @@
+*-frames/
+*-events.json
+*.cmds
+*-cap*.png
+*.mp4
+*.webm
+*.png

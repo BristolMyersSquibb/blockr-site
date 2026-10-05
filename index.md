@@ -63,10 +63,22 @@ features:
   }
 }
 .video-section {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 48px 24px;
   text-align: center;
+}
+.demo-loop {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  background: var(--vp-c-bg-soft);
+}
+.video-links a {
+  margin: 0 12px;
 }
 .video-section h2 {
   font-size: 1.5rem;
@@ -97,9 +109,13 @@ features:
 
 <div class="video-section">
   <h2>See it in action</h2>
-  <p>A 90-second tour of blockr</p>
-  <VideoEmbed id="_j0dOkGrkew" title="blockr quick tour" />
-  <p style="margin-top:16px"><a href="/learn/01-build-your-first-app">Build it yourself →</a></p>
+  <p>Build a board in 40 seconds</p>
+  <video class="demo-loop" autoplay muted loop playsinline poster="/videos/landing-build-poster.jpg"
+         aria-label="Building a blockr board: add a dataset, filter it, plot it, change the filter, get the R code">
+    <source src="/videos/landing-build.webm" type="video/webm" />
+    <source src="/videos/landing-build.mp4" type="video/mp4" />
+  </video>
+  <p class="video-links" style="margin-top:16px"><a href="https://www.youtube.com/watch?v=_j0dOkGrkew" target="_blank">Watch the 90-second tour →</a><a href="/learn/01-build-your-first-app">Build it yourself →</a></p>
 </div>
 
 <div class="examples-section">

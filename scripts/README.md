@@ -69,3 +69,29 @@ The techniques, so the next script doesn't rediscover them:
   `.<name>-block-container` element.
 - **g6 sometimes doesn't paint** after layout changes: dispatch a window
   `resize` event, then `fitView()`.
+
+## Landing-page demo loop
+
+`public/videos/landing-build.{webm,mp4}` and its poster come from
+`scripts/demo-video/`, recorded against the live first-workflow app on
+blockr.cloud. Needs Google Chrome (or `CHROME_PATH=/usr/bin/chromium`) and
+ffmpeg with libx264 and libvpx.
+
+```bash
+cd scripts/demo-video
+node story-build.cjs build          # ~60 s take: build-frames/ + build-events.json
+node render.cjs build landing-build --speed 1.5 --zoom --captions
+node render.cjs build plain --speed 1.5     # no captions, for the poster
+ffmpeg -i landing-build.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 -an landing-build.webm
+ffmpeg -ss 31.5 -i plain.mp4 -frames:v 1 -vf scale=1440:-2 poster.png   # chart with three species
+```
+
+- `film.cjs` drives the browser: fake cursor and click rings on the top page
+  (the app sits in ShinyProxy's `iframe#shinyframe`), waits on `shiny:idle`,
+  records with CDP `Page.startScreencast`. The screencast sends CSS-pixel frames
+  whatever `deviceScaleFactor` says; `--force-device-scale-factor=2` gets 2x frames.
+- `story-build.cjs` is the clip. Captions and zoom levels are logged as events,
+  not drawn, so `render.cjs` can produce any style from one take.
+- `render.cjs` speeds up, runs a camera (zoom level from the story, follows the
+  cursor with a dead zone) through ffmpeg `sendcmd` + `crop`, and overlays the
+  captions as PNGs.
