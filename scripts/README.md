@@ -70,28 +70,45 @@ The techniques, so the next script doesn't rediscover them:
 - **g6 sometimes doesn't paint** after layout changes: dispatch a window
   `resize` event, then `fitView()`.
 
-## Landing-page demo loop
+## Demo loops (landing page, Examples page)
 
-`public/videos/landing-build.{webm,mp4}` and its poster come from
-`scripts/demo-video/`, recorded against the live first-workflow app on
-blockr.cloud. Needs Google Chrome (or `CHROME_PATH=/usr/bin/chromium`) and
-ffmpeg with libx264 and libvpx.
+`public/videos/landing-build.*` (landing page) and
+`public/videos/clinical-explorer.*` (the Clinical Explorer card on the
+Examples page, set by `video:` in the gallery manifest) come from
+`scripts/demo-video/`, recorded against the live apps on blockr.cloud. Needs
+Google Chrome (or `CHROME_PATH=/usr/bin/chromium`) and ffmpeg with libx264
+and libvpx.
 
 ```bash
 cd scripts/demo-video
-node story-build.cjs build          # ~60 s take: build-frames/ + build-events.json
-node render.cjs build landing-build --speed 1.5 --zoom --captions
+CALM="--zoom --captions --zscale 0.6 --tau-z 0.8 --tau-c 0.8 --dead 0.35"
+
+# landing page
+node story-build.cjs build                  # ~75 s take: build-frames/ + build-events.json
+node render.cjs build landing-build --speed 1.5 $CALM
 node render.cjs build plain --speed 1.5     # no captions, for the poster
+ffmpeg -ss 33.6 -i plain.mp4 -frames:v 1 -vf scale=1440:-2 poster.png   # chart with three species
+
+# Examples page
+node story-patient.cjs patient
+node render.cjs patient clinical-explorer --speed 1.2 --zoom --captions
+
+# webm next to each mp4
 ffmpeg -i landing-build.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 -an landing-build.webm
-ffmpeg -ss 31.5 -i plain.mp4 -frames:v 1 -vf scale=1440:-2 poster.png   # chart with three species
 ```
 
 - `film.cjs` drives the browser: fake cursor and click rings on the top page
   (the app sits in ShinyProxy's `iframe#shinyframe`), waits on `shiny:idle`,
   records with CDP `Page.startScreencast`. The screencast sends CSS-pixel frames
   whatever `deviceScaleFactor` says; `--force-device-scale-factor=2` gets 2x frames.
-- `story-build.cjs` is the clip. Captions and zoom levels are logged as events,
-  not drawn, so `render.cjs` can produce any style from one take.
-- `render.cjs` speeds up, runs a camera (zoom level from the story, follows the
-  cursor with a dead zone) through ffmpeg `sendcmd` + `crop`, and overlays the
-  captions as PNGs.
+- `story-*.cjs` are the clips. Captions, zoom levels and cuts are logged as
+  events, not drawn, so `render.cjs` can produce any style from one take.
+  Blocks are appended by dragging from the previous block's rail dot down into
+  empty space, which adds and connects in one step.
+- `render.cjs` drops `cut-start`/`cut-end` windows, speeds up, runs a camera
+  (zoom level from the story, follows the cursor with a dead zone) through
+  ffmpeg `sendcmd` + `crop`, and overlays the captions as PNGs. `S.zoom(..., { abs: true })`
+  is not toned down by `--zscale` (the close-up on the code at the end).
+- In the Report view the ggplot chunk sometimes stays at "waiting for R code"
+  until the view is rebuilt. `story-build.cjs` flips Build/Report once and
+  marks that stretch as a cut.

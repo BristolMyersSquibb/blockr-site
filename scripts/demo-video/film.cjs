@@ -65,7 +65,7 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
   S.wait = (ms) => p.waitForTimeout(ms);
   S.moveTo = async (x, y, ms) => {
     const d = Math.hypot(x - S.cx, y - S.cy);
-    ms = ms ?? Math.min(900, Math.max(350, d * 0.9));
+    ms = ms ?? Math.min(1100, Math.max(500, d * 1.1));
     S.events.push({ t: t0(), type: 'move', x0: S.cx, y0: S.cy, x, y, ms });
     await setCursor(x, y, ms);
     await p.mouse.move(x, y, { steps: 8 });
@@ -136,7 +136,7 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
     }, [text, numbered ? capN : 0]);
   };
   S.fade = (on) => p.evaluate((on) => { document.getElementById('__fade').style.opacity = on ? 1 : 0; }, on);
-  S.zoom = (z, x, y) => { S.events.push({ t: t0(), type: 'zoom', z, x, y }); };
+  S.zoom = (z, x, y, { abs = false } = {}) => { S.events.push({ t: t0(), type: 'zoom', z, x, y, abs }); };
 
   // ---------- recording ----------
   const frames = [];

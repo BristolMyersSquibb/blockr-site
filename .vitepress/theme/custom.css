@@ -68,13 +68,22 @@
   border-color: var(--vp-c-brand-1);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
-.example-card img {
+.example-card img,
+.example-card video {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top left;
   display: block;
   border-bottom: 1px solid var(--vp-c-divider);
+}
+.example-card--video {
+  grid-column: span 2;
+}
+@media (max-width: 640px) {
+  .example-card--video {
+    grid-column: auto;
+  }
 }
 .example-card .example-body {
   padding: 12px 14px;

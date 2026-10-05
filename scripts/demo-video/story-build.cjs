@@ -1,5 +1,5 @@
 // Variant: empty board -> dataset -> filter -> chart -> change filter -> R code
-// usage: node story-build.cjs <out> [--page-captions] [--no-record]
+// usage: node story-build.cjs <out> [--no-captions] [--no-record]
 const { film } = require('./film.cjs');
 const out = process.argv[2] || 'build';
 const captions = process.argv.includes('--page-captions');   // captions are added in post by default
@@ -21,6 +21,16 @@ const record = !process.argv.includes('--no-record');
     await S.drag(x0, y0, x1, y1);
     await S.settle(700);
   };
+  const appendFrom = async (i, search, label) => {
+    // drag from the block's dot straight down into empty space: "Append to <block>"
+    const [x0, y0] = await S.center(f.locator('.md-rail .md-dot').nth(i));
+    const [, yr] = await S.center(f.locator('.md-addrow').last());
+    await S.drag(x0, y0, x0 + 30, yr + 55, { steps: 30 });
+    await S.settle(500);
+    await S.type(f.locator('.blockr-menu__filter-input:visible'), search);
+    await S.click(menuItem(label));
+    await S.settle(900);
+  };
   const colSelect = (n) => f.locator('.blockr-select__control:visible').filter({ has: f.locator('input[placeholder^="Select column"]') }).nth(n);
   const option = (re) => f.locator('.blockr-select__option:visible', { hasText: re }).first();
 
@@ -39,8 +49,7 @@ const record = !process.argv.includes('--no-record');
 
   await S.caption('Filter it');
   S.zoom(1.7);
-  await addBlock('filter', 'Filter Rows');
-  await connect(0, 1);
+  await appendFrom(0, 'filter', 'Filter Rows');
   await S.click(f.locator('.blockr-select__control:visible').filter({ has: f.locator('input[placeholder^="Select values"]') }).first(), { pause: 400 });
   await S.click(option('Adelie'), { pause: 300 });
   await S.click(option('Gentoo'), { pause: 300 });
@@ -49,8 +58,7 @@ const record = !process.argv.includes('--no-record');
 
   await S.caption('Plot it');
   S.zoom(1.7);
-  await addBlock('ggplot', 'ggplot');
-  await connect(1, 2);
+  await appendFrom(1, 'ggplot', 'ggplot');
   await S.click(colSelect(0), { pause: 400 });
   await S.click(option(/^bill_len/));
   await S.settle(400);
@@ -83,14 +91,25 @@ const record = !process.argv.includes('--no-record');
   await S.moveTo(1100, 700);
   await S.wait(1600);
 
-  await S.caption('Get the R code');
+  await S.caption('Get the R code, as a report');
   S.zoom(1);
-  await S.click(f.locator('button[aria-label="Board options"], button[title="Board options"]').first(), { pause: 500 });
-  await S.click(f.locator('text=Show code'));
-  S.zoom(1.45, 720, 330);
-  await S.settle(1200);
-  await S.moveTo(1000, 640);
-  await S.wait(2600);
+  await S.click(f.locator('.blockr-view-tab', { hasText: 'Report' }));
+  await S.settle(1000);
+  await S.click(f.locator('text=Add block').first(), { pause: 500 });
+  await S.click(menuItem('Ggplot'));
+  await S.settle(1000);
+  await S.click(f.locator('.blockr-segmented__seg:visible').nth(1));
+  await S.settle(1500);
+  if (await f.evaluate(() => document.body.innerText.includes('waiting for R code'))) {
+    // the chunk sometimes stays empty until the view is rebuilt; render.cjs cuts this out
+    S.events.push({ t: Date.now() / 1000 - S.tStart, type: 'cut-start' });
+    await S.click(f.locator('.blockr-view-tab', { hasText: 'Build' })); await S.settle(1500);
+    await S.click(f.locator('.blockr-view-tab', { hasText: 'Report' })); await S.settle(1500);
+    S.events.push({ t: Date.now() / 1000 - S.tStart, type: 'cut-end' });
+  }
+  S.zoom(2.0, 330, 715, { abs: true });   // close on the generated code, not toned down by render --zscale
+  await S.moveTo(860, 560);
+  await S.wait(7500);
 
   await S.caption(null);
   S.zoom(1);

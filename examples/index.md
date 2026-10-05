@@ -33,8 +33,11 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 ## Pharma
 
 <div class="examples-grid">
-<a class="example-card" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
-<img src="/examples/clinical-explorer.jpg" alt="Clinical Explorer" />
+<a class="example-card example-card--video" href="https://blockr.cloud/app/clinical-explorer" target="_blank">
+<video autoplay muted loop playsinline poster="/examples/clinical-explorer.jpg" aria-label="Clinical Explorer">
+<source src="/videos/clinical-explorer.webm" type="video/webm" />
+<source src="/videos/clinical-explorer.mp4" type="video/mp4" />
+</video>
 <div class="example-body">
 <p class="example-title">Clinical Explorer</p>
 <p class="example-desc">AI-enabled exploration of an ADaM trial: demographics, AE, lab, vitals, patient profile.</p>
@@ -449,4 +452,5 @@ source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
 
 <!-- END generated -->
+
 

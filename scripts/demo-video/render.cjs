@@ -18,9 +18,28 @@ const { viewport: VP, dpr } = ev;
 const SW = VP.width * dpr, SH = VP.height * dpr, OUTH = Math.round(OUTW * VP.height / VP.width / 2) * 2;
 const off = ev.tStart - ev.t0;                 // event time -> recording time
 const list = fs.readFileSync(path.join(take + '-frames', 'list.ffconcat'), 'utf8');
-const recDur = list.split('\n').filter(l => l.startsWith('duration')).reduce((a, l) => a + +l.split(' ')[1], 0);
+let events = ev.events.map(e => ({ ...e, r: e.t + off }));
+
+// ---------- cuts: drop [cut-start, cut-end] windows from the recording ----------
+const cuts = [];
+events.forEach((e, i) => { if (e.type === 'cut-start') { const end = events.slice(i).find(x => x.type === 'cut-end'); if (end) cuts.push([e.r, end.r]); } });
+const cutBefore = (r) => cuts.reduce((a, [c0, c1]) => a + Math.max(0, Math.min(r, c1) - c0), 0);
+const lines = list.split('\n');
+const frameList = [];
+for (let i = 0; i < lines.length; i++) if (lines[i].startsWith('file') && lines[i + 1]?.startsWith('duration')) frameList.push({ file: lines[i], d: +lines[i + 1].split(' ')[1] });
+let tt = 0;
+const kept = [];
+for (const fr of frameList) {
+  const a = tt, b = tt + fr.d; tt = b;
+  const d = (b - a) - cuts.reduce((acc, [c0, c1]) => acc + Math.max(0, Math.min(b, c1) - Math.max(a, c0)), 0);
+  if (d > 0.0005) kept.push({ ...fr, d });
+}
+const listFile = path.join(take + '-frames', 'list-cut.ffconcat');
+fs.writeFileSync(listFile, ['ffconcat version 1.0', ...kept.flatMap(k => [k.file, `duration ${k.d.toFixed(4)}`]), kept[kept.length - 1].file].join('\n'));
+events = events.map(e => ({ ...e, r: e.r - cutBefore(e.r) }));
+if (cuts.length) console.log('cut', cuts.map(([a, b]) => `${a.toFixed(1)}-${b.toFixed(1)}s`).join(', '));
+const recDur = kept.reduce((a, k) => a + k.d, 0);
 const outDur = recDur / SPEED;
-const events = ev.events.map(e => ({ ...e, r: e.t + off }));
 
 // ---------- cursor position over recording time ----------
 const ease = (k) => k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
@@ -50,17 +69,18 @@ function zoomAt(r) {
 const frames = Math.ceil(outDur * FPS);
 const cam = [];
 let cz = 1, cx = VP.width / 2, cy = VP.height / 2, tx = cx, ty = cy;
-const TAU_Z = 0.45, TAU_C = 0.38;                // seconds, output time
+const TAU_Z = +opt('tau-z', 0.45), TAU_C = +opt('tau-c', 0.38);   // camera smoothing, seconds of output time
+const DEAD = +opt('dead', 0.25);                 // re-aim when the cursor is this far from centre (share of view)
 for (let i = 0; i < frames; i++) {
   const T = i / FPS, r = T * SPEED, dt = 1 / FPS;
   const zk0 = ZOOM ? zoomAt(r) : { z: 1 };
-  const zk = { ...zk0, z: 1 + (zk0.z - 1) * ZSCALE };
+  const zk = { ...zk0, z: zk0.abs ? zk0.z : 1 + (zk0.z - 1) * ZSCALE };
   const cur = cursorAt(r);
   if (zk.x != null) { tx = zk.x; ty = zk.y; }
   else {
     // dead zone: re-aim only when the cursor leaves the middle 50% of the view
     const vw = VP.width / cz, vh = VP.height / cz;
-    if (Math.abs(cur.x - cx) > vw * 0.25 || Math.abs(cur.y - cy) > vh * 0.25) { tx = cur.x; ty = cur.y; }
+    if (Math.abs(cur.x - cx) > vw * DEAD || Math.abs(cur.y - cy) > vh * DEAD) { tx = cur.x; ty = cur.y; }
   }
   const az = 1 - Math.exp(-dt / TAU_Z), ac = 1 - Math.exp(-dt / TAU_C);
   cz += (zk.z - cz) * az; cx += (tx - cx) * ac; cy += (ty - cy) * ac;
@@ -104,7 +124,7 @@ async function captionPngs() {
 
 (async () => {
   const caps = CAPS ? await captionPngs() : [];
-  const inputs = ['-f', 'concat', '-safe', '0', '-i', path.join(take + '-frames', 'list.ffconcat')];
+  const inputs = ['-f', 'concat', '-safe', '0', '-i', listFile];
   caps.forEach(c => inputs.push('-loop', '1', '-t', outDur.toFixed(2), '-i', c.png));
   let g = `[0:v]setpts=(PTS-STARTPTS)/${SPEED},fps=${FPS},sendcmd=f=${cmdFile},crop=w=${SW}:h=${SH}:x=0:y=0,scale=${OUTW}:${OUTH}:flags=lanczos,setsar=1,fade=t=in:st=0:d=0.5:color=white[v0]`;
   let last = 'v0';

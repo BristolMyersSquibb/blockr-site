@@ -109,7 +109,7 @@ features:
 
 <div class="video-section">
   <h2>See it in action</h2>
-  <p>Build a board in 40 seconds</p>
+  <p>Build a board in under a minute</p>
   <video class="demo-loop" autoplay muted loop playsinline poster="/videos/landing-build-poster.jpg"
          aria-label="Building a blockr board: add a dataset, filter it, plot it, change the filter, get the R code">
     <source src="/videos/landing-build.webm" type="video/webm" />
