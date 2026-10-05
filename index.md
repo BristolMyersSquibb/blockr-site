@@ -76,12 +76,8 @@ penguins <- datasets::penguins
 
 filtered <- dplyr::filter(
   penguins,
-  species %in% c(
-    "Adelie",
-    "Gentoo" # @!chin
-    "Gentoo", # @chin
-    "Chinstrap" # @chin
-  )
+  species %in% c("Adelie", "Gentoo") # @!chin
+  species %in% c("Adelie", "Gentoo", "Chinstrap") # @chin
 )
 
 ggplot2::ggplot(
