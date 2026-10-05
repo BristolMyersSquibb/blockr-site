@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 import VideoEmbed from './components/VideoEmbed.vue'
 import DemoPlayer from './components/DemoPlayer.vue'
+import ClipWithCode from './components/ClipWithCode.vue'
 
 export default {
   extends: DefaultTheme,
@@ -12,5 +13,6 @@ export default {
   }),
   enhanceApp({ app }) {
     app.component('VideoEmbed', VideoEmbed)
+    app.component('ClipWithCode', ClipWithCode)
   }
 }

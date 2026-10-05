@@ -53,39 +53,13 @@ features:
   width: 48px;
   height: 48px;
 }
-.code-split {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 24px;
-  align-items: center;
-  margin: 24px 0 16px;
-}
-.code-split .clip-dark,
-.dark .code-split .clip-light {
-  display: none !important;
-}
-.dark .code-split .clip-dark {
-  display: block !important;
-}
-.code-split video {
-  display: block;
-  width: 100%;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-}
-.code-split div[class*='language-'] {
-  margin: 0 !important;
-}
-@media (max-width: 767px) {
-  .code-split { grid-template-columns: 1fr; }
-}
 </style>
 
 ## Every click writes R
 
 Each block adds a step of R code to the board. The Report tab gives you the whole script: run it without blockr, review it, or hand it to someone who codes.
 
-<div class="code-split">
+<ClipWithCode :from="2.8" :to="7.9">
 <div>
 <video class="clip-light" autoplay muted loop playsinline poster="/videos/hero-filter-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
   <source src="/videos/hero-filter.webm" type="video/webm" />
@@ -97,12 +71,17 @@ Each block adds a step of R code to the board. The Report tab gives you the whol
 </video>
 </div>
 
-```r{3-6}
+```r
 penguins <- datasets::penguins
 
 filtered <- dplyr::filter(
   penguins,
-  species %in% c("Adelie", "Gentoo", "Chinstrap")
+  species %in% c(
+    "Adelie",
+    "Gentoo" # [!code --]
+    "Gentoo", # [!code ++]
+    "Chinstrap" # [!code ++]
+  )
 )
 
 ggplot2::ggplot(
@@ -116,7 +95,7 @@ ggplot2::ggplot(
   ggplot2::geom_point()
 ```
 
-</div>
+</ClipWithCode>
 
 [Custom code in a board](/learn/04-custom-code) · [Create a block](/learn/05-create-a-block)
 
