@@ -2,10 +2,17 @@
 # The registry is the source of truth: name, description, category and
 # argument specs all come from what the packages register at load time.
 # Rerun after block API changes:  Rscript scripts/gen-block-reference.R
+# Every package with a page is attached explicitly; a package that is not
+# loaded registers no blocks and its page would silently go stale.
+# Install them from GitHub main first, not from local clones.
 suppressMessages({
-  library(blockr)
+  library(blockr.core)
+  library(blockr.dplyr)
+  library(blockr.ggplot)
   library(blockr.viz)
   library(blockr.dm)
+  library(blockr.io)
+  library(blockr.extra)
 })
 
 out_dir <- file.path("docs", "blocks")
@@ -46,7 +53,12 @@ info <- lapply(blocks, function(e) {
 })
 
 pkgs <- unique(vapply(info, `[[`, "", "package"))
-pkgs <- c(intersect(pkg_order, pkgs), sort(setdiff(pkgs, pkg_order)))
+missing <- setdiff(pkg_order, pkgs)
+if (length(missing)) stop("No blocks registered for: ", toString(missing))
+# Packages loaded as dependencies may register blocks too; they have no page.
+skipped <- setdiff(pkgs, pkg_order)
+if (length(skipped)) message("Skipping (no page): ", toString(skipped))
+pkgs <- pkg_order
 
 cat_order <- c(
   "input", "transform", "structured", "plot", "table",

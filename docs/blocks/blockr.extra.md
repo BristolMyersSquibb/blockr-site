@@ -17,6 +17,16 @@ Transform data with a custom R function asynchronously. Requires mirai daemons. 
 
 Model summary using broom (tidy/glance/augment). Works with any broom-compatible model.
 
+## Code block
+
+`new_code_block()` &middot; transform
+
+Transform data with a plain R script (no wrapper function). Top-level assignments of plain values become controls: a factor renders a dropdown over its levels, a number a spin box, TRUE/FALSE a checkbox. A name starting with a dot stays private. Exports as idiomatic R with the current values written in.
+
+| Argument | Description |
+|---|---|
+| `script` | A string of R code transforming `data` into the result. Top-level assignments of plain values (literals, c(), factor(), as.Date()) become UI controls; every other statement is code. |
+
 ## Compare
 
 `new_compare_block()` &middot; transform
@@ -52,12 +62,6 @@ Add or edit column labels (the `attr(col, "label")` attribute shown in column pi
 | Argument | Description |
 |---|---|
 | `labels` | Named list mapping column names to label strings. An empty string removes the column's label. |
-
-## Latest
-
-`new_latest_block()` &middot; transform
-
-Forward the value of whichever variadic input most recently changed (latest-wins merge / switch). Bridges multiple drill-down charts into one downstream block.
 
 ## Search
 

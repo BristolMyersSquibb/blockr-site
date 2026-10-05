@@ -47,7 +47,7 @@ Data head/tail
 
 `new_merge_block()` &middot; transform
 
-Joining or datasets
+Joining or merging datasets
 
 | Argument | Description |
 |---|---|
