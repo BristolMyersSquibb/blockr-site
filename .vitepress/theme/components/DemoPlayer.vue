@@ -1,11 +1,13 @@
 <script setup>
 // Demo loop under the home hero, with clickable chapters. Configured by the
-// `demo:` key in the page frontmatter; renders nothing without it.
+// `demo:` key in the page frontmatter; renders nothing without it. `demo.dark`
+// holds the dark-mode recording (src, poster); the chapters are shared.
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useData } from 'vitepress'
 
-const { frontmatter } = useData()
+const { frontmatter, isDark } = useData()
 const demo = computed(() => frontmatter.value.demo)
+const clip = computed(() => demo.value && ((isDark.value && demo.value.dark) || demo.value))
 const video = ref(null)
 const active = ref(0)
 let raf = 0
@@ -29,9 +31,9 @@ onBeforeUnmount(() => cancelAnimationFrame(raf))
 
 <template>
   <div v-if="demo" class="demo-player">
-    <video ref="video" autoplay muted loop playsinline :poster="demo.poster" :aria-label="demo.alt">
-      <source :src="`${demo.src}.webm`" type="video/webm" />
-      <source :src="`${demo.src}.mp4`" type="video/mp4" />
+    <video ref="video" :key="clip.src" autoplay muted loop playsinline :poster="clip.poster" :aria-label="demo.alt">
+      <source :src="`${clip.src}.webm`" type="video/webm" />
+      <source :src="`${clip.src}.mp4`" type="video/mp4" />
     </video>
     <ol class="chapters">
       <li v-for="(c, i) in demo.chapters" :key="c.t" :class="{ on: i === active }" @click="seek(c)">

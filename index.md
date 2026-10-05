@@ -16,6 +16,9 @@ hero:
 demo:
   src: /videos/hero-build
   poster: /videos/hero-build-poster.jpg
+  dark:
+    src: /videos/hero-build-dark
+    poster: /videos/hero-build-dark-poster.jpg
   alt: "Building a blockr board: add a dataset, filter it, plot it, arrange the panels, change the filter"
   chapters:
     - { t: 0, title: "Add data", text: "Pick a dataset" }
@@ -57,6 +60,13 @@ features:
   align-items: center;
   margin: 24px 0 16px;
 }
+.code-split .clip-dark,
+.dark .code-split .clip-light {
+  display: none !important;
+}
+.dark .code-split .clip-dark {
+  display: block !important;
+}
 .code-split video {
   display: block;
   width: 100%;
@@ -76,10 +86,16 @@ features:
 Each block adds a step of R code to the board. The Report tab gives you the whole script: run it without blockr, review it, or hand it to someone who codes.
 
 <div class="code-split">
-<video autoplay muted loop playsinline poster="/videos/hero-filter-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
+<div>
+<video class="clip-light" autoplay muted loop playsinline poster="/videos/hero-filter-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
   <source src="/videos/hero-filter.webm" type="video/webm" />
   <source src="/videos/hero-filter.mp4" type="video/mp4" />
 </video>
+<video class="clip-dark" autoplay muted loop playsinline poster="/videos/hero-filter-dark-poster.jpg" aria-label="Adding Chinstrap to the filter; the chart gains the green points">
+  <source src="/videos/hero-filter-dark.webm" type="video/webm" />
+  <source src="/videos/hero-filter-dark.mp4" type="video/mp4" />
+</video>
+</div>
 
 ```r{3-6}
 penguins <- datasets::penguins
