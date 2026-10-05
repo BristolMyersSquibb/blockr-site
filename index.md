@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: blockr
-  text: Data analysis in R, by pointing and clicking
-  tagline: Add blocks, connect them, and get an interactive dashboard and the R code behind it.
+  text: A visual, no-code framework for R
+  tagline: Drag analysis steps into interactive dashboards
   actions:
     - theme: brand
       text: Try it in the browser
