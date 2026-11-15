@@ -17,23 +17,33 @@ module.exports = {
     siteTitle: 'blockr',
     nav: [
       { text: 'Examples', link: '/examples/' },
-      { text: 'Install', link: '/install' },
-      { text: 'Learn', link: '/learn/', activeMatch: '^/learn/' },
+      { text: 'Learn', link: '/learn/', activeMatch: '^/(learn/|install)' },
       { text: 'Docs', link: '/docs/', activeMatch: '^/docs/' },
       { text: 'Packages', link: '/packages/' },
-      { text: 'For organisations', link: '/organisations' },
-      { text: 'Free intro', link: '/intro' },
-      { text: 'Playground', link: 'https://blockr.cloud/app/empty' }
+      { text: 'For organisations', link: '/organisations', activeMatch: '^/(organisations|intro)' }
     ],
     editLink: {
       pattern: 'https://github.com/BristolMyersSquibb/blockr-site/edit/main/:path',
       text: 'Edit this page on GitHub'
     },
     sidebar: {
+      '/install': [{
+        text: 'Learn',
+        items: [
+          { text: 'Overview', link: '/learn/' },
+          { text: 'Install', link: '/install' },
+          { text: 'Build your first app', link: '/learn/01-build-your-first-app' },
+          { text: 'Build a dashboard', link: '/learn/02-build-a-dashboard' },
+          { text: 'Work with many tables', link: '/learn/03-many-tables' },
+          { text: 'Custom code', link: '/learn/04-custom-code' },
+          { text: 'Create a custom block', link: '/learn/05-create-a-block' }
+        ]
+      }],
       '/learn/': [{
         text: 'Learn',
         items: [
           { text: 'Overview', link: '/learn/' },
+          { text: 'Install', link: '/install' },
           { text: 'Build your first app', link: '/learn/01-build-your-first-app' },
           { text: 'Build a dashboard', link: '/learn/02-build-a-dashboard' },
           { text: 'Work with many tables', link: '/learn/03-many-tables' },
