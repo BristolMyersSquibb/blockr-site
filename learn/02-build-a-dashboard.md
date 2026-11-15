@@ -14,16 +14,16 @@ Watch the flow, then follow the steps below:
 
 ## Do it yourself
 
-1. Swap the plot for interactive blocks: remove the ggplot block, then add a "Chart" block after the filter and a "Table" block after the chart (add and connect as in the first tutorial). Group the chart by "species" and set its drill column to "species"; the gear in the chart's corner opens its settings.
-2. Drag the table tab to the right edge of the window. A colored outline shows where the panel will land; release to give the table its own panel:
+1. Swap the plot for interactive blocks: remove the ggplot block ("Remove block" in its "…" menu), then add a "Chart" block after the filter and a "Table" block after the chart (add and connect as in the first tutorial). In the chart's settings (the gear in its corner), set Category to "species". Under "Interaction", tick "Filter on" in the Drill-down section; it filters on the clicked group.
+2. Drag the table tab onto the right part of its panel. An outline shows where the panel will land; release to give the table its own panel:
 
    ![Dragging the table tab, drop target outlined on the right](02-img-drag.png)
 
    The same drag can group panels: drop a tab next to another tab and they share a tab group.
 
-3. Close what your users don't need: the "x" on the Workflow, Dataset and Filter tabs. The "+" next to any tab bar brings panels back.
-4. Hide the chart's preview table with the eye toggle in its header. The eye in a block's header toggles its preview; the controls are hidden and shown with "Controls" in the "…" menu.
-5. Click a bar. The chart filters everything downstream, so the table now shows exactly those penguins; the label under the chart says which filter is active. Click another bar, or "Reset", and the table follows.
+3. Close what your users don't need: the "x" on the Workflow tab at the left edge and on the Dataset and Filter tabs. The "+" next to any tab bar brings panels back.
+4. Hide the preview tables of the chart and the table with the eye in their headers. The eye in a block's header toggles its preview; the controls are hidden and shown with "Controls" in the "…" menu.
+5. Click a bar. The chart filters everything downstream, so the table now shows exactly those penguins; the label under the chart says which filter is active. Click another bar, or "Clear", and the table follows.
 
 The layout and the toggles are part of the board and are saved and restored with it.
 

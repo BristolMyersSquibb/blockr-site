@@ -4,7 +4,7 @@ In this tutorial you build a small app on the penguins dataset: a filter feeding
 
 ![The finished app: filter and scatter plot on penguins](01-img-result.png)
 
-Make sure blockr is running. See [Installation](/install) if you haven't set it up yet.
+You need blockr running: `blockr::run_app()` after the one-line install on the [Install](/install) page. An empty board opens, with the Workflow canvas on the left.
 
 Watch the whole flow, then follow the steps below:
 
@@ -12,12 +12,12 @@ Watch the whole flow, then follow the steps below:
 
 ## Do it yourself
 
-1. Right-click the canvas and choose "Add block".
+1. Right-click the Workflow canvas and choose "Add block".
 2. Search for "dataset" and click "dataset block":
 
    ![Block picker with dataset in the search bar](01-img-picker.png)
 
-3. In the block panel on the right, pick "penguins" from the Dataset dropdown.
+3. The block opens in a panel to the right of the canvas. Pick "penguins" from the Dataset dropdown.
 4. Drag from the output port at the bottom of the dataset block to an empty spot on the canvas. The picker opens again, and the block you pick arrives already connected: choose "Filter Rows".
 5. In the filter panel, set the column to "species" and pick the values "Adelie" and "Chinstrap". The table under the controls updates: 220 of the 344 penguins remain.
 6. Add a "ggplot" block with right-click and "Add block". This one starts unconnected.
@@ -25,7 +25,7 @@ Watch the whole flow, then follow the steps below:
 
    ![Dragging a connection from the filter output port to the plot input port](01-img-connect.png)
 
-8. Map X-axis to "bill_len" and Y-axis to "bill_dep", then click "Add mapping" and set "Color by" to "species".
+8. Map X-axis to "bill_len" and Y-axis to "bill_dep". Click "Add mapping", choose "Color by" and set it to "species".
 9. Open the "…" menu in the block header and choose "Controls" to hide the controls; the block now shows just the plot.
 
 A drag from a port does both connection jobs: release on another block's port to link two blocks, release on empty canvas to add a new, already connected one.
