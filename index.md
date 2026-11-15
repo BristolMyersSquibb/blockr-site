@@ -57,7 +57,7 @@ features:
 
 ## Every click writes R
 
-Each block adds a step of R code to the board. The Report tab gives you the whole script: run it without blockr, review it, or hand it to someone who codes.
+Each block adds a step of R code to the board. "Show code" in the board options gives you the whole script: run it without blockr, review it, or hand it to someone who codes.
 
 <ClipWithCode :windows="{ chin: [2.76, 18.37], island: [8.35, 14.29] }">
 <div>
@@ -133,8 +133,10 @@ Open a demo board on blockr.cloud, no install needed.
 
 ```r
 # install.packages("pak")
-pak::pak("BristolMyersSquibb/blockr@dev")
+pak::pak("BristolMyersSquibb/blockr")
 blockr::run_app()
 ```
 
-R 4.1 or later. Details, smaller installs and the AI features: [Install](/install).
+R 4.5 or later. Details and the assistant: [Install](/install).
+
+For help with a first application on your own data, book a [free intro session](/intro).

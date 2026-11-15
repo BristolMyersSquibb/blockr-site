@@ -17,9 +17,8 @@ All packages are free and open source, released under
 Source for each package lives on GitHub (linked from the cards below).
 
 ::: tip Just want to get started?
-`install.packages("blockr")` pulls the whole stable stack in one step. The
-**blockr** meta-package re-exports the six CRAN packages blockr.core,
-blockr.dock, blockr.dag, blockr.dplyr, blockr.ggplot and blockr.io.
+`pak::pak("BristolMyersSquibb/blockr")` installs blockr and the packages the
+tutorials use in one line. See [Install](/install).
 :::
 
 ## Infrastructure
@@ -156,10 +155,18 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 </div>
 </a>
 
+<a class="package-card" href="https://github.com/BristolMyersSquibb/blockr.script" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.script</p>
+<p>The script block: an R script as a workflow step, its plain values as controls on the block. Used in <a href="/learn/04-custom-code">Custom code</a>.</p>
+<p class="package-src">README on GitHub</p>
+</div>
+</a>
+
 <a class="package-card" href="https://github.com/cynkra/blockr.extra" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.extra</p>
-<p>Utility blocks, among them the function block for custom R code that the Learn tutorials use.</p>
+<p>Utility blocks: a function block for custom R code, search, compare, labeling and more.</p>
 <p class="package-src">README on GitHub</p>
 </div>
 </a>
