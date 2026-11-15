@@ -1,6 +1,6 @@
 # Create a custom block
 
-A [function block](04-custom-code) that recurs across boards can be turned into a regular block with its own entry in the picker. This tutorial shows how to write one, either with a coding agent (Claude Code, Cursor, Positron with Copilot) or by hand in R. blockr handles state, reactivity and saving. Your code turns the input data into a plot or a new dataset. Both paths start from a starter package: a small working block, tests included, that you change into the block you want.
+A [script block](04-custom-code) that recurs across boards can be turned into a regular block with its own entry in the picker. This tutorial shows how to write one, either with a coding agent (Claude Code, Cursor, Positron with Copilot) or by hand in R. blockr handles state, reactivity and saving. Your code turns the input data into a plot or a new dataset. Both paths start from a starter package: a small working block, tests included, that you change into the block you want.
 
 ## With a coding agent
 
