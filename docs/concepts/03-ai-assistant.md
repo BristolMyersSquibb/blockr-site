@@ -2,7 +2,7 @@
 
 The assistant is an optional extension that adds a chat panel to the board. You describe what you want in plain language; it acts on the board through the same operations you would click.
 
-![The assistant panel docked next to a workflow](03-img-assistant.png)
+![The assistant tab next to the chart it built from one request](03-img-assistant.png)
 
 It works at three levels:
 

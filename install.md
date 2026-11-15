@@ -62,6 +62,8 @@ run_app(
 )
 ```
 
+An "Assistant" tab appears in the rail below "Workflow".
+
 For another provider, set the `blockr.chat_function` option before
 `run_app()`. ellmer's [setup guide](https://ellmer.tidyverse.org/articles/ellmer.html)
 lists the providers and their keys. For Claude:
