@@ -1,5 +1,5 @@
 // Post-production: speed, camera (zoom + follow cursor), captions, fade.
-// usage: node render.cjs <take> <out> [--speed 1.5] [--zoom] [--captions] [--width 1920]
+// usage: node render.cjs <take> <out> [--speed 1.5] [--zoom] [--captions] [--width 1920] [--fade-color white]
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -11,6 +11,7 @@ const opt = (k, d) => { const i = argv.indexOf('--' + k); return i < 0 ? d : arg
 const flag = (k) => argv.includes('--' + k);
 const SPEED = +opt('speed', 1.5), ZOOM = flag('zoom'), CAPS = flag('captions'), OUTW = +opt('width', 1920);
 const FPS = 30;
+const FADE = opt('fade-color', 'white');   // fade-in colour: the board's background
 const ZSCALE = +opt('zscale', 0.75);   // tone the story's zoom levels down: z' = 1 + (z - 1) * ZSCALE
 
 const ev = JSON.parse(fs.readFileSync(take + '-events.json'));
@@ -126,7 +127,7 @@ async function captionPngs() {
   const caps = CAPS ? await captionPngs() : [];
   const inputs = ['-f', 'concat', '-safe', '0', '-i', listFile];
   caps.forEach(c => inputs.push('-loop', '1', '-t', outDur.toFixed(2), '-i', c.png));
-  let g = `[0:v]setpts=(PTS-STARTPTS)/${SPEED},fps=${FPS},sendcmd=f=${cmdFile},crop=w=${SW}:h=${SH}:x=0:y=0,scale=${OUTW}:${OUTH}:flags=lanczos,setsar=1,fade=t=in:st=0:d=0.5:color=white[v0]`;
+  let g = `[0:v]setpts=(PTS-STARTPTS)/${SPEED},fps=${FPS},sendcmd=f=${cmdFile},crop=w=${SW}:h=${SH}:x=0:y=0,scale=${OUTW}:${OUTH}:flags=lanczos,setsar=1,fade=t=in:st=0:d=0.5:color=${FADE}[v0]`;
   let last = 'v0';
   caps.forEach((c, i) => {
     const a = c.start + 0.05, d = Math.max(0.4, c.end - c.start - 0.1);

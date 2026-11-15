@@ -98,9 +98,9 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
     await loc.pressSequentially(text, { delay: 85 });
     await S.wait(250);
   };
-  S.drag = async (x0, y0, x1, y1, { steps = 28, beforeUp = null } = {}) => {
-    await S.moveTo(x0, y0);
-    await S.wait(150);
+  S.drag = async (x0, y0, x1, y1, { steps = 28, beforeUp = null, grab = 150, hold = 250, ms } = {}) => {
+    await S.moveTo(x0, y0, ms);
+    await S.wait(grab);
     await p.mouse.down();
     S.events.push({ t: t0(), type: 'down', x: x0, y: y0 });
     for (let i = 1; i <= steps; i++) {
@@ -110,7 +110,7 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
       await p.mouse.move(x, y);
       await S.wait(22);
     }
-    await S.wait(250);
+    await S.wait(hold);
     if (beforeUp) await beforeUp();
     await p.mouse.up();
     S.events.push({ t: t0(), type: 'up', x: x1, y: y1 });

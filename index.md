@@ -19,14 +19,14 @@ demo:
   dark:
     src: /videos/hero-build-dark
     poster: /videos/hero-build-dark-poster.jpg
-    times: [0, 6.8, 16.1, 37.2, 45.3]
+    times: [0, 4.8, 10.0, 22.5, 27.1]
   alt: "Building a blockr board: add a dataset, filter it, plot it, change the filter, then show the R code the board wrote"
   chapters:
     - { t: 0, title: "Add data", text: "Pick a dataset" }
-    - { t: 6.2, title: "Filter", text: "Append a block from the one above" }
-    - { t: 14.1, title: "Plot", text: "Choose the columns" }
-    - { t: 32.2, title: "Change it", text: "Edit the filter, the chart follows" }
-    - { t: 38.4, title: "Get the R code", text: "Show code gives the whole script" }
+    - { t: 4.8, title: "Filter", text: "Append a block from the one above" }
+    - { t: 10.0, title: "Plot", text: "Choose the columns" }
+    - { t: 22.6, title: "Change it", text: "Edit the filter, the chart follows" }
+    - { t: 27.2, title: "Get the R code", text: "Show code gives the whole script" }
 
 features:
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#0072B24D"/><line x1="30" y1="32" x2="30" y2="24" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="16" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="32" x2="18" y2="28" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/></svg>'

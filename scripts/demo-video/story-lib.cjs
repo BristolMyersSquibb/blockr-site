@@ -70,16 +70,14 @@ function board(S, stills) {
     await B.pick(search, label, stillName);
   };
   // from the output port at the bottom of a node
+  // one move straight to the port, then a short eased drag
   B.portDrag = async (from, x1, y1, opts = {}) => {
-    await S.moveTo(from.cx, from.cy);
-    await S.wait(350);
-    await S.moveTo(from.cx, from.bottom - 3, 250);
-    await S.wait(200);
-    await S.drag(from.cx, from.bottom - 3, x1, y1, { steps: 34, ...opts });
+    await S.drag(from.cx, from.bottom - 3, x1, y1, { steps: 14, grab: 90, hold: 120, ...opts });
   };
   // append a block after the lowest node: drag its port into empty canvas
-  B.append = async (search, label) => {
-    await B.fit();
+  // (fit: re-fit the graph first; off for takes that frame the graph once)
+  B.append = async (search, label, { fit = true } = {}) => {
+    if (fit) await B.fit();
     const n = await B.nodes();
     const last = n[n.length - 1];
     const c = await B.canvas();

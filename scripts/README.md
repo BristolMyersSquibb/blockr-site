@@ -103,12 +103,15 @@ Rscript hero-loop-app.R 4190 &          # light
 Rscript hero-loop-app.R 4191 dark &     # dark
 node story-hero.cjs hero http://127.0.0.1:4190/
 node story-hero.cjs hero-dark http://127.0.0.1:4191/
-node render.cjs hero hero-build --speed 1.8 --width 1728 --zoom
-node render.cjs hero-dark hero-build-dark --speed 1.8 --width 1728 --zoom
+node render.cjs hero hero-build --speed 2 --width 1728 --zoom
+node render.cjs hero-dark hero-build-dark --speed 2 --width 1728 --zoom --fade-color 0x141c21
 ffmpeg -i hero-build.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 -an hero-build.webm
 ```
 
-`--zoom` only applies the close-up on the generated code at the end. The
+The story records a fixed 1024x640 window with no camera moves, so the
+text reads large in the video; `--zoom` only applies the close-up on the
+generated code at the end. `--fade-color` is the dark board's background,
+so the dark take does not fade in from white. The
 chapters are logged as captions: their times in `<take>-events.json`
 divided by the speed are the chapter starts in `index.md` (`chapters` for
 light, `dark.times` for dark). Posters are a frame at the end of "Change it",
