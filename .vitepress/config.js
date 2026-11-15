@@ -20,12 +20,8 @@ module.exports = {
       { text: 'Learn', link: '/learn/', activeMatch: '^/(learn/|install)' },
       { text: 'Docs', link: '/docs/', activeMatch: '^/docs/' },
       { text: 'Packages', link: '/packages/' },
-      { text: 'For organisations', link: '/organisations', activeMatch: '^/(organisations|intro)' }
+      { text: 'Organisations', link: '/organisations', activeMatch: '^/(organisations|intro)' }
     ],
-    editLink: {
-      pattern: 'https://github.com/BristolMyersSquibb/blockr-site/edit/main/:path',
-      text: 'Edit this page on GitHub'
-    },
     sidebar: {
       '/install': [{
         text: 'Learn',
