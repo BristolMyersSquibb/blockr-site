@@ -24,7 +24,7 @@ gesture that is hard to read in motion). Page shape:
 One story script per tutorial in `scripts/demo-video/`, built on the same
 recorder as the landing loop (see below), with the board helpers in
 `story-lib.cjs`. The tutorials are recorded on the one-line install, so the
-media show what a reader gets after `pak::pak("BristolMyersSquibb/blockr")`.
+media show what a reader gets after `pak::pak("BristolMyersSquibb/blockr@dev")`.
 Each take gives the video and the stills; the poster is the result still at
 1152 px.
 
@@ -32,7 +32,7 @@ Each take gives the video and the stills; the poster is the result still at
 cd scripts/demo-video
 
 # tutorials 1, 3, 4: an empty board from blockr::run_app()
-Rscript -e 'options(shiny.port = 4010, blockr.tabular_display = blockr.ui::html_table_display); blockr::run_app()' &
+Rscript -e 'options(shiny.port = 4010); blockr::run_app()' &
 node story-tutorial-01.cjs tut01 http://127.0.0.1:4010/   # writes tut01-frames/, tut01-events.json, tut01-stills/
 
 # tutorial 2 starts from the board after its step 1
@@ -44,9 +44,7 @@ node render.cjs tut01 tut01-video --speed 1.25 --captions --width 1728
 ffmpeg -i tut01-video.mp4 -c:v libvpx-vp9 -b:v 0 -crf 36 -an tut01-video.webm
 ```
 
-The `blockr.tabular_display` option gives the paged HTML table preview. Set
-it until `run_app()` does (it still sets the retired
-`blockr.html_table_preview`). Use a port of 4000 or above on the Mac.
+Use a port of 4000 or above on the Mac.
 
 Then copy `tutNN-video.webm` to `public/videos/tutorial-NN.webm`, the stills to
 `learn/`, and the result still (scaled to 1152 px) to

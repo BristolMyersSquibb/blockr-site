@@ -133,7 +133,7 @@ Open a demo board on blockr.cloud, no install needed.
 
 ```r
 # install.packages("pak")
-pak::pak("BristolMyersSquibb/blockr")
+pak::pak("BristolMyersSquibb/blockr@dev")
 blockr::run_app()
 ```
 

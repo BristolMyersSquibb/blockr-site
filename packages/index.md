@@ -17,7 +17,7 @@ All packages are free and open source, released under
 Source for each package lives on GitHub (linked from the cards below).
 
 ::: tip Just want to get started?
-`pak::pak("BristolMyersSquibb/blockr")` installs blockr and the packages the
+`pak::pak("BristolMyersSquibb/blockr@dev")` installs blockr and the packages the
 tutorials use in one line. See [Install](/install).
 :::
 
