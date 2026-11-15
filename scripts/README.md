@@ -21,54 +21,77 @@ gesture that is hard to read in motion). Page shape:
 
 ## How to regenerate
 
-One driving script per tutorial. Each run needs a fresh app (the board
-persists inside a running R process):
+One story script per tutorial in `scripts/demo-video/`, built on the same
+recorder as the landing loop (see below), with the board helpers in
+`story-lib.cjs`. The tutorials are recorded on the one-line install, so the
+media show what a reader gets after `pak::pak("BristolMyersSquibb/blockr")`.
+Each take gives the video and the stills; the poster is the result still at
+1152 px.
 
 ```bash
-# 1. fresh app on a private port (3838 is often taken)
-Rscript scripts/tutorial-app.R &            # serves blockr::run_app() on 4848
+cd scripts/demo-video
 
-# 2. drive it: writes shots/*.png and video/*.webm
-node scripts/tutorial-01.cjs http://127.0.0.1:4848/ /tmp/tut01-out
+# tutorials 1, 3, 4: an empty board from blockr::run_app()
+Rscript -e 'options(shiny.port = 4010, blockr.tabular_display = blockr.ui::html_table_display); blockr::run_app()' &
+node story-tutorial-01.cjs tut01 http://127.0.0.1:4010/   # writes tut01-frames/, tut01-events.json, tut01-stills/
 
-# 3. review the output, then copy the shots into learn/
+# tutorial 2 starts from the board after its step 1
+Rscript tutorial-02-app.R 4320 &
+node story-tutorial-02.cjs tut02 http://127.0.0.1:4320/
+
+# video, same settings for every tutorial
+node render.cjs tut01 tut01-video --speed 1.25 --captions --width 1728
+ffmpeg -i tut01-video.mp4 -c:v libvpx-vp9 -b:v 0 -crf 36 -an tut01-video.webm
 ```
 
-Requirements: system Chromium at `/usr/bin/chromium` (Playwright's own
-browser download is not needed), `playwright` from the workspace
-`node_modules`. Recordings are webm; Playwright's bundled ffmpeg cannot mux
-mp4 (no libx264), convert elsewhere if needed.
+The `blockr.tabular_display` option gives the paged HTML table preview. Set
+it until `run_app()` does (it still sets the retired
+`blockr.html_table_preview`). Use a port of 4000 or above on the Mac.
+
+Then copy `tutNN-video.webm` to `public/videos/tutorial-NN.webm`, the stills to
+`learn/`, and the result still (scaled to 1152 px) to
+`public/videos/tutorial-NN-poster.png`. Look at the stills and a contact sheet
+of the video first. The Reactivity page reuses the result stills of tutorials 1
+and 2 as `docs/concepts/01-img-pipeline.png` and `01-img-dashboard.png`.
 
 ## How the scripts work
 
 The techniques, so the next script doesn't rediscover them:
 
-- **Fake cursor.** Headless recordings show no pointer. The script injects
-  a dot that follows `mousemove` and changes color on `mousedown`, so
-  clicks are visible in clips.
-- **Real mouse, smooth moves.** Canvas (g6) interactions need CDP mouse
-  events: `page.mouse.move(x, y, {steps})`, hover the node first so its
-  ports appear, then press, stepped moves, release. Connect-by-drag works
-  reliably this way.
-- **No hardcoded canvas pixels.** Node positions come from the graph:
-  `HTMLWidgets.find('#' + el.id).getWidget()` then `getNodeData()`,
-  `getElementRenderBounds(id)`, `getViewportByCanvas()`. Input port = top
-  center of the bounds, output port = bottom center. Fit the view via
-  `graph.fitView()` (the toolbar button position is not stable enough to
-  click blindly).
-- **Picker selectors.** Cards are `.blockr-block-browser-card`, the title
-  is `.blockr-block-browser-card-name`. Never match on
-  `[class*="block-browser-card"]`: it also matches the `-cards` container,
-  which contains every card's text.
-- **Selectize inputs** (dataset picker): click the `.selectize-input`,
-  type into `.selectize-input input`, then click the matching
-  `.selectize-dropdown-content .option`.
-- **JS-driven blocks** can be configured through their public JS API when
-  click-fidelity doesn't matter for the shot:
-  `el._block.setState({...}); el._block._submit()` on the
-  `.<name>-block-container` element.
-- **g6 sometimes doesn't paint** after layout changes: dispatch a window
-  `resize` event, then `fitView()`.
+- **Captions in post.** The stories log captions with `S.caption()`;
+  `render.cjs` draws them, so the stills taken during the take have none.
+- **DAG canvas.** `run_app()` puts the Workflow canvas in a rail on the
+  left; block panels fill the rest. Node positions come from the g6 graph:
+  `HTMLWidgets.find('#' + el.id).getWidget()`, then `getNodeData()`,
+  `getElementRenderBounds(id)`, `getViewportByCanvas()`, plus the offset of
+  ShinyProxy's `iframe#shinyframe` when there is one. Output port = bottom
+  centre, input port = top centre. Append straight down: the canvas is
+  narrow, and a node drifting left ends up under the canvas toolbar.
+- **Append and connect.** Drag from a node's output port into empty canvas:
+  the `Append to <block>` menu opens and the new block arrives connected.
+  Drop on another node's input port to connect two blocks.
+- **Add menu.** Right-click > "Add block", type into
+  `.blockr-menu__filter-input`, click the `.blockr-menu__item` whose
+  `.blockr-menu__label` matches exactly (searching "ggplot" also matches the
+  package name of the Facet block).
+- **blockr.ui selects**: `.blockr-select__control`, then
+  `.blockr-select__option`. The filter's value picker is
+  `.blockr-select--multi`. The dataset picker is a selectize: click
+  `.selectize-input`, then the `.selectize-dropdown .option`; typing does not
+  filter it.
+- **Dock tabs.** Dragging a tab onto the right part of a panel splits it;
+  releasing at the window edge pins the panel into a narrow rail instead.
+- **Block menu.** The controls toggle is "Controls" in the block's "…" menu
+  (`.blockr-block-menu-btn`); the eye (`button[aria-label="Preview"]`)
+  toggles the preview. Block content is rendered outside its dock group, so
+  `story-lib.cjs` finds a block's eye by position.
+- **Charts** (blockr.viz) are echarts canvases: click bars by position
+  (`barAt()` in `story-lib.cjs`). Their settings sit behind the gear
+  (`.blockr-gear-btn`); the selects are `.vz-row[data-role=category|func|value]`,
+  the sections (Data, Interaction, ...) are `.blockr-tray-nav__group`.
+- **Screencast size.** Headless Chrome's window is 1280x720 unless
+  `--window-size` says otherwise, and the screencast crops a taller viewport
+  to it. `film.cjs` sets the window to the viewport.
 
 ## Demo loops (landing page, Examples page)
 

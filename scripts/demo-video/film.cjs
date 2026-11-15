@@ -33,7 +33,9 @@ const OVERLAY_JS = (svg) => {
 async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2, record = true, captions = true }) {
   // without the flag the screencast delivers CSS-pixel frames, whatever deviceScaleFactor says
   const exe = process.env.CHROME_PATH;   // e.g. /usr/bin/chromium in the devcontainer; default: installed Google Chrome
-  const b = await chromium.launch({ ...(exe ? { executablePath: exe } : { channel: 'chrome' }), args: [`--force-device-scale-factor=${dpr}`] });
+  const b = await chromium.launch({ ...(exe ? { executablePath: exe } : { channel: 'chrome' }), args: [`--force-device-scale-factor=${dpr}`,
+    // headless Chrome's window is 1280x720 by default and the screencast crops a taller viewport to it
+    `--window-size=${viewport.width},${viewport.height}`] });
   const ctx = await b.newContext({ viewport, deviceScaleFactor: dpr });
   const p = await ctx.newPage();
   const S = { p, b, ctx, cx: viewport.width / 2, cy: viewport.height / 2, events: [], captions };
