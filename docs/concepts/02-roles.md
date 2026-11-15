@@ -45,9 +45,9 @@ See [Build a dashboard](../../learn/02-build-a-dashboard) for a walkthrough.
 When no existing block does what you need, you write one.
 There are two paths.
 
-**[Function block](../../learn/04-custom-code).**
-Wrap any R function as a block from the UI.
-If you have already written the analysis in R, this brings it into the app with no wrapper code.
+**[Script block](../../learn/04-custom-code).**
+Write an R script as a workflow step, from the UI.
+If you have already written the analysis in R, this brings it into the app with no wrapper code. Plain values the script assigns become controls on the block.
 
 **Custom block.**
 Write a `new_block()` definition (around 50 lines) with its own UI and server logic.
