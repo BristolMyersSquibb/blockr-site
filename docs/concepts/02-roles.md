@@ -11,16 +11,16 @@ What the user can do:
 
 - Filter and cross-filter across linked tables.
 - Drill down through visualizations.
-- Ask the [AI assistant](03-ai-assistant) to configure the exposed controls, or to explain the data and output of any block.
-- Save and share the resulting view as a URL.
+- Switch between the views the builder set up.
+- Ask the [AI assistant](03-ai-assistant) to explain the data and output of a block.
+- Save the board and, on Posit Connect, share it with colleagues.
 
-What the user does not see: the workflow editor, the block library, or the configuration panels.
-The app is locked at the level the builder chose.
+What the user sees depends on how the app is deployed.
+An app can be deployed locked, by setting the `blockr.locked` option.
 
 ::: info
-Locking is per-app.
-It freezes the workflow so users cannot edit blocks or rewire the graph.
-Any controls the builder left exposed (filters, sliders, dropdowns) stay fully interactive, and users can still save and share the resulting state.
+On a locked app nobody can add, remove or rewire blocks, change their settings, or edit the views.
+The data still flows through the blocks, and saving and restoring the board still works.
 :::
 
 ## The builder
@@ -32,9 +32,9 @@ The workflow is a graph of blocks dragged onto a board and connected together.
 What the builder does:
 
 - Adds and connects data, transformation, and visualization blocks, by hand or by describing them to the [AI assistant](03-ai-assistant).
-- Configures each block: which column to filter on, how to facet a chart, which page a block lives on.
-- Creates pages and arranges layouts.
-- Hides intermediate blocks so users see only the final view.
+- Configures each block: which column to filter on, how to facet a chart.
+- Creates views and arranges the blocks in them as tabbed and split panels.
+- Leaves intermediate blocks out of a view, so users see only the result.
 
 When a user asks for a new view, the builder can add it in minutes.
 
@@ -51,7 +51,7 @@ If you have already written the analysis in R, this brings it into the app with 
 
 **Custom block.**
 Write a `new_block()` definition (around 50 lines) with its own UI and server logic.
-A custom block accepts data from upstream blocks, feeds visualization blocks downstream, supports the AI assistant, and serializes with the workflow.
+A custom block accepts data from upstream blocks, feeds blocks downstream, and is saved with the workflow.
 
 See [Create a custom block](../../learn/05-create-a-block) and [Create a block](../dev/create-block) for the developer-side details.
 
@@ -63,5 +63,6 @@ A developer can inspect the exact pipeline a builder configured, and can take a 
 ## How the roles connect
 
 A blockr workflow is data, not code.
-A builder can hand an unlocked workflow to another builder, or lock it for users, without involving a developer.
+A builder can hand a saved workflow to another builder without involving a developer.
+Locking it for users is a deployment setting.
 A developer can ship a block once and have every builder in the organization pick it up.

@@ -1,37 +1,9 @@
 # blockr.viz
 
-Interactive, dashboard-grade output: charts with built-in aggregation and drilldown, tables, tiles and summary tables. Clicking a chart filters what is downstream of it. The right choice when people explore your board rather than read it.
+Interactive, dashboard-grade output: a chart block with built-in aggregation and drilldown, and a table block for rows, group summaries and Table 1 summaries. Clicking a chart filters what is downstream of it. The right choice when people explore your board rather than read it.
 
 <!-- GENERATED PAGE: everything below the intro comes from the block
 registry via scripts/gen-block-reference.R. Do not edit by hand. -->
-
-## Picker
-
-`new_picker_block()` &middot; transform
-
-Curated column pickers for locked dashboards: each picker offers a fixed set of columns and lands the pick in a stable, named output column, so downstream mappings never change. A multiple picker pivots its picks long (into + into_measure) for facetting.
-
-| Argument | Description |
-|---|---|
-| `state` | Object with `pickers`: array of picker entries |
-
-## Variable summary (Table 1)
-
-`new_summary_table_block()` &middot; transform
-
-Wide, display-shaped multi-variable summary (list of variables by Y pattern). Successor to tidy_summary_block.
-
-| Argument | Description |
-|---|---|
-| `vars` | Character, variables to summarise — each becomes a row-section. Handles numeric, categorical, and logical columns; logicals are rendered as a one-row TRUE count for pharma flag variables. |
-| `sections` | Character, OUTER grouping columns that CONTAIN the `vars`, 0..N — use ONLY for a true nesting hierarchy such as SOC containing PT; leave empty for a flat list of variables. |
-| `by` | Character, column-split dimensions, 0..2. |
-| `stats` | Statistics emitted for each NUMERIC variable, any combination of: "n", "n_pct" (non-missing n and % of group rows), "mean", "sd", "mean_sd", "median", "median_q1_q3", "q1_q3", "min_max". ONE key = a single row per var... |
-| `add_overall` | Logical, append an overall column across all `by` levels. |
-| `overall_label` | Label for the overall column, default "Total". |
-| `indent_details` | Logical, default TRUE — indent detail rows under their variable header; rarely changed. |
-| `nest_hierarchies` | Logical, default FALSE — advanced row-side drill-down for adjacent functionally-dependent categorical vars; leave FALSE unless asked. |
-| `id_var` | OPTIONAL subject-identifier column name, e.g. "USUBJID": when set, counts and percentages are over DISTINCT values of this column instead of row counts — set it whenever the data is event-level/long, i.e. multiple row... |
 
 ## Chart
 
@@ -41,153 +13,119 @@ Configurable chart with click-to-filter drill-down
 
 | Argument | Description |
 |---|---|
-| `chart_type` | Chart type. One of "bar", "waterfall", "pie", "treemap", "boxplot", "pointrange", "radar" (aggregated — use group + value + func), "scatter", "line" (individual — use x + y), or "gantt" (timeline — use x + xend + y). ... |
-| `group` | Column for the categorical axis (aggregated charts). Names a data column, never a literal. |
-| `color` | Column mapped to colour. All families. Names a data column, never a literal colour. null for no colour mapping. |
-| `facet` | Column to facet by — one small panel per level. Optional. |
-| `value` | Column to aggregate (aggregated charts only). Must match `func`: ".count" with func "count" (row counts; the value is ignored otherwise), any column with "count_distinct" (e.g. a subject id such as USUBJID to count pa... |
-| `func` | Aggregation function for `value` (aggregated charts only). One of "count", "count_distinct", "mean", "median", "sum", "min", "max", "identity". Default "count" (row count; ignores `value`). "count_distinct" counts dis... |
-| `na_group` | What to do with rows whose `group` value is missing. "level" (default) gives them their own category, which is how this has always behaved -- a nameless bar and a blank legend entry. "drop" removes them from the categ... |
-| `pct_of` | Which mapped role a `func = "pct_distinct"` denominator is taken WITHIN: "facet" (default), "group" or "color". A cell only knows the values of the roles it is mapped on, so those three are the whole option space. It ... |
-| `x` | X-axis column (individual: scatter/line; timeline: interval start). Names a data column. |
-| `y` | Y-axis column (individual: scatter/line; timeline: the lane, e.g. USUBJID). Names a data column. |
-| `series` | Column whose distinct values split rows into separate series (individual: one line/scatter group per value; timeline: per-bar label). Splits only — not a colour, not a drill target. Independent of color. High cardinal... |
-| `xend` | Interval end column (timeline only). Rows with no end render as a dot at x. |
-| `label` | Column written as on-mark text. Optional; default null = no on-mark text. For pie/treemap, null falls back to `group` (a label-less pie is unusable). Label only — does not affect colour, series, or drill. |
-| `tt_fields` | Extra column names appended to each mark's hover tooltip, beyond the mapped roles (timeline/gantt, scatter, line, bar). On a bar the value shown is the group's representative (its first row) -- exact for a "None (as i... |
-| `drill` | Drill-down: what a SELECTION (click or brush) filters downstream on. Tri-state: null/"" = OFF (the chart is a static display — no filter, no hover effect; the default); "auto" = ON with the family's natural target (ag... |
-| `ctrl_target` | BETA. Block id of a value filter block on the SAME board: a categorical drill click's claim (e.g. SEX = F) is also pushed into that block over the board's control channel, so the drill filters a pipeline the chart has... |
-| `ctrl_table` | BETA. Only with `ctrl_target`: the table in the target's dm the pushed conditions apply to (e.g. "adsl"). Leave empty when the target filters a plain data frame. |
-| `smoother` | Trend overlay for scatter charts. One of "none" (default), "lm" (linear fit) or "loess" (local regression). |
-| `identity_line` | Identity-line overlay for scatter charts: true draws a dashed 45-degree y = x guide line, false (default) omits it. Use for shift or agreement plots (e.g. baseline vs post-baseline). |
-| `box_points` | Observation overlay for boxplots (chart_type="boxplot"): "none" (default, box only) or "outliers" (plot only the points beyond the whisker extent). Use "outliers" to flag extreme values. No-op for non-boxplot charts. |
-| `summary` | Distribution statistic for the distribution marks: the point range's interval, or the boxplot's BODY. One of "median_q1_q3", "mean_sd", "mean_2sd", "mean_se", "p5_p95", "min_max". Computed in the browser from the raw ... |
-| `whiskers` | Boxplot whisker rule — the box's OUTER interval: "tukey" (default, 1.5x IQR fences clipped to the data; the textbook boxplot) or any `summary` value, e.g. "min_max" for range whiskers or "p5_p95" for the clinical perc... |
-| `band_window` | Distribution band (chart_type="band") windowing: "adaptive" (default) grows the window at each grid point until it holds `band_size` distinct subjects, keeping the band's reliability constant as a cohort thins; "fixed... |
-| `band_size` | Distribution band window size: distinct subjects per window when `band_window="adaptive"` (default 45), or the half-width in x units when "fixed". No-op for other chart types. |
-| `band_min_n` | Distribution band cut-off: grid points holding fewer than this many distinct subjects draw nothing, so the band stops rather than running through a stretch with almost no data. Default 12. No-op for other chart types. |
-| `band_id` | Subject id column for the distribution band (e.g. "USUBJID"), counted DISTINCT for the window and the reported n, and carried on an outlier point's drill. Leave empty to count rows — which over-counts whenever one sub... |
-| `ref_hi` | Column holding an UPPER reference limit, drawn as a dashed line (e.g. "ANRHI"). Unlike `value_lines`, which takes values, this names a column: a reference range is per-record and varies, so the block reduces it to its... |
-| `ref_lo` | Column holding a LOWER reference limit, drawn as a dashed line (e.g. "ANRLO"). See `ref_hi`. Empty (default) draws nothing. |
-| `connect_centers` | Pointrange only: true draws a line through the interval centers in group order — the over-visits trajectory reading (e.g. mean AVAL by AVISIT per treatment arm). Default false. |
-| `count_on` | Append observation counts to labels, e.g. "Female (12)": "off" (default), "axis" (on the category-axis ticks of bar/boxplot charts), "facet" (on the facet strip labels) or "both". Pair with count_col to count distinct... |
-| `count_col` | Column driving the count labels (see count_on). For an aggregating func (count/mean/...) it is an id counted DISTINCT, e.g. "USUBJID" to label groups by unique subject count. For func="identity" ("None (as is)", pre-s... |
-| `facet_scales` | How the facet panels scale, like ggplot2's facet_wrap(scales=). "fixed" (default) shares ONE numeric domain and one category set / order across the panels, so equal bar lengths mean equal values. "free" lets each pane... |
-| `facet_cols` | How many facet panels sit in a row, like ggplot2's facet_wrap(ncol=). null (default) is auto: as many panels per row as the card is wide. A number pins the row and the deck render follows it, so the picture keeps its ... |
-| `lo` | Lower error-band column (individual line only). Set together with hi to draw a band; numeric only. |
-| `hi` | Upper error-band column (individual line only). Set together with lo to draw a band; numeric only. |
-| `connect` | How a line chart connects its points. "monotone" (default) draws monotone-smoothed lines (no overshoot; local extrema stay at the measured points) at every density; "straight" draws plain segments; "step-start", "step... |
-| `value_lines` | Helper lines: each number draws one dashed guide line across the VALUE axis at that value (a target, a threshold, a normal-range limit). That is y on scatter/line charts and the value axis of bar, waterfall, boxplot a... |
-| `x_lines` | Helper lines: each number draws one dashed VERTICAL guide line at that x position (e.g. a threshold like 5). Plain numbers, never column names. Empty = no lines. Scatter/line charts only. |
-| `line_width_mult` | Line width multiplier for line charts (individual only). 1.0× is the default look; range 0.5×–3.0×. |
-| `dot_size_mult` | Marker size multiplier for scatter points and line markers (individual only). 1.0× is the default; range 0.5×–3.0×. |
-| `filter_type` | Runtime filter-transport state. Normally left at default "categorical"; set by interaction, not at creation. |
-| `filters` | Runtime filter-transport state. The click filter: a named list, column -> values kept after the last click (NA = missing value). Usually null at creation. |
-| `filter_range` | Runtime filter-transport state for brush/drag on scatter/line (x_col, y_col, x_range, y_range). Usually null at creation. |
-| `filter_point` | Runtime filter-transport state for a single-point click on a scatter with no drill column (x_col, y_col, x_val, y_val). Usually null at creation. |
-| `sort_by` | Category-axis ordering for aggregated charts. "value" (default for bar/pie/treemap/radar), "data" (default for boxplot/pointrange: the data's own order — factor levels when present, else first appearance in the rows, ... |
-| `sort_dir` | Direction for `sort_by`. One of "asc" or "desc". Ignored for individual (scatter/line) charts. |
-| `orientation` | Category-axis orientation: "horizontal" (category on the y-axis, best for long labels) or "vertical" (category on the x-axis). Presentation only — the group/value mapping is unchanged. Bar and the distribution marks (... |
-| `bar_mode` | Layout for a color-split bar: "stacked" (default — color segments stack into one bar per group), "grouped" (segments sit side-by-side / dodged, for comparing absolute values), or "percent" (stacked but each group norm... |
-| `value_labels` | Write each bar's value at its end: true or false (default). A stacked bar labels the stack total, a grouped bar every bar, a percent bar each segment's share. Overlapping labels are left out, the tooltip keeps every v... |
-| `baseline` | Bar baseline mode: "zero" (default — every bar starts at 0) or "cumulative" (a waterfall/bridge — each bar floats from the running cumulative of the bars before it; each value is a DELTA and the step axis honors data ... |
-| `waterfall_totals` | Group (step) values rendered as total/subtotal bars in a cumulative-baseline bar: their baseline resets to 0 and they show the absolute running cumulative (e.g. ["Profit"] in a Revenue -> Costs -> Profit bridge). Empt... |
-| `title` | Chart title shown above the chart. Unset = auto (inherits the input data frame's label attribute when present); "" = explicitly no title. Supports {...} tokens resolved against the CURRENT data on every render, so the... |
-| `subtitle` | Subtitle under the title, same {...} tokens as `title`, and the block's control surface. An {@arg} token prints one of this block's own settings and makes that word a control: the reader clicks it and picks, without o... |
-| `caption` | Caption under the chart (source / footnote line), same {...} tokens as `title`. Unset = auto (inherits the input data's caption attribute when present); "" = explicitly none. |
-
-## Tile
-
-`new_tile_block()` &middot; plot
-
-Scorecard of bold KPI numbers — cards or an aligned matrix, with deltas / fills / status pills and click-to-filter drill. A pure renderer (shape upstream).
-
-| Argument | Description |
-|---|---|
-| `value` | Numeric column(s) shown as the big number. One column for a long tile frame; MULTIPLE columns for wide input (each column becomes a measure / card, measure name = column name). Required. |
-| `group` | Grouping column: clusters cards / drives the matrix rows, and is the dplyr::group_by column when `summaries` aggregate the input in place. One column (a KPI clusters by a single dimension). Optional; "" = a single ung... |
-| `name` | The column NAMING each KPI, for LONG input (one row per group x measure); the name shows above the value and drives per-KPI number formatting and the matrix columns. Leave "" for wide input — then the `value` column n... |
-| `color` | Categorical identity color ("Color by") -- the SAME argument as the chart's `color`, applied to cards: the tile's `group` column or its `name` column; each card / matrix row gets a scale-map accent in that value's col... |
-| `summaries` | In-block aggregations shown as cards: a list, each entry `{func, cols}`. `func` is one of "count", "count_distinct", "mean", "median", "sum", "min", "max"; `cols` the numeric column(s) it reduces. Empty `cols` on a NU... |
-| `layout` | Layout: "cards" (grid of cards) or "table" (aligned matrix). |
-| `secondary` | A PRECOMPUTED reference column drawn beside the value (a delta, a fraction, a status). The renderer does no arithmetic — compute the comparison upstream. Optional; "" = no secondary. |
-| `style` | How to draw the secondary: "plain" (show the reference), "delta" (arrow + %, colored by sign), "fill" (progress bar to a fraction), "pill" (status chip). |
-| `format` | How the NUMBER is formatted (never a currency guess): "number" (separators + smart decimals, default), "compact" (1.2M / 38.4K), or "percent" (a fraction x100 + %). |
-| `unit` | Free-text unit label shown next to the value / in the matrix header (e.g. "USD", "CHF", "apples", "kg"). This is how you label a currency — the renderer never infers "$". |
-| `caption` | Subtext below the value: a column name (per-cell) or a literal. |
-| `drill` | When TRUE, clicking a card / matrix row emits a categorical filter downstream (the same contract as the chart / table). The filter column is determined by the tile's structure, never picked: the `group` column when gr... |
-| `ctrl_target` | BETA. Block id of a value filter block on the SAME board: the drill's claim (e.g. SEX = F) is also pushed into that block over the board's control channel, so the drill filters a pipeline the tile has no data link to.... |
-| `ctrl_table` | BETA. Only with `ctrl_target`: the table in the target's dm the pushed conditions apply to (e.g. "adsl"). Leave empty when the target filters a plain data frame. |
-
-## gt Table
-
-`new_gt_table_block()` &middot; table
-
-Render wide-format tables (from summary_table) as styled gt tables — static / print / CSR output.
-
-| Argument | Description |
-|---|---|
-| `title` | Table title rendered above the table. Empty string for no title. |
-| `subtitle` | Subtitle rendered under the title. Empty string for no subtitle. |
-| `full_width` | Logical. TRUE (default) makes the table span the container width. |
-| `borders` | Logical. TRUE (default) draws 2px top/bottom/heading borders in the pharma SAP style. |
-| `na_rep` | String used to render missing (NA) cells. Default is an em dash. |
-
-## Summarize table
-
-`new_summarize_table_block()` &middot; table
-
-Grouped summary table with graphical cells — an ordered list of summary columns (count/mean bars, box / point-range distributions, interval swimlanes, sparklines, text stats, group facts) over one grouping, with facet, search, sort and click-to-filter drill-down
-
-| Argument | Description |
-|---|---|
-| `group` | Column giving the rows: one row per level. The one required argument (e.g. AEDECOD for most-frequent adverse events, USUBJID for a per-subject swimlane). |
-| `summaries` | The summarize-table mode: an ordered list of summary columns, one object per column; non-empty it REPLACES the flat bar mappings. Each object: type = simple (func + col, shown as bar, number or dot), dist (col + stat,... |
-| `by` | Grouping columns for the summaries mode, outer to inner (at most two; the outer becomes the expandable parent). One table row per key combination. |
-| `facet_layout` | Facet column order in the summaries mode: by_summary = each summary's level copies adjacent on one shared scale (comparison reading, default); by_level = pooled columns and fields lead, then one spanning column group ... |
-| `func` | How the measure is computed: count (rows), count_distinct (distinct values of `id_var` -- use this for "subjects with at least one event", the clinical default), sum / mean / median / min / max of `value`, or identity... |
-| `value` | Numeric column reduced by sum / mean / median / min / max, or shown as-is by identity. Unused by count. |
-| `id_var` | Subject identifier counted by count_distinct, so one subject with three events counts once. |
-| `parent` | Optional outer grouping column (e.g. AEBODSYS over AEDECOD): parents become expandable rows with their children indented under them. Each level is aggregated in its own pass, so a parent is never the sum of its children. |
-| `color` | Optional column splitting each bar into segments (e.g. AESEV). Composes with `facet`: each facet column's bars are then split by this column. |
-| `bar_mode` | Layout of a colour split: stacked (segments to scale), grouped (one thin bar per level, side by side) or percent (each row normalized to 100%). No-op without `color`. Stacking needs an additive measure (count, count d... |
-| `facet` | Optional column giving one bar column per level, all on one shared scale (e.g. TRTA -- one column per treatment arm). Composes with `color`. |
-| `cols` | Opt-in separate numeric columns beside the bar: n, pct, or both. Leave unset for the default -- the bar cell carries its own value label. |
-| `fields` | Extra columns from the underlying row, shown as real columns beside the bar (the chart's tooltip fields). Only meaningful with func = "identity", where each group IS one row. |
-| `sort_by` | Ordering: value (the measure), data (the data's own order -- factor levels, else first appearance in the rows: use it for visits and dose groups, which read wrong alphabetically), label (alphabetical), a summary colum... |
+| `type` | Chart type. Aggregated: bar, waterfall, pie, treemap, boxplot, pointrange. One mark per row: scatter, line, area, band. Also histogram and gantt (intervals on lanes). |
+| `category` | Column whose values become the bars, slices, tiles, boxes or points: one mark per value. The same whichever way a bar lies. |
+| `value` | Column `func` aggregates per category; unused by `func = "count"`. Boxplot and pointrange: the column whose spread each box or point range shows. |
+| `func` | Aggregation of `value` per category. "identity" draws the value as is; "pct_distinct" is the share of the panel's distinct values (see `percent_of`). |
+| `x` | Column on the horizontal axis of a scatter, line, area or band. Histogram: the column that is binned. Gantt: the interval start. |
+| `xend` | Interval end. A row without an end is drawn as a dot at `x`. |
+| `open` | Logical column. TRUE draws an arrowhead after the bar's end (still ongoing); a TRUE row without an end runs to the last x drawn. |
+| `y` | Column on the vertical axis. Gantt: the lane. |
+| `color` | Column mapped to color, at most 15 levels. |
+| `facet` | Column to facet by, one small panel per level. |
+| `facet_row` | Column whose levels make the rows of a panel grid, `facet` making its columns. Each row gets its own y scale when `facet_scales` is "free_y" or "free". |
+| `series` | Column whose values split rows into separate series: one line or point group per value, the bar label on a gantt. |
+| `label` | Column written on the marks. A bar, slice or tile shows it only when its rows agree on one value. |
+| `orientation` | Which way a bar, boxplot or pointrange lies. It changes no mapping: `category` stays the category either way. |
+| `position` | Layout of a color split: stacked, side by side, or to 100%. |
+| `sort_by` | Category order: "value", "data", "alpha", or a column (its per-category minimum). Gantt: "onset", "alpha" or a column. NULL: "data" for date, numeric and factor categories, else "value". |
 | `sort_dir` | Sort direction. |
-| `top_n` | Optional cap on the number of ranked rows, with a visible fold row for what falls below the cut. Leave unset for the default behaviour: every row rendered, scrolling with the panel. Set it only for report exhibits, wh... |
-| `max_height` | Leave unset: the table scrolls with its panel. A CSS length puts it in a box of that height instead. |
-| `sortable` | Allow click-to-sort on the column headers. FALSE freezes the configured order -- for exhibits whose row order carries meaning (visits, dose groups), where a stray click would scramble it. |
-| `search` | Show the search input above the table. |
-| `axis` | Print each glyph column's domain as a tick strip under its header (default TRUE) -- the scale named once at the top of the column instead of a track repeated on every row. Applies to every mark: value domain for bars,... |
-| `bar_width` | Length of the marks that carry a value label (bars, boxes, dot ranges, sparklines): fit (default) fills the panel up to 320px; narrow, medium and wide fix them at 90, 150 and 240px. |
-| `drill` | Turns the row click on (any of the grouping columns). A click filters downstream to that row's rows: a parent row of a nested table on its outer column, a child row on both columns. Same filter contract as the chart a... |
-| `ctrl_target` | BETA. Block id of a value filter block on the SAME board: the drill's claim (e.g. AEDECOD = PRURITUS) is also pushed into that block over the board's control channel, so a row click filters a pipeline this block has n... |
-| `ctrl_table` | BETA. Only with `ctrl_target`: the table in the target's dm the pushed conditions apply to (e.g. "adae"). Leave empty when the target filters a plain data frame. |
-| `title` | Title above the table. Unset = auto (inherits the input data frame's label attribute when present); "" = explicitly none. Supports {...} tokens resolved against the CURRENT data on every render: {col} = the distinct v... |
-| `subtitle` | Subtitle under the title, same {...} tokens as `title`. |
-| `caption` | Caption under the table (source / footnote line), same {...} tokens. |
+| `value_labels` | TRUE writes each bar's value at its end: a stack its total, a filled bar each share. |
+| `format` | How numbers print: "number" (separators and up to two decimals, trailing zeros dropped; a value that would round to 0 keeps two significant digits), "compact" (1.2K, 3.4M), "percent" (a fraction times 100, with "%"), ... |
+| `unit` | Free text printed after the number ("CHF"); headers carry it once. |
+| `y_transform` | "log10" draws a base-10 y axis. Values at or below zero are not drawn; a note under the chart counts them. |
+| `x_transform` | As `y_transform`, for the x axis of a scatter. |
+| `x_limits` | The x axis from and to, as `c(0, 100)`; `NA` at either end is auto. Dates as "2024-01-01". Marks outside are cut off, not dropped from the data. Drag zoom works inside the limits, and a reset returns to them. A subtit... |
+| `y_limits` | As `x_limits`, for the value axis: y on a scatter, line, area or band, `value`'s axis on the aggregated types, whichever way they lie. |
+| `x_ticks` | Where the x axis puts its ticks. One number is a step: `10` ticks every 10, at its multiples. On a date axis the step takes a unit, "7 days", "2 weeks", "month", "quarter" or "year"; days and weeks count from the axis... |
+| `y_ticks` | As `x_ticks`, for the value axis: y on a scatter, line, area or band, `value`'s axis on the aggregated types, whichever way they lie. |
+| `tooltip` | Extra columns shown in each mark's tooltip. |
+| `drill` | Column a click filters downstream on, or "auto" for the type's natural target (the clicked group, bin or lane). |
+| `line_width` | Line width relative to the default (1). |
+| `point_size` | Marker size relative to the default (1). |
+| `connect` | How a line connects its points. |
+| `value_lines` | Positions of dashed reference lines across the value axis: `value`'s axis, y on a scatter, line, area or histogram. Names are labels. Text form: "Target: 4; 6". |
+| `x_lines` | Positions of dashed reference lines across x, or across a bar's category axis: numbers, dates or category values. Names are labels. |
+| `ymin` | Columns holding the lower end of an interval per row, the first the outermost. A line draws shaded bands, a scatter error bars. |
+| `ymax` | Columns holding the upper end of an interval, as `ymin`. |
+| `linetype` | Column whose values set a line's dash: the first value is solid, the others dashed. |
+| `shape` | Column whose values set each point's marker: circle, triangle, diamond, square, rounded square, pin, arrow, then again. Levels in factor order, else sorted; a missing value is a circle. A line chart shows its points w... |
+| `x_ranges` | Named stretches of x shaded behind the marks, as `list(Recession = c("2008-01-01", "2009-06-30"))`. Text form: "Recession: 2008-01-01 to 2009-06-30; ...". |
+| `legend` | Where the color legend goes. "marks" writes the names on the marks where the type has room, and keeps the legend elsewhere. |
+| `highlight` | One column and some of its values, as `list(country = "Switzerland")`. Matching marks keep their color; every other mark is gray. |
+| `smoother` | Trend line, fit per color or series group and per panel. |
+| `identity_line` | TRUE draws a dashed y = x line. |
+| `box_points` | "outliers" draws the points beyond the whiskers. |
+| `summary` | Statistic of a boxplot's body, a pointrange's interval or a band's inner range. |
+| `whiskers` | Outer interval: Tukey fences or any `summary` statistic. |
+| `connect_centers` | TRUE joins a pointrange's centers in category order. |
+| `band_window` | "adaptive" grows the window at each point until it holds `band_size` individuals; "fixed" uses `band_size` as a half-width in x units. |
+| `band_size` | Individuals per window, or the half-width; see `band_window`. |
+| `band_min_n` | Points with fewer individuals than this are not drawn. |
+| `id` | Column that identifies an individual, counted distinct by the band and by `show_n`. |
+| `ref_min` | Column holding a lower reference limit per row, drawn as a dashed line at its median and labelled with its spread. |
+| `ref_max` | Column holding an upper reference limit per row, as `ref_min`. |
+| `ref_lines` | Columns holding reference limits (a normal range, grade thresholds). Per panel, each column with a value in the panel's rows draws a dashed horizontal line at the mean of those values, labelled with the column's label... |
+| `ref_line_colors` | Colors of the `ref_lines`, by column, as `list(LLN = "#4DAF4A", ULN = "#4DAF4A")`. A column without one takes the reference line color. |
+| `waterfall_totals` | Steps of a waterfall drawn as totals, from zero. |
+| `bins` | About how many bins x is cut into, at readable breaks. |
+| `show_n` | Observation counts in labels, e.g. "Female (12)". |
+| `missing` | Rows whose category is missing: "level" gives them their own ("(Missing)"; a click on it gives the rows with no value), "drop" removes them from the categories. |
+| `percent_of` | The role whose levels a `pct_distinct` denominator is taken within, or "total" for the whole chart. |
+| `facet_scales` | "fixed" shares one scale across panels, "free" lets each panel size itself, "free_y" frees y only (scatter, line and band). In a grid (`facet_row`) "free_y" shares the value axis within a row (x on horizontal bars and... |
+| `facet_cols` | Panels per row. NULL fits as many as the card is wide. |
+| `download` | TRUE offers the block for download. |
+| `title` | Text above the block. NULL uses the input's label, "" shows nothing, any other string is a template resolved against the data: `{col}`, `{label(col)}`, `{n}`, `{n_distinct(col)}`, `{filters}`, `{@arg}` (one of the blo... |
+| `subtitle` | Text under the title, a template as `title`. |
+| `caption` | Text below the block, a template as `title`. Defaults to the option `blockr.viz.default_caption`. |
+| `drill_target` | Beta. The id of a filter block a click is sent to, or "auto" for the board's drill destination. With a target set a click is an event and the block holds no selection. |
+| `drill_table` | Beta. The table in the target's dm the click applies to. |
 
 ## Table
 
 `new_table_block()` &middot; table
 
-Interactive table (sticky header, sort, search) with optional cell coloring and click-to-filter drill-down
+Interactive table: the input rows (cell colouring, finished tables from R code) or one row per group with a column per summary (count/mean bars, box / point-range distributions, swimlanes, sparklines, text stats), or a Table 1 with one row per statistic of each variable and a column per group, with search, sort and click-to-filter drill-down. Drawn as a table, a compact matrix, or KPI cards (one card per summary: its number in large type and its glyph)
 
 | Argument | Description |
 |---|---|
-| `group` | Grouping column(s) to aggregate over. One or more categorical columns (nested from outer to inner). Empty = no grouping (a raw row-level table). |
-| `summaries` | The aggregations shown: a list, each entry `{func, cols}`. `func` is one of "count", "count_distinct", "mean", "median", "sum", "min", "max"; `cols` is the numeric column(s) it reduces. One entry per aggregation, so m... |
-| `rowname` | The single column shown as the row labels (the left-hand stub). Names a data column; defaults to the first column. |
-| `value` | The columns rendered as the table body (the data cells). When the user names specific value/measure columns, set this to EXACTLY those columns -- do not leave it null. Leave null only to mean 'all columns except `rown... |
-| `color` | Categorical identity color ("Color by") -- the SAME argument as the chart's `color`, applied to rows: names one categorical column whose values tint the rows through the board scale map, so a SEX-colored table matches... |
-| `shadings` | Cell value-encoding rules: a list, each entry `{mode, cols}` (same shape family as `summaries`). `mode` is "diverging" (correlation matrices, centred on 0), "sequential" (heatmaps), or "bar" (an in-cell data bar propo... |
-| `drill` | Row-click drill-down. Optional; default null = a click is inert (drill is opt-in everywhere). RAW table: a column name — clicking a row emits a categorical filter on that column's value (the same filter contract as th... |
-| `digits` | Decimal places for numeric display. Default 2. |
-| `ctrl_target` | BETA. Block id of a value filter block on the SAME board: the drill's claim (e.g. SEX = F) is also pushed into that block over the board's control channel, so the drill filters a pipeline the table has no data link to... |
-| `ctrl_table` | BETA. Only with `ctrl_target`: the table in the target's dm the pushed conditions apply to (e.g. "adsl"). Leave empty when the target filters a plain data frame. |
-| `title` | Table title shown above the table. Unset = auto (inherits the input data frame's label attribute when present); "" = explicitly no title. Supports {...} tokens resolved against the CURRENT data on every render, so the... |
-| `subtitle` | Subtitle under the title, same {...} tokens as `title`. Unset = auto (inherits the input data's subtitle attribute when present, e.g. from a composer table); "" = explicitly none. |
-| `caption` | Caption under the table (source / footnote line), same {...} tokens as `title`. Unset = auto (inherits the input data's caption attribute when present); "" = explicitly none. |
+| `layout` | What a row is: "records" (the input rows), "groups" (one row per level of `by`, one column per summary) or "variables" (a Table 1: one row per statistic or level, one column per level of `by`). |
+| `by` | Grouping columns, outer first, at most two. Records: rows under one collapsible header per level. Groups: one row per level. Variables: one column per level. |
+| `rowname` | The stub column: first column, row label. |
+| `columns` | Columns shown beside the row names, in order. |
+| `summaries` | Groups: the table's columns. Variables: its variables. An ordered list of typed summaries, each `list(type = , ...)`: simple, dist, field, sparkline, spans, pair, expr, custom. Keys per type: see the Summaries section... |
+| `id` | Column whose distinct values are counted instead of rows, so a count reads as "subjects with at least one event". |
+| `percent_of` | The base of a count's percentage: the rows of the column's own facet level, or the table. |
+| `missing` | Rows whose category is missing: "level" gives them their own ("(Missing)"; a click on it gives the rows with no value), "drop" removes them from the categories. |
+| `color` | Column whose colors tint the rows, from the board's scale map. "auto" uses the stub column when the scale map has it. |
+| `shadings` | Cell color rules, each `list(mode, columns, domain)` with `mode` one of "diverging", "sequential", "bar". A column belongs to the first rule that names it. |
+| `format` | How numbers print: "number" (separators and up to two decimals, trailing zeros dropped; a value that would round to 0 keeps two significant digits), "compact" (1.2K, 3.4M), "percent" (a fraction times 100, with "%"), ... |
+| `unit` | Free text printed after the number ("CHF"); headers carry it once. |
+| `look` | "compact" rotates the column titles and draws `tile` summaries as square cells (a heatmap). "cards" draws one card per summary (groups) or per column (records). |
+| `facet_layout` | Column order of faceted summaries. "by_level" needs exactly one facet column in the table. |
+| `group_rows` | What the outer rows of a nested table (two `by` columns) show. "name": the group's name and its number of rows, across the row, with the groups open. "summary": every summary over the group's rows, on the group's line... |
+| `open` | With `group_rows = "summary"`, whether the outer rows start closed ("none") or open ("all"). The header's button opens and closes them all either way. |
+| `row_sections` | Column naming the section each inner row of a nested table belongs to. An outer row whose inner rows fall in more than one section shows each section's name, in small bold type, above its first row. One section: no ti... |
+| `row_groups` | Column whose value groups the outer rows: each value heads its rows, which a click on it folds, in the column's level order (a factor) or alphabetical. An outer row takes the first value its records have; rows without... |
+| `sort_by` | Row order: "value", "data", "alpha", a summary's name, a facet level, or a numeric column (its per-row minimum). |
+| `sort_dir` | Sort direction. |
+| `top_n` | Rows past the cut fold into one "Other" row. |
+| `value_labels` | TRUE writes each mark's number beside it. |
+| `column_axis` | TRUE draws the domain strip under each glyph column. |
+| `bar_width` | Mark length: fit the column, or 90, 150 or 240 px. |
+| `drill` | Turns the row click on. Records: the column a click filters on, "auto", or "source" (the input's source rows). Groups and variables: "auto". |
+| `search` | Show the search input. |
+| `sortable` | Allow sorting by the column headers. |
+| `collapsible` | Allow collapsing the group rows of a nested table. |
+| `download` | TRUE offers the block for download. |
+| `stats` | Rows shown for numeric variables, in the order given. |
+| `sections` | Outer header rows above the variables. |
+| `total` | TRUE adds a column over all levels of `by`. |
+| `total_label` | Header of the overall column. |
+| `nest` | TRUE nests adjacent categorical hierarchies. |
+| `title` | Text above the block. NULL uses the input's label, "" shows nothing, any other string is a template resolved against the data: `{col}`, `{label(col)}`, `{n}`, `{n_distinct(col)}`, `{filters}`, `{@arg}` (one of the blo... |
+| `subtitle` | Text under the title, a template as `title`. |
+| `caption` | Text below the block, a template as `title`. Defaults to the option `blockr.viz.default_caption`. |
+| `drill_target` | Beta. The id of a filter block a click is sent to, or "auto" for the board's drill destination. With a target set a click is an event and the block holds no selection. |
+| `drill_table` | Beta. The table in the target's dm the click applies to. |
 

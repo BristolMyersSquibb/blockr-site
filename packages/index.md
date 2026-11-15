@@ -75,6 +75,7 @@ The framework itself: engine, layout, sessions, assistants and code tooling.
 <div class="package-body">
 <p class="package-title">blockr.ai</p>
 <p>AI helpers that set a block's controls and explain data and outputs in plain English.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -82,6 +83,7 @@ The framework itself: engine, layout, sessions, assistants and code tooling.
 <div class="package-body">
 <p class="package-title">blockr.assistant</p>
 <p>A board-level LLM assistant that adds, connects and configures blocks from a chat.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -89,6 +91,7 @@ The framework itself: engine, layout, sessions, assistants and code tooling.
 <div class="package-body">
 <p class="package-title">blockr.code</p>
 <p>Export a board as idiomatic, runnable R code anyone can read.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -96,6 +99,7 @@ The framework itself: engine, layout, sessions, assistants and code tooling.
 <div class="package-body">
 <p class="package-title">blockr.outline</p>
 <p>The outline rail, the report builder and the code views of a board.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -140,6 +144,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.viz</p>
 <p>Visualisation blocks: interactive charts, summary and drilldown tables, KPI tiles, cross-filtering.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -147,6 +152,15 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.dm</p>
 <p>Relational data blocks: inspect, filter and join multi-table datasets backed by <code>dm</code>.</p>
+<p class="package-src">README on GitHub</p>
+</div>
+</a>
+
+<a class="package-card" href="https://github.com/cynkra/blockr.extra" target="_blank">
+<div class="package-body">
+<p class="package-title">blockr.extra</p>
+<p>Utility blocks, among them the function block for custom R code that the Learn tutorials use.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -154,6 +168,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.input</p>
 <p>Data entry blocks: editable grids, tables and forms inside a board.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -163,17 +178,11 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 
 <div class="packages-grid">
 
-<a class="package-card" href="https://github.com/cynkra/blockr.extra" target="_blank">
-<div class="package-body">
-<p class="package-title">blockr.extra</p>
-<p>Experimental blocks, among them a code block for custom R functions.</p>
-</div>
-</a>
-
 <a class="package-card" href="https://github.com/cynkra/blockr.stats" target="_blank">
 <div class="package-body">
 <p class="package-title">blockr.stats</p>
 <p>Statistical blocks: models (lm, glm, mixed), model summaries, tests, correlations, survival.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -181,6 +190,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.pharma</p>
 <p>Clinical trial blocks: population filters, adverse-event heatmaps, patient profiles.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -188,6 +198,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.admiral</p>
 <p>ADaM derivation blocks: clinical data preparation on top of admiral.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -195,6 +206,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.insurance</p>
 <p>Insurance datasets and example workflows: underwriting, pricing, reinsurance.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -202,6 +214,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.portfolio</p>
 <p>Portfolio blocks: investor profiles, optimisation, allocation, share prices.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -209,6 +222,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.ts</p>
 <p>Time series blocks: transform one series, combine several, pick a few out of many, forecast.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -216,6 +230,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.seasonal</p>
 <p>Seasonal adjustment with X-13ARIMA-SEATS.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -223,6 +238,7 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
 <div class="package-body">
 <p class="package-title">blockr.leaflet</p>
 <p>Map blocks built on <code>leaflet</code>: markers and routes.</p>
+<p class="package-src">README on GitHub</p>
 </div>
 </a>
 
@@ -275,5 +291,11 @@ The blocks users add to a board: data wrangling, visualisation, I/O, and vertica
   margin: 0 !important;
   flex: 1;
   line-height: 1.5;
+}
+.package-body > p.package-src {
+  flex: 0;
+  margin-top: 10px !important;
+  font-size: 0.78em;
+  color: var(--vp-c-text-3);
 }
 </style>

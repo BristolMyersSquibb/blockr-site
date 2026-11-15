@@ -23,7 +23,7 @@ intros <- list(
   blockr.core = "The framework itself ships a small set of essential blocks: datasets, file upload, simple transforms. Real analyses mostly use the packages below; these are the fallbacks that are always there.",
   blockr.dplyr = "Data wrangling, one block per verb: filter, select, mutate, summarize, join, pivot and friends. If you would reach for dplyr in R, you reach for these blocks in blockr.",
   blockr.ggplot = "Static plots the way R users know them: a chart type, aesthetic mappings, facets. The right choice for a figure; for charts your dashboard users click, see blockr.viz.",
-  blockr.viz = "Interactive, dashboard-grade output: charts with built-in aggregation and drilldown, tables, tiles and summary tables. Clicking a chart filters what is downstream of it. The right choice when people explore your board rather than read it.",
+  blockr.viz = "Interactive, dashboard-grade output: a chart block with built-in aggregation and drilldown, and a table block for rows, group summaries and Table 1 summaries. Clicking a chart filters what is downstream of it. The right choice when people explore your board rather than read it.",
   blockr.dm = "Relational data: bring in a whole data model (many linked tables) as one source, pull tables out of it, filter across the relationships. For data that lives in a database rather than a single frame.",
   blockr.io = "Getting data in and out: read CSV, Excel, Parquet and more, from files or URLs, and write results back out.",
   blockr.extra = "Utilities that don't fit a theme: the function block for custom R code inside a workflow, search, compare, labeling and more."
@@ -67,6 +67,8 @@ cat_order <- c(
 
 for (pkg in pkgs) {
   entries <- Filter(function(e) identical(e$package, pkg), info)
+  # Deprecated blocks stay registered so saved boards load; they get no entry.
+  entries <- Filter(function(e) !grepl("deprecated", e$name %||% "", ignore.case = TRUE), entries)
   ord <- order(
     match(vapply(entries, `[[`, "", "category"), cat_order),
     vapply(entries, `[[`, "", "name")

@@ -63,6 +63,16 @@ Add or edit column labels (the `attr(col, "label")` attribute shown in column pi
 |---|---|
 | `labels` | Named list mapping column names to label strings. An empty string removes the column's label. |
 
+## Prose
+
+`new_prose_block()` &middot; transform
+
+Text that can compute: markdown edited as it reads, with inline R as `r expr` (Quarto's form). Values show in the text, marked with a dotted underline.
+
+| Argument | Description |
+|---|---|
+| `text` | Markdown string for the text. Inline R as `r expr` is evaluated with the inputs bound by input name (e.g. `data`). |
+
 ## Search
 
 `new_search_block()` &middot; transform
