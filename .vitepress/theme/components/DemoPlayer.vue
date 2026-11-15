@@ -1,7 +1,8 @@
 <script setup>
 // Demo loop under the home hero, with clickable chapters. Configured by the
 // `demo:` key in the page frontmatter; renders nothing without it. `demo.dark`
-// holds the dark-mode recording (src, poster); the chapters are shared.
+// holds the dark-mode recording (src, poster, and `times`, the chapter starts
+// in that recording when they differ from the light one).
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useData } from 'vitepress'
 
@@ -11,6 +12,8 @@ const demo = computed(() => frontmatter.value.demo)
 // dark clip replace it; during hydration Vue would keep the server's <source>.
 const mounted = ref(false)
 const clip = computed(() => demo.value && ((mounted.value && isDark.value && demo.value.dark) || demo.value))
+const dark = computed(() => clip.value && clip.value === demo.value.dark)
+const times = computed(() => (dark.value && demo.value.dark.times) || demo.value.chapters.map((c) => c.t))
 const video = ref(null)
 const active = ref(0)
 let raf = 0
@@ -19,13 +22,13 @@ function sync() {
   const v = video.value
   if (v && demo.value) {
     let i = 0
-    demo.value.chapters.forEach((c, k) => { if (v.currentTime >= c.t) i = k })
+    times.value.forEach((t, k) => { if (v.currentTime >= t) i = k })
     active.value = i
   }
   raf = requestAnimationFrame(sync)
 }
-function seek(c) {
-  video.value.currentTime = c.t + 0.05
+function seek(i) {
+  video.value.currentTime = times.value[i] + 0.05
   video.value.play()
 }
 onMounted(() => {
@@ -42,7 +45,7 @@ onBeforeUnmount(() => cancelAnimationFrame(raf))
       <source :src="`${clip.src}.mp4`" type="video/mp4" />
     </video>
     <ol class="chapters">
-      <li v-for="(c, i) in demo.chapters" :key="c.t" :class="{ on: i === active }" @click="seek(c)">
+      <li v-for="(c, i) in demo.chapters" :key="c.t" :class="{ on: i === active }" @click="seek(i)">
         <span class="title">{{ c.title }}</span>
         <span class="text">{{ c.text }}</span>
       </li>

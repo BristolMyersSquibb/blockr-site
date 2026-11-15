@@ -91,7 +91,30 @@ The techniques, so the next script doesn't rediscover them:
   `--window-size` says otherwise, and the screencast crops a taller viewport
   to it. `film.cjs` sets the window to the viewport.
 
-## Demo loops (landing page, Examples page)
+## Landing page loop
+
+`public/videos/hero-build*` (the loop under the hero, `demo:` in
+`index.md`) is recorded on an empty `run_app()` board from the one-line
+install, light and dark:
+
+```bash
+cd scripts/demo-video
+Rscript hero-loop-app.R 4190 &          # light
+Rscript hero-loop-app.R 4191 dark &     # dark
+node story-hero.cjs hero http://127.0.0.1:4190/
+node story-hero.cjs hero-dark http://127.0.0.1:4191/
+node render.cjs hero hero-build --speed 1.8 --width 1728 --zoom
+node render.cjs hero-dark hero-build-dark --speed 1.8 --width 1728 --zoom
+ffmpeg -i hero-build.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 -an hero-build.webm
+```
+
+`--zoom` only applies the close-up on the generated code at the end. The
+chapters are logged as captions: their times in `<take>-events.json`
+divided by the speed are the chapter starts in `index.md` (`chapters` for
+light, `dark.times` for dark). Posters are a frame at the end of "Change it",
+scaled to 1440 px.
+
+## Demo loops (Examples page)
 
 `public/videos/landing-build.*` (landing page) and
 `public/videos/clinical-explorer.*` (the Clinical Explorer card on the
