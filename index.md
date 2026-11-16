@@ -34,17 +34,17 @@ demo:
 features:
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#0072B24D"/><line x1="30" y1="32" x2="30" y2="24" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="16" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="32" x2="18" y2="28" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/></svg>'
     title: Fast to change
-    details: You set up a workflow by configuring blocks, so anyone who knows the subject can build it. Changes are made in the running app and don't need a new release.
+    details: You set up a data flow by configuring blocks, so anyone who knows the subject can build it. Changes are made in the running app and don't need a new release.
     link: /learn/01-build-your-first-app
     linkText: Build your first app
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#009E734D"/><polyline points="28 30 34 24 28 18" fill="none" stroke="#009E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 18 14 24 20 30" fill="none" stroke="#009E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     title: Every step verifiable
-    details: Each block does one step, so people who can't code can still follow how the data turns into the result. Behind the workflow is standard R code that also runs without blockr.
+    details: Each block does one step, so people who can't code can still follow how the data turns into the result. Behind the data flow is standard R code that also runs without blockr.
     link: /docs/concepts/02-roles
     linkText: Users, builders, developers
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#E69F004D"/><path d="M15 15h18a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-10l-6 4.5v-4.5h-2a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2z" fill="none" stroke="#E69F00" stroke-width="1.5" stroke-linejoin="round"/></svg>'
     title: With or without AI
-    details: The assistant builds the workflow from the same blocks you would use by hand, so people who can't read code can check every step it took. You can also use blockr without it.
+    details: The assistant builds the data flow from the same blocks you would use by hand, so people who can't read code can check every step it took. You can also use blockr without it.
     link: /docs/concepts/03-ai-assistant
     linkText: The AI assistant
 ---
