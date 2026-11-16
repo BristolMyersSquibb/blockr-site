@@ -13,7 +13,7 @@ hero:
       text: Get started
       link: /learn/01-build-your-first-app
     - theme: alt
-      text: Source on GitHub
+      text: Source
       link: https://github.com/BristolMyersSquibb/blockr
 
 demo:
