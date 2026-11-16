@@ -210,7 +210,6 @@ Price a property portfolio twice, as Base and Challenger, and compare the two ru
 
 ```r
 pak::pak("cynkra/blockr.input")              # editable base_rate parameter grids (Base / Challenger)
-pak::pak("cynkra/blockr.extra")
 pak::pak("BristolMyersSquibb/blockr.ai")
 pak::pak("BristolMyersSquibb/blockr.code")   # show / export the generated R code
 pak::pak("cynkra/blockr.insurance")          # pricing engines + portfolio data, this example
@@ -226,7 +225,6 @@ Price a layered excess-of-loss treaty: edit the tower, and the loss simulation, 
 
 ```r
 pak::pak("cynkra/blockr.input")              # the one editable treaty_tower grid (client structure)
-pak::pak("cynkra/blockr.extra")              # the challenger-vs-base compare block
 pak::pak("BristolMyersSquibb/blockr.code")   # show / export the generated R code
 pak::pak("BristolMyersSquibb/blockr.ai")
 pak::pak("cynkra/blockr.insurance")          # the treaty tower data + this example
