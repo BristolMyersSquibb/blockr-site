@@ -12,7 +12,6 @@ suppressMessages({
   library(blockr.viz)
   library(blockr.dm)
   library(blockr.io)
-  library(blockr.extra)
 })
 
 out_dir <- file.path("docs", "blocks")
@@ -25,13 +24,12 @@ intros <- list(
   blockr.ggplot = "Static plots the way R users know them: a chart type, aesthetic mappings, facets. The right choice for a figure; for charts your dashboard users click, see blockr.viz.",
   blockr.viz = "Interactive, dashboard-grade output: a chart block with built-in aggregation and drilldown, and a table block for rows, group summaries and Table 1 summaries. Clicking a chart filters what is downstream of it. The right choice when people explore your board rather than read it.",
   blockr.dm = "Relational data: bring in a whole data model (many linked tables) as one source, pull tables out of it, filter across the relationships. For data that lives in a database rather than a single frame.",
-  blockr.io = "Getting data in and out: read CSV, Excel, Parquet and more, from files or URLs, and write results back out.",
-  blockr.extra = "Utilities that don't fit a theme: the function block for custom R code inside a workflow, search, compare, labeling and more."
+  blockr.io = "Getting data in and out: read CSV, Excel, Parquet and more, from files or URLs, and write results back out."
 )
 
 pkg_order <- c(
   "blockr.core", "blockr.dplyr", "blockr.ggplot", "blockr.viz",
-  "blockr.dm", "blockr.io", "blockr.extra"
+  "blockr.dm", "blockr.io"
 )
 
 esc <- function(x) {

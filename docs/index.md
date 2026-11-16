@@ -31,7 +31,6 @@ from the packages' block registries.
 - [blockr.dm](blocks/blockr.dm): relational data, many linked tables as one
   source.
 - [blockr.io](blocks/blockr.io): read and write files.
-- [blockr.extra](blocks/blockr.extra): the function block and other utilities.
 - [blockr.core](blocks/blockr.core): the small set of blocks built into the
   framework.
 

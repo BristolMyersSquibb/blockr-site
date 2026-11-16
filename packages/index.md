@@ -221,13 +221,6 @@ General-purpose packages that are not in the one-line install.
 </div>
 
 <div class="package-card">
-<p class="package-title">blockr.extra</p>
-<p>Utility blocks: a function block for custom R code, search, compare, labelling.</p>
-<code class="package-install">pak::pak("cynkra/blockr.extra")</code>
-<p class="package-src"><a href="https://github.com/cynkra/blockr.extra" target="_blank">GitHub</a></p>
-</div>
-
-<div class="package-card">
 <p class="package-title">blockr.input</p>
 <p>Edit data inside a board: pick a row and change it, paste new rows, page through a large table.</p>
 <code class="package-install">pak::pak("cynkra/blockr.input")</code>

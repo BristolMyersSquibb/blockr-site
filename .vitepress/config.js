@@ -71,7 +71,6 @@ module.exports = {
             { text: 'blockr.viz', link: '/docs/blocks/blockr.viz' },
             { text: 'blockr.dm', link: '/docs/blocks/blockr.dm' },
             { text: 'blockr.io', link: '/docs/blocks/blockr.io' },
-            { text: 'blockr.extra', link: '/docs/blocks/blockr.extra' },
             { text: 'blockr.core', link: '/docs/blocks/blockr.core' },
             { text: 'Other packages', link: '/docs/#other-block-packages' }
           ]
