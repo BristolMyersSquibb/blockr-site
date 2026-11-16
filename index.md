@@ -4,7 +4,7 @@ layout: home
 hero:
   name: blockr
   text: A visual, no-code framework for R
-  tagline: Drag analysis steps into interactive dashboards
+  tagline: You connect blocks instead of writing code, so a data flow is quick to change and every step can be checked by anyone.
   actions:
     - theme: brand
       text: Try it in the browser
@@ -12,6 +12,9 @@ hero:
     - theme: alt
       text: Get started
       link: /learn/01-build-your-first-app
+    - theme: alt
+      text: Source on GitHub
+      link: https://github.com/BristolMyersSquibb/blockr
 
 demo:
   src: /videos/hero-build
@@ -30,20 +33,20 @@ demo:
 
 features:
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#0072B24D"/><line x1="30" y1="32" x2="30" y2="24" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="16" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="32" x2="18" y2="28" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/></svg>'
-    title: For Analysts
-    details: Explore and transform data visually, no coding needed. Point, click, and see results instantly.
+    title: Fast to change
+    details: You set up a workflow by configuring blocks, so anyone who knows the subject can build it. Changes are made in the running app and don't need a new release.
     link: /learn/01-build-your-first-app
     linkText: Build your first app
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#009E734D"/><polyline points="28 30 34 24 28 18" fill="none" stroke="#009E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="20 18 14 24 20 30" fill="none" stroke="#009E73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-    title: For R Developers
-    details: Create custom blocks with a coding agent. Describe what you want, get a working block in minutes.
-    link: /learn/05-create-a-block
-    linkText: Create a block
-  - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#E69F004D"/><path d="M29 33v-2a4 4 0 0 0-4-4H17a4 4 0 0 0-4 4v2" fill="none" stroke="#E69F00" stroke-width="1.5" stroke-linecap="round"/><circle cx="21" cy="19" r="4" fill="none" stroke="#E69F00" stroke-width="1.5"/><path d="M35 33v-2a4 4 0 0 0-3-3.87" fill="none" stroke="#E69F00" stroke-width="1.5" stroke-linecap="round"/><path d="M28 15.13a4 4 0 0 1 0 7.75" fill="none" stroke="#E69F00" stroke-width="1.5" stroke-linecap="round"/></svg>'
-    title: For Teams
-    details: Share reproducible workflows across skill levels. Export pipelines as idiomatic R code anyone can run.
-    link: /examples/
-    linkText: Browse examples
+    title: Every step verifiable
+    details: Each block does one step, so people who can't code can still follow how the data turns into the result. Behind the workflow is standard R code that also runs without blockr.
+    link: /docs/concepts/02-roles
+    linkText: Users, builders, developers
+  - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#E69F004D"/><path d="M15 15h18a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-10l-6 4.5v-4.5h-2a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2z" fill="none" stroke="#E69F00" stroke-width="1.5" stroke-linejoin="round"/></svg>'
+    title: With or without AI
+    details: The assistant builds the workflow from the same blocks you would use by hand, so people who can't read code can check every step it took. You can also use blockr without it.
+    link: /docs/concepts/03-ai-assistant
+    linkText: The AI assistant
 ---
 
 <style>
@@ -101,7 +104,7 @@ pak::pak("BristolMyersSquibb/blockr@dev")
 blockr::run_app()
 ```
 
-R 4.5 or later. Details and the assistant: [Install](/install).
+blockr is free and open source (GPL-3) and needs R 4.5 or later. See [Install](/install) for details and for how to turn on the assistant.
 
 <div class="intro-band">
   <p>Bring a real problem and we build it with you in blockr, in two free 30-minute sessions.</p>
