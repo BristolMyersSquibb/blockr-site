@@ -159,77 +159,54 @@ The demos above run on [blockr.cloud](https://blockr.cloud). To run one in your 
 pak::pak("BristolMyersSquibb/blockr@dev")
 ```
 
-Then add the extra packages listed for the demo and launch it.
+Then install the extra packages listed for the demo and launch it.
 
 ### Clinical Explorer
 
-AI-enabled exploration of an ADaM trial. One cross-filter drives five views: population and disposition, an adverse-event heatmap with a frequency chart and a swim-lane, and lab and vital-sign trajectories. The patient profile, the outline and the assistant ride a rail beside them.
-
-Extra packages:
+Explore an ADaM trial through demographics, adverse events, labs and vital signs, all driven by one cross-filter, with an AI assistant beside it. For clinical programmers and medical reviewers.
 
 ```r
-pak::pak("cynkra/blockr.extra")
 pak::pak("BristolMyersSquibb/blockr.pharma")   # patient profile, AE heatmap, the study roles option
 pak::pak("cynkra/blockr.outline")              # the outline rail
 install.packages("safetyData")
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/clinical-explorer.R", package = "blockr.pharma"))
 ```
 
-This loads the ADaM tables from safetyData and the same blocks as the live demo: the cross-filter, the AE heatmap and swim-lane, the summary tables, the lab and vital-sign trajectories, and the patient profile. Open [`inst/examples/clinical-explorer.R`](https://github.com/BristolMyersSquibb/blockr.pharma/blob/main/inst/examples/clinical-explorer.R) on GitHub to see exactly what the script does.
+Docs: [blockr.pharma](https://github.com/BristolMyersSquibb/blockr.pharma#readme). Script: [`inst/examples/clinical-explorer.R`](https://github.com/BristolMyersSquibb/blockr.pharma/blob/main/inst/examples/clinical-explorer.R).
 
 ### Admiral SDTM → ADSL
 
-SDTM DM to ADSL derivation pipeline using admiral blocks: each block is one derivation step with visible intermediate results.
-
-Extra packages:
+Derive ADSL from SDTM DM with admiral, one derivation step per block. For statistical programmers who want to see each intermediate result.
 
 ```r
 pak::pak("BristolMyersSquibb/blockr.admiral")   # admiral derivation blocks (derive_vars_*, merge, seq)
-pak::pak("cynkra/blockr.extra")                 # function / code blocks
 pak::pak("BristolMyersSquibb/blockr.ai")
 install.packages("pharmaversesdtm")             # SDTM example domains (dm, ex)
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/sdtm-to-adsl.R", package = "blockr.admiral"))
 ```
 
-Open [`inst/examples/sdtm-to-adsl.R`](https://github.com/BristolMyersSquibb/blockr.admiral/blob/main/inst/examples/sdtm-to-adsl.R) on GitHub to see exactly what the script does.
+Docs: [blockr.admiral](https://github.com/BristolMyersSquibb/blockr.admiral#readme). Script: [`inst/examples/sdtm-to-adsl.R`](https://github.com/BristolMyersSquibb/blockr.admiral/blob/main/inst/examples/sdtm-to-adsl.R).
 
 ### Life UWR Workbench
 
-Life-insurance underwriting workbench: a per-coverage expected-claims pipeline plus a UWR price-driver dashboard over a census, claims history, and bundled actuarial tables.
-
-Extra packages:
+A life underwriting workbench: expected claims per coverage and a dashboard of price drivers. For life actuaries and underwriters.
 
 ```r
 pak::pak("cynkra/blockr.input")              # editable data grid (the UWR uw_factors worksheet)
-pak::pak("cynkra/blockr.extra")
 pak::pak("BristolMyersSquibb/blockr.ai")
 pak::pak("BristolMyersSquibb/blockr.code")   # show / export the generated R code
 pak::pak("cynkra/blockr.insurance")          # census + claims data, formula chain, this example
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/life-underwriting.R", package = "blockr.insurance"))
 ```
 
-Open [`inst/examples/life-underwriting.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/life-underwriting.R) on GitHub to see exactly what the script does.
+Docs: [blockr.insurance](https://github.com/cynkra/blockr.insurance#readme). Script: [`inst/examples/life-underwriting.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/life-underwriting.R).
 
 ### Actuarial Workbench
 
-Property-insurance actuarial workbench: Base vs Challenger portfolio simulations with editable base-rate grids, premium components, and a run-vs-run compare waterfall.
-
-Extra packages:
+Price a property portfolio twice, as Base and Challenger, and compare the two runs in a waterfall. For pricing actuaries.
 
 ```r
 pak::pak("cynkra/blockr.input")              # editable base_rate parameter grids (Base / Challenger)
@@ -237,159 +214,109 @@ pak::pak("cynkra/blockr.extra")
 pak::pak("BristolMyersSquibb/blockr.ai")
 pak::pak("BristolMyersSquibb/blockr.code")   # show / export the generated R code
 pak::pak("cynkra/blockr.insurance")          # pricing engines + portfolio data, this example
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/property-workbench.R", package = "blockr.insurance"))
 ```
 
-Open [`inst/examples/property-workbench.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/property-workbench.R) on GitHub to see exactly what the script does.
+Docs: [blockr.insurance](https://github.com/cynkra/blockr.insurance#readme). Script: [`inst/examples/property-workbench.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/property-workbench.R).
 
 ### Treaty Pricer
 
-Layered excess-of-loss treaty pricer: an editable treaty tower drives a piecewise-Pareto severity fit, loss simulation, and a per-layer premium build-up. Edit a layer and the KPIs, quote chart, and build-up waterfall all recompute.
-
-Extra packages:
+Price a layered excess-of-loss treaty: edit the tower, and the loss simulation, the premium and the charts recompute. For reinsurance actuaries.
 
 ```r
 pak::pak("cynkra/blockr.input")              # the one editable treaty_tower grid (client structure)
-pak::pak("cynkra/blockr.extra")              # function blocks (Pareto fit, per-claim layering)
+pak::pak("cynkra/blockr.extra")              # the challenger-vs-base compare block
 pak::pak("BristolMyersSquibb/blockr.code")   # show / export the generated R code
 pak::pak("BristolMyersSquibb/blockr.ai")
 pak::pak("cynkra/blockr.insurance")          # the treaty tower data + this example
 install.packages("Pareto")                   # piecewise-Pareto severity fit + loss simulation
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/treaty-pricer.R", package = "blockr.insurance"))
 ```
 
-This loads the treaty tower bundled in blockr.insurance and the same blocks as the live demo: the editable tower, Pareto fit and loss simulation, the per-layer quote chart and premium build-up waterfall, the layer-detail drilldown, and a challenger-vs-base comparison. Open [`inst/examples/treaty-pricer.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/treaty-pricer.R) on GitHub to see exactly what the script does.
+Docs: [blockr.insurance](https://github.com/cynkra/blockr.insurance#readme). Script: [`inst/examples/treaty-pricer.R`](https://github.com/cynkra/blockr.insurance/blob/main/inst/examples/treaty-pricer.R).
 
 ### Does mosquito control work?
 
-Refits a published mosquito-control study. The Poisson glm is built in the board by dragging a term in. The paper's negative binomial mixed model is written as plain R. Both reproduce the numbers in the paper. Joint work with [Matteo Tanadini](https://www.zurich-data-scientists.ch), a co-author of [the study](https://doi.org/10.1186/s13071-021-04903-2).
-
-Extra packages:
+Refits a [published mosquito-control study](https://doi.org/10.1186/s13071-021-04903-2) with blocks and with plain R, and writes the Quarto report from the same board, joint work with co-author [Matteo Tanadini](https://www.zurich-data-scientists.ch). For applied statisticians.
 
 ```r
 pak::pak("cynkra/blockr.stats")     # dataset + model + model-summary + broom blocks
 pak::pak("cynkra/blockr.outline")   # the report builder, the deck builder, the minidag
-pak::pak("cynkra/blockr.extra")
 install.packages("glmmTMB")         # the published arm's fit
 install.packages("broom.mixed")     # its tidy() method
 install.packages("gtsummary")       # every table on the board
 install.packages("broom.helpers")   # gtsummary's tidier bridge, a Suggests since gtsummary 2.x
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/aedes-ivm.R", package = "blockr.stats"))
 ```
 
-Nothing is preloaded. The read block fetches Additional file 2 from the publisher on startup, so the board needs a working internet connection, and every number on it is computed from that file. The published arm fits a negative binomial mixed model at startup, which takes a few seconds before the Model view settles. Render the report from the Report view: what downloads is a Quarto document whose chunks are ordinary R, with no blockr call in it, so it renders in any session that has the packages above. Open [`inst/examples/aedes-ivm.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/aedes-ivm.R) on GitHub to see exactly what the script does.
+Docs: [blockr.stats](https://github.com/cynkra/blockr.stats#readme). Script: [`inst/examples/aedes-ivm.R`](https://github.com/cynkra/blockr.stats/blob/main/inst/examples/aedes-ivm.R).
 
 ### Is the economy growing, or is it just the season?
 
-Swiss quarterly GDP is published twice: as it happened, and seasonally adjusted. This board makes the second one. It runs X-13ARIMA-SEATS on SECO's unadjusted series with no settings and puts the result beside SECO's own published adjustment: over 186 quarters they agree to a median of 0.12 percent. Data from [dataseries.org](https://dataseries.org).
-
-Extra packages:
+Seasonally adjusts Swiss GDP from [dataseries.org](https://dataseries.org) with X-13ARIMA-SEATS and puts the result beside SECO's own adjustment. For economists and statistical offices.
 
 ```r
 pak::pak("cynkra/blockr.ts")         # pick, transform, combine
 pak::pak("cynkra/blockr.seasonal")   # the X-13 block and the series extractor
 pak::pak("cynkra/blockr.outline")    # the outline and the report builder
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/ch-gdp-season.R", package = "blockr.seasonal"))
 ```
 
-Nothing is preloaded. The read block fetches the series from the dataseries.org API on startup, so the board needs a working internet connection, and every number on it is computed from that file. X-13 fits at startup, which takes a second or two before the Adjustment view settles. Render the report from the Report view: what downloads is a Quarto document that fetches its own data and renders outside the board. Two of its chunks call blockr.seasonal and blockr.ts, so those two have to be installed; no board, no board file and no other blockr package. Open [`inst/examples/ch-gdp-season.R`](https://github.com/cynkra/blockr.seasonal/blob/main/inst/examples/ch-gdp-season.R) on GitHub to see exactly what the script does.
+Docs: [blockr.seasonal](https://github.com/cynkra/blockr.seasonal#readme). Script: [`inst/examples/ch-gdp-season.R`](https://github.com/cynkra/blockr.seasonal/blob/main/inst/examples/ch-gdp-season.R).
 
 ### DuckDB Lazy (100M rows)
 
-A 100,000,000-row parquet opened as a lazy DuckDB table and transformed through a chain of blockr.dplyr blocks. Every verb pushes to SQL and the preview pages through 100M rows without ever materializing the full table; only the filtered ~1000-row result is collected into R.
-
-Extra packages:
+Runs a chain of dplyr blocks on a 100-million-row parquet file in DuckDB, as SQL, without loading the table into R. For analysts whose data does not fit in memory.
 
 ```r
-pak::pak("cynkra/blockr.extra")   # new_function_var_block (variadic source) + new_function_block
-install.packages("duckdb")        # embedded OLAP engine, reads parquet
-install.packages("DBI")           # database connection layer
-install.packages("dbplyr")        # translates dplyr verbs to SQL
-```
+install.packages("duckdb")   # embedded OLAP engine, reads parquet
+install.packages("DBI")      # database connection layer
+install.packages("dbplyr")   # translates dplyr verbs to SQL
 
-Launch the demo:
-
-```r
 source(system.file("examples/duckdb-lazy.R", package = "blockr.dplyr"))
 ```
 
-The 100M-row parquet is generated once into a local cache on first run (override with `n_rows <- 5e6` before sourcing for a lighter run). On blockr.cloud it is pre-generated on the host and mounted read-only at /data instead. Open [`inst/examples/duckdb-lazy.R`](https://github.com/BristolMyersSquibb/blockr.dplyr/blob/main/inst/examples/duckdb-lazy.R) on GitHub to see exactly what the script does.
+Docs: [blockr.dplyr](https://bristolmyerssquibb.github.io/blockr.dplyr/). Script: [`inst/examples/duckdb-lazy.R`](https://github.com/BristolMyersSquibb/blockr.dplyr/blob/main/inst/examples/duckdb-lazy.R).
 
 ### Data Collection Process
 
-A quarterly data collection from eight reporting units, run as a process rather than a dashboard. The definition is one wide table; the state is an append-only event log; a headless worker runs the tasks that are scripts. The three front tasks repeat per unit inside a BPMN multi-instance sub-process, the QA check answers true/false on stdout so the branch and its rework loop live in the table, and "Simulate delivery" writes an inbox message the way an upload platform would - the worker turns it into an event.
-
-Extra packages:
+A quarterly data collection from eight reporting units, run as a BPMN process with an event log and a worker for the scripted tasks. For statistical offices that run recurring collections.
 
 ```r
 pak::pak("cynkra/blockr.outline")   # the outline rail the process editor is built on
 pak::pak("cynkra/blockr.process")
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/data-collection.R", package = "blockr.process"))
 ```
 
-The board starts with NO instance: opening one is the first move. The store is per container at /tmp/blockr-process-demo, so a second browser window watches the same event log - tick a task in one and it appears in the other. The app starts its own worker as a hosting convenience; the design rule is that the worker lives outside the app (see vignette("running-scripts")), and BLOCKR_PROCESS_WORKER=0 turns it off so you can run one in a terminal and watch it work. Open [`inst/examples/data-collection.R`](https://github.com/cynkra/blockr.process/blob/main/inst/examples/data-collection.R) on GitHub to see exactly what the script does.
+Docs: [blockr.process](https://cynkra.github.io/blockr.process/). Script: [`inst/examples/data-collection.R`](https://github.com/cynkra/blockr.process/blob/main/inst/examples/data-collection.R).
 
 ### Portfolio Advisor
 
-A portfolio advisor: pick an investor risk profile and an optimizer strategy on the left, and a diversified allocation dashboard recomputes on the right. A second Workflow tab shows the live block graph.
-
-Extra packages:
+Pick an investor risk profile and an optimizer strategy, and the allocation dashboard recomputes. For investment advisers.
 
 ```r
-pak::pak("cynkra/blockr.extra")
 pak::pak("cynkra/blockr.portfolio")
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/app-portfolio.R", package = "blockr.portfolio"))
 ```
 
-This loads the bundled asset universe and the same blocks as the live demo: the investor profile, the mean-variance optimizer, and the allocation dashboard. Edit the risk profile or strategy and the dashboard recomputes. Open [`inst/examples/app-portfolio.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-portfolio.R) on GitHub to see exactly what the script does.
+Docs: [blockr.portfolio](https://github.com/cynkra/blockr.portfolio#readme). Script: [`inst/examples/app-portfolio.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-portfolio.R).
 
 ### Share Explorer
 
-An interactive share explorer: choose tickers and a date range on the left and the price / return charts recompute on the right. A second Workflow tab shows the live block graph.
-
-Extra packages:
+Pick tickers and a date range to compare share prices and returns. For investors and equity analysts.
 
 ```r
-pak::pak("cynkra/blockr.extra")
 pak::pak("cynkra/blockr.portfolio")
-```
 
-Launch the demo:
-
-```r
 source(system.file("examples/app-explorer.R", package = "blockr.portfolio"))
 ```
 
-Ticker data is fetched via quantmod (AAPL / MSFT / GOOG / AMZN by default), with a bundled offline fallback. Change the ticker or date selection and the explorer recomputes. Open [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R) on GitHub to see exactly what the script does.
+Docs: [blockr.portfolio](https://github.com/cynkra/blockr.portfolio#readme). Script: [`inst/examples/app-explorer.R`](https://github.com/cynkra/blockr.portfolio/blob/main/inst/examples/app-explorer.R).
 
 <!-- END generated -->
