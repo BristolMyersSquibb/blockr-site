@@ -4,7 +4,7 @@ layout: home
 hero:
   name: blockr
   text: A visual, no-code framework for R
-  tagline: You connect blocks instead of writing code, so a data flow is quick to change and every step can be checked by anyone.
+  tagline: You connect blocks instead of writing code, so a data flow is quick to change and every step can be verified by anyone.
   actions:
     - theme: brand
       text: Try it in the browser
