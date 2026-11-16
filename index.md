@@ -17,19 +17,38 @@ hero:
       link: https://github.com/BristolMyersSquibb/blockr
 
 demo:
-  src: /videos/hero-build
-  poster: /videos/hero-build-poster.jpg
-  dark:
-    src: /videos/hero-build-dark
-    poster: /videos/hero-build-dark-poster.jpg
-    times: [0, 4.8, 10.0, 22.5, 27.1]
-  alt: "Building a blockr board: add a dataset, filter it, plot it, change the filter, then show the R code the board wrote"
-  chapters:
-    - { t: 0, title: "Add data", text: "Pick a dataset" }
-    - { t: 4.8, title: "Filter", text: "Append a block from the one above" }
-    - { t: 10.0, title: "Plot", text: "Choose the columns" }
-    - { t: 22.6, title: "Change it", text: "Edit the filter, the chart follows" }
-    - { t: 27.2, title: "Get the R code", text: "Show code gives the whole script" }
+  tabs:
+    - label: By hand
+      src: /videos/hero-build
+      poster: /videos/hero-build-poster.jpg
+      dark:
+        src: /videos/hero-build-dark
+        poster: /videos/hero-build-dark-poster.jpg
+        times: [0, 4.8, 10.0, 22.5, 27.1]
+      alt: "Building a blockr board: add a dataset, filter it, plot it, change the filter, then show the R code the board wrote"
+      chapters:
+        - { t: 0, title: "Add data", text: "Pick a dataset" }
+        - { t: 4.8, title: "Filter", text: "Append a block from the one above" }
+        - { t: 10.0, title: "Plot", text: "Choose the columns" }
+        - { t: 22.6, title: "Change it", text: "Edit the filter, the chart follows" }
+        - { t: 27.2, title: "Get the R code", text: "Show code gives the whole script" }
+    - label: By asking
+      sub: with the assistant
+      id: by-asking
+      src: /videos/hero-ask
+      poster: /videos/hero-ask-poster.jpg
+      dark:
+        src: /videos/hero-ask-dark
+        poster: /videos/hero-ask-dark-poster.jpg
+        times: [0, 10.7, 19.8, 36.2, 45.7]
+      alt: "Building the same board by asking the assistant: load the penguins data, keep two species, plot them, then change the filter by hand and show the R code"
+      more: { text: "The AI assistant", link: /docs/concepts/03-ai-assistant }
+      chapters:
+        - { t: 0, title: "Ask for data", text: "\"Load the penguins data.\"" }
+        - { t: 10.9, title: "Ask for a filter", text: "\"Keep only Adelie and Gentoo.\"" }
+        - { t: 20.2, title: "Ask for a plot", text: "\"Plot bill length against bill depth, coloured by species.\"" }
+        - { t: 36.6, title: "Change it by hand", text: "Edit the filter, the chart follows" }
+        - { t: 45.8, title: "Get the R code", text: "Show code gives the whole script" }
 
 features:
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#0072B24D"/><line x1="30" y1="32" x2="30" y2="24" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="32" x2="24" y2="16" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="32" x2="18" y2="28" stroke="#0072B2" stroke-width="1.5" stroke-linecap="round"/></svg>'
@@ -45,8 +64,8 @@ features:
   - icon: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" rx="7" fill="#E69F004D"/><path d="M15 15h18a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-10l-6 4.5v-4.5h-2a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2z" fill="none" stroke="#E69F00" stroke-width="1.5" stroke-linejoin="round"/></svg>'
     title: With or without AI
     details: The assistant builds the data flow from the same blocks you would use by hand, so people who can't read code can check every step it took. You can also use blockr without it.
-    link: /docs/concepts/03-ai-assistant
-    linkText: The AI assistant
+    link: "#by-asking"
+    linkText: Watch it build one
 ---
 
 <style>

@@ -141,6 +141,8 @@ async function film({ url, out, viewport = { width: 1440, height: 900 }, dpr = 2
   // a still for the docs page: the frame as it is, fake cursor included
   S.shot = async (file) => { await p.screenshot({ path: file }); console.log('shot:', file); };
   S.fade = (on) => p.evaluate((on) => { document.getElementById('__fade').style.opacity = on ? 1 : 0; }, on);
+  // speed-up window: frames between fast(f) and fast(0) play f times faster (render.cjs)
+  S.fast = (f) => { S.events.push({ t: t0(), type: f ? 'fast-start' : 'fast-end', f }); };
   S.zoom = (z, x, y, { abs = false } = {}) => { S.events.push({ t: t0(), type: 'zoom', z, x, y, abs }); };
 
   // ---------- recording ----------

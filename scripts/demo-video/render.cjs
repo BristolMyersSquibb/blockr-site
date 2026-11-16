@@ -1,5 +1,5 @@
 // Post-production: speed, camera (zoom + follow cursor), captions, fade.
-// usage: node render.cjs <take> <out> [--speed 1.5] [--zoom] [--captions] [--width 1920] [--fade-color white]
+// usage: node render.cjs <take> <out> [--speed 1.5] [--zoom] [--captions] [--width 1920] [--fade-color white] [--badge]
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -21,10 +21,15 @@ const off = ev.tStart - ev.t0;                 // event time -> recording time
 const list = fs.readFileSync(path.join(take + '-frames', 'list.ffconcat'), 'utf8');
 let events = ev.events.map(e => ({ ...e, r: e.t + off }));
 
-// ---------- cuts: drop [cut-start, cut-end] windows from the recording ----------
-const cuts = [];
-events.forEach((e, i) => { if (e.type === 'cut-start') { const end = events.slice(i).find(x => x.type === 'cut-end'); if (end) cuts.push([e.r, end.r]); } });
-const cutBefore = (r) => cuts.reduce((a, [c0, c1]) => a + Math.max(0, Math.min(r, c1) - c0), 0);
+// ---------- cuts and speed-up windows ----------
+// cut-start/cut-end drop a window; fast-start (f)/fast-end play it f times faster.
+const wins = [];
+events.forEach((e, i) => {
+  if (e.type === 'cut-start') { const end = events.slice(i).find(x => x.type === 'cut-end'); if (end) wins.push([e.r, end.r, Infinity]); }
+  if (e.type === 'fast-start') { const end = events.slice(i).find(x => x.type === 'fast-end'); if (end) wins.push([e.r, end.r, e.f]); }
+});
+const lost = (a, b) => wins.reduce((acc, [c0, c1, f]) => acc + Math.max(0, Math.min(b, c1) - Math.max(a, c0)) * (1 - 1 / f), 0);
+const cutBefore = (r) => lost(0, r);
 const lines = list.split('\n');
 const frameList = [];
 for (let i = 0; i < lines.length; i++) if (lines[i].startsWith('file') && lines[i + 1]?.startsWith('duration')) frameList.push({ file: lines[i], d: +lines[i + 1].split(' ')[1] });
@@ -32,13 +37,16 @@ let tt = 0;
 const kept = [];
 for (const fr of frameList) {
   const a = tt, b = tt + fr.d; tt = b;
-  const d = (b - a) - cuts.reduce((acc, [c0, c1]) => acc + Math.max(0, Math.min(b, c1) - Math.max(a, c0)), 0);
+  const d = (b - a) - lost(a, b);
   if (d > 0.0005) kept.push({ ...fr, d });
 }
 const listFile = path.join(take + '-frames', 'list-cut.ffconcat');
 fs.writeFileSync(listFile, ['ffconcat version 1.0', ...kept.flatMap(k => [k.file, `duration ${k.d.toFixed(4)}`]), kept[kept.length - 1].file].join('\n'));
 events = events.map(e => ({ ...e, r: e.r - cutBefore(e.r) }));
-if (cuts.length) console.log('cut', cuts.map(([a, b]) => `${a.toFixed(1)}-${b.toFixed(1)}s`).join(', '));
+if (wins.length) console.log('windows', wins.map(([a, b, f]) => `${a.toFixed(1)}-${b.toFixed(1)}s x${f}`).join(', '));
+// speed-up windows in output time, for the "3x speed" badge (--badge)
+const badgeWins = () => wins.filter(([, , f]) => isFinite(f) && f > 1)
+  .map(([a, b, f]) => ({ s: (a - lost(0, a)) / SPEED, e: (b - lost(0, b)) / SPEED, f }));
 const recDur = kept.reduce((a, k) => a + k.d, 0);
 const outDur = recDur / SPEED;
 
@@ -123,10 +131,31 @@ async function captionPngs() {
   return caps;
 }
 
+async function badgePngs() {
+  const bw = badgeWins();
+  if (!flag('badge') || !bw.length) return [];
+  const exe = process.env.CHROME_PATH;
+  const b = await chromium.launch(exe ? { executablePath: exe } : { channel: 'chrome' });
+  const p = await b.newPage({ viewport: { width: OUTW, height: 200 }, deviceScaleFactor: 1 });
+  const fs0 = Math.round(OUTW / 1920 * 26);
+  for (let i = 0; i < bw.length; i++) {
+    await p.setContent(`<html><body style="margin:0;background:transparent"><div id="c" style="display:inline-block;
+      font:600 ${fs0}px/1.2 Inter,-apple-system,sans-serif;color:#fff;background:rgba(6,122,90,.92);
+      padding:${fs0 * .4}px ${fs0 * .75}px;border-radius:${fs0 * .5}px">${bw[i].f}\u00d7 speed</div></body></html>`);
+    await p.waitForTimeout(200);
+    bw[i].png = `${out}-badge${i}.png`;
+    await p.locator('#c').screenshot({ path: bw[i].png, omitBackground: true });
+  }
+  await b.close();
+  return bw;
+}
+
 (async () => {
   const caps = CAPS ? await captionPngs() : [];
+  const badges = await badgePngs();
   const inputs = ['-f', 'concat', '-safe', '0', '-i', listFile];
   caps.forEach(c => inputs.push('-loop', '1', '-t', outDur.toFixed(2), '-i', c.png));
+  badges.forEach(bd => inputs.push('-loop', '1', '-t', outDur.toFixed(2), '-i', bd.png));
   let g = `[0:v]setpts=(PTS-STARTPTS)/${SPEED},fps=${FPS},sendcmd=f=${cmdFile},crop=w=${SW}:h=${SH}:x=0:y=0,scale=${OUTW}:${OUTH}:flags=lanczos,setsar=1,fade=t=in:st=0:d=0.5:color=${FADE}[v0]`;
   let last = 'v0';
   caps.forEach((c, i) => {
@@ -134,6 +163,11 @@ async function captionPngs() {
     g += `;[${i + 1}:v]format=rgba,fade=t=in:st=${a.toFixed(2)}:d=0.25:alpha=1,fade=t=out:st=${(a + d - 0.25).toFixed(2)}:d=0.25:alpha=1[c${i}]`;
     g += `;[${last}][c${i}]overlay=x=(W-w)/2:y=H-h-${Math.round(OUTH * 0.05)}:enable='between(t,${a.toFixed(2)},${(a + d).toFixed(2)})':shortest=1[v${i + 1}]`;
     last = `v${i + 1}`;
+  });
+  badges.forEach((bd, i) => {
+    const k = caps.length + 1 + i;
+    g += `;[${last}][${k}:v]overlay=x=${Math.round(OUTW * 0.025)}:y=H-h-${Math.round(OUTH * 0.04)}:enable='between(t,${bd.s.toFixed(2)},${bd.e.toFixed(2)})':shortest=1[b${i}]`;
+    last = `b${i}`;
   });
   g += `;[${last}]format=yuv420p[out]`;
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...inputs, '-filter_complex', g, '-map', '[out]',
