@@ -86,8 +86,7 @@ module.exports = {
       ]
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/BristolMyersSquibb/blockr' },
-      { icon: 'youtube', link: 'https://www.youtube.com/@blockr-project' }
+      { icon: 'github', link: 'https://github.com/BristolMyersSquibb/blockr' }
     ],
     footer: {
       message: `Developed by <a href="https://cynkra.com" target="_blank"><img src="${base}logos/logo-cynkra.png" alt="cynkra" style="height:36px;vertical-align:middle"></a> and <a href="https://www.bms.com" target="_blank"><img src="${base}logos/logo-bms.png" alt="BMS" style="height:24px;vertical-align:middle"></a><span class="footer-contact">Questions, deployment or support: <a href="https://cynkra.com/contact/" target="_blank">contact cynkra</a></span>`,
