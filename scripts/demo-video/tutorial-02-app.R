@@ -1,7 +1,7 @@
 # Starting board for the tutorial 2 take (story-tutorial-02.cjs): the
 # tutorial-1 workflow with the ggplot swapped for a Chart and a Table, as
 # after step 1 of learn/02-build-a-dashboard.md. Runs on the one-line
-# install, pak::pak("BristolMyersSquibb/blockr@dev").
+# install, pak::pak("BristolMyersSquibb/blockr").
 #   Rscript tutorial-02-app.R 4320
 library(blockr)
 

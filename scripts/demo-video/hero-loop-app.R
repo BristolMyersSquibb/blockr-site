@@ -1,5 +1,5 @@
 # Empty board for the landing page loop (story-hero.cjs), on the one-line
-# install, pak::pak("BristolMyersSquibb/blockr@dev").
+# install, pak::pak("BristolMyersSquibb/blockr").
 #   Rscript hero-loop-app.R 4190          # light
 #   Rscript hero-loop-app.R 4191 dark     # dark
 library(blockr)

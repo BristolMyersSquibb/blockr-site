@@ -119,7 +119,7 @@ blockr is developed by cynkra and Bristol Myers Squibb and used on clinical tria
 
 ```r
 # install.packages("pak")
-pak::pak("BristolMyersSquibb/blockr@dev")
+pak::pak("BristolMyersSquibb/blockr")
 blockr::run_app()
 ```
 

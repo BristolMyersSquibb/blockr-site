@@ -19,7 +19,7 @@ ShinyProxy. [For organisations](/organisations) has the details.
 
 ```r
 # install.packages("pak")
-pak::pak("BristolMyersSquibb/blockr@dev")
+pak::pak("BristolMyersSquibb/blockr")
 blockr::run_app()
 ```
 

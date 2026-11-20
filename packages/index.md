@@ -18,7 +18,7 @@ its README on GitHub.
 ## In the one-line install
 
 ```r
-pak::pak("BristolMyersSquibb/blockr@dev")
+pak::pak("BristolMyersSquibb/blockr")
 blockr::run_app()
 ```
 

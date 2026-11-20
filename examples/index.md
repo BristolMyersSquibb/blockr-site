@@ -156,7 +156,7 @@ Curated demo workflows running on [blockr.cloud](https://blockr.cloud). Open any
 The demos above run on [blockr.cloud](https://blockr.cloud). To run one in your own R session, first install blockr:
 
 ```r
-pak::pak("BristolMyersSquibb/blockr@dev")
+pak::pak("BristolMyersSquibb/blockr")
 ```
 
 Then install the extra packages listed for the demo and launch it.

@@ -24,7 +24,7 @@ gesture that is hard to read in motion). Page shape:
 One story script per tutorial in `scripts/demo-video/`, built on the same
 recorder as the landing loop (see below), with the board helpers in
 `story-lib.cjs`. The tutorials are recorded on the one-line install, so the
-media show what a reader gets after `pak::pak("BristolMyersSquibb/blockr@dev")`.
+media show what a reader gets after `pak::pak("BristolMyersSquibb/blockr")`.
 Each take gives the video and the stills; the poster is the result still at
 1152 px.
 
